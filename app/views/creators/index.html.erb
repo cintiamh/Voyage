@@ -1,0 +1,23 @@
+<h1>Listing creators</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @creators.each do |creator| %>
+  <tr>
+    <td><%= creator.name %></td>
+    <td><%= link_to 'Show', creator %></td>
+    <td><%= link_to 'Edit', edit_creator_path(creator) %></td>
+    <td><%= link_to 'Destroy', creator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Creator', new_creator_path %>
