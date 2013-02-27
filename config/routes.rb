@@ -1,4 +1,22 @@
 Voyage::Application.routes.draw do
+  resources :likes
+
+
+  resources :comments
+
+
+  resources :information
+
+
+  resources :tour_histories
+
+
+  resources :tours
+
+
+  resources :users
+
+
   resources :connections
 
 

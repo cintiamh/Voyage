@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227195222) do
+ActiveRecord::Schema.define(:version => 20130227205724) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(:version => 20130227195222) do
     t.integer "product_id"
   end
 
+  create_table "categories_tours", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "tour_id"
+  end
+
   create_table "cities", :force => true do |t|
     t.string   "name"
     t.integer  "state_id"
@@ -36,6 +41,23 @@ ActiveRecord::Schema.define(:version => 20130227195222) do
   end
 
   add_index "cities", ["state_id"], :name => "index_cities_on_state_id"
+
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "piece_id"
+    t.integer  "category_id"
+    t.integer  "connection_id"
+    t.integer  "tour_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "comments", ["category_id"], :name => "index_comments_on_category_id"
+  add_index "comments", ["connection_id"], :name => "index_comments_on_connection_id"
+  add_index "comments", ["piece_id"], :name => "index_comments_on_piece_id"
+  add_index "comments", ["tour_id"], :name => "index_comments_on_tour_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "connections", :force => true do |t|
     t.string   "title"
@@ -68,6 +90,39 @@ ActiveRecord::Schema.define(:version => 20130227195222) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "information", :force => true do |t|
+    t.text     "before"
+    t.text     "after"
+    t.integer  "piece_id"
+    t.integer  "connection_id"
+    t.integer  "tour_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "information", ["connection_id"], :name => "index_information_on_connection_id"
+  add_index "information", ["piece_id"], :name => "index_information_on_piece_id"
+  add_index "information", ["tour_id"], :name => "index_information_on_tour_id"
+
+  create_table "likes", :force => true do |t|
+    t.boolean  "like"
+    t.integer  "user_id"
+    t.integer  "piece_id"
+    t.integer  "category_id"
+    t.integer  "connection_id"
+    t.integer  "tour_id"
+    t.integer  "comment_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "likes", ["category_id"], :name => "index_likes_on_category_id"
+  add_index "likes", ["comment_id"], :name => "index_likes_on_comment_id"
+  add_index "likes", ["connection_id"], :name => "index_likes_on_connection_id"
+  add_index "likes", ["piece_id"], :name => "index_likes_on_piece_id"
+  add_index "likes", ["tour_id"], :name => "index_likes_on_tour_id"
+  add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
+
   create_table "pieces", :force => true do |t|
     t.string   "title"
     t.datetime "modification_date"
@@ -91,6 +146,11 @@ ActiveRecord::Schema.define(:version => 20130227195222) do
   add_index "pieces", ["gallery_id"], :name => "index_pieces_on_gallery_id"
   add_index "pieces", ["state_id"], :name => "index_pieces_on_state_id"
 
+  create_table "pieces_tours", :id => false, :force => true do |t|
+    t.integer "piece_id"
+    t.integer "tour_id"
+  end
+
   create_table "states", :force => true do |t|
     t.string   "name"
     t.integer  "country_id"
@@ -109,5 +169,41 @@ ActiveRecord::Schema.define(:version => 20130227195222) do
   end
 
   add_index "teasers", ["piece_id"], :name => "index_teasers_on_piece_id"
+
+  create_table "tour_histories", :force => true do |t|
+    t.datetime "chosen_date"
+    t.datetime "executed_date"
+    t.integer  "tour_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "tour_histories", ["tour_id"], :name => "index_tour_histories_on_tour_id"
+  add_index "tour_histories", ["user_id"], :name => "index_tour_histories_on_user_id"
+
+  create_table "tours", :force => true do |t|
+    t.string   "title"
+    t.datetime "modification_date"
+    t.string   "image"
+    t.boolean  "curated"
+    t.boolean  "public"
+    t.text     "about"
+    t.integer  "user_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "tours", ["user_id"], :name => "index_tours_on_user_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
+    t.string   "email"
+    t.datetime "modification_date"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
 end

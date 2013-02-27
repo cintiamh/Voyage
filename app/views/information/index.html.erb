@@ -1,0 +1,31 @@
+<h1>Listing information</h1>
+
+<table>
+  <tr>
+    <th>Before</th>
+    <th>After</th>
+    <th>Piece</th>
+    <th>Connection</th>
+    <th>Tour</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @information.each do |information| %>
+  <tr>
+    <td><%= information.before %></td>
+    <td><%= information.after %></td>
+    <td><%= information.piece %></td>
+    <td><%= information.connection %></td>
+    <td><%= information.tour %></td>
+    <td><%= link_to 'Show', information %></td>
+    <td><%= link_to 'Edit', edit_information_path(information) %></td>
+    <td><%= link_to 'Destroy', information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Information', new_information_path %>

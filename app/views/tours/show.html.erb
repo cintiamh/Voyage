@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @tour.title %>
+</p>
+
+<p>
+  <b>Modification date:</b>
+  <%= @tour.modification_date %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= @tour.image %>
+</p>
+
+<p>
+  <b>Curated:</b>
+  <%= @tour.curated %>
+</p>
+
+<p>
+  <b>Public:</b>
+  <%= @tour.public %>
+</p>
+
+<p>
+  <b>About:</b>
+  <%= @tour.about %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @tour.user %>
+</p>
+
+
+<%= link_to 'Edit', edit_tour_path(@tour) %> |
+<%= link_to 'Back', tours_path %>

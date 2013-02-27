@@ -1,0 +1,2 @@
+module TourHistoriesHelper
+end

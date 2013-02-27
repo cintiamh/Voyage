@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Like:</b>
+  <%= @like.like %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @like.user %>
+</p>
+
+<p>
+  <b>Piece:</b>
+  <%= @like.piece %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @like.category %>
+</p>
+
+<p>
+  <b>Connection:</b>
+  <%= @like.connection %>
+</p>
+
+<p>
+  <b>Tour:</b>
+  <%= @like.tour %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @like.comment %>
+</p>
+
+
+<%= link_to 'Edit', edit_like_path(@like) %> |
+<%= link_to 'Back', likes_path %>

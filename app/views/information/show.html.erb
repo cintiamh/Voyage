@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Before:</b>
+  <%= @information.before %>
+</p>
+
+<p>
+  <b>After:</b>
+  <%= @information.after %>
+</p>
+
+<p>
+  <b>Piece:</b>
+  <%= @information.piece %>
+</p>
+
+<p>
+  <b>Connection:</b>
+  <%= @information.connection %>
+</p>
+
+<p>
+  <b>Tour:</b>
+  <%= @information.tour %>
+</p>
+
+
+<%= link_to 'Edit', edit_information_path(@information) %> |
+<%= link_to 'Back', information_index_path %>
