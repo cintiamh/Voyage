@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @piece.title %>
+</p>
+
+<p>
+  <b>Modification date:</b>
+  <%= @piece.modification_date %>
+</p>
+
+<p>
+  <b>Medium:</b>
+  <%= @piece.medium %>
+</p>
+
+<p>
+  <b>Measurements:</b>
+  <%= @piece.measurements %>
+</p>
+
+<p>
+  <b>Credit:</b>
+  <%= @piece.credit %>
+</p>
+
+<p>
+  <b>Accession number:</b>
+  <%= @piece.accession_number %>
+</p>
+
+<p>
+  <b>Exhibited:</b>
+  <%= @piece.exhibited %>
+</p>
+
+<p>
+  <b>Creator:</b>
+  <%= @piece.creator %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @piece.country %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @piece.state %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @piece.city %>
+</p>
+
+<p>
+  <b>Gallery:</b>
+  <%= @piece.gallery %>
+</p>
+
+
+<%= link_to 'Edit', edit_piece_path(@piece) %> |
+<%= link_to 'Back', pieces_path %>

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Question:</b>
+  <%= @teaser.question %>
+</p>
+
+<p>
+  <b>Answer:</b>
+  <%= @teaser.answer %>
+</p>
+
+<p>
+  <b>Piece:</b>
+  <%= @teaser.piece %>
+</p>
+
+
+<%= link_to 'Edit', edit_teaser_path(@teaser) %> |
+<%= link_to 'Back', teasers_path %>

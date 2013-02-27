@@ -1,4 +1,28 @@
 Voyage::Application.routes.draw do
+  resources :connections
+
+
+  resources :categories
+
+
+  resources :teasers
+
+
+  resources :pieces
+
+
+  resources :cities
+
+
+  resources :states
+
+
+  resources :countries
+
+
+  resources :galleries
+
+
   resources :creators
 
 
