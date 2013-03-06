@@ -3,5 +3,5 @@ class State < ActiveRecord::Base
   has_many :cities
   has_many :pieces
 
-  attr_accessible :name
+  attr_accessible :name, :country_id
 end
