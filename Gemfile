@@ -36,6 +36,7 @@ gem 'devise'
 gem 'activeadmin'
 gem 'knockoutjs-rails'
 gem 'jquery_mobile_rails'
+gem 'd3-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

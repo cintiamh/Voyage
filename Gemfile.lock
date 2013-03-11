@@ -56,6 +56,8 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     commonjs (0.2.6)
+    d3-rails (0.0.5)
+      railties (>= 3.1)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -172,6 +174,7 @@ DEPENDENCIES
   activeadmin
   coffee-rails (~> 3.2.1)
   coffee-script-source (~> 1.4.0)
+  d3-rails
   devise
   jquery-rails
   jquery_mobile_rails

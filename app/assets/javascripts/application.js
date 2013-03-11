@@ -16,4 +16,5 @@
 //= require twitter/bootstrap
 //= require knockout
 //= require knockout.mapping
+//= require d3
 //= require_tree .
