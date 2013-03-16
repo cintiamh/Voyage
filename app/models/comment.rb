@@ -7,5 +7,5 @@ class Comment < ActiveRecord::Base
 
   has_many :likes
 
-  attr_accessible :content
+  attr_accessible :content, :user, :piece, :category, :connection, :tour, :likes
 end
