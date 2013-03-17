@@ -33,7 +33,12 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem "twitter-bootstrap-rails"
 
 gem 'devise'
+
+# ActiveAdmin
 gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
+
+# JavaScript libraries
 gem 'knockoutjs-rails'
 gem 'jquery_mobile_rails'
 gem 'd3-rails'

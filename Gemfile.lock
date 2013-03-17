@@ -181,6 +181,7 @@ DEPENDENCIES
   json
   knockoutjs-rails
   less-rails
+  meta_search (>= 1.1.0.pre)
   pg
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
