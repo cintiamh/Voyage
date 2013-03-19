@@ -214,8 +214,9 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  require "omniauth-facebook"
-  config.omniauth :facebook, "319384074850234", "340e9ca00ee5db11bc80b3633fece91b", {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  #require "omniauth-facebook"
+  #config.omniauth :facebook, "319384074850234", "340e9ca00ee5db11bc80b3633fece91b", {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], :scope => 'email,user_birthday,read_stream', :display => 'popup'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
