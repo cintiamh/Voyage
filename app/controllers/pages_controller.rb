@@ -4,7 +4,8 @@ class PagesController < ApplicationController
   end
 
   def identities
-
+    @tours = Tour.all
+    js :params => {:tours_list => @tours}
   end
 
 end

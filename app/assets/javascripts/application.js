@@ -17,4 +17,5 @@
 //= require knockout
 //= require knockout.mapping
 //= require d3
+//= require paloma
 //= require_tree .

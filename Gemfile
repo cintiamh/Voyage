@@ -37,6 +37,7 @@ gem 'activeadmin'
 gem 'knockoutjs-rails'
 gem 'jquery_mobile_rails'
 gem 'd3-rails'
+gem 'paloma'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
