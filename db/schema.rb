@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312210933) do
+ActiveRecord::Schema.define(:version => 20130325195842) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -158,7 +158,6 @@ ActiveRecord::Schema.define(:version => 20130312210933) do
 
   create_table "pieces", :force => true do |t|
     t.string   "title"
-    t.datetime "modification_date"
     t.string   "medium"
     t.string   "measurements"
     t.string   "credit"
@@ -169,8 +168,8 @@ ActiveRecord::Schema.define(:version => 20130312210933) do
     t.integer  "state_id"
     t.integer  "city_id"
     t.integer  "gallery_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   add_index "pieces", ["city_id"], :name => "index_pieces_on_city_id"
@@ -217,14 +216,13 @@ ActiveRecord::Schema.define(:version => 20130312210933) do
 
   create_table "tours", :force => true do |t|
     t.string   "title"
-    t.datetime "modification_date"
     t.string   "image"
     t.boolean  "curated"
     t.boolean  "public"
     t.text     "about"
     t.integer  "user_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "tours", ["user_id"], :name => "index_tours_on_user_id"
