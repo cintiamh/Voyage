@@ -5,8 +5,6 @@ gem 'rails', '3.2.12'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
-
 gem 'json'
 
 # Gems used only for assets and not required
@@ -16,6 +14,8 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'coffee-script-source', '~> 1.4.0'
 
+  gem 'bootstrap-sass', '~> 2.3.1.0'
+
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
@@ -24,6 +24,10 @@ end
 
 group :development do
   gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
 end
 
 gem 'jquery-rails'
