@@ -1,4 +1,5 @@
-
+var w,h;
+var svg
 
 (function(){
   // You access variables from before/around filters from _x object.
@@ -18,9 +19,12 @@
   // _l.localMethod(); 
   var _l = _L['pages'];
 
-
+   // alert("in controller");
   Paloma.callbacks['pages']['identities'] = function(params)
+   // Paloma.callbacks['pages/identities'] = function(params)
   {
+      //alert("in callback");
+
       var nodes = [];
       var links = [];
      var id = params['tours_list'];
@@ -30,8 +34,20 @@
           //links -> {source, target, value}
           var target = i+1;
           if(target >= id.length){target = 0;}
-          links.push({"source":i, "target":target, "value":25})
+          //links.push({"source":i, "target":target, "value":25})
       }
+      svg = d3.select("svg");
+
+      var parent = $("div[data-role='content']");
+      w = parent.innerWidth() - 20;
+      h = parent.height() - 20;
+
+
+      //svg.attr("width",w)
+      //    .attr("height",h)
+      //    .attr("viewBox", "0 0 750 500");
+
+      svg.attr("viewbox",function(){return "0 0 " + w + " " + h + " ";}) ;
 
       createChart(nodes, links);
   };
@@ -41,15 +57,33 @@
 
 function createChart(nodes, links)
 {
-    alert("starting chart creation");
-    var w = $('#chart').width();
-    var h = $('#chart').height();
+    //alert("starting chart creation");
+    //var w = $('#chart').width();
+    //var h = $('#chart').height();
 
-    var svg = d3.select("svg");
+
+    /* Test Resize
+    svg.append('svg:rect')
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("width", 50)
+        .attr("height", 50)
+        .attr("fill", "#000");
+
+    svg.append('svg:circle')
+        .attr("cx", 50)
+        .attr("cy", 50)
+        .attr("r", 20)
+        .attr("fill", "#FF0000");
+    }*/
+
+
+   // var w = 500;
+   // var h = 500;
 
     var force = d3.layout.force()
-        .charge(-3000)
-        .linkDistance(200)
+        .charge(-300)
+        .linkDistance(100)
         .size([w, h]);
 
     force.nodes(nodes)
@@ -71,7 +105,7 @@ function createChart(nodes, links)
     node.append("circle")
         .attr("x",-8)
         .attr("y",-8)
-        .attr("r",50)
+        .attr("r",30)
         .attr("fill","red");
 
     node.append("text")

@@ -34,7 +34,15 @@ circle {
 }
 
 text {
-    fill: red;
+    color: red;
     font: 25px sans-serif;
     pointer-events: none;
+}
+
+@media only screen and (min-width:0px) {
+    #test{width:100px; height:100px;}
+}
+
+@media only screen and (min-width:400px) {
+    #test{width:400px; height:400px;}
 }

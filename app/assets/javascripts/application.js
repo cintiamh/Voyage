@@ -13,9 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.mobile
-//= require twitter/bootstrap
-//= require knockout
-//= require knockout.mapping
 //= require d3
 //= require paloma
-//= require_tree .
+
