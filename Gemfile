@@ -33,7 +33,12 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem "twitter-bootstrap-rails"
 
 gem 'devise'
+
+# ActiveAdmin
 gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
+
+# JavaScript libraries
 gem 'knockoutjs-rails'
 gem 'jquery_mobile_rails'
 gem 'd3-rails'
@@ -42,6 +47,9 @@ gem 'paloma'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'oauth2'
+
+# Paper clip
+gem 'paperclip', '~> 3.0'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

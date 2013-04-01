@@ -14,5 +14,10 @@ class Piece < ActiveRecord::Base
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :tours
 
-  attr_accessible :accession_number, :credit, :exhibited, :measurements, :medium, :modification_date, :title
+  scope :inExhibition, where(:exhibited => true)
+  scope :notExhibited, where(:exhibited => false)
+
+  attr_accessible :accession_number, :credit, :exhibited, :measurements, :medium, :title, :creator_id, :country_id, :state_id, :city_id, :gallery_id, :image, :image_content_type, :image_file_name, :image_file_size, :image_updated_at
+
+  has_attached_file :image
 end

@@ -1,4 +1,9 @@
 class Teaser < ActiveRecord::Base
   belongs_to :piece
-  attr_accessible :answer, :question
+
+  validates :piece_id, :presence => true
+  validates :question, :presence => true
+  validates :answer, :presence => true
+
+  attr_accessible :answer, :question, :piece_id
 end
