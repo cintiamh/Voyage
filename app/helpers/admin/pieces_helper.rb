@@ -1,0 +1,2 @@
+module Admin::PiecesHelper
+end
