@@ -99,6 +99,7 @@ Voyage::Application.routes.draw do
 
   namespace :admin do
     get "dashboard/index"
+    match "/" => "dashboard#index"
   end
 
   # You can have the root of your site routed with "root"
