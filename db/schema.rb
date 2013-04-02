@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130325195842) do
+ActiveRecord::Schema.define(:version => 20130401184814) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -168,8 +168,13 @@ ActiveRecord::Schema.define(:version => 20130325195842) do
     t.integer  "state_id"
     t.integer  "city_id"
     t.integer  "gallery_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "image"
   end
 
   add_index "pieces", ["city_id"], :name => "index_pieces_on_city_id"
@@ -221,8 +226,12 @@ ActiveRecord::Schema.define(:version => 20130325195842) do
     t.boolean  "public"
     t.text     "about"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "tours", ["user_id"], :name => "index_tours_on_user_id"
