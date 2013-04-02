@@ -38,10 +38,6 @@ gem 'jquery-rails'
 
 gem 'devise'
 
-# ActiveAdmin
-gem 'activeadmin'
-gem "meta_search",    '>= 1.1.0.pre'
-
 # JavaScript libraries
 gem 'knockoutjs-rails'
 gem 'jquery_mobile_rails'
