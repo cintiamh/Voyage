@@ -13,3 +13,7 @@
  *= require jquery.mobile
  */
 
+.admin_nav li a {
+    font-weight: normal;
+    color: #FFFFFF;
+}

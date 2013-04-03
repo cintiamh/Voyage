@@ -101,11 +101,15 @@ Voyage::Application.routes.draw do
     get "dashboard/index"
     match "/" => "dashboard#index"
 
-    get "pieces/index"
+    #get "pieces/index"
+    #get "pieces/new"
+    resources :pieces
 
-    get "tours/index"
+    #get "tours/index"
+    resources :tours
 
-    get "users/index"
+    resources :users
+
   end
 
   # You can have the root of your site routed with "root"
