@@ -1,0 +1,221 @@
+                    admin_root            /admin(.:format)                          admin/dashboard#index
+                          root            /                                         dashboard#index
+     batch_action_admin_cities POST       /admin/cities/batch_action(.:format)      admin/cities#batch_action
+                  admin_cities GET        /admin/cities(.:format)                   admin/cities#index
+                               POST       /admin/cities(.:format)                   admin/cities#create
+                new_admin_city GET        /admin/cities/new(.:format)               admin/cities#new
+               edit_admin_city GET        /admin/cities/:id/edit(.:format)          admin/cities#edit
+                    admin_city GET        /admin/cities/:id(.:format)               admin/cities#show
+                               PUT        /admin/cities/:id(.:format)               admin/cities#update
+                               DELETE     /admin/cities/:id(.:format)               admin/cities#destroy
+      batch_action_admin_users POST       /admin/users/batch_action(.:format)       admin/users#batch_action
+                   admin_users GET        /admin/users(.:format)                    admin/users#index
+                               POST       /admin/users(.:format)                    admin/users#create
+                new_admin_user GET        /admin/users/new(.:format)                admin/users#new
+               edit_admin_user GET        /admin/users/:id/edit(.:format)           admin/users#edit
+                    admin_user GET        /admin/users/:id(.:format)                admin/users#show
+                               PUT        /admin/users/:id(.:format)                admin/users#update
+                               DELETE     /admin/users/:id(.:format)                admin/users#destroy
+batch_action_admin_admin_users POST       /admin/admin_users/batch_action(.:format) admin/admin_users#batch_action
+             admin_admin_users GET        /admin/admin_users(.:format)              admin/admin_users#index
+                               POST       /admin/admin_users(.:format)              admin/admin_users#create
+          new_admin_admin_user GET        /admin/admin_users/new(.:format)          admin/admin_users#new
+         edit_admin_admin_user GET        /admin/admin_users/:id/edit(.:format)     admin/admin_users#edit
+              admin_admin_user GET        /admin/admin_users/:id(.:format)          admin/admin_users#show
+                               PUT        /admin/admin_users/:id(.:format)          admin/admin_users#update
+                               DELETE     /admin/admin_users/:id(.:format)          admin/admin_users#destroy
+     batch_action_admin_pieces POST       /admin/pieces/batch_action(.:format)      admin/pieces#batch_action
+                  admin_pieces GET        /admin/pieces(.:format)                   admin/pieces#index
+                               POST       /admin/pieces(.:format)                   admin/pieces#create
+               new_admin_piece GET        /admin/pieces/new(.:format)               admin/pieces#new
+              edit_admin_piece GET        /admin/pieces/:id/edit(.:format)          admin/pieces#edit
+                   admin_piece GET        /admin/pieces/:id(.:format)               admin/pieces#show
+                               PUT        /admin/pieces/:id(.:format)               admin/pieces#update
+                               DELETE     /admin/pieces/:id(.:format)               admin/pieces#destroy
+  batch_action_admin_galleries POST       /admin/galleries/batch_action(.:format)   admin/galleries#batch_action
+               admin_galleries GET        /admin/galleries(.:format)                admin/galleries#index
+                               POST       /admin/galleries(.:format)                admin/galleries#create
+             new_admin_gallery GET        /admin/galleries/new(.:format)            admin/galleries#new
+            edit_admin_gallery GET        /admin/galleries/:id/edit(.:format)       admin/galleries#edit
+                 admin_gallery GET        /admin/galleries/:id(.:format)            admin/galleries#show
+                               PUT        /admin/galleries/:id(.:format)            admin/galleries#update
+                               DELETE     /admin/galleries/:id(.:format)            admin/galleries#destroy
+ batch_action_admin_categories POST       /admin/categories/batch_action(.:format)  admin/categories#batch_action
+              admin_categories GET        /admin/categories(.:format)               admin/categories#index
+                               POST       /admin/categories(.:format)               admin/categories#create
+            new_admin_category GET        /admin/categories/new(.:format)           admin/categories#new
+           edit_admin_category GET        /admin/categories/:id/edit(.:format)      admin/categories#edit
+                admin_category GET        /admin/categories/:id(.:format)           admin/categories#show
+                               PUT        /admin/categories/:id(.:format)           admin/categories#update
+                               DELETE     /admin/categories/:id(.:format)           admin/categories#destroy
+     batch_action_admin_states POST       /admin/states/batch_action(.:format)      admin/states#batch_action
+                  admin_states GET        /admin/states(.:format)                   admin/states#index
+                               POST       /admin/states(.:format)                   admin/states#create
+               new_admin_state GET        /admin/states/new(.:format)               admin/states#new
+              edit_admin_state GET        /admin/states/:id/edit(.:format)          admin/states#edit
+                   admin_state GET        /admin/states/:id(.:format)               admin/states#show
+                               PUT        /admin/states/:id(.:format)               admin/states#update
+                               DELETE     /admin/states/:id(.:format)               admin/states#destroy
+      batch_action_admin_tours POST       /admin/tours/batch_action(.:format)       admin/tours#batch_action
+                   admin_tours GET        /admin/tours(.:format)                    admin/tours#index
+                               POST       /admin/tours(.:format)                    admin/tours#create
+                new_admin_tour GET        /admin/tours/new(.:format)                admin/tours#new
+               edit_admin_tour GET        /admin/tours/:id/edit(.:format)           admin/tours#edit
+                    admin_tour GET        /admin/tours/:id(.:format)                admin/tours#show
+                               PUT        /admin/tours/:id(.:format)                admin/tours#update
+                               DELETE     /admin/tours/:id(.:format)                admin/tours#destroy
+  batch_action_admin_countries POST       /admin/countries/batch_action(.:format)   admin/countries#batch_action
+               admin_countries GET        /admin/countries(.:format)                admin/countries#index
+                               POST       /admin/countries(.:format)                admin/countries#create
+             new_admin_country GET        /admin/countries/new(.:format)            admin/countries#new
+            edit_admin_country GET        /admin/countries/:id/edit(.:format)       admin/countries#edit
+                 admin_country GET        /admin/countries/:id(.:format)            admin/countries#show
+                               PUT        /admin/countries/:id(.:format)            admin/countries#update
+                               DELETE     /admin/countries/:id(.:format)            admin/countries#destroy
+   batch_action_admin_creators POST       /admin/creators/batch_action(.:format)    admin/creators#batch_action
+                admin_creators GET        /admin/creators(.:format)                 admin/creators#index
+                               POST       /admin/creators(.:format)                 admin/creators#create
+             new_admin_creator GET        /admin/creators/new(.:format)             admin/creators#new
+            edit_admin_creator GET        /admin/creators/:id/edit(.:format)        admin/creators#edit
+                 admin_creator GET        /admin/creators/:id(.:format)             admin/creators#show
+                               PUT        /admin/creators/:id(.:format)             admin/creators#update
+                               DELETE     /admin/creators/:id(.:format)             admin/creators#destroy
+               admin_dashboard            /admin/dashboard(.:format)                admin/dashboard#index
+   batch_action_admin_comments POST       /admin/comments/batch_action(.:format)    admin/comments#batch_action
+                admin_comments GET        /admin/comments(.:format)                 admin/comments#index
+                               POST       /admin/comments(.:format)                 admin/comments#create
+                 admin_comment GET        /admin/comments/:id(.:format)             admin/comments#show
+         batch_action_comments POST       /comments/batch_action(.:format)          comments#batch_action
+                      comments GET        /comments(.:format)                       comments#index
+                               POST       /comments(.:format)                       comments#create
+                       comment GET        /comments/:id(.:format)                   comments#show
+        new_admin_user_session GET        /admin/login(.:format)                    active_admin/devise/sessions#new
+            admin_user_session POST       /admin/login(.:format)                    active_admin/devise/sessions#create
+    destroy_admin_user_session DELETE|GET /admin/logout(.:format)                   active_admin/devise/sessions#destroy
+           admin_user_password POST       /admin/password(.:format)                 active_admin/devise/passwords#create
+       new_admin_user_password GET        /admin/password/new(.:format)             active_admin/devise/passwords#new
+      edit_admin_user_password GET        /admin/password/edit(.:format)            active_admin/devise/passwords#edit
+                               PUT        /admin/password(.:format)                 active_admin/devise/passwords#update
+              new_user_session GET        /users/login(.:format)                    devise/sessions#new
+                  user_session POST       /users/login(.:format)                    devise/sessions#create
+          destroy_user_session DELETE     /users/logout(.:format)                   devise/sessions#destroy
+       user_omniauth_authorize            /users/auth/:provider(.:format)           omniauth_callbacks#passthru {:provider=>/facebook/}
+        user_omniauth_callback            /users/auth/:action/callback(.:format)    omniauth_callbacks#(?-mix:facebook)
+                 user_password POST       /users/password(.:format)                 devise/passwords#create
+             new_user_password GET        /users/password/new(.:format)             devise/passwords#new
+            edit_user_password GET        /users/password/edit(.:format)            devise/passwords#edit
+                               PUT        /users/password(.:format)                 devise/passwords#update
+      cancel_user_registration GET        /users/cancel(.:format)                   devise/registrations#cancel
+             user_registration POST       /users(.:format)                          devise/registrations#create
+         new_user_registration GET        /users/sign_up(.:format)                  devise/registrations#new
+        edit_user_registration GET        /users/edit(.:format)                     devise/registrations#edit
+                               PUT        /users(.:format)                          devise/registrations#update
+                               DELETE     /users(.:format)                          devise/registrations#destroy
+                         likes GET        /likes(.:format)                          likes#index
+                               POST       /likes(.:format)                          likes#create
+                      new_like GET        /likes/new(.:format)                      likes#new
+                     edit_like GET        /likes/:id/edit(.:format)                 likes#edit
+                          like GET        /likes/:id(.:format)                      likes#show
+                               PUT        /likes/:id(.:format)                      likes#update
+                               DELETE     /likes/:id(.:format)                      likes#destroy
+                               GET        /comments(.:format)                       comments#index
+                               POST       /comments(.:format)                       comments#create
+                   new_comment GET        /comments/new(.:format)                   comments#new
+                  edit_comment GET        /comments/:id/edit(.:format)              comments#edit
+                               GET        /comments/:id(.:format)                   comments#show
+                               PUT        /comments/:id(.:format)                   comments#update
+                               DELETE     /comments/:id(.:format)                   comments#destroy
+             information_index GET        /information(.:format)                    information#index
+                               POST       /information(.:format)                    information#create
+               new_information GET        /information/new(.:format)                information#new
+              edit_information GET        /information/:id/edit(.:format)           information#edit
+                   information GET        /information/:id(.:format)                information#show
+                               PUT        /information/:id(.:format)                information#update
+                               DELETE     /information/:id(.:format)                information#destroy
+                tour_histories GET        /tour_histories(.:format)                 tour_histories#index
+                               POST       /tour_histories(.:format)                 tour_histories#create
+              new_tour_history GET        /tour_histories/new(.:format)             tour_histories#new
+             edit_tour_history GET        /tour_histories/:id/edit(.:format)        tour_histories#edit
+                  tour_history GET        /tour_histories/:id(.:format)             tour_histories#show
+                               PUT        /tour_histories/:id(.:format)             tour_histories#update
+                               DELETE     /tour_histories/:id(.:format)             tour_histories#destroy
+                         tours GET        /tours(.:format)                          tours#index
+                               POST       /tours(.:format)                          tours#create
+                      new_tour GET        /tours/new(.:format)                      tours#new
+                     edit_tour GET        /tours/:id/edit(.:format)                 tours#edit
+                          tour GET        /tours/:id(.:format)                      tours#show
+                               PUT        /tours/:id(.:format)                      tours#update
+                               DELETE     /tours/:id(.:format)                      tours#destroy
+                         users GET        /users(.:format)                          users#index
+                               POST       /users(.:format)                          users#create
+                      new_user GET        /users/new(.:format)                      users#new
+                     edit_user GET        /users/:id/edit(.:format)                 users#edit
+                          user GET        /users/:id(.:format)                      users#show
+                               PUT        /users/:id(.:format)                      users#update
+                               DELETE     /users/:id(.:format)                      users#destroy
+                   connections GET        /connections(.:format)                    connections#index
+                               POST       /connections(.:format)                    connections#create
+                new_connection GET        /connections/new(.:format)                connections#new
+               edit_connection GET        /connections/:id/edit(.:format)           connections#edit
+                    connection GET        /connections/:id(.:format)                connections#show
+                               PUT        /connections/:id(.:format)                connections#update
+                               DELETE     /connections/:id(.:format)                connections#destroy
+                    categories GET        /categories(.:format)                     categories#index
+                               POST       /categories(.:format)                     categories#create
+                  new_category GET        /categories/new(.:format)                 categories#new
+                 edit_category GET        /categories/:id/edit(.:format)            categories#edit
+                      category GET        /categories/:id(.:format)                 categories#show
+                               PUT        /categories/:id(.:format)                 categories#update
+                               DELETE     /categories/:id(.:format)                 categories#destroy
+                       teasers GET        /teasers(.:format)                        teasers#index
+                               POST       /teasers(.:format)                        teasers#create
+                    new_teaser GET        /teasers/new(.:format)                    teasers#new
+                   edit_teaser GET        /teasers/:id/edit(.:format)               teasers#edit
+                        teaser GET        /teasers/:id(.:format)                    teasers#show
+                               PUT        /teasers/:id(.:format)                    teasers#update
+                               DELETE     /teasers/:id(.:format)                    teasers#destroy
+                        pieces GET        /pieces(.:format)                         pieces#index
+                               POST       /pieces(.:format)                         pieces#create
+                     new_piece GET        /pieces/new(.:format)                     pieces#new
+                    edit_piece GET        /pieces/:id/edit(.:format)                pieces#edit
+                         piece GET        /pieces/:id(.:format)                     pieces#show
+                               PUT        /pieces/:id(.:format)                     pieces#update
+                               DELETE     /pieces/:id(.:format)                     pieces#destroy
+                        cities GET        /cities(.:format)                         cities#index
+                               POST       /cities(.:format)                         cities#create
+                      new_city GET        /cities/new(.:format)                     cities#new
+                     edit_city GET        /cities/:id/edit(.:format)                cities#edit
+                          city GET        /cities/:id(.:format)                     cities#show
+                               PUT        /cities/:id(.:format)                     cities#update
+                               DELETE     /cities/:id(.:format)                     cities#destroy
+                        states GET        /states(.:format)                         states#index
+                               POST       /states(.:format)                         states#create
+                     new_state GET        /states/new(.:format)                     states#new
+                    edit_state GET        /states/:id/edit(.:format)                states#edit
+                         state GET        /states/:id(.:format)                     states#show
+                               PUT        /states/:id(.:format)                     states#update
+                               DELETE     /states/:id(.:format)                     states#destroy
+                     countries GET        /countries(.:format)                      countries#index
+                               POST       /countries(.:format)                      countries#create
+                   new_country GET        /countries/new(.:format)                  countries#new
+                  edit_country GET        /countries/:id/edit(.:format)             countries#edit
+                       country GET        /countries/:id(.:format)                  countries#show
+                               PUT        /countries/:id(.:format)                  countries#update
+                               DELETE     /countries/:id(.:format)                  countries#destroy
+                     galleries GET        /galleries(.:format)                      galleries#index
+                               POST       /galleries(.:format)                      galleries#create
+                   new_gallery GET        /galleries/new(.:format)                  galleries#new
+                  edit_gallery GET        /galleries/:id/edit(.:format)             galleries#edit
+                       gallery GET        /galleries/:id(.:format)                  galleries#show
+                               PUT        /galleries/:id(.:format)                  galleries#update
+                               DELETE     /galleries/:id(.:format)                  galleries#destroy
+                      creators GET        /creators(.:format)                       creators#index
+                               POST       /creators(.:format)                       creators#create
+                   new_creator GET        /creators/new(.:format)                   creators#new
+                  edit_creator GET        /creators/:id/edit(.:format)              creators#edit
+                       creator GET        /creators/:id(.:format)                   creators#show
+                               PUT        /creators/:id(.:format)                   creators#update
+                               DELETE     /creators/:id(.:format)                   creators#destroy
+                   pages_index GET        /pages/index(.:format)                    pages#index
+              pages_identities GET        /pages/identities(.:format)               pages#identities
+                          root            /                                         pages#index
