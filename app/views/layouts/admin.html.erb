@@ -28,21 +28,18 @@
                         <%= link_to "Home", admin_dashboard_index_path %>
                     </li>
                     <li class="dropdown <%= raw("active") if @page == "pieces" %>">
-                        <%= link_to "Pieces", admin_pieces_index_path, :class => "dropdown-toggle" %>
+                        <%= link_to "Pieces", admin_pieces_path, :class => "dropdown-toggle" %>
                         <ul class="dropdown-menu">
                             <li>
-                                <%= link_to "New Piece", admin_pieces_new_path %>
+                                <%= link_to "New Piece", new_admin_piece_path %>
                             </li>
                         </ul>
                     </li>
-                    <li<%= raw(" class=\"active\"") if @page == "pieces" %>>
-                        <%= link_to "Pieces", admin_pieces_index_path %>
-                    </li>
                     <li<%= raw(" class=\"active\"") if @page == "tours" %>>
-                        <%= link_to "Tours", admin_tours_index_path %>
+                        <%= link_to "Tours", admin_tours_path %>
                     </li>
                     <li<%= raw(" class=\"active\"") if @page == "users" %>>
-                        <%= link_to "Users", admin_users_index_path %>
+                        <%= link_to "Users", admin_users_path %>
                     </li>
                 </ul>
             </div><!--/.nav-collapse -->
