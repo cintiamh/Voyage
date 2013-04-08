@@ -9,14 +9,20 @@
   </div><!-- /header -->
 
   <div data-role="content" id="mainContent">
-        <h1>
-                Who are you today?
-        </h1>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-        <a id="go_link" href="../pages/identities" rel="external">GO </a>
+    <svg id="items_chart" class="center" style="background-color: darkcyan;"preserveAspectRatio="xMaxYMin meet">
+
+
+    </svg>
 
   </div>
 
+  <div data-role="popup" id="about" class="ui-content" >
+    <a href="#"
+       data-theme="c"
+       data-rel="back" data-role="button"
+       data-icon="delete" data-iconpos="notext"
+       class="ui-btn-right">Close</a>
+  </div>
 
   <div data-role="popup" id="permaMenu" class="ui-content" >
     <a href="#"
@@ -41,3 +47,14 @@
   </div>
 
 </div>
+
+<div data-role="popup" id="teaser" class="ui-content">
+  <a href="#"
+     data-theme="c"
+     data-rel="back" data-role="button"
+     data-icon="delete" data-iconpos="notext"
+     class="ui-btn-right"><b>X</b></a>
+  <h4 id="title"></h4>
+  <p id="info"></p>
+</div>
+

@@ -39,13 +39,14 @@ gem 'jquery-rails'
 gem 'devise'
 
 # ActiveAdmin
-gem 'activeadmin'
+gem 'activeadmin', '~> 0.5.1'
 gem "meta_search",    '>= 1.1.0.pre'
 
 # JavaScript libraries
 gem 'knockoutjs-rails'
 gem 'jquery_mobile_rails'
 gem 'd3-rails'
+gem 'paloma'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
