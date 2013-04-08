@@ -44,5 +44,15 @@ text {
 }
 
 @media only screen and (min-width:400px) {
-    #test{width:400px; height:400px;}
+#test{width:400px; height:400px;}
+
+
+
+
+}
+
+#go_link{
+    padding-top: 20px;
+    margin-top: 20px;
+  font-size: 60px;
 }
