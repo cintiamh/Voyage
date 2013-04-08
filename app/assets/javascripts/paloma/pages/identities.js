@@ -62,35 +62,10 @@ function aboutTours(i)
     var h = d3.select('#title').text(tour_list[i].title);
     $("#teaser").popup();
     $("#teaser").popup("open");
-    //TODO link to check out the tour
 }
 
 function createChart(nodes, links)
 {
-    //alert("starting chart creation");
-    //var w = $('#chart').width();
-    //var h = $('#chart').height();
-
-
-    /* Test Resize
-    svg.append('svg:rect')
-        .attr("x", 0)
-        .attr("y", 0)
-        .attr("width", 50)
-        .attr("height", 50)
-        .attr("fill", "#000");
-
-    svg.append('svg:circle')
-        .attr("cx", 50)
-        .attr("cy", 50)
-        .attr("r", 20)
-        .attr("fill", "#FF0000");
-    }*/
-
-
-   // var w = 500;
-   // var h = 500;
-
     var force = d3.layout.force()
         .charge(-300)
         .linkDistance(100)
@@ -116,7 +91,7 @@ function createChart(nodes, links)
         .attr("x",-8)
         .attr("y",-8)
         .attr("r",30)
-        .attr("fill","red")
+        .attr("fill","white")
         .attr("onclick",function(d)
         {
            return "return aboutTours("+d.id+")";
