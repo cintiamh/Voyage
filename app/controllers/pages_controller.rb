@@ -9,8 +9,12 @@ class PagesController < ApplicationController
     @tours = Tour.all
     js :params => {:tours_list => @tours}
 
-    #js :params => {:tours_list => @tours}
-    #js :controller => 'pages', :action => 'identities'
+  end
+
+  def items
+
+    @pieces = Piece.all
+    js :params => {:pieces_list => @pieces}
 
   end
 

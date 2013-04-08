@@ -1,6 +1,7 @@
 var w,h;
 var svg;
-var tour_list;
+var pieces_list;
+var nodes =[], links= [];
 
 (function(){
   // You access variables from before/around filters from _x object.
@@ -20,29 +21,17 @@ var tour_list;
   // _l.localMethod(); 
   var _l = _L['pages'];
 
-   // alert("in controller");
-  Paloma.callbacks['pages']['identities'] = function(params)
-   // Paloma.callbacks['pages/identities'] = function(params)
-  {
-      //alert("in callback");
 
-      var nodes = [];
-      var links = [];
-      tour_list = params['tours_list'];
-      for(var i = 0; i<tour_list.length; i++)
-      {
-          nodes.push({"id":i,"title":tour_list[i].title});
-          //links -> {source, target, value}
-          var target = i+1;
-          if(target >= tour_list.length){target = 0;}
-          //links.push({"source":i, "target":target, "value":25})
-      }
+  Paloma.callbacks['pages']['items'] = function(params)
+  {
+    pieces_list = params['pieces_list'];
       svg = d3.select("svg");
 
       var parent = $("div[data-role='content']");
       w = parent.innerWidth() - 20;
       h = parent.height() - 20;
 
+      constructNodeLinks();
 
       //svg.attr("width",w)
       //    .attr("height",h)
@@ -50,24 +39,41 @@ var tour_list;
 
       svg.attr("viewbox",function(){return "0 0 " + w + " " + h + " ";}) ;
 
-      createChart(nodes, links);
+      createItemsChart(nodes, links);
   };
 
 
 })();
 
-function aboutTours(i)
+function constructNodeLinks()
 {
-    var p = d3.select("#info").text(tour_list[i].about);
-    var h = d3.select('#title').text(tour_list[i].title);
+    nodes.push({"id":-1,"title":"GO"});
+    for(var i = 0; i<pieces_list.length; i++)
+    {
+        nodes.push({"id":i,"title":pieces_list[i].title});
+
+        //links -> {source, target, value}
+
+        links.push({"source":0,"target":i+1,"value":25});
+
+        var target = i+2;
+        if(target >= pieces_list.length+1){target = 1;}
+        links.push({"source":i+1, "target":target, "value":25})
+    }
+}
+
+function aboutPieces(i)
+{
+    var p = d3.select("#info").text(pieces_list[i].about);
+    var h = d3.select('#title').text(pieces_list[i].title);
     $("#teaser").popup();
     $("#teaser").popup("open");
 }
 
-function createChart(nodes, links)
+function createItemsChart(nodes, links)
 {
     var force = d3.layout.force()
-        .charge(-300)
+        .charge(-500)
         .linkDistance(100)
         .size([w, h]);
 
@@ -94,7 +100,7 @@ function createChart(nodes, links)
         .attr("fill","red")
         .attr("onclick",function(d)
         {
-           return "return aboutTours("+d.id+")";
+            return "return aboutPieces("+d.id+")";
         });
 
     node.append("text")
@@ -115,6 +121,4 @@ function createChart(nodes, links)
             return "translate(" + d.x + "," + d.y + ")";
         });
     });//force.on()
-
-
 }
