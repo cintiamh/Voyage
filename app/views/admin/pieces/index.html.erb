@@ -1,45 +1,35 @@
-<h1>Listing pieces</h1>
+<h1>Pieces</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Modification date</th>
-    <th>Medium</th>
-    <th>Measurements</th>
-    <th>Credit</th>
-    <th>Accession number</th>
-    <th>Exhibited</th>
-    <th>Creator</th>
-    <th>Country</th>
-    <th>State</th>
-    <th>City</th>
-    <th>Gallery</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% if @pieces.length == 0 %>
+    <p>There are no pieces in the inventory.</p>
+<% else %>
 
-<% @pieces.each do |piece| %>
-  <tr>
-    <td><%= piece.title %></td>
-    <td><%= piece.modification_date %></td>
-    <td><%= piece.medium %></td>
-    <td><%= piece.measurements %></td>
-    <td><%= piece.credit %></td>
-    <td><%= piece.accession_number %></td>
-    <td><%= piece.exhibited %></td>
-    <td><%= piece.creator %></td>
-    <td><%= piece.country %></td>
-    <td><%= piece.state %></td>
-    <td><%= piece.city %></td>
-    <td><%= piece.gallery %></td>
-    <td><%= link_to 'Show', piece %></td>
-    <td><%= link_to 'Edit', edit_piece_path(piece) %></td>
-    <td><%= link_to 'Destroy', piece, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<table class="table table-striped">
+    <tr>
+        <th>Exhibited</th>
+        <th>Title</th>
+        <th>Creator</th>
+        <th>Gallery</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    <% @pieces.each do |piece| %>
+        <tr>
+            <td><%= piece.exhibited %></td>
+            <td><%= piece.title %></td>
+            <td><%= piece.creator %></td>
+            <td><%= piece.gallery %></td>
+            <td><%= link_to 'Show', piece %></td>
+            <td><%= link_to 'Edit', edit_piece_path(piece) %></td>
+            <td><%= link_to 'Destroy', piece, method: :delete, data: {confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
 </table>
 
-<br />
+<% end %>
+
+<br/>
 
 <%= link_to 'New Piece', new_admin_piece_path, "data-ajax" => "false" %>

@@ -30,6 +30,7 @@ class Admin::PiecesController < ApplicationController
   def new
     @page = "pieces"
     @piece = Piece.new
+    @creators = Creator.find(:all)
 
     respond_to do |format|
       format.html # new.html.erb

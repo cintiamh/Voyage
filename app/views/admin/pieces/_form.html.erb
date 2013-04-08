@@ -1,65 +1,99 @@
-<%= form_for(@piece) do |f| %>
-  <% if @piece.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@piece.errors.count, "error") %> prohibited this piece from being saved:</h2>
+<%= form_for @piece, :html => {:class => "form-horizontal", "data-mini" => "true"} do |f| %>
+    <% if @piece.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@piece.errors.count, "error") %> prohibited this piece from being saved:</h2>
 
-      <ul>
-      <% @piece.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+            <ul>
+                <% @piece.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="controls">
+        <%= f.check_box :exhibited %>
+        <%= f.label :exhibited %>
     </div>
-  <% end %>
-    <fieldset>
-        <legend>New Piece</legend>
-        <%= f.label :title %><br />
+
+    <%= f.label :title, :class => "control-label" %>
+    <div class="controls">
         <%= f.text_field :title %>
-    </fieldset>
+    </div>
 
-  <div class="field">
+    <%= f.label :creator, :class => "control-label" %>
+    <div class="controls">
+        <%= f.select :creator, @creators %>
+    </div>
 
-  </div>
-  <div class="field">
-    <%= f.label :medium %><br />
-    <%= f.text_field :medium %>
-  </div>
-  <div class="field">
-    <%= f.label :measurements %><br />
-    <%= f.text_field :measurements %>
-  </div>
-  <div class="field">
-    <%= f.label :credit %><br />
-    <%= f.text_field :credit %>
-  </div>
-  <div class="field">
-    <%= f.label :accession_number %><br />
-    <%= f.text_field :accession_number %>
-  </div>
-  <div class="field">
-    <%= f.label :exhibited %><br />
-    <%= f.check_box :exhibited %>
-  </div>
-  <div class="field">
-    <%= f.label :creator %><br />
-    <%= f.text_field :creator %>
-  </div>
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country %>
-  </div>
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :gallery %><br />
-    <%= f.text_field :gallery %>
-  </div>
-  <div class="actions">
+    <label class="control-label">Location</label>
+    <div class="controls">
+        <div class="row">
+            <div class="span3">
+                <%= f.text_field :country %>
+            </div>
+            <div class="span3">
+                <%= f.text_field :state %>
+            </div>
+            <div class="span3">
+                <%= f.text_field :city %>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <%= f.label :gallery, :class => "control-label" %>
+    <div class="controls">
+        <%= f.text_field :gallery %>
+    </div>
+
+    <%= f.label :medium, :class => "control-label" %>
+    <div class="controls">
+        <%= f.text_field :medium %>
+    </div>
+
+    <%= f.label :measurements, :class => "control-label" %>
+    <div class="controls">
+        <%= f.text_field :measurements %>
+    </div>
+
+    <%= f.label :credit, :class => "control-label" %>
+    <div class="controls">
+        <%= f.text_field :credit %>
+    </div>
+
+    <%= f.label :accession_number, :class => "control-label" %>
+    <div class="controls">
+        <%= f.text_field :accession_number %>
+    </div>
+
+
+    <% f.fields_for :questions do |builder| %>
+        <p>
+            <%= builder.label :content, "Question" %>
+            <%= builder.text_area :content, :rows => 3 %>
+        </p>
+
+    <% end %>
+
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">Questions</a></li>
+            <li><a href="#tab2" data-toggle="tab">Informations</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <h2>Questions</h2>
+            </div>
+            <div class="tab-pane" id="tab2">
+                <h2>Informations</h2>
+            </div>
+        </div>
+    </div>
+
     <%= f.submit %>
-  </div>
+
+
 <% end %>
