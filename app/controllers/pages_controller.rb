@@ -18,4 +18,11 @@ class PagesController < ApplicationController
 
   end
 
+  def floors
+
+    @galleries = Gallery.all
+    js :params => {:galleries_list => @galleries}
+
+  end
+
 end

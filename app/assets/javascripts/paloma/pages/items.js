@@ -24,7 +24,8 @@ var nodes =[], links= [];
 
   Paloma.callbacks['pages']['items'] = function(params)
   {
-    pieces_list = params['pieces_list'];
+    _L.pieces_list = params['pieces_list'];
+      pieces_list = _L.pieces_list;
       svg = d3.select("svg");
 
       var parent = $("div[data-role='content']");
@@ -45,36 +46,72 @@ var nodes =[], links= [];
 
 })();
 
+//links -> {source, target, distance}
 function constructNodeLinks()
 {
-    nodes.push({"id":-1,"title":"GO"});
+    nodes.push({"id":-1,"title":"GO", "group":"NODE", "charge":-250});
     for(var i = 0; i<pieces_list.length; i++)
     {
-        nodes.push({"id":i,"title":pieces_list[i].title});
+        //circle case
+        if(i==pieces_list.length - 1)
+        {
+            nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-500});
+            nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to 1", "group":"CONNECTOR", "charge":-500});
 
-        //links -> {source, target, value}
+            links.push({"source":2*i+1,"target":2*i+2,"distance":100});
+            links.push({"source":2*i+2,"target":1,"distance":100});
 
-        links.push({"source":0,"target":i+1,"value":25});
+        }
+        else
+        {
+            //Items
+            nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-500});
+            //Connections
+            nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to" + (i+2), "group":"CONNECTOR", "charge":-500});
 
-        var target = i+2;
-        if(target >= pieces_list.length+1){target = 1;}
-        links.push({"source":i+1, "target":target, "value":25})
+            links.push({"source":2*i+1,"target":2*i+2,"distance":100});
+            links.push({"source":2*i+2,"target":2*i+3,"distance":100});
+        }
+
+        //Each node linked to GO
+        links.push({"source":0,"target":2*i+1,"distance":200});
     }
 }
 
 function aboutPieces(i)
 {
-    var p = d3.select("#info").text(pieces_list[i].about);
-    var h = d3.select('#title').text(pieces_list[i].title);
+    var p = d3.select("#info");
+    var h = d3.select('#title');
+    if(i == -1)
+    {
+        $.mobile.changePage("../pages/floors",{rel:"external"})
+    }
+    else if(i >=0 )
+    {
+        p.text(pieces_list[i].about);
+        h.text(pieces_list[i].title);
+    }
+    else if(i < -1)
+    {
+       var node_list_pos = -(i*2) - 2;
+       h.text(nodes[node_list_pos].title);
+    }
     $("#teaser").popup();
     $("#teaser").popup("open");
+
 }
 
 function createItemsChart(nodes, links)
 {
     var force = d3.layout.force()
-        .charge(-500)
-        .linkDistance(100)
+        .charge(function(d)
+        {
+            return d.charge;
+        })
+        .linkDistance(function (d)
+        {
+            return d.distance;
+        })
         .size([w, h]);
 
     force.nodes(nodes)
@@ -96,15 +133,34 @@ function createItemsChart(nodes, links)
     node.append("circle")
         .attr("x",-8)
         .attr("y",-8)
-        .attr("r",30)
-        .attr("fill","red")
+        .attr("r",function(d){
+            if(d.group == "NODE")
+            {return 50;}
+            else {return 20;}
+        })
+        .attr("fill",function(d)
+        {
+            if(d.group == "NODE")
+            {
+                return "white";
+            }
+            else
+            {
+                return "red"
+            }
+        })
         .attr("onclick",function(d)
         {
             return "return aboutPieces("+d.id+")";
         });
 
     node.append("text")
-        .text(function(d){return d.title;})
+        .text(function(d){
+            if(d.group == "NODE")
+            {return d.title;}
+            else
+            {return "";}
+        })
         .attr("x", "-0.75em")
         .attr("dy", ".35em");
 

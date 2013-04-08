@@ -91,7 +91,7 @@ function createChart(nodes, links)
         .attr("x",-8)
         .attr("y",-8)
         .attr("r",30)
-        .attr("fill","red")
+        .attr("fill","white")
         .attr("onclick",function(d)
         {
            return "return aboutTours("+d.id+")";

@@ -57,6 +57,8 @@ Voyage::Application.routes.draw do
 
   get "pages/items"
 
+  get "pages/floors"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

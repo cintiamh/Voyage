@@ -9,5 +9,5 @@
   var locals = Paloma.locals['/'] = {};
 
   
-  // ~> Start local definitions here and remove this line.
+  var pieces_list;
 })();
