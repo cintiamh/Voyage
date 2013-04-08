@@ -1,5 +1,6 @@
 var w,h;
-var svg
+var svg;
+var tour_list;
 
 (function(){
   // You access variables from before/around filters from _x object.
@@ -27,13 +28,13 @@ var svg
 
       var nodes = [];
       var links = [];
-     var id = params['tours_list'];
-      for(var i = 0; i<id.length; i++)
+      tour_list = params['tours_list'];
+      for(var i = 0; i<tour_list.length; i++)
       {
-          nodes.push({"title":id[i].title});
+          nodes.push({"id":i,"title":tour_list[i].title});
           //links -> {source, target, value}
           var target = i+1;
-          if(target >= id.length){target = 0;}
+          if(target >= tour_list.length){target = 0;}
           //links.push({"source":i, "target":target, "value":25})
       }
       svg = d3.select("svg");
@@ -54,6 +55,15 @@ var svg
 
 
 })();
+
+function aboutTours(i)
+{
+    var p = d3.select("#info").text(tour_list[i].about);
+    var h = d3.select('#title').text(tour_list[i].title);
+    $("#teaser").popup();
+    $("#teaser").popup("open");
+    //TODO link to check out the tour
+}
 
 function createChart(nodes, links)
 {
@@ -106,11 +116,15 @@ function createChart(nodes, links)
         .attr("x",-8)
         .attr("y",-8)
         .attr("r",30)
-        .attr("fill","red");
+        .attr("fill","red")
+        .attr("onclick",function(d)
+        {
+           return "return aboutTours("+d.id+")";
+        });
 
     node.append("text")
         .text(function(d){return d.title;})
-        .attr("x", -35)
+        .attr("x", "-0.75em")
         .attr("dy", ".35em");
 
     force.on("tick", function() {

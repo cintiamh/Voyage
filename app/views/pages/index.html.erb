@@ -1,4 +1,43 @@
-<h1>
-        Who are you today?
-</h1>
-<%= link_to "GO!", :controller=>:pages, :action=>:identities %>
+<div data-role="page">
+
+  <div data-role="header" data-position="fixed">
+    <a href="index.html" data-theme="c"
+       data-role="button"
+       data-icon="home" data-iconpos="notext"
+       class="ui-btn-left">Home</a>
+    <h2>The Voyage</h2>
+  </div><!-- /header -->
+
+  <div data-role="content" id="mainContent">
+        <h1>
+                Who are you today?
+        </h1>
+
+        <a href="../pages/identities" rel="external">GO </a>
+
+  </div>
+
+
+  <div data-role="popup" id="permaMenu" class="ui-content" >
+    <a href="#"
+       data-theme="c"
+       data-rel="back" data-role="button"
+       data-icon="delete" data-iconpos="notext"
+       class="ui-btn-right">Close</a>
+
+    <% if user_signed_in? %>
+        Logged in as <strong><%= current_user.email %></strong>.
+        <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+    <% else %>
+        <li><%= link_to 'Sign up', new_user_registration_path %></li>
+        <li><%= link_to 'Login', new_user_session_path %></li>
+    <% end %>
+
+  </div>
+
+  <div data-role="footer" data-theme="c" data-position="fixed">
+    <a id="footerButton" class="centered" href="#permaMenu" data-rel="popup" data-icon="bars" data-iconpos="top" data-theme="c"></a>
+  </div>
+
+</div>
