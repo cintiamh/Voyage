@@ -1,0 +1,264 @@
+commit 5e1354db4cfb405c4d2e1e94b2880a86148ea18d
+Author: madhug <madhupramod@gmail.com>
+Date:   Sun Apr 7 12:44:21 2013 -0700
+
+    about popups
+
+commit 06754c94e33b7744fa3747c8e04747adf53f5088
+Author: madhug <madhupramod@gmail.com>
+Date:   Sat Apr 6 13:27:25 2013 -0700
+
+    bugs 1 and 2 resolved. Working on displaying information.
+
+commit 39716081f2c233c1dc8501382244648a483e042b
+Merge: 9a52501 5e7f468
+Author: madhug <madhupramod@gmail.com>
+Date:   Mon Apr 1 13:08:08 2013 -0700
+
+    Merge remote-tracking branch 'origin/master' into UI-work
+    
+    Conflicts:
+    	Gemfile.lock
+
+commit 5e7f46809bd6398fc90981ae6649ed36b1a6b185
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Mon Apr 1 14:52:03 2013 -0400
+
+    Included paperclip
+
+commit 9a5250122a7193b4c904f88908348acded6b4a38
+Author: madhug <madhupramod@gmail.com>
+Date:   Sun Mar 31 23:59:02 2013 -0700
+
+    current status
+
+commit 67909091dcfee74715aeb983988d15b53c90848c
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Tue Mar 26 12:47:14 2013 -0400
+
+    active admin forms
+
+commit abd66bda61730b9a602321a31d0251504ef1edf3
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Mon Mar 25 16:01:26 2013 -0400
+
+    removed modification date from piece and tour
+
+commit cf008459fd25e14156c88aa1aada0480eacae658
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Mon Mar 25 15:46:49 2013 -0400
+
+    fixed admin forms for Categories, Creators, Galleries, Information and Teasers
+
+commit b469163babedf669559dd269b50844a9aa1c3b12
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Mon Mar 25 14:59:38 2013 -0400
+
+    changed gemfile lock
+
+commit 9cd1c1d010313580e9861860754e662b280f4802
+Merge: be09d80 a9fe07d
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Mon Mar 25 14:26:47 2013 -0400
+
+    commiting admin changes
+
+commit 8387214f5d6a196fc48d4932b0b3d52779d1936d
+Author: madhug <madhupramod@gmail.com>
+Date:   Wed Mar 20 21:01:22 2013 -0700
+
+    fdg works by gathering data from server
+
+commit 25f50e10182d2f55d4a9f9c9009427c30501a317
+Author: madhug <madhupramod@gmail.com>
+Date:   Wed Mar 20 21:00:36 2013 -0700
+
+    connects to the server and gathers data to display as a force directed graph
+
+commit be09d80e5382696074ba81da64444d207357d9d4
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Wed Mar 20 15:47:33 2013 -0400
+
+    fixed piece creation
+
+commit fe7ac0604352bebfe1620652b28efadee2bb814c
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Wed Mar 20 15:10:36 2013 -0400
+
+    att_access for some attributes
+
+commit 8346289da7b3a13bd5aa8b1ff481b315f1f747fd
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Tue Mar 19 14:23:44 2013 -0400
+
+    Facebook login works if using direct link
+
+commit a9fe07da1313a09dcf929fc648d2ee05284129b3
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Mon Mar 18 17:29:16 2013 -0400
+
+    trying to change active admin
+
+commit 1efa4dd698f1ae9fe9685541bb995096e66c60d0
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Mon Mar 18 15:54:39 2013 -0400
+
+    added gemfile
+
+commit 213f531e36d1750d0379b256fca8d68b8ab161a0
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Sun Mar 17 11:15:00 2013 -0400
+
+    started changing admin
+
+commit 36c947e9ff4e671db1b669bc014fa9b0dc59303c
+Merge: 2b61645 fe7ac06
+Author: The Voyage <voyage@ubuntu.(none)>
+Date:   Fri Mar 15 19:51:28 2013 -0700
+
+    conflict resolution
+
+commit 2b61645f51b8443e9d8bd6504279c9451f96b50f
+Author: The Voyage <voyage@ubuntu.(none)>
+Date:   Fri Mar 15 19:36:11 2013 -0700
+
+    UI work initial commit
+
+commit 799e0d3b5edd8ff334dc4a074096d3c4a5db43ba
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Fri Mar 15 13:40:44 2013 -0400
+
+    trying to integrate Facebook
+
+commit 27aba6275340378206519299306ae304b644b424
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Tue Mar 12 13:06:05 2013 -0400
+
+    simplified index page to show devise
+
+commit c95d407e415484c77016bb400b49e726ad87b623
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Mon Mar 11 17:26:33 2013 -0400
+
+    Devise mostly working need to integrate to Bootstrap
+
+commit 72fa88d33e514ed222b1534a11ac6404adcd335f
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Mon Mar 11 14:26:33 2013 -0400
+
+    installed d3.js
+
+commit a6377edc5a15ead87e3f93845122f5fd339be62c
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Mon Mar 11 14:23:41 2013 -0400
+
+    installed jquery mobile
+
+commit bb0ce12df8c3133228544c3c0fdd25d188b2c674
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Mon Mar 11 13:58:20 2013 -0400
+
+    Installed knockoutjs-rails
+
+commit dd844c222b5de9bd38765c4661a2ff68f2573c8e
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Wed Mar 6 17:34:20 2013 -0500
+
+    Cleaned the active admin options
+
+commit b2997ea62f680d196cc6fd158fd9002670f5e761
+Merge: 32a224a 8249280
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Thu Feb 28 15:28:20 2013 -0500
+
+    Merge branch 'admin'
+
+commit 8249280cadf52199795da67db454dc1f6a42aa5a
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Thu Feb 28 15:27:54 2013 -0500
+
+    added models to active admin
+
+commit 32a224aede558163a6f744a53660d8cedc70caf2
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Thu Feb 28 14:37:19 2013 -0500
+
+    set production compile to true
+
+commit 4cd17ef2d882bab6525384f4b7cd9a7b59d20d4c
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Thu Feb 28 14:29:35 2013 -0500
+
+    active admin fix2
+
+commit 158f5f59c79f4fec0f496b988315cf3e621eb2e1
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Thu Feb 28 14:22:48 2013 -0500
+
+    fix for active admin
+
+commit 24dec4313c0063542f000af36c302d29d54bdfd6
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Thu Feb 28 14:17:40 2013 -0500
+
+    removed extra migration database
+
+commit 42f66c540690e50fa03a71412e2f10245f4e1bf3
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Thu Feb 28 14:04:01 2013 -0500
+
+    admin user db
+
+commit af4b85435581bd2bf5d219c4113c557ce66bc984
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Thu Feb 28 13:49:01 2013 -0500
+
+    installed active admin
+
+commit 9ae9d0f4b55497f1bb18eaaafa3829071bd6a6ef
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Wed Feb 27 16:07:37 2013 -0500
+
+    Included devise front-end
+
+commit 3d90e67457e1f1dd11a67111372f56d539455129
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Wed Feb 27 16:00:46 2013 -0500
+
+    All data bases in place
+
+commit 2304df4d4d8e97e8b0ffe34f4953df6f4036f3c8
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Wed Feb 27 14:59:48 2013 -0500
+
+    generated scaffold for category, pieces, creator, gallery, teasers, country, state, city and connections
+
+commit 98ecea5d09e076c4baedb876b32e9cdbc1762ff4
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Tue Feb 26 13:11:43 2013 -0500
+
+    created creator
+
+commit 2327021079c0d32196f7e1afec3d8607bd34b3f0
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Mon Feb 25 17:31:01 2013 -0500
+
+    Included Bootstrap
+
+commit 9eb0da0da5046a61bd180462516c789f064e98f1
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Mon Feb 25 15:31:04 2013 -0500
+
+    Changed DB
+
+commit 9037b70d15fcdf58db911fad46e4707b53f633fb
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Mon Feb 25 15:04:45 2013 -0500
+
+    excluded rvm
+
+commit 8dc0f7beebebf6d53d8016411e889b59c7ee9bdf
+Author: Cintia Higashi <cintiamh@gmail.com>
+Date:   Mon Feb 25 14:59:46 2013 -0500
+
+    Initial commit
