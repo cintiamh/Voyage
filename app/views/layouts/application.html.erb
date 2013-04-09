@@ -5,48 +5,35 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+  <script>
+      var fixgeometry = function() {
+          /* Some orientation changes leave the scroll position at something
+           * that isn't 0,0. This is annoying for user experience. */
+          //scroll(0, 0);
+
+          /* Calculate the geometry that our content area should take */
+          var header = $("div[data-role='header']");
+          var footer = $("div[data-role='footer']");
+          var content = $("div[data-role='content']");
+          var viewport_height = $(window).height();
+
+          var content_height = viewport_height - header.outerHeight() - footer.outerHeight();
+
+          /* Trim margin/border/padding height */
+          content_height -= (content.outerHeight() - content.height());
+          content.height(content_height);
+      }; /* fixgeometry */
+
+      $(document).ready(function() {
+          $(window).bind("orientationchange resize pageshow", fixgeometry);
+      });
+  </script>
+
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="brand" href="#">The Voyage</a>
-      <div class="nav-collapse collapse">
-        <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
-  </div>
-</div>
 
-<div class="container">
+    <%=yield %>
 
-  <h1>Bootstrap starter template</h1>
-  <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
-
-    <div class="notice"><%= notice %></div>
-    <div class="alert"><%= alert %></div>
-
-  <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>.
-      <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
-      <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-  <% else %>
-      <li><%= link_to 'Sign up', new_user_registration_path %></li>
-      <li><%= link_to 'Login', new_user_session_path %></li>
-      <li><%= link_to 'Sign in with Facebook', user_omniauth_authorize_path(:facebook) %></li>
-  <% end %>
-
-    <%= yield %>
-
-</div> <!-- /container -->
 </body>
 </html>
