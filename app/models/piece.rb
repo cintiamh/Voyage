@@ -10,7 +10,7 @@ class Piece < ActiveRecord::Base
   has_many :informations
   has_many :comments
   has_many :likes
-  has_many :questions, :dependent => :destroy
+  has_many :questions
 
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :tours
@@ -18,9 +18,9 @@ class Piece < ActiveRecord::Base
   scope :inExhibition, where(:exhibited => true)
   scope :notExhibited, where(:exhibited => false)
 
-  attr_accessible :accession_number, :credit, :exhibited, :measurements, :medium, :title, :creator_id, :country_id, :state_id, :city_id, :gallery_id, :image, :image_content_type, :image_file_name, :image_file_size, :image_updated_at
+  attr_accessible :accession_number, :credit, :exhibited, :measurements, :medium, :title, :creator_id, :country_id, :state_id, :city_id, :gallery_id, :image, :image_content_type, :image_file_name, :image_file_size, :image_updated_at, :questions_attributes
 
   has_attached_file :image
 
-  accepts_nested_attributes_for :questions
+  accepts_nested_attributes_for :questions, :allow_destroy => true
 end

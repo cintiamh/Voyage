@@ -30,13 +30,13 @@
     <div class="controls">
         <div class="row">
             <div class="span3">
-                <%= f.text_field :country %>
+                <%= f.select :country, @countries %>
             </div>
             <div class="span3">
-                <%= f.text_field :state %>
+                <%= f.select :state, @states %>
             </div>
             <div class="span3">
-                <%= f.text_field :city %>
+                <%= f.select :city, @cities %>
             </div>
         </div>
 
@@ -46,7 +46,7 @@
 
     <%= f.label :gallery, :class => "control-label" %>
     <div class="controls">
-        <%= f.text_field :gallery %>
+        <%= f.select :gallery, @galleries %>
     </div>
 
     <%= f.label :medium, :class => "control-label" %>
@@ -85,7 +85,10 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="tab1">
-                <h2>Questions</h2>
+                <%= f.fields_for :questions do |builder| %>
+                    <%= render 'question_fields', :f => builder %>
+                <% end %>
+                <%= link_to_add_fields "Add Question", f, :questions %>
             </div>
             <div class="tab-pane" id="tab2">
                 <h2>Informations</h2>

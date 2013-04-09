@@ -31,6 +31,10 @@ class Admin::PiecesController < ApplicationController
     @page = "pieces"
     @piece = Piece.new
     @creators = Creator.find(:all)
+    @galleries = Gallery.find(:all)
+    @countries = Country.find(:all)
+    @states = State.find(:all)
+    @cities = City.find(:all)
 
     respond_to do |format|
       format.html # new.html.erb

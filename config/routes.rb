@@ -99,7 +99,8 @@ Voyage::Application.routes.draw do
 
   namespace :admin do
     get "dashboard/index"
-    match "/" => "dashboard#index"
+    #match "/" => "dashboard#index"
+    root :to => "dashboard#index"
 
     #get "pieces/index"
     #get "pieces/new"
