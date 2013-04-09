@@ -13,28 +13,7 @@
  *= require jquery.mobile
  */
 
-.admin_nav li a {
-    font-weight: normal;
-    color: #FFFFFF;
-}
 
-.admin-group {
-    margin: 0;
-    padding: 0;
-}
-
-ul.nav-tabs {
-    margin: 0;
-    margin-top: 20px;
-}
-
-div.tab-content {
-    background-color: #FFFFFF;
-    padding: 20px;
-    border: 1px solid #DDDDDD;
-    border-top: 0;
-    margin-bottom: 20px;
-}
 .centered
 {
     width: 100%;

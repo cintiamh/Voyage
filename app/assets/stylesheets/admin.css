@@ -11,3 +11,16 @@
  *= require_self
  *= require_tree ./admin
  */
+
+ul.nav-tabs {
+    margin: 0;
+    margin-top: 20px;
+}
+
+div.tab-content {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border: 1px solid #DDDDDD;
+    border-top: 0;
+    margin-bottom: 20px;
+}
