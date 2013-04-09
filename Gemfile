@@ -65,3 +65,6 @@ gem 'paperclip', '~> 3.0'
 
 # To use debugger
 # gem 'ruby-debug'
+
+# Admin Area
+gem 'inherited_resources'

@@ -1,5 +1,4 @@
-class Admin::PiecesController < ApplicationController
-  layout "admin"
+class Admin::PiecesController < Admin::ResourceController
 
   # GET /pieces
   # GET /pieces.json

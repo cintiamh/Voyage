@@ -1,4 +1,4 @@
-<%= form_for @piece, :html => {:class => "form-horizontal", "data-mini" => "true"} do |f| %>
+<%= form_for [:admin, @piece], :html => {:class => "form-horizontal", "data-mini" => "true"} do |f| %>
     <% if @piece.errors.any? %>
         <div id="error_explanation">
             <h2><%= pluralize(@piece.errors.count, "error") %> prohibited this piece from being saved:</h2>

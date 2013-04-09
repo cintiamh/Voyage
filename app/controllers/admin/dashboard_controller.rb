@@ -1,8 +1,4 @@
-class Admin::DashboardController < ApplicationController
-
-  layout "admin"
-
-
+class Admin::DashboardController < Admin::ResourceController
   def index
     @page = "dashboard#index"
   end
