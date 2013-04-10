@@ -20,6 +20,8 @@ class Piece < ActiveRecord::Base
 
   attr_accessible :accession_number, :credit, :exhibited, :measurements, :medium, :title, :creator_id, :country_id, :state_id, :city_id, :gallery_id, :image, :image_content_type, :image_file_name, :image_file_size, :image_updated_at, :questions_attributes
 
+  validates :title, :presence => true
+
   has_attached_file :image
 
   accepts_nested_attributes_for :questions, :allow_destroy => true

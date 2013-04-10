@@ -11,71 +11,78 @@
         </div>
     <% end %>
 
-    <div class="controls">
-        <%= f.check_box :exhibited %>
-        <%= f.label :exhibited %>
-    </div>
+    <fieldset>
+        <legend>Piece</legend>
 
-    <%= f.label :title, :class => "control-label" %>
-    <div class="controls">
-        <%= f.text_field :title %>
-    </div>
-
-    <%= f.label :creator, :class => "control-label" %>
-    <div class="controls">
-        <%= f.select :creator, @creators %>
-    </div>
-
-    <label class="control-label">Location</label>
-    <div class="controls">
-        <div class="row">
-            <div class="span3">
-                <%= f.select :country, @countries %>
-            </div>
-            <div class="span3">
-                <%= f.select :state, @states %>
-            </div>
-            <div class="span3">
-                <%= f.select :city, @cities %>
+        <div class="control-group">
+            <div class="controls">
+                <label class="checkbox">
+                    <%= f.check_box :exhibited %> Exhibited
+                </label>
             </div>
         </div>
-
-
-
-    </div>
-
-    <%= f.label :gallery, :class => "control-label" %>
-    <div class="controls">
-        <%= f.select :gallery, @galleries %>
-    </div>
-
-    <%= f.label :medium, :class => "control-label" %>
-    <div class="controls">
-        <%= f.text_field :medium %>
-    </div>
-
-    <%= f.label :measurements, :class => "control-label" %>
-    <div class="controls">
-        <%= f.text_field :measurements %>
-    </div>
-
-    <%= f.label :credit, :class => "control-label" %>
-    <div class="controls">
-        <%= f.text_field :credit %>
-    </div>
-
-    <%= f.label :accession_number, :class => "control-label" %>
-    <div class="controls">
-        <%= f.text_field :accession_number %>
-    </div>
-
+        <div class="control-group">
+            <%= f.label :title, :class => "control-label" %>
+            <div class="controls">
+                <%= f.text_field :title, :class => "fullwidth" %>
+            </div>
+        </div>
+        <div class="control-group">
+            <%= f.label :creator, :class => "control-label" %>
+            <div class="controls">
+                <%= f.select :creator, @creators %>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Creation Location</label>
+            <div class="controls">
+                <div class="row">
+                    <div class="span3">
+                        <%= f.select :country, @countries %>
+                    </div>
+                    <div class="span3">
+                        <%= f.select :state, @states %>
+                    </div>
+                    <div class="span3">
+                        <%= f.select :city, @cities %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <%= f.label :gallery, :class => "control-label" %>
+            <div class="controls">
+                <%= f.select :gallery, @galleries %>
+            </div>
+        </div>
+        <div class="control-group">
+            <%= f.label :medium, :class => "control-label" %>
+            <div class="controls">
+                <%= f.text_field :medium, :class => "fullwidth" %>
+            </div>
+        </div>
+        <div class="control-group">
+            <%= f.label :measurements, :class => "control-label" %>
+            <div class="controls">
+                <%= f.text_field :measurements, :class => "fullwidth" %>
+            </div>
+        </div>
+        <div class="control-group">
+            <%= f.label :credit, :class => "control-label" %>
+            <div class="controls">
+                <%= f.text_field :credit, :class => "fullwidth" %>
+            </div>
+        </div>
+        <div class="control-group">
+            <%= f.label :accession_number, :class => "control-label" %>
+            <div class="controls">
+                <%= f.text_field :accession_number, :class => "fullwidth" %>
+            </div>
+        </div>
+    </fieldset>
 
     <% f.fields_for :questions do |builder| %>
-        <p>
-            <%= builder.label :content, "Question" %>
-            <%= builder.text_area :content, :rows => 3 %>
-        </p>
-
+        <%= render 'question_fields', :f => builder %>
     <% end %>
 
     <div class="tabbable">
@@ -96,7 +103,8 @@
         </div>
     </div>
 
-    <%= f.submit %>
-
+    <div class="control-group">
+        <%= f.submit "Save", :class => "btn" %>
+    </div>
 
 <% end %>

@@ -24,3 +24,13 @@ div.tab-content {
     border-top: 0;
     margin-bottom: 20px;
 }
+
+input.fullwidth {
+    width: 100%;
+}
+
+div.partial_form {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #CCCCCC;
+}

@@ -1,8 +1,6 @@
-<fieldset>
-    <%= f.label :content, "Answer", :class => "control-label" %>
-    <div class="controls">
-        <%= f.text_field :content %>
-        <%= f.hidden_field :_destroy %>
-        <%= link_to "Remove", "#", :class => "remove_fields" %>
-    </div>
-</fieldset>
+<div class="partial_form">
+    <%= f.label :content, "Answer" %>
+    <%= f.text_field :content, :class => "input-xxlarge" %>
+    <%= f.hidden_field :_destroy %>
+    <%= link_to "Remove", "#", :class => "remove_fields" %><br>
+</div>

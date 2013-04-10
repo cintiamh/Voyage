@@ -54,7 +54,7 @@ class Admin::PiecesController < Admin::ResourceController
 
     respond_to do |format|
       if @piece.save
-        format.html { redirect_to @piece, notice: 'Piece was successfully created.' }
+        format.html { redirect_to [:admin, @piece], notice: 'Piece was successfully created.' }
         format.json { render json: @piece, status: :created, location: @piece }
       else
         format.html { render action: "new" }
@@ -70,7 +70,7 @@ class Admin::PiecesController < Admin::ResourceController
 
     respond_to do |format|
       if @piece.update_attributes(params[:piece])
-        format.html { redirect_to @piece, notice: 'Piece was successfully updated.' }
+        format.html { redirect_to [:admin, @piece], notice: 'Piece was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -86,7 +86,7 @@ class Admin::PiecesController < Admin::ResourceController
     @piece.destroy
 
     respond_to do |format|
-      format.html { redirect_to pieces_url }
+      format.html { redirect_to admin_pieces_url }
       format.json { head :no_content }
     end
   end
