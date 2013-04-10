@@ -1,9 +1,9 @@
 <fieldset>
     <div class="partial_form">
         <%= f.label :before, "Information Before" %>
-        <%= f.text_field :before, :class => "input-xxlarge" %><br>
+        <%= f.text_area :before, :rows => 3, :class => "input-xxlarge" %><br>
         <%= f.label :after, "Information After" %>
-        <%= f.text_field :after, :class => "input-xxlarge" %><br/>
+        <%= f.text_area :after, :rows => 3, :class => "input-xxlarge" %><br/>
         <%= link_to "Remove", "#", :class => "remove_fields" %><br/>
         <%= f.hidden_field :_destroy %>
     </div>
