@@ -40,11 +40,11 @@ text {
 }
 
 @media only screen and (min-width:0px) {
-    #test{width:100px; height:100px;}
+    .test{width:100px; height:100px;}
 }
 
 @media only screen and (min-width:400px) {
-#test{width:400px; height:400px;}
+.test{width:400px; height:400px;}
 
 }
 
@@ -54,19 +54,4 @@ text {
   font-size: 60px;
 }
 
-.circle {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    background: rgb(255, 39, 9);
-    background: rgba(255, 39, 9, 0.69);
-    /* width and height can be anything, as long as they're equal */
-}
 
-#cir1
-{
-    position: absolute;
-    top: 110px;
-    left: 300px;
-    padding: 10px;
-}

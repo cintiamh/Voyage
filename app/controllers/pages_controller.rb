@@ -21,7 +21,8 @@ class PagesController < ApplicationController
   def floors
 
     @galleries = Gallery.all
-    js :params => {:galleries_list => @galleries}
+    @pieces = Piece.all
+    js :params => {:galleries_list => @galleries, :pieces_list => @pieces}
 
   end
 
