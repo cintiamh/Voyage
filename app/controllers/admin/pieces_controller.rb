@@ -45,6 +45,12 @@ class Admin::PiecesController < Admin::ResourceController
   def edit
     @page = "pieces"
     @piece = Piece.find(params[:id])
+
+    @creators = Creator.find(:all)
+    @galleries = Gallery.find(:all)
+    @countries = Country.find(:all)
+    @states = State.find(:all)
+    @cities = City.find(:all)
   end
 
   # POST /pieces

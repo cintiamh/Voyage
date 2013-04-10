@@ -1,6 +1,4 @@
-<h1>Editing piece</h1>
-
 <%= render 'form' %>
 
-<%= link_to 'Show', @piece, "data-ajax" => "false" %> |
-<%= link_to 'Back', pieces_path, "data-ajax" => "false" %>
+<%= link_to 'Show', [:admin, @piece], "data-ajax" => "false" %> |
+<%= link_to 'Back', admin_pieces_path, "data-ajax" => "false" %>

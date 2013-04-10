@@ -1,60 +1,113 @@
+<h1>Piece</h1>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @piece.title %>
-</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <td>Title</td>
+        <td><%= @piece.title %></td>
+    </tr>
+    <tr>
+        <td>Exhibited</td>
+        <td>
+            <% if @piece.exhibited %>
+                Yes
+            <% else %>
+                No
+            <% end %>
+        </td>
+    </tr>
+    <tr>
+        <td>Creator</td>
+        <td>
+            <% unless @piece.creator.nil? %>
+                <%= @piece.creator.name %>
+            <% end %>
+        </td>
+    </tr>
+    <tr>
+        <td>Creation Location</td>
+        <td>
+            <% unless @piece.country.nil? %>
+                <%= @piece.country.name %>
+            <% end %>
+            <% unless @piece.state.nil? %>
+                <%= @piece.state.name %>
+            <% end %>
+            <% unless @piece.city.nil? %>
+                <%= @piece.city.name %>
+            <% end %>
+        </td>
+    </tr>
+    <tr>
+        <td>Gallery</td>
+        <td>
+            <% unless @piece.gallery.nil? %>
+                <%= @piece.gallery.name %>
+            <% end %>
+        </td>
+    </tr>
+    <tr>
+        <td>Medium</td>
+        <td><%= @piece.medium %></td>
+    </tr>
+    <tr>
+        <td>Measurements</td>
+        <td><%= @piece.measurements %></td>
+    </tr>
+    <tr>
+        <td>Credit</td>
+        <td><%= @piece.credit %></td>
+    </tr>
+    <tr>
+        <td>Accession number</td>
+        <td><%= @piece.accession_number %></td>
+    </tr>
+</table>
 
-<p>
-  <b>Medium:</b>
-  <%= @piece.medium %>
-</p>
-
-<p>
-  <b>Measurements:</b>
-  <%= @piece.measurements %>
-</p>
-
-<p>
-  <b>Credit:</b>
-  <%= @piece.credit %>
-</p>
-
-<p>
-  <b>Accession number:</b>
-  <%= @piece.accession_number %>
-</p>
-
-<p>
-  <b>Exhibited:</b>
-  <%= @piece.exhibited %>
-</p>
-
-<p>
-  <b>Creator:</b>
-  <%= @piece.creator %>
-</p>
-
-<p>
-  <b>Country:</b>
-  <%= @piece.country %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%= @piece.state %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%= @piece.city %>
-</p>
-
-<p>
-  <b>Gallery:</b>
-  <%= @piece.gallery %>
-</p>
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Questions</a></li>
+        <li><a href="#tab2" data-toggle="tab">Informations</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            <% if @piece.questions.length > 0 %>
+            <ol>
+                <% for question in @piece.questions %>
+                    <li>
+                        <%= h question.content %>
+                    </li>
+                    <ul>
+                        <% for answer in question.answers %>
+                            <li><%= h answer.content %></li>
+                        <% end %>
+                    </ul>
+                <% end %>
+            </ol>
+            <% else %>
+            <p>No questions created.</p>
+            <% end %>
+        </div>
+        <div class="tab-pane" id="tab2">
+            <% if @piece.informations.length > 0 %>
+            <ol>
+                <% for information in @piece.informations %>
+                    <li>
+                        <ul>
+                            <li>Before: <%= information.before %></li>
+                            <li>After: <%= information.after %></li>
+                        </ul>
+                    </li>
+                <% end %>
+            </ol>
+            <% else %>
+                <p>No informations created.</p>
+            <% end %>
+        </div>
+    </div>
+</div>
 
 
-<%= link_to 'Edit', edit_piece_path(@piece), "data-ajax" => "false" %> |
-<%= link_to 'Back', pieces_path, "data-ajax" => "false" %>
+<%= link_to 'Edit', edit_admin_piece_path(@piece), "data-ajax" => "false" %> |
+<%= link_to 'Back', admin_pieces_path, "data-ajax" => "false" %>

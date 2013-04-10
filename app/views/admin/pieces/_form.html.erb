@@ -98,7 +98,10 @@
                 <%= link_to_add_fields "Add Question", f, :questions %>
             </div>
             <div class="tab-pane" id="tab2">
-                <h2>Informations</h2>
+                <%= f.fields_for :informations do |builder| %>
+                    <%= render 'information_fields', :f => builder %>
+                <% end %>
+                <%= link_to_add_fields "Add Information", f, :informations %>
             </div>
         </div>
     </div>

@@ -21,9 +21,9 @@
             <td><%= piece.title %></td>
             <td><%= piece.creator %></td>
             <td><%= piece.gallery %></td>
-            <td><%= link_to 'Show', piece %></td>
-            <td><%= link_to 'Edit', edit_piece_path(piece) %></td>
-            <td><%= link_to 'Destroy', piece, method: :delete, data: {confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Show', [:admin, piece] %></td>
+            <td><%= link_to 'Edit', edit_admin_piece_path(piece) %></td>
+            <td><%= link_to 'Destroy', [:admin, piece], method: :delete, data: {confirm: 'Are you sure?' } %></td>
         </tr>
     <% end %>
 </table>
