@@ -84,7 +84,13 @@ function aboutPieces(i)
     var h = d3.select('#title');
     if(i == -1)
     {
-        $.mobile.changePage("../pages/floors",{rel:"external"})
+        /*$.mobile.ajaxEnabled = false;
+        $.mobile.changePage("../pages/floors",{rel:"external"})*/
+
+        /* The above code did was still using AJAx, and was not calling the required controller
+        * so using this hardcoded change page technique*/
+        window.open("../pages/floors", "_self");
+
     }
     else if(i >=0 )
     {

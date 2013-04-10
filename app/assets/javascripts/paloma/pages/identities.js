@@ -48,6 +48,9 @@ var tour_list;
       //    .attr("height",h)
       //    .attr("viewBox", "0 0 750 500");
 
+      /*w = $('chart').innerWidth();
+      h = $('chart').innerHeight();*/
+
       svg.attr("viewbox",function(){return "0 0 " + w + " " + h + " ";}) ;
 
       createChart(nodes, links);
