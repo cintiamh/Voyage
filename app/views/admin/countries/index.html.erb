@@ -1,0 +1,64 @@
+<h1>Locations</h1>
+<p>
+    <%= link_to 'New Location', new_admin_country_path %>
+</p>
+
+
+<% if @countries.length == 0 %>
+    <p>There are no locations.</p>
+<% else %>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Country</th>
+            <th>State</th>
+            <th>City</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        <% @countries.each do |country| %>
+            <% if country.states.length > 0 %>
+                <% country.states.each do |state| %>
+                    <% if state.cities.length > 0 %>
+                        <% state.cities.each do |city| %>
+                            <tr>
+                                <td><%= country.name %></td>
+                                <td><%= state.name %></td>
+                                <td><%= city.name %></td>
+                                <td><%= link_to 'Show', [:admin, country] %></td>
+                                <td><%= link_to 'Edit', edit_admin_country_path(country) %></td>
+                                <td><%= link_to 'Destroy', [:admin, country], method: :delete, data: {confirm: 'Are you sure?' } %></td>
+                            </tr>
+                        <% end %>
+                    <% else %>
+                        <tr>
+                            <td><%= country.name %></td>
+                            <td><%= state.name %></td>
+                            <td></td>
+                            <td><%= link_to 'Show', [:admin, country] %></td>
+                            <td><%= link_to 'Edit', edit_admin_country_path(country) %></td>
+                            <td><%= link_to 'Destroy', [:admin, country], method: :delete, data: {confirm: 'Are you sure?' } %></td>
+                        </tr>
+                    <% end %>
+                <% end %>
+            <% else %>
+                <tr>
+                    <td><%= country.name %></td>
+                    <td></td>
+                    <td></td>
+                    <td><%= link_to 'Show', [:admin, country] %></td>
+                    <td><%= link_to 'Edit', edit_admin_country_path(country) %></td>
+                    <td><%= link_to 'Destroy', [:admin, country], method: :delete, data: {confirm: 'Are you sure?' } %></td>
+                </tr>
+            <% end %>
+        <% end %>
+    </table>
+
+<% end %>
+
+<p>
+    <%= link_to 'New Location', new_admin_country_path %>
+</p>
+

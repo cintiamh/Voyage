@@ -117,6 +117,8 @@ Voyage::Application.routes.draw do
 
     resources :users
 
+    resources :countries
+
   end
 
   # You can have the root of your site routed with "root"

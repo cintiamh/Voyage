@@ -3,5 +3,7 @@ class State < ActiveRecord::Base
   has_many :cities
   has_many :pieces
 
-  attr_accessible :name, :country_id
+  attr_accessible :name, :country_id, :cities_attributes
+
+  accepts_nested_attributes_for :cities, allow_destroy: true
 end
