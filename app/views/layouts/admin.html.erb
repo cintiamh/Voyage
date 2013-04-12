@@ -38,7 +38,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li<%= raw(" class=\"active\"") if @page == "tours" %>>
+                    <li class="dropdown <%= raw("active\"") if @page == "tours" %>">
                         <%= link_to raw("Tours <b class='caret'></b>"), admin_tours_path, :class => "dropdown-toggle", "data-toggle" => "dropdown" %>
                         <ul class="dropdown-menu">
                             <li>
