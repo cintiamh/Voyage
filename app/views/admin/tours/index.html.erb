@@ -1,12 +1,14 @@
 <h1>Tours</h1>
 
-<table>
+<% if @tours.length == 0 %>
+    <p>There are no tours.</p>
+<% else %>
+
+<table class="table table-striped">
   <tr>
     <th>Title</th>
-    <th>Image</th>
     <th>Curated</th>
     <th>Public</th>
-    <th>About</th>
     <th>User</th>
     <th></th>
     <th></th>
@@ -16,10 +18,8 @@
 <% @tours.each do |tour| %>
   <tr>
     <td><%= tour.title %></td>
-    <td><%= tour.image %></td>
     <td><%= tour.curated %></td>
     <td><%= tour.public %></td>
-    <td><%= tour.about %></td>
     <td><%= tour.user %></td>
     <td><%= link_to 'Show', [:admin, tour] %></td>
     <td><%= link_to 'Edit', edit_admin_tour_path(tour) %></td>
@@ -27,7 +27,7 @@
   </tr>
 <% end %>
 </table>
-
+<% end %>
 <br />
 
 <%= link_to 'New Tour', new_admin_tour_path %>
