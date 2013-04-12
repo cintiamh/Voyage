@@ -1,35 +1,71 @@
+<h1>Piece</h1>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @tour.title %>
-</p>
-
+<table class="table table-bordered table-striped">
+<tr>
+    <td>Title</td>
+    <td><%= @tour.title %></td>
+</tr>
+<tr>
+    <td>Curated</td>
+    <td><%= @tour.curated %></td>
+</tr>
+<tr>
+    <td>Creator</td>
+    <td><%= @tour.user %></td>
+</tr>
+<tr>
+    <td>Public</td>
+    <td><%= @tour.public %></td>
+</tr>
+<tr>
+    <td>About</td>
+    <td><%= @tour.about %></td>
+</tr>
+</table>
 <p>
   <b>Image:</b>
   <%= @tour.image %>
 </p>
 
-<p>
-  <b>Curated:</b>
-  <%= @tour.curated %>
-</p>
-
-<p>
-  <b>Public:</b>
-  <%= @tour.public %>
-</p>
-
-<p>
-  <b>About:</b>
-  <%= @tour.about %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @tour.user %>
-</p>
-
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Pieces</a></li>
+        <li><a href="#tab2" data-toggle="tab">Informations</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            <% if @tour.pieces.length > 0 %>
+                <ol>
+                    <% for piece in @tour.pieces %>
+                        <li>
+                            <%= h piece.title %>
+                        </li>
+                    <% end %>
+                </ol>
+            <% else %>
+                <p>No pieces linked.</p>
+            <% end %>
+        </div>
+        <div class="tab-pane" id="tab2">
+            <% if @tour.informations.length > 0 %>
+                <ol>
+                    <% for information in @tour.informations %>
+                        <li>
+                            <ul>
+                                <li>Before: <%= information.before %></li>
+                                <li>After: <%= information.after %></li>
+                            </ul>
+                        </li>
+                    <% end %>
+                </ol>
+            <% else %>
+                <p>No informations created.</p>
+            <% end %>
+        </div>
+    </div>
+</div>
 
 <%= link_to 'Edit', edit_admin_tour_path(@tour) %> |
 <%= link_to 'Back', admin_tours_path %>
