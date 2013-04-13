@@ -1,5 +1,4 @@
-class Admin::ToursController < ApplicationController
-  layout "admin"
+class Admin::ToursController < Admin::ResourceController
 
   # GET /tours
   # GET /tours.json

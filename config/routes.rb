@@ -121,6 +121,8 @@ Voyage::Application.routes.draw do
 
     resources :locations, :controller => "countries"
 
+    resources :connections
+
   end
 
   # You can have the root of your site routed with "root"

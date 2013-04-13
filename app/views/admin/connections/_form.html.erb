@@ -1,0 +1,33 @@
+<%= form_for [:admin, @connection], :html => {:class => "form-horizontal"} do |f| %>
+  <% if @connection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@connection.errors.count, "error") %> prohibited this connection from being saved:</h2>
+
+      <ul>
+      <% @connection.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :piece1 %><br />
+    <%= f.select :piece1, @pieces %>
+  </div>
+  <div class="field">
+    <%= f.label :piece2 %><br />
+    <%= f.select :piece2, @pieces %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
