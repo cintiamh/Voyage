@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130409142323) do
+ActiveRecord::Schema.define(:version => 20130413205333) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -54,26 +54,6 @@ ActiveRecord::Schema.define(:version => 20130409142323) do
   end
 
   add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
-
-  create_table "categories", :force => true do |t|
-    t.string   "title"
-    t.text     "about"
-    t.integer  "category_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "categories", ["category_id"], :name => "index_categories_on_category_id"
-
-  create_table "categories_products", :id => false, :force => true do |t|
-    t.integer "category_id"
-    t.integer "product_id"
-  end
-
-  create_table "categories_tours", :id => false, :force => true do |t|
-    t.integer "category_id"
-    t.integer "tour_id"
-  end
 
   create_table "cities", :force => true do |t|
     t.string   "name"
@@ -214,16 +194,6 @@ ActiveRecord::Schema.define(:version => 20130409142323) do
   end
 
   add_index "states", ["country_id"], :name => "index_states_on_country_id"
-
-  create_table "teasers", :force => true do |t|
-    t.text     "question"
-    t.text     "answer"
-    t.integer  "piece_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "teasers", ["piece_id"], :name => "index_teasers_on_piece_id"
 
   create_table "tour_histories", :force => true do |t|
     t.datetime "chosen_date"
