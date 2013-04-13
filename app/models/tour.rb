@@ -7,6 +7,7 @@ class Tour < ActiveRecord::Base
   has_many :likes
   has_many :tour_items
   has_many :pieces, :through => :tour_items
+  has_many :connections
 
   #has_and_belongs_to_many :pieces
   #has_and_belongs_to_many :categories

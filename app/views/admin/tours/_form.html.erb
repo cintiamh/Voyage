@@ -47,7 +47,8 @@
     <div class="tabbable">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#tab1" data-toggle="tab">Pieces</a></li>
-            <li><a href="#tab2" data-toggle="tab">Informations</a></li>
+            <li><a href="#tab2" data-toggle="tab">Connections</a></li>
+            <li><a href="#tab3" data-toggle="tab">Informations</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="tab1">
@@ -64,6 +65,9 @@
                 </div>
             </div>
             <div class="tab-pane" id="tab2">
+                connections
+            </div>
+            <div class="tab-pane" id="tab3">
                 <%= f.fields_for :informations do |builder| %>
                     <%= render 'information_fields', :f => builder %>
                 <% end %>
