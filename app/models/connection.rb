@@ -4,5 +4,7 @@ class Connection < ActiveRecord::Base
   has_many :comments
   has_many :likes
 
-  attr_accessible :description, :piece1, :piece2, :title, :piece_id, :informations, :comments, :likes
+  has_and_belongs_to_many :pieces
+
+  attr_accessible :description, :title, :pieces_attributes
 end

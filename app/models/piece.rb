@@ -5,15 +5,17 @@ class Piece < ActiveRecord::Base
   belongs_to :city
   belongs_to :gallery
 
-  has_many :teasers
-  has_many :connections
+  #has_many :connections
   has_many :informations
   has_many :comments
   has_many :likes
   has_many :questions
+  has_many :tour_items
+  has_many :tours, :through => :tour_items
 
   #has_and_belongs_to_many :categories
-  has_and_belongs_to_many :tours
+  #has_and_belongs_to_many :tours
+  has_and_belongs_to_many :connections
 
   scope :inExhibition, where(:exhibited => true)
   scope :notExhibited, where(:exhibited => false)
