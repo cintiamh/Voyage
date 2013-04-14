@@ -71,7 +71,10 @@
                     </li>
                     <ul>
                         <% for answer in question.answers %>
-                            <li><%= h answer.content %></li>
+                            <li>
+                                <%= "[Correct] " if answer.correct %>
+                                <%= answer.content %>
+                            </li>
                         <% end %>
                     </ul>
                 <% end %>
