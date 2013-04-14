@@ -2,7 +2,7 @@ class Admin::GalleriesController < Admin::ResourceController
   # GET /galleries
   # GET /galleries.json
   def index
-    @page = "galleries"
+    @page = "pieces"
     @galleries = Gallery.all
 
     respond_to do |format|
@@ -14,7 +14,7 @@ class Admin::GalleriesController < Admin::ResourceController
   # GET /galleries/1
   # GET /galleries/1.json
   def show
-    @page = "galleries"
+    @page = "pieces"
     @gallery = Gallery.find(params[:id])
 
     respond_to do |format|
@@ -26,7 +26,7 @@ class Admin::GalleriesController < Admin::ResourceController
   # GET /galleries/new
   # GET /galleries/new.json
   def new
-    @page = "galleries"
+    @page = "pieces"
     @gallery = Gallery.new
 
     respond_to do |format|
@@ -37,7 +37,7 @@ class Admin::GalleriesController < Admin::ResourceController
 
   # GET /galleries/1/edit
   def edit
-    @page = "galleries"
+    @page = "pieces"
     @gallery = Gallery.find(params[:id])
   end
 
@@ -48,7 +48,7 @@ class Admin::GalleriesController < Admin::ResourceController
 
     respond_to do |format|
       if @gallery.save
-        format.html { redirect_to [:admin, @gallery], notice: 'Gallery was successfully created.' }
+        format.html { redirect_to admin_galleries_url, notice: 'Gallery was successfully created.' }
         format.json { render json: @gallery, status: :created, location: @gallery }
       else
         format.html { render action: "new" }
@@ -64,7 +64,7 @@ class Admin::GalleriesController < Admin::ResourceController
 
     respond_to do |format|
       if @gallery.update_attributes(params[:gallery])
-        format.html { redirect_to [:admin, @gallery], notice: 'Gallery was successfully updated.' }
+        format.html { redirect_to admin_galleries_url, notice: 'Gallery was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

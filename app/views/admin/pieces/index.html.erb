@@ -19,8 +19,8 @@
         <tr>
             <td><%= piece.exhibited %></td>
             <td><%= piece.title %></td>
-            <td><%= piece.creator %></td>
-            <td><%= piece.gallery %></td>
+            <td><%= if piece.creator.nil? then "" else piece.creator.name end %></td>
+            <td><%= if piece.gallery.nil? then "" else piece.gallery.name end %></td>
             <td><%= link_to 'Show', [:admin, piece] %></td>
             <td><%= link_to 'Edit', edit_admin_piece_path(piece) %></td>
             <td><%= link_to 'Destroy', [:admin, piece], method: :delete, data: {confirm: 'Are you sure?' } %></td>

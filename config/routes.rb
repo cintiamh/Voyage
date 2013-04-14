@@ -123,6 +123,8 @@ Voyage::Application.routes.draw do
 
     resources :galleries
 
+    resources :creators
+
   end
 
   # You can have the root of your site routed with "root"

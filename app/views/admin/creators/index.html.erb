@@ -1,0 +1,29 @@
+<h1>Listing creators</h1>
+
+<% if @creators.length == 0 %>
+    <p>There are no creators in the inventory.</p>
+<% else %>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Name</th>
+            <th>About</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        <% @creators.each do |creator| %>
+            <tr>
+                <td><%= creator.name %></td>
+                <td><%= creator.about %></td>
+                <td><%= link_to 'Edit', edit_admin_creator_path(creator) %></td>
+                <td><%= link_to 'Destroy', [:admin, creator], method: :delete, data: {confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+    </table>
+
+<% end %>
+
+<br/>
+
+<%= link_to 'New Creator', new_admin_creator_path %>

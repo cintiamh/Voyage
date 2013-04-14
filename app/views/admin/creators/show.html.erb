@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @creator.name %>
+</p>
+
+<p>
+    <b>About:</b>
+    <%= @creator.about %>
+</p>
+
+<%= link_to 'Edit', edit_admin_creator_path(@creator) %> |
+<%= link_to 'Back', admin_creators_path %>

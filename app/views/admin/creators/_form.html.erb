@@ -1,0 +1,34 @@
+<%= form_for [:admin, @creator], :html => {:class => "form-horizontal"} do |f| %>
+    <% if @creator.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@creator.errors.count, "error") %> prohibited this creator from being saved:</h2>
+
+            <ul>
+                <% @creator.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <fieldset>
+        <legend>Creator</legend>
+
+        <div class="control-group">
+            <%= f.label :name, :class => "control-label" %>
+            <div class="controls">
+                <%= f.text_field :name, :class => "input-xxlarge" %>
+            </div>
+        </div>
+        <div class="control-group">
+            <%= f.label :about, :class => "control-label" %>
+            <div class="controls">
+                <%= f.text_area :about, :rows => 3, :class => "input-xxlarge" %>
+            </div>
+        </div>
+
+    </fieldset>
+    <div class="control-group">
+        <%= f.submit "Save", :class => "btn" %>
+    </div>
+
+<% end %>

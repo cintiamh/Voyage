@@ -1,27 +1,32 @@
 <h1>Listing galleries</h1>
 
-<table class="table table-striped">
-  <tr>
-    <th>Name</th>
-    <th>Order</th>
-      <th>Floor</th>
-    <th>About</th>
-    <th></th>
-    <th></th>
-  </tr>
+<% if @galleries.length == 0 %>
+    <p>There are no galleries in the inventory.</p>
+<% else %>
 
-<% @galleries.each do |gallery| %>
-  <tr>
-    <td><%= gallery.name %></td>
-    <td><%= gallery.order %></td>
-      <td><%= gallery.floor %></td>
-    <td><%= gallery.about %></td>
-    <td><%= link_to 'Edit', edit_admin_gallery_path(gallery) %></td>
-    <td><%= link_to 'Destroy', [:admin, gallery], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+    <table class="table table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Order</th>
+            <th>Floor</th>
+            <th>About</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        <% @galleries.each do |gallery| %>
+            <tr>
+                <td><%= gallery.name %></td>
+                <td><%= gallery.order %></td>
+                <td><%= gallery.floor %></td>
+                <td><%= gallery.about %></td>
+                <td><%= link_to 'Edit', edit_admin_gallery_path(gallery) %></td>
+                <td><%= link_to 'Destroy', [:admin, gallery], method: :delete, data: {confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+    </table>
 <% end %>
-</table>
 
-<br />
+<br/>
 
 <%= link_to 'New Gallery', new_admin_gallery_path %>
