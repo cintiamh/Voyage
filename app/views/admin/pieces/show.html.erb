@@ -25,20 +25,7 @@
             <% end %>
         </td>
     </tr>
-    <tr>
-        <td>Creation Location</td>
-        <td>
-            <% unless @piece.country.nil? %>
-                <%= @piece.country.name %>
-            <% end %>
-            <% unless @piece.state.nil? %>
-                <%= @piece.state.name %>
-            <% end %>
-            <% unless @piece.city.nil? %>
-                <%= @piece.city.name %>
-            <% end %>
-        </td>
-    </tr>
+
     <tr>
         <td>Gallery</td>
         <td>
@@ -46,6 +33,10 @@
                 <%= @piece.gallery.name %>
             <% end %>
         </td>
+    </tr>
+    <tr>
+        <td>Creation Location</td>
+        <td><%= @piece.location %></td>
     </tr>
     <tr>
         <td>Medium</td>

@@ -31,9 +31,6 @@ class Admin::PiecesController < Admin::ResourceController
     @piece = Piece.new
     @creators = Creator.find(:all)
     @galleries = Gallery.find(:all)
-    @countries = Country.find(:all)
-    @states = State.find(:all)
-    @cities = City.find(:all)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,9 +45,6 @@ class Admin::PiecesController < Admin::ResourceController
 
     @creators = Creator.find(:all)
     @galleries = Gallery.find(:all)
-    @countries = Country.find(:all)
-    @states = State.find(:all)
-    @cities = City.find(:all)
   end
 
   # POST /pieces

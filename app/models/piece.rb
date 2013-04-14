@@ -1,8 +1,5 @@
 class Piece < ActiveRecord::Base
   belongs_to :creator
-  belongs_to :country
-  belongs_to :state
-  belongs_to :city
   belongs_to :gallery
 
   #has_many :connections
@@ -20,7 +17,7 @@ class Piece < ActiveRecord::Base
   scope :inExhibition, where(:exhibited => true)
   scope :notExhibited, where(:exhibited => false)
 
-  attr_accessible :accession_number, :credit, :exhibited, :measurements, :medium, :title, :image, :image_content_type, :image_file_name, :image_file_size, :image_updated_at, :questions_attributes, :informations_attributes, :creator_id, :country_id, :state_id, :city_id, :gallery_id
+  attr_accessible :accession_number, :credit, :exhibited, :measurements, :medium, :title, :image, :image_content_type, :image_file_name, :image_file_size, :image_updated_at, :questions_attributes, :informations_attributes, :creator_id, :gallery_id, :location
 
   validates :title, :presence => true
 
