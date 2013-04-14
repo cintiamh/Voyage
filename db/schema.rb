@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130413220902) do
+ActiveRecord::Schema.define(:version => 20130414191504) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -51,18 +51,10 @@ ActiveRecord::Schema.define(:version => 20130413220902) do
     t.string   "content"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.boolean  "correct"
   end
 
   add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
-
-  create_table "cities", :force => true do |t|
-    t.string   "name"
-    t.integer  "state_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "cities", ["state_id"], :name => "index_cities_on_state_id"
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -87,13 +79,6 @@ ActiveRecord::Schema.define(:version => 20130413220902) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "tour_id"
-  end
-
-  create_table "countries", :force => true do |t|
-    t.string   "name"
-    t.string   "language"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "creators", :force => true do |t|
@@ -153,9 +138,6 @@ ActiveRecord::Schema.define(:version => 20130413220902) do
     t.string   "accession_number"
     t.boolean  "exhibited"
     t.integer  "creator_id"
-    t.integer  "country_id"
-    t.integer  "state_id"
-    t.integer  "city_id"
     t.integer  "gallery_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
@@ -164,13 +146,11 @@ ActiveRecord::Schema.define(:version => 20130413220902) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "image"
+    t.string   "location"
   end
 
-  add_index "pieces", ["city_id"], :name => "index_pieces_on_city_id"
-  add_index "pieces", ["country_id"], :name => "index_pieces_on_country_id"
   add_index "pieces", ["creator_id"], :name => "index_pieces_on_creator_id"
   add_index "pieces", ["gallery_id"], :name => "index_pieces_on_gallery_id"
-  add_index "pieces", ["state_id"], :name => "index_pieces_on_state_id"
 
   create_table "pieces_tours", :id => false, :force => true do |t|
     t.integer "piece_id"
@@ -185,15 +165,6 @@ ActiveRecord::Schema.define(:version => 20130413220902) do
   end
 
   add_index "questions", ["piece_id"], :name => "index_questions_on_piece_id"
-
-  create_table "states", :force => true do |t|
-    t.string   "name"
-    t.integer  "country_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "states", ["country_id"], :name => "index_states_on_country_id"
 
   create_table "tour_histories", :force => true do |t|
     t.datetime "chosen_date"

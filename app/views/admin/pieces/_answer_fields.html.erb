@@ -1,8 +1,12 @@
 <fieldset>
-<div class="partial_form">
-    <%= f.label :content, "Answer" %>
-    <%= f.text_field :content, :class => "input-xxlarge" %>
-    <%= f.hidden_field :_destroy %>
-    <%= link_to "Remove", "#", :class => "remove_fields" %><br>
-</div>
+    <div class="partial_form">
+        <label class="checkbox">
+            <%= f.check_box :correct %> Correct
+        </label>
+
+        <%= f.label :content, "Answer" %>
+        <%= f.text_field :content, :class => "input-xxlarge" %>
+        <%= f.hidden_field :_destroy %>
+        <%= link_to "Remove", "#", :class => "remove_fields" %><br>
+    </div>
 </fieldset>
