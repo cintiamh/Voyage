@@ -17,3 +17,4 @@
 /.idea/*
 /test/*
 *.iml
+/public/system/*

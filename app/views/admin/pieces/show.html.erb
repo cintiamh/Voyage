@@ -1,7 +1,9 @@
 <h1>Piece</h1>
 
 <p id="notice"><%= notice %></p>
-
+<div class="thumbnail">
+<%= image_tag @piece.image.url if @piece.image.exists? %>
+</div>
 <table class="table table-bordered table-striped">
     <tr>
         <td>Title</td>
