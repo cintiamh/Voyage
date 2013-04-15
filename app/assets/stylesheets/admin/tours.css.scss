@@ -1,3 +1,9 @@
 // Place all the styles related to the admin/tours controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.tour_item_form {
+  border: 1px solid #CCCCCC;
+  height: 250px;
+  overflow: auto;
+}

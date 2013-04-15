@@ -1,4 +1,4 @@
-<h1>Piece</h1>
+<h1>Tour</h1>
 
 <p id="notice"><%= notice %></p>
 
@@ -37,13 +37,21 @@
     <div class="tab-content">
         <div class="tab-pane active" id="tab1">
             <% if @tour.pieces.length > 0 %>
-                <ol>
-                    <% for piece in @tour.pieces %>
-                        <li>
-                            <%= h piece.title %>
-                        </li>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Fixed</th>
+                        <th>Piece</th>
+                        <th>Position</th>
+                    </tr>
+                    <% for tour_item in @tour.tour_items %>
+                        <tr>
+                            <td><%= tour_item.fixed %></td>
+                            <td><%= tour_item.piece.title unless tour_item.piece.nil? %></td>
+                            <td><%= tour_item.position %></td>
+                        </tr>
                     <% end %>
-                </ol>
+                </table>
+
             <% else %>
                 <p>No pieces linked.</p>
             <% end %>

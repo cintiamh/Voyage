@@ -1,0 +1,29 @@
+<fieldset>
+    <div class="partial_form">
+
+        <table>
+            <tr>
+                <td>
+                    <label class="checkbox">
+                        <%= f.check_box :fixed %> Fixed
+                    </label>
+                </td>
+                <td>&nbsp;&nbsp;&nbsp;</td>
+                <td><%= f.label :piece_id, "Piece:" %></td>
+                <td>
+                    <%= f.select :piece_id, Piece.all.collect {|p| [p.title, p.id]}, {:include_blank => true} %>
+                </td>
+                <td>&nbsp;&nbsp;&nbsp;</td>
+                <td><%= f.label :position, "   Position:   " %></td>
+                <td><%= f.number_field :position %><br></td>
+                <td>&nbsp;&nbsp;&nbsp;</td>
+                <td>
+                    <%= f.hidden_field :_destroy %>
+                    <%= link_to "Remove", "#", :class => "remove_fields" %><br/>
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
+</fieldset>

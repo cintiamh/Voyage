@@ -29,6 +29,7 @@ class Admin::ToursController < Admin::ResourceController
   def new
     @page = "tours"
     @tour = Tour.new
+    @pieces = Piece.find(:all, :order => "title ASC")
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,6 +41,7 @@ class Admin::ToursController < Admin::ResourceController
   def edit
     @page = "tours"
     @tour = Tour.find(params[:id])
+    @pieces = Piece.find(:all, :order => "title ASC")
   end
 
   # POST /tours

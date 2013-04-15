@@ -52,17 +52,10 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="tab1">
-                <div class="control-group span13 columns4 checkbox-group">
-                    <div class="controls">
-                        <%= hidden_field_tag "tour[piece_ids][]", nil%>
-                        <% Piece.all.each do |piece| %>
-                            <label class="checkbox">
-                                <%= check_box_tag "tour[piece_ids][]", piece.id, @tour.piece_ids.include?(piece.id), id: dom_id(piece) %>
-                                <%= piece.title %>
-                            </label>
-                        <% end %>
-                    </div>
-                </div>
+                <%= f.fields_for :tour_items, :html => {:class => "form-inline"} do |builder| %>
+                    <%= render 'tour_item_fields', :f => builder %>
+                <% end %>
+                <%= link_to_add_fields "Add Piece", f, :tour_items %>
             </div>
             <div class="tab-pane" id="tab2">
                 connections

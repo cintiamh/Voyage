@@ -1,0 +1,13 @@
+<fieldset>
+    <div class="partial_form">
+        <%= f.label :piece_id, "Piece" %>
+        <%= f.select :piece_id, @pieces.collect {|p| [p.title, p.id]}, {:include_blank => true} %>
+        <label class="checkbox">
+            <%= f.check_box :fixed %> Fixed
+        </label>
+        <%= f.label :position, "Position" %>
+        <%= f.number_field :position %><br>
+        <%= link_to "Remove", "#", :class => "remove_fields" %><br/>
+        <%= f.hidden_field :_destroy %>
+    </div>
+</fieldset>
