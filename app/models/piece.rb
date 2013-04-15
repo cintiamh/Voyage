@@ -21,6 +21,8 @@ class Piece < ActiveRecord::Base
 
   validates :title, :presence => true
 
+  default_scope order('title ASC')
+
   has_attached_file :image
 
   accepts_nested_attributes_for :questions, :allow_destroy => true

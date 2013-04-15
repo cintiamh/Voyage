@@ -14,6 +14,8 @@ class Tour < ActiveRecord::Base
 
   attr_accessible :about, :curated, :image, :public, :title, :user_id, :tour_histories, :comments, :likes, :categories, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :pieces_attributes, :informations_attributes, :piece_ids, :tour_items_attributes
 
+  validates :title, :presence => true
+
   has_attached_file :image
 
   accepts_nested_attributes_for :pieces
