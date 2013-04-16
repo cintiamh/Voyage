@@ -1,0 +1,8 @@
+<fieldset>
+    <div class="partial_form">
+        <%= f.label :id, "Piece:" %>
+        <%= f.collection_select :id, Piece.all, :id, :id %>
+        <%= f.hidden_field :_destroy %>
+        <%= link_to "Remove", "#", :class => "remove_fields" %><br>
+    </div>
+</fieldset>
