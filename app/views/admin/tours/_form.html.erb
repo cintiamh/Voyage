@@ -58,7 +58,10 @@
                 <%= link_to_add_fields "Add Piece", f, :tour_items %>
             </div>
             <div class="tab-pane" id="tab2">
-                connections
+                <%= f.fields_for :connections do |builder| %>
+                    <%= render 'connection_fields', :f => builder %>
+                <% end %>
+                <%= link_to_add_fields "Add Connection", f, :connections %>
             </div>
             <div class="tab-pane" id="tab3">
                 <%= f.fields_for :informations do |builder| %>

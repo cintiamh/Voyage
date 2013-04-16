@@ -2,37 +2,38 @@
 
 <p id="notice"><%= notice %></p>
 
+<div class="thumbnail">
+    <%= image_tag @tour.image.url if @tour.image.exists? %>
+</div>
+
 <table class="table table-bordered table-striped">
-<tr>
-    <td>Title</td>
-    <td><%= @tour.title %></td>
-</tr>
-<tr>
-    <td>Curated</td>
-    <td><%= @tour.curated %></td>
-</tr>
-<tr>
-    <td>Creator</td>
-    <td><%= @tour.user %></td>
-</tr>
-<tr>
-    <td>Public</td>
-    <td><%= @tour.public %></td>
-</tr>
-<tr>
-    <td>About</td>
-    <td><%= @tour.about %></td>
-</tr>
+    <tr>
+        <td>Title</td>
+        <td><%= @tour.title %></td>
+    </tr>
+    <tr>
+        <td>Curated</td>
+        <td><%= @tour.curated %></td>
+    </tr>
+    <tr>
+        <td>Creator</td>
+        <td><%= @tour.user %></td>
+    </tr>
+    <tr>
+        <td>Public</td>
+        <td><%= @tour.public %></td>
+    </tr>
+    <tr>
+        <td>About</td>
+        <td><%= @tour.about %></td>
+    </tr>
 </table>
-<p>
-  <b>Image:</b>
-  <%= @tour.image %>
-</p>
 
 <div class="tabbable">
     <ul class="nav nav-tabs">
         <li class="active"><a href="#tab1" data-toggle="tab">Pieces</a></li>
-        <li><a href="#tab2" data-toggle="tab">Informations</a></li>
+        <li><a href="#tab2" data-toggle="tab">Connections</a></li>
+        <li><a href="#tab3" data-toggle="tab">Informations</a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane active" id="tab1">
@@ -57,6 +58,25 @@
             <% end %>
         </div>
         <div class="tab-pane" id="tab2">
+            <% if @tour.connections.length > 0 %>
+                <ul>
+                    <% for connection in @tour.connections %>
+                        <li><%= connection.description %></li>
+                        <% if connection.pieces.length > 0 %>
+                            <ul>
+                                <% for piece in connection.pieces %>
+                                    <li><%= piece.title %></li>
+                                <% end %>
+                            </ul>
+                        <% end %>
+                    <% end %>
+                </ul>
+
+            <% else %>
+                <p>No connections.</p>
+            <% end %>
+        </div>
+        <div class="tab-pane" id="tab3">
             <% if @tour.informations.length > 0 %>
                 <ol>
                     <% for information in @tour.informations %>

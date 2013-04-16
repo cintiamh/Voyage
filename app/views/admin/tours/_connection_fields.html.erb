@@ -1,0 +1,13 @@
+<fieldset>
+    <div class="partial_form">
+        <%= f.label :description %>
+        <%= f.text_area :description, :rows => 3, :class => "input-xxlarge" %>
+
+        <%= f.collection_select :piece_ids, Piece.all, :id, :title, {:include_blank => 'None'}, {:multiple => true} %>
+
+        <%= f.hidden_field :_destroy %>
+        <%= link_to "Remove", "#", :class => "remove_fields" %><br/>
+
+        <%= link_to_add_fields "Add Piece", f, :pieces %><br>
+    </div>
+</fieldset>
