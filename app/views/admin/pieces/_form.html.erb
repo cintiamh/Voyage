@@ -28,15 +28,15 @@
             </div>
         </div>
         <div class="control-group">
-            <%= f.label :title, :class => "control-label" %>
+            <%= f.label :title, "Title/Name", :class => "control-label" %>
             <div class="controls">
-                <%= f.text_field :title, :class => "fullwidth" %>
+                <%= f.text_field :title, :class => "input-xxlarge" %>
             </div>
         </div>
-        <div class="control-group">
+        <div class="control-group natural_history">
             <%= f.label :latin, "Latin Name", :class => "control-label" %>
             <div class="controls">
-                <%= f.text_field :latin, :class => "fullwidth" %>
+                <%= f.text_field :latin, :class => "input-xxlarge" %>
             </div>
         </div>
         <div class="control-group">
@@ -45,7 +45,7 @@
                 <%= f.file_field :image %>
             </div>
         </div>
-        <div class="control-group">
+        <div class="control-group art">
             <%= f.label :creator, :class => "control-label" %>
             <div class="controls">
                 <%= f.select :creator_id, Creator.all.collect {|p| [p.name, p.id]}, {:include_blank => true} %>
@@ -60,46 +60,46 @@
         <div class="control-group">
             <label class="control-label">Creation Location</label>
             <div class="controls">
-                <%= f.text_field :location, :class => "fullwidth" %>
+                <%= f.text_field :location, :class => "input-xxlarge" %>
             </div>
         </div>
-        <div class="control-group">
+        <div class="control-group art">
             <%= f.label :medium, :class => "control-label" %>
             <div class="controls">
-                <%= f.text_field :medium, :class => "fullwidth" %>
+                <%= f.text_field :medium, :class => "input-xxlarge" %>
             </div>
         </div>
-        <div class="control-group">
+        <div class="control-group art">
             <%= f.label :measurements, :class => "control-label" %>
             <div class="controls">
-                <%= f.text_field :measurements, :class => "fullwidth" %>
+                <%= f.text_field :measurements, :class => "input-xxlarge" %>
             </div>
         </div>
-        <div class="control-group">
+        <div class="control-group art">
             <%= f.label :credit, :class => "control-label" %>
             <div class="controls">
-                <%= f.text_field :credit, :class => "fullwidth" %>
+                <%= f.text_field :credit, :class => "input-xxlarge" %>
             </div>
         </div>
-        <div class="control-group">
+        <div class="control-group art">
             <%= f.label :accession_number, :class => "control-label" %>
             <div class="controls">
-                <%= f.text_field :accession_number, :class => "fullwidth" %>
+                <%= f.text_field :accession_number, :class => "input-xxlarge" %>
             </div>
         </div>
-        <div class="control-group">
+        <div class="control-group natural_history">
             <%= f.label :period, :class => "control-label" %>
             <div class="controls">
-                <%= f.text_field :period, :class => "fullwidth" %>
+                <%= f.text_field :period, :class => "input-xxlarge" %>
             </div>
         </div>
-        <div class="control-group">
+        <div class="control-group natural_history">
             <%= f.label :collection_number, :class => "control-label" %>
             <div class="controls">
-                <%= f.text_field :collection_number, :class => "fullwidth" %>
+                <%= f.text_field :collection_number, :class => "input-xxlarge" %>
             </div>
         </div>
-        <div class="control-group">
+        <div class="control-group natural_history">
             <%= f.label :description, :class => "control-label" %>
             <div class="controls">
                 <%= f.text_area :description, :rows => 3, :class => "input-xxlarge" %><br/>

@@ -15,7 +15,7 @@ class Piece < ActiveRecord::Base
   scope :inExhibition, where(:exhibited => true)
   scope :notExhibited, where(:exhibited => false)
 
-  attr_accessible :accession_number, :credit, :exhibited, :measurements, :medium, :title, :image, :image_content_type, :image_file_name, :image_file_size, :image_updated_at, :questions_attributes, :informations_attributes, :creator_id, :gallery_id, :location, :connections_attributes, :tour_attributes
+  attr_accessible :accession_number, :credit, :exhibited, :measurements, :medium, :title, :image, :image_content_type, :image_file_name, :image_file_size, :image_updated_at, :questions_attributes, :informations_attributes, :creator_id, :gallery_id, :location, :connections_attributes, :tour_attributes, :museum, :latin, :period, :collection_number, :description
 
   validates :title, :presence => true
 
