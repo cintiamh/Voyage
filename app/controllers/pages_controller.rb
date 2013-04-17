@@ -13,8 +13,13 @@ class PagesController < ApplicationController
 
   def items
 
-    @pieces = Piece.all
-    js :params => {:pieces_list => @pieces}
+    identity = params[:identity]
+    tour = Tour.includes(:connections,:tour_items).find(identity)
+    @connections =  tour.connections
+    items = tour.tour_items
+    @pieces_on_tour = items.map {|i| Piece.find(i)}
+    #@pieces = Piece.all
+    js :params => {:pieces_list => @pieces_on_tour}
 
   end
 
