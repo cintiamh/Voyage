@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415183527) do
+ActiveRecord::Schema.define(:version => 20130417155331) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -152,6 +152,11 @@ ActiveRecord::Schema.define(:version => 20130415183527) do
     t.datetime "image_updated_at"
     t.string   "image"
     t.string   "location"
+    t.string   "museum"
+    t.string   "latin"
+    t.text     "description"
+    t.string   "period"
+    t.string   "collection_number"
   end
 
   add_index "pieces", ["creator_id"], :name => "index_pieces_on_creator_id"

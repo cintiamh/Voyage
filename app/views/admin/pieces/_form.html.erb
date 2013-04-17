@@ -15,6 +15,12 @@
         <legend>Piece</legend>
 
         <div class="control-group">
+            <%= f.label :museum, :class => "control-label" %>
+            <div class="controls">
+                <%= f.select :museum, ['Art', 'Natural History'] %>
+            </div>
+        </div>
+        <div class="control-group">
             <div class="controls">
                 <label class="checkbox">
                     <%= f.check_box :exhibited %> Exhibited
@@ -25,6 +31,12 @@
             <%= f.label :title, :class => "control-label" %>
             <div class="controls">
                 <%= f.text_field :title, :class => "fullwidth" %>
+            </div>
+        </div>
+        <div class="control-group">
+            <%= f.label :latin, "Latin Name", :class => "control-label" %>
+            <div class="controls">
+                <%= f.text_field :latin, :class => "fullwidth" %>
             </div>
         </div>
         <div class="control-group">
@@ -73,6 +85,24 @@
             <%= f.label :accession_number, :class => "control-label" %>
             <div class="controls">
                 <%= f.text_field :accession_number, :class => "fullwidth" %>
+            </div>
+        </div>
+        <div class="control-group">
+            <%= f.label :period, :class => "control-label" %>
+            <div class="controls">
+                <%= f.text_field :period, :class => "fullwidth" %>
+            </div>
+        </div>
+        <div class="control-group">
+            <%= f.label :collection_number, :class => "control-label" %>
+            <div class="controls">
+                <%= f.text_field :collection_number, :class => "fullwidth" %>
+            </div>
+        </div>
+        <div class="control-group">
+            <%= f.label :description, :class => "control-label" %>
+            <div class="controls">
+                <%= f.text_area :description, :rows => 3, :class => "input-xxlarge" %><br/>
             </div>
         </div>
     </fieldset>
