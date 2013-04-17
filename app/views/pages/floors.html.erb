@@ -8,39 +8,29 @@
         <h2>The Voyage</h2>
     </div><!-- /header -->
 
+  <div data-role="navbar">
+    <ul>
+      <li><a href="a.html">Floor 1</a></li>
+      <li><a href="b.html">Floor 2</a></li>
+      <li><a href="b.html">Floor 3</a></li>
+    </ul>
+  </div><!-- /navbar -->
+
     <div data-role="content" id="mainContent">
 
-        <div id="map" style="width:734px; margin-left:auto; margin-right:auto;">
-            <img id="Image-Maps_floor_1" src="/assets/sample_map.png" usemap="#Image-Maps_floor_1" border="0" width="734" height="486" alt="" />
-            <map id="_Image-Maps_floor_1" name="Image-Maps_floor_1">
-                <area shape="rect" id="gal1" coords="21,21,250,188" onclick="return galInfo(0)" alt="Gallery 1" title="Gallery 1"    />
-                <area shape="rect" id="gal2" coords="253,20,543,147" onclick="return galInfo(1)" alt="Gallery 2" title="Gallery 2"    />
-                <area shape="rect" id="gal3" coords="207,357,605,448" onclick="return galInfo(2)" alt="Gallery 5" title="Gallery 5"    />
-                <area shape="rect" id="gal4" coords="543,19,697,149" onclick="return galInfo(3)" alt="Gallery 3" title="Gallery 3"    />
-                <area shape="rect" id="gal5" coords="20,186,205,450" onclick="return galInfo(4)" alt="Gallery 4" title="Gallery 4"    />
-                <area shape="rect" coords="732,484,734,486" href="/assets/sample_map.png" alt="Image Map" title="Image Map" />
-            </map>
-
-            <style type="text/css">
-                .circle {
-                    border-radius: 50%;
-                    width: 80px;
-                    height: 80px;
-                    background: rgb(255, 39, 9);
-                    background: rgba(255, 39, 9, 0.69);
-                    text-align:center;
-                    /* width and height can be anything, as long as they're equal */
-                }
-
-                #cir1
-                {
-                    position: absolute;
-                    top: 110px;
-                    left: 300px;
-                    padding: 10px;
-                }
-            </style>
-    </div>
+      <div id="map" style="text-align:center; width:1024px; margin-left:auto; margin-right:auto;">
+        <img id="Image-Maps_floor_1" src="/assets/MAPv1_Floor1.png" usemap="#Image-Maps_floor_1" border="0" width="1024" height="513" alt="" />
+        <map id="_Image-Maps_floor_1" name="Image-Maps_floor_1">
+          <area shape="rect" id="gal1" coords="592,91,628,136" onclick="return galInfo(0)" alt="ice age" title="ice age"    />
+          <area shape="rect" id="gal2" coords="631,91,705,137" onclick="return galInfo(1)" alt="amphibians" title="amphibians"    />
+          <area shape="rect" id="gal3" coords="544,142,701,233" onclick="return galInfo(2)" alt="dinosaurs" title="dinosaurs"    />
+          <area shape="rect" id="gal4" coords="698,237,758,286" onclick="return galInfo(3)" alt="gems and jewelry" title="gems and jewelry"    />
+          <area shape="rect" id="gal5" coords="567,237,692,286" onclick="return galInfo(4)" alt="minerals" title="minerals"    />
+          <area shape="rect" id="gal6" coords="543,291,618,339" onclick="return galInfo(5)" alt="geology" title="geology"    />
+          <area shape="rect" id="gal7" coords="696,287,785,385" onclick="return galInfo(6)" alt="hall of architecture" title="hall of architecture"    />
+          <area shape="rect" coords="1022,511,1024,513" href="/assets/MAPv1_Floor1.png" alt="Image Map" title="Image Map" />
+        </map>
+      </div>
 
     <div data-role="popup" id="aboutGalPopup">
       <a href="#"
@@ -75,43 +65,6 @@
         <a id="footerButton" class="centered" href="#permaMenu" data-rel="popup" data-icon="bars" data-iconpos="top" data-theme="c"></a>
     </div>
 
-    <div id="checkin" data-role="popup" class="ui-content">
-     <form>
-        <fieldset>
-          <p>
-            <label id="question">What is your name?</label>
-
-            <input type = "radio"
-                   name = "radSize"
-                   id = "answer1"
-                   value = "small"
-                   checked = "checked" /> <label for = "sizeSmall">small</label>
-
-            <input type = "radio"
-                   name = "radSize"
-                   id = "answer2"
-                   value = "medium" />
-            <label for = "sizeMed">medium</label>
-
-            <input type = "radio"
-                   name = "radSize"
-                   id = "answer3"
-                   value = "large" />
-            <label for = "sizeLarge">large</label>
-
-            <input type = "radio"
-                   name = "radSize"
-                   id = "answer3"
-                   value = "large" />
-            <label for = "sizeLarge">large</label>
-
-            <button id="submit">Submit</button>
-
-          </p>
-        </fieldset>
-      </form>
-
-    </div>
 
     <div id="itemInformation" data-role="popup">
 
@@ -129,4 +82,25 @@
 
 </div>
 
+</div>
+
+<div id="checkin" data-role="dialog">
+ <!-- <div data-role="content">-->
+    <a href="#"
+       data-theme="c"
+       data-rel="back" data-role="button"
+       data-icon="delete" data-iconpos="notext"
+       class="ui-btn-right">Close</a>
+  <form>
+    <fieldset id="checkinQuestion">
+      <label id="question"></label>
+
+      <input type="radio" name="answers" id="answer0"><label id="answerLbl0"></label>
+      <input type="radio" name="answers" id="answer1"><label id="answerLbl1"></label>
+      <input type="radio" name="answers" id="answer2"><label id="answerLbl2"></label>
+      <input type="radio" name="answers" id="answer3"><label id="answerLbl3"></label>
+    </fieldset>
+  </form>
+  <button onclick="checkAnswer()">Submit</button>
+ <!-- </div>-->
 </div>

@@ -1,4 +1,4 @@
-var pieces_list, galleries_list;
+var pieces_list, galleries_list, question_list, answer_list;
 
 (function(){
   // You access variables from before/around filters from _x object.
@@ -23,6 +23,8 @@ var pieces_list, galleries_list;
   {
     pieces_list = params['pieces_list'];
     galleries_list = params["galleries_list"];
+      question_list = params["question_list"];
+      answer_list = params["answer_list"];
 
     var gal_pos = [];
 
@@ -50,7 +52,7 @@ var pieces_list, galleries_list;
           var item_div = "<div id='item" + i + "' onclick='return atItemDialog(" + i + ")'></div>";
           var div = $(item_div).appendTo(map);
           div.addClass("circle");
-          div.append("<br><h4>Item " + item_num + "</h4>");
+          div.append("<br><b>"+item_num+"</b>");
           div.css("left",left_pos);
           div.css("top",top_pos);
           div.css("position","absolute");
@@ -90,13 +92,37 @@ function galInfo(i)
     $("#aboutGalPopup").popup("open");
 
 }
-
+var rightAnswer;
 function atItemDialog(i)
 {
+    var parent = $('#checkinQuestion');
+    var q = $('#question');
+    q.text(question_list[i].content);
+    var answers = answer_list[i];
+    var inputMarkupInit = "<input type='radio' name='checkinAnswer'";
+    for (var j=0; j<4; j++)
+    {
+        if(answers[j].correct == true)
+        {
+            rightAnswer = j;
+        }
+        var inputMarkup = "#answerLbl" + j;
+        $(inputMarkup).text(answers[j].content);
+    }
+   // var submit = "<button type='button' onclick='return checkAnswer(" + rightAnswer + ")'>Submit</button>";
+    var item = parseInt(i) + 1;
+    $.mobile.changePage("#checkin", {role: "dialog"});
+}
 
-    var question = pieces_list[i];
-
-    $("#checkin").popup();
-    $("#checkin").popup("open");
-
+function checkAnswer()
+{
+    var check = "#answer"+rightAnswer;
+    if($(check).attr("checked") == "checked")
+    {
+        alert("right answer");
+    }
+    else
+    {
+        alert("wrong answer");
+    }
 }
