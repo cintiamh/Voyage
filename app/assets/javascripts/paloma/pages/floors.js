@@ -31,8 +31,6 @@ var pieces_list, galleries_list;
           var sel = 'gal' + parseInt(i+1);
           var area_str = $('#'+sel).attr("coords");
           var area = area_str.split(",");
-
-          //TODO - verify the gallery ID start index with cintia
           gal_pos.push({"id":parseInt(i+1), min_x:area[0], max_x:area[2], min_y:area[1], max_y:area[3] });
       }
 
@@ -49,7 +47,7 @@ var pieces_list, galleries_list;
           var top_pos = parseInt(map_position.top + (parseInt(gal_pos[pos].min_y) + parseInt(gal_pos[pos].max_y))/2);
           top_pos -= 45;
           var item_num = parseInt(i+1);
-          var item_div = "<div id=item" + i + "></div>";
+          var item_div = "<div id='item" + i + "' onclick='return atItemDialog(" + i + ")'></div>";
           var div = $(item_div).appendTo(map);
           div.addClass("circle");
           div.append("<br><h4>Item " + item_num + "</h4>");
@@ -90,5 +88,15 @@ function galInfo(i)
     aboutGal.text(textData);
     $("#aboutGalPopup").popup();
     $("#aboutGalPopup").popup("open");
+
+}
+
+function atItemDialog(i)
+{
+
+    var question = pieces_list[i];
+
+    $("#checkin").popup();
+    $("#checkin").popup("open");
 
 }

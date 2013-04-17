@@ -75,21 +75,55 @@
         <a id="footerButton" class="centered" href="#permaMenu" data-rel="popup" data-icon="bars" data-iconpos="top" data-theme="c"></a>
     </div>
 
-    <div id="checkinDialog" data-role="popup">
+    <div id="checkin" data-role="popup" class="ui-content">
+     <form>
+        <fieldset>
+          <p>
+            <label id="question">What is your name?</label>
+
+            <input type = "radio"
+                   name = "radSize"
+                   id = "answer1"
+                   value = "small"
+                   checked = "checked" /> <label for = "sizeSmall">small</label>
 
 
+            <input type = "radio"
+                   name = "radSize"
+                   id = "answer2"
+                   value = "medium" />
+            <label for = "sizeMed">medium</label>
+
+            <input type = "radio"
+                   name = "radSize"
+                   id = "answer3"
+                   value = "large" />
+            <label for = "sizeLarge">large</label>
+
+            <input type = "radio"
+                   name = "radSize"
+                   id = "answer3"
+                   value = "large" />
+            <label for = "sizeLarge">large</label>
+
+            <button id="submit">Submit</button>
+
+          </p>
+        </fieldset>
+      </form>
 
     </div>
 
-    <div id="itemInformationDialog" data-role="dialog">
+    <div id="itemInformation" data-role="popup">
 
     </div>
 
-    <div id="connectionsDialog" data-role="dialog">
+    <div id="connectionInformation" data-role="dialog">
 
     </div>
 
-    <div id="commentsDialog" data-role="dialog">
+    <div id="comments" data-role="dialog">
+
 
     </div>
 

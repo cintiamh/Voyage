@@ -12,7 +12,7 @@ class Tour < ActiveRecord::Base
   #has_and_belongs_to_many :pieces
   #has_and_belongs_to_many :categories
 
-  attr_accessible :about, :curated, :image, :public, :title, :user_id, :tour_histories, :comments, :likes, :categories, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :pieces_attributes, :informations_attributes, :piece_ids, :tour_items_attributes
+  attr_accessible :about, :curated, :image, :public, :title, :user_id, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :pieces_attributes, :informations_attributes, :tour_items_attributes, :connections_attributes
 
   validates :title, :presence => true
 
@@ -21,4 +21,5 @@ class Tour < ActiveRecord::Base
   accepts_nested_attributes_for :pieces
   accepts_nested_attributes_for :tour_items, :allow_destroy => true
   accepts_nested_attributes_for :informations, :allow_destroy => true
+  accepts_nested_attributes_for :connections, :allow_destroy => true
 end

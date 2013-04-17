@@ -21,7 +21,7 @@ class PagesController < ApplicationController
   def floors
 
     @galleries = Gallery.all
-    @pieces = Piece.all
+    @pieces = Piece.includes(:questions => :answers).all
     js :params => {:galleries_list => @galleries, :pieces_list => @pieces}
 
   end

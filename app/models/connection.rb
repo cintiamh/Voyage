@@ -8,5 +8,5 @@ class Connection < ActiveRecord::Base
 
   has_and_belongs_to_many :pieces
 
-  attr_accessible :description, :title, :pieces_attributes, :tour_id
+  attr_accessible :description, :title, :pieces_attributes, :tours_attributes, :piece_ids
 end
