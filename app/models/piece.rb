@@ -7,6 +7,7 @@ class Piece < ActiveRecord::Base
   has_many :comments
   has_many :likes
   has_many :questions
+  has_many :answers, :through => :questions
   has_many :tour_items
   has_many :tours, :through => :tour_items
 
