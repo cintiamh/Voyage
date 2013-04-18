@@ -1,5 +1,8 @@
 
 class PagesController < ApplicationController
+
+  layout :resolve_layout
+
   def index
 
   end
@@ -24,6 +27,21 @@ class PagesController < ApplicationController
     @pieces = Piece.all
     js :params => {:galleries_list => @galleries, :pieces_list => @pieces}
 
+  end
+
+  def desktop
+
+  end
+
+  private
+
+  def resolve_layout
+    case action_name
+      when "desktop"
+        "desktop"
+      else
+        "application"
+    end
   end
 
 end
