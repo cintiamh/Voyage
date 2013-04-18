@@ -63,6 +63,9 @@ function aboutTours(i)
 {
     var p = d3.select("#info").text(tour_list[i].about);
     var h = d3.select('#title').text(tour_list[i].title);
+    var picked_identity = parseInt(i) + 1;
+    var link_url =  "../pages/items?identity=" + picked_identity;
+    var link = d3.select('#ident_to_item_link').attr("href",link_url);
     $("#teaser").popup();
     $("#teaser").popup("open");
 }

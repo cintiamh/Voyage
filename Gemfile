@@ -7,14 +7,15 @@ gem 'rails', '3.2.12'
 
 gem 'json'
 
+gem 'sass-rails',   '~> 3.2.3'
+gem 'bootstrap-sass', '~> 2.3.1.0'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+
   gem 'coffee-rails', '~> 3.2.1'
   gem 'coffee-script-source', '~> 1.4.0'
-
-  gem 'bootstrap-sass', '~> 2.3.1.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
@@ -52,6 +53,12 @@ gem 'oauth2'
 
 # Paper clip
 gem 'paperclip', '~> 3.0'
+
+# for IRB formatting
+gem 'hirb'
+
+# for generating seed data from db
+gem 'seed_dumper'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

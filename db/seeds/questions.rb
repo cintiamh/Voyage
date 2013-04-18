@@ -1,0 +1,5 @@
+Question.create(:id => 1, :piece_id => 1, :content => " On the eve of the French Revolution, France was the wealthiest, most influential, and most populous nation in Europe.  Its population was approximately")
+Question.create(:id => 2, :piece_id => 2, :content => "The immediate cause of the outbreak of revolution in 1789 was")
+Question.create(:id => 3, :piece_id => 3, :content => "Napoleon's purpose in instituting the Continental System was to ")
+Question.create(:id => 4, :piece_id => 4, :content => "Napoleon helped make the French Revolution an international movement in the areas he conquered")
+Question.create(:id => 5, :piece_id => 5, :content => "While the map below was published in 1853, it depicts the most famous battle of 19th century Europe which occur in . . .")

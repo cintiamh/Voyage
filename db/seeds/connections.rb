@@ -1,0 +1,5 @@
+Connection.create(:id => 1, :description => "Connection 1 to 2", :tour_id => 1)
+Connection.create(:id => 2, :description => "Connection 2 to 3", :tour_id => 1)
+Connection.create(:id => 3, :description => "Connection 3 to 4", :tour_id => 1)
+Connection.create(:id => 4, :description => "Connection 4 to 5", :tour_id => 1)
+Connection.create(:id => 5, :description => "Connection 5 to 1", :tour_id => 1)

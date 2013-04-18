@@ -1,0 +1,1 @@
+Tour.create(:id => 1, :title => "Pittsburgher", :curated => true, :public => true, :about => "The awesome Pittsburgher tour!", :user_id => 1, :image_file_name => "PITTSBURGHER.png", :image_content_type => "image/png", :image_file_size => 51487, :image_updated_at => Thu, 18 Apr 2013 03:11:52 UTC +00:00)
