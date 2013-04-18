@@ -5,4 +5,6 @@ class Admin::ResourceController < Admin::ApplicationController
   self.responder = Admin::Responder
 
   layout "admin"
+
+  before_filter :authenticate_user!
 end
