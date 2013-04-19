@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>The Voyage Admin Area</title>
+    <title>The Voyage Welcome</title>
     <%= stylesheet_link_tag    "desktop", :media => "all" %>
     <%= javascript_include_tag "desktop" %>
     <%= csrf_meta_tags %>
@@ -10,10 +10,13 @@
     <!--[if lt IE 9]>
     <script src="../assets/js/html5shiv.js"></script>
     <![endif]-->
+
+    <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-<div class="container">
+<div class="container main_content">
     <%= yield %>
 </div> <!-- /container -->
 
