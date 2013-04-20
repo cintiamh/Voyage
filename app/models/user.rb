@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :first_name, :last_name, :modification_date, :username, :provider, :uid
 
+  scope :recent, :limit => 10, :order => 'created_at DESC'
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider

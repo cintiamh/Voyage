@@ -1,13 +1,15 @@
-<h1>Listing tour_histories</h1>
+<h1>Chosen Tours</h1>
 
-<table>
+<% if @tour_histories.length <= 0 %>
+    <p>There are no recent tours.</p>
+<% else %>
+
+<table class="table table-bordered table-striped">
   <tr>
     <th>Chosen date</th>
     <th>Executed date</th>
     <th>Tour</th>
     <th>User</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
@@ -18,12 +20,8 @@
     <td><%= tour_history.tour %></td>
     <td><%= tour_history.user %></td>
     <td><%= link_to 'Show', tour_history %></td>
-    <td><%= link_to 'Edit', edit_tour_history_path(tour_history) %></td>
-    <td><%= link_to 'Destroy', tour_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Tour history', new_tour_history_path %>
+<% end %>
