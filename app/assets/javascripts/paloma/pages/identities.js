@@ -40,8 +40,11 @@ var tour_list;
       svg = d3.select("svg");
 
       var parent = $("div[data-role='content']");
-      w = parent.innerWidth() - 20;
-      h = parent.height() - 20;
+      //w = parent.innerWidth() - 20;
+      //h = parent.height() - 20;
+
+      w = 300;
+      h = 300;
 
 
       //svg.attr("width",w)
@@ -121,6 +124,11 @@ function createChart(nodes, links)
             return "translate(" + d.x + "," + d.y + ")";
         });
     });//force.on()
-
-
+   force.start();
 }
+
+$(window).resize(function()
+{
+  //alert("window resize");
+  createChart(nodes,links);
+});

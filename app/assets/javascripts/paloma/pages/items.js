@@ -3,6 +3,10 @@ var svg;
 var pieces_list;
 var nodes =[], links= [], connections= [], before_info = [];
 var tour_id;
+var force, link,node;
+
+
+
 
 (function(){
   // You access variables from before/around filters from _x object.
@@ -22,7 +26,6 @@ var tour_id;
   // _l.localMethod(); 
   var _l = _L['pages'];
 
-
   Paloma.callbacks['pages']['items'] = function(params)
   {
     _L.pieces_list = params['pieces_list'];
@@ -30,11 +33,18 @@ var tour_id;
       tour_id = params['tour_id'];
       before_info = params['before_info'];
       pieces_list = _L.pieces_list;
-      svg = d3.select("svg");
 
       var parent = $("div[data-role='content']");
-      w = parent.innerWidth() - 20;
-      h = parent.height() - 20;
+      //w = parent.innerWidth() - 20;
+      //h = parent.height() - 20;
+
+      svg = d3.select("svg");
+      w = 300, h= 300;
+      svg.attr("viewbox",function(){return "0 0 " + w + " " + h + " ";})
+          .attr("preserveAspectRation","xMinYMin");
+      /*svg.append("rect")
+          .attr("width", w)
+          .attr("height", h);*/
 
       constructNodeLinks();
 
@@ -42,9 +52,9 @@ var tour_id;
       //    .attr("height",h)
       //    .attr("viewBox", "0 0 750 500");
 
-      svg.attr("viewbox",function(){return "0 0 " + w + " " + h + " ";}) ;
 
-      createItemsChart(nodes, links);
+
+      //createItemsChart(nodes, links);
   };
 
 
@@ -116,7 +126,9 @@ function aboutPieces(i)
 
 function createItemsChart(nodes, links)
 {
-    var force = d3.layout.force()
+
+
+     force = d3.layout.force()
         .charge(function(d)
         {
             return d.charge;
@@ -131,13 +143,32 @@ function createItemsChart(nodes, links)
         .links(links)
         .start();
 
-    var link = svg.selectAll(".link")
+    force.on("tick", function() {
+        link.attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+
+        node.attr("transform", function(d)
+        {
+            //if(d.group == 1) {return "translate(0,0)";}
+            //else
+            return "translate(" + d.x + "," + d.y + ")";
+        });
+    });//force.on()
+
+    restart();
+}
+
+function restart()
+{
+     link = svg.selectAll(".link")
         .data(links)
         .enter().append("line")
         .attr("class", "link");
 
 
-    var node = svg.selectAll(".node")
+     node = svg.selectAll(".node")
         .data(nodes)
         .enter().append("g")
         .attr("class", "node")
@@ -177,17 +208,13 @@ function createItemsChart(nodes, links)
         .attr("x", "-0.75em")
         .attr("dy", ".35em");
 
-    force.on("tick", function() {
-        link.attr("x1", function(d) { return d.source.x; })
-            .attr("y1", function(d) { return d.source.y; })
-            .attr("x2", function(d) { return d.target.x; })
-            .attr("y2", function(d) { return d.target.y; });
-
-        node.attr("transform", function(d)
-        {
-            //if(d.group == 1) {return "translate(0,0)";}
-            //else
-            return "translate(" + d.x + "," + d.y + ")";
-        });
-    });//force.on()
+    force.start();
+    //alert("in restart");
 }
+
+$(window).resize(function()
+{
+    //alert("window resize");
+    //createItemsChart(nodes,links);
+    //restart();
+});
