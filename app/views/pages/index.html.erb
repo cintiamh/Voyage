@@ -1,12 +1,4 @@
-<div data-role="page">
-
-  <div data-role="header" data-position="fixed">
-    <a href="index.html" data-theme="c"
-       data-role="button"
-       data-icon="home" data-iconpos="notext"
-       class="ui-btn-left">Home</a>
-    <h2>The Voyage</h2>
-  </div><!-- /header -->
+<div data-role="page" data-fullscreen="true">
 
   <div data-role="content" id="mainContent">
         <h1>
@@ -34,9 +26,15 @@
         <li><%= link_to 'Login', new_user_session_path %></li>
     <% end %>
 
+
+
   </div>
 
   <div data-role="footer" data-theme="c" data-position="fixed">
+    <a href="index.html" data-theme="c"
+       data-role="button"
+       data-icon="home" data-iconpos="notext"
+       class="ui-btn-left">Home</a>
     <a id="footerButton" class="centered" href="#permaMenu" data-rel="popup" data-icon="bars" data-iconpos="top" data-theme="c"></a>
   </div>
 

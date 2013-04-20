@@ -1,12 +1,6 @@
-<div data-role="page" id="first_floor">
+<div data-role="page" id="first_floor" data-fullscreen="true">
 
     <div data-role="header" data-position="fixed">
-        <a href="index.html" data-theme="c"
-           data-role="button"
-           data-icon="home" data-iconpos="notext"
-           class="ui-btn-left">Home</a>
-        <h2>The Voyage</h2>
-
       <div data-role="navbar">
         <ul>
           <li><a href="#first_floor" class="ui-btn-active ui-state-persist">Floor 1</a></li>
@@ -21,8 +15,8 @@
 
     <div data-role="content" id="mainContent">
 
-      <div id="map" style="text-align:center; width:1024px; margin-left:auto; margin-right:auto;">
-        <img id="Image-Maps_floor_1" src="/assets/MAPv1_Floor1.png" usemap="#Image-Maps_floor_1" border="0" width="1024" height="513" alt="" />
+      <div id="1_map" style="text-align:center; width:100%; margin-left:auto; margin-right:auto;">
+        <img id="Image-Maps_floor_1" src="/assets/MAPv1_Floor1.png" usemap="#Image-Maps_floor_1" border="0" width="1024" height="768" alt="" />
         <map id="_Image-Maps_floor_1" name="Image-Maps_floor_1">
           <area shape="rect" id="gal1" coords="592,91,628,136" onclick="return galInfo(0)" alt="ice age" title="ice age"    />
           <area shape="rect" id="gal2" coords="631,91,705,137" onclick="return galInfo(1)" alt="amphibians" title="amphibians"    />
@@ -65,21 +59,21 @@
     </div>
 
     <div data-role="footer" data-theme="c" data-position="fixed">
+      <a href="index.html" data-theme="c"
+         data-role="button"
+         data-icon="home" data-iconpos="notext"
+         class="ui-btn-left">Home</a>
         <a id="footerButton" class="centered" href="#permaMenu" data-rel="popup" data-icon="bars" data-iconpos="top" data-theme="c"></a>
     </div>
 
     </div>
 
-</div>
 
-<div data-role="page" id="second_floor">
+</div>   <!--page First floor -->
+
+<div data-role="page" id="second_floor" data-fullscreen="true">
 
   <div data-role="header" data-position="fixed">
-    <a href="index.html" data-theme="c"
-       data-role="button"
-       data-icon="home" data-iconpos="notext"
-       class="ui-btn-left">Home</a>
-    <h2>The Voyage</h2>
     <div data-role="navbar">
       <ul>
         <li><a href="#first_floor">Floor 1</a></li>
@@ -93,7 +87,7 @@
 
   <div data-role="content" id="mainContent">
 
-    <div id="map" style="text-align:center; width:1024px; margin-left:auto; margin-right:auto;">
+    <div id="2_map" style="text-align:center; width:1024px; margin-left:auto; margin-right:auto;">
       <img id="Image-Maps_floor_2" src="/assets/MAPv1_Floor2.png" usemap="#Image-Maps_floor_2" border="0" width="1024" height="515" alt="" />
       <map id="_Image-Maps_floor_2" name="Image-Maps_floor_2">
         <area shape="rect" id="gal7" href="" coords="525,95,614,139" onclick="return galInfo(7)" alt="wildlife" title="wildlife"    />
@@ -137,22 +131,22 @@
     </div>
 
     <div data-role="footer" data-theme="c" data-position="fixed">
-        <a id="footerButton" class="centered" href="#permaMenu" data-rel="popup" data-icon="bars" data-iconpos="top" data-theme="c"></a>
+      <a href="index.html" data-theme="c"
+         data-role="button"
+         data-icon="home" data-iconpos="notext"
+         class="ui-btn-left">Home</a>
+      <a id="footerButton" class="centered" href="#permaMenu" data-rel="popup" data-icon="bars" data-iconpos="top" data-theme="c"></a>
     </div>
 
     </div>
 
-</div>
+
+</div>    <!-- page Second floor-->
 
 
-<div data-role="page" id="third_floor">
+<div data-role="page" id="third_floor" data-fullscreen="true">
 
   <div data-role="header" data-position="fixed">
-    <a href="index.html" data-theme="c"
-       data-role="button"
-       data-icon="home" data-iconpos="notext"
-       class="ui-btn-left">Home</a>
-    <h2>The Voyage</h2>
     <div data-role="navbar">
       <ul>
         <li><a href="#first_floor">Floor 1</a></li>
@@ -166,7 +160,7 @@
 
   <div data-role="content" id="mainContent">
 
-    <div id="map" style="text-align:center; width:1024px; margin-left:auto; margin-right:auto;">
+    <div id="3_map" style="text-align:center; width:1024px; margin-left:auto; margin-right:auto;">
       <img id="Image-Maps_floor_3" src="/assets/MAPv1_Floor3.png" usemap="#Image-Maps_floor_3" border="0" width="1024" height="515" alt="" />
       <map id="_Image-Maps_floor_3" name="Image-Maps_floor_3">
         <area shape="rect" id="gal12" coords="468,155,580,203" href="" onclick="return galInfo(12)" alt="Jurassic Overlook" title="Jurassic Overlook"    />
@@ -210,12 +204,16 @@
     </div>
 
     <div data-role="footer" data-theme="c" data-position="fixed">
+      <a href="index.html" data-theme="c"
+         data-role="button"
+         data-icon="home" data-iconpos="notext"
+         class="ui-btn-left">Home</a>
       <a id="footerButton" class="centered" href="#permaMenu" data-rel="popup" data-icon="bars" data-iconpos="top" data-theme="c"></a>
     </div>
 
   </div>
 
-</div>
+</div>     <!-- page Third floor-->
 
 
 <div id="checkin" data-role="dialog">
@@ -266,3 +264,15 @@
   <a href="#" onclick = "closeAllDialogs()" data-role="button">Done</a>
 
 </div>
+
+
+<script type="text/javascript" src="/assets/paloma/jquery.rwdImageMaps.js"></script>
+<script>
+    $(document).ready(function(e) {
+        $('#Image-Maps_floor_1').rwdImageMaps();
+        $('#Image-Maps_floor_2').rwdImageMaps();
+        $('#Image-Maps_floor_3').rwdImageMaps();
+
+    });
+</script>
+

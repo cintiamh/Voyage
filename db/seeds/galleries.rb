@@ -1,5 +1,0 @@
-Gallery.create(:id => 1, :name => "Gallery 1", :order => 1, :about => "This is gallery 1", :floor => 1)
-Gallery.create(:id => 2, :name => "Gallery 2", :order => 2, :about => "This is gallery 2", :floor => 1)
-Gallery.create(:id => 3, :name => "Gallery 3", :order => 3, :about => "This is gallery 3", :floor => 1)
-Gallery.create(:id => 4, :name => "Gallery 4", :order => 4, :about => "This is gallery 4", :floor => 1)
-Gallery.create(:id => 5, :name => "Gallery 5", :order => 5, :about => "This is gallery 5", :floor => 1)

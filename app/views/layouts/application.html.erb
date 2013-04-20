@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, target-density=device-dpi">
   <title>Voyage</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -26,7 +27,7 @@
       }; /* fixgeometry */
 
       $(document).ready(function() {
-          $(window).bind("orientationchange resize pageshow", fixgeometry);
+         // $(window).bind("orientationchange resize pageshow", fixgeometry);
       });
   </script>
 

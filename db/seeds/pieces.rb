@@ -1,5 +1,0 @@
-Piece.create(:id => 1, :title => "Item 1", :exhibited => true, :gallery_id => 1, :image_file_name => "1.png", :image_content_type => "image/png", :image_file_size => 38536, :image_updated_at => Thu, 18 Apr 2013 02:58:55 UTC +00:00)
-Piece.create(:id => 2, :title => "Item 2", :exhibited => true, :gallery_id => 2, :image_file_name => "2.png", :image_content_type => "image/png", :image_file_size => 36342, :image_updated_at => Thu, 18 Apr 2013 03:00:49 UTC +00:00)
-Piece.create(:id => 3, :title => "Item 3", :exhibited => true, :gallery_id => 3, :image_file_name => "3.png", :image_content_type => "image/png", :image_file_size => 22812, :image_updated_at => Thu, 18 Apr 2013 03:02:50 UTC +00:00)
-Piece.create(:id => 4, :title => "Item 4", :exhibited => true, :gallery_id => 4, :image_file_name => "4.png", :image_content_type => "image/png", :image_file_size => 34037, :image_updated_at => Thu, 18 Apr 2013 03:04:50 UTC +00:00)
-Piece.create(:id => 5, :title => "Item 5", :exhibited => true, :gallery_id => 5, :image_file_name => "5.png", :image_content_type => "image/png", :image_file_size => 34775, :image_updated_at => Thu, 18 Apr 2013 03:08:06 UTC +00:00)

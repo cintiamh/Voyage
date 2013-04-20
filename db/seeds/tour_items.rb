@@ -1,5 +1,0 @@
-TourItem.create(:id => 1, :tour_id => 1, :piece_id => 1, :fixed => false)
-TourItem.create(:id => 2, :tour_id => 1, :piece_id => 2, :fixed => false)
-TourItem.create(:id => 3, :tour_id => 1, :piece_id => 3, :fixed => false)
-TourItem.create(:id => 4, :tour_id => 1, :piece_id => 4, :fixed => false)
-TourItem.create(:id => 5, :tour_id => 1, :piece_id => 5, :fixed => false)

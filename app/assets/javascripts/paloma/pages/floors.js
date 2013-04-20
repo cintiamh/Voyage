@@ -1,4 +1,7 @@
 var identity, pieces_list, galleries_list, question_list, answer_list, after_info, connection_list;
+var gal_pos = [];
+var map_position;
+var map;
 
 (function(){
   // You access variables from before/around filters from _x object.
@@ -29,51 +32,54 @@ var identity, pieces_list, galleries_list, question_list, answer_list, after_inf
       after_info = params["after_info"];
       connection_list = params["connection_list"];
 
-
-    var gal_pos = [];
-
-      for(var i=0; i<galleries_list.length; i++)
-      {
-          var sel = 'gal' + parseInt(i+1);
-          var area_str = $('#'+sel).attr("coords");
-          var area = area_str.split(",");
-          gal_pos.push({"id":parseInt(i+1), min_x:area[0], max_x:area[2], min_y:area[1], max_y:area[3] });
-      }
-
-      var map_position = $('#Image-Maps_floor_1').position();
-      var map = $('#map');
-
-      for(i=0; i<pieces_list.length; i++)
-      {
-          var gal = pieces_list[i].gallery_id;
-          var pos = get_position_of_gallery(gal_pos, gal);
-
-          var left_pos = parseInt(map_position.left + (parseInt(gal_pos[pos].min_x) + parseInt(gal_pos[pos].max_x))/2);
-          left_pos -= 45;
-          var top_pos = parseInt(map_position.top + (parseInt(gal_pos[pos].min_y) + parseInt(gal_pos[pos].max_y))/2);
-          top_pos -= 45;
-          var item_num = parseInt(i+1);
-          var item_div = "<div id='item" + i + "' onclick='return atItemDialog(" + i + ")'></div>";
-          var div = $(item_div).appendTo(map);
-          div.addClass("circle");
-          div.append("<br><b>"+item_num+"</b>");
-          div.css("left",left_pos);
-          div.css("top",top_pos);
-          div.css("position","absolute");
-      }
-
-
-    /*var divtest = $("#d3test");
-      left_pos = parseInt(map_position.left + (parseInt(gal_pos[0].min_x) + parseInt(gal_pos[0].max_x))/2);
-      divtest.css("left",left_pos);
-      divtest.css("top",110);
-      divtest.css("position","absolute");*/
-      //divtest.css("top",110)
-
+      plot_items();
   };
 
 
 })();
+
+
+function plot_items()
+{
+    for(var i=0; i<galleries_list.length; i++)
+    {
+        var sel = 'gal' + parseInt(i+1);
+        var area_str = $('#'+sel).attr("coords");
+        var area = area_str.split(",");
+        gal_pos.push({"id":parseInt(i+1), min_x:area[0], max_x:area[2], min_y:area[1], max_y:area[3] });
+    }
+
+    map_position = $('#Image-Maps_floor_1').position();
+    map = $('#1_map');
+
+    for(i=0; i<pieces_list.length; i++)
+    {
+        var gal = pieces_list[i].gallery_id;
+        var pos = get_position_of_gallery(gal_pos, gal);
+
+        var left_pos = parseInt(map_position.left + (parseInt(gal_pos[pos].min_x) + parseInt(gal_pos[pos].max_x))/2);
+        left_pos -= 45;
+        var top_pos = parseInt(map_position.top + (parseInt(gal_pos[pos].min_y) + parseInt(gal_pos[pos].max_y))/2);
+        top_pos -= 45;
+        var item_num = parseInt(i+1);
+        var item_div = "<div id='item" + i + "' onclick='return atItemDialog(" + i + ")'></div>";
+        var div = $(item_div).appendTo(map);
+        div.addClass("circle");
+        div.append("<br><b>"+item_num+"</b>");
+        div.css("left",left_pos);
+        div.css("top",top_pos);
+        div.css("position","absolute");
+    }
+
+
+    /*var divtest = $("#d3test");
+     left_pos = parseInt(map_position.left + (parseInt(gal_pos[0].min_x) + parseInt(gal_pos[0].max_x))/2);
+     divtest.css("left",left_pos);
+     divtest.css("top",110);
+     divtest.css("position","absolute");*/
+    //divtest.css("top",110)
+
+}
 
 function get_position_of_gallery(gal_pos, id)
 {
