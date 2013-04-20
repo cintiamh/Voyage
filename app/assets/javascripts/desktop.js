@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require kinetic-v4.4.3.min
+//= require pages
