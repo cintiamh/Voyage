@@ -1,0 +1,29 @@
+<h1>Listing tour_histories</h1>
+
+<table>
+  <tr>
+    <th>Chosen date</th>
+    <th>Executed date</th>
+    <th>Tour</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tour_histories.each do |tour_history| %>
+  <tr>
+    <td><%= tour_history.chosen_date %></td>
+    <td><%= tour_history.executed_date %></td>
+    <td><%= tour_history.tour %></td>
+    <td><%= tour_history.user %></td>
+    <td><%= link_to 'Show', tour_history %></td>
+    <td><%= link_to 'Edit', edit_tour_history_path(tour_history) %></td>
+    <td><%= link_to 'Destroy', tour_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tour history', new_tour_history_path %>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Chosen date:</b>
+  <%= @tour_history.chosen_date %>
+</p>
+
+<p>
+  <b>Executed date:</b>
+  <%= @tour_history.executed_date %>
+</p>
+
+<p>
+  <b>Tour:</b>
+  <%= @tour_history.tour %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @tour_history.user %>
+</p>
+
+
+<%= link_to 'Edit', edit_tour_history_path(@tour_history) %> |
+<%= link_to 'Back', tour_histories_path %>

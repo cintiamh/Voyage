@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree ./admin
+
+$(function (){
+    $(".info_tip").popover();
+    $(".info_tip").preventDefault();
+});
