@@ -13,3 +13,16 @@ jQuery ->
     regexp = new RegExp($(this).data('id'), 'g')
     $(this).before($(this).data('fields').replace(regexp, time))
     event.preventDefault()
+
+  $('.natural_history').hide()
+
+  $('#piece_museum').change ->
+    museum = $('#piece_museum').val()
+    if museum == "Art"
+      $('.art').show()
+      $('.natural_history').hide()
+    else if museum == "Natural History"
+      $('.art').hide()
+      $('.natural_history').show()
+
+  $('.tooltip_right').tooltip()

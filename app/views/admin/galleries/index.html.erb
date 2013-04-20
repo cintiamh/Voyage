@@ -1,10 +1,10 @@
-<h1>Listing galleries</h1>
+<h1>Galleries</h1>
 
 <% if @galleries.length == 0 %>
     <p>There are no galleries in the inventory.</p>
 <% else %>
 
-    <table class="table table-striped">
+    <table class="table table-bordered table-striped">
         <tr>
             <th>Name</th>
             <th>Order</th>
@@ -20,8 +20,8 @@
                 <td><%= gallery.order %></td>
                 <td><%= gallery.floor %></td>
                 <td><%= gallery.about %></td>
-                <td><%= link_to 'Edit', edit_admin_gallery_path(gallery) %></td>
-                <td><%= link_to 'Destroy', [:admin, gallery], method: :delete, data: {confirm: 'Are you sure?' } %></td>
+                <td style="text-align: center;"><%= link_to raw("<i class='icon-pencil'></i>"), edit_admin_gallery_path(gallery), "data-toggle" => "tooltip", "data-placement" => "right", :title => "Edit", :class => "tooltip_right" %></td>
+                <td style="text-align: center;"><%= link_to raw("<i class='icon-trash'></i>"), [:admin, gallery], method: :delete, data: {confirm: 'Are you sure you want to delete this item? This action can NOT be reversed.' }, "data-toggle" => "tooltip", "data-placement" => "right", :title => "Delete", :class => "tooltip_right" %></td>
             </tr>
         <% end %>
     </table>

@@ -1,0 +1,210 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
+
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+html {
+  height: 100%;
+}
+
+/* 1C766C */
+
+body {
+  /* fallback */
+  background-color: #218980;
+  /*background: url(images/linear_bg_2.png);
+  background-repeat: repeat-x;*/
+
+  /* Safari 4-5, Chrome 1-9 */
+  background-color: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#005A50), to(#218980));
+
+  /* Safari 5.1, Chrome 10+ */
+  background-color: -webkit-linear-gradient(top, #218980, #005A50);
+
+  /* Firefox 3.6+ */
+  background-color: -moz-linear-gradient(top, #218980, #005A50);
+
+  /* IE 10 */
+  background-color: -ms-linear-gradient(top, #218980, #005A50);
+
+  /* Opera 11.10+ */
+  background-color: -o-linear-gradient(top, #218980, #005A50);
+
+  background-image: url('desktop/WavesTile.png');
+  background-repeat: repeat;
+  /*background: #218980 url('desktop/WavesTile.png') repeat;*/
+
+  color: #EEEEEE;
+  font-family: "Poiret One", "Quicksand";
+  font-size: 1.2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+  color: #F4BB3F;
+}
+
+.main_content {
+  border: 0;
+  border-left: 3px dotted #F4BB3F;
+  border-right: 3px dotted #F4BB3F;
+}
+
+.header {
+  border-bottom: 3px dotted #F4BB3F;
+}
+
+.dark_back {
+  background-color: #113333;
+  color: #9DDCBC;
+}
+
+.dark_back h1 {
+  color: #F4BB3F;
+}
+
+.text_content {
+  padding: 20px;
+}
+
+.pre_footer {
+  border-top: 3px dotted #F4BB3F;
+}
+
+.carnegie_museums {
+  height: 100%;
+  vertical-align: middle;
+}
+
+.trunk {
+  width: 328px;
+  height: 200px;
+  background-image: url("desktop/trunk2.png");
+
+  -webkit-animation: play .8s steps(80) infinite;
+  -moz-animation: play .8s steps(80) infinite;
+  -ms-animation: play .8s steps(80) infinite;
+  -o-animation: play .8s steps(80) infinite;
+  animation: play .8s steps(80) infinite;
+}
+
+@-webkit-keyframes play {
+  from { background-position:    0px; }
+  to { background-position: -2658px; }
+}
+
+@-moz-keyframes play {
+  from { background-position:    0px; }
+  to { background-position: -500px; }
+}
+
+@-ms-keyframes play {
+  from { background-position:    0px; }
+  to { background-position: -500px; }
+}
+
+@-o-keyframes play {
+  from { background-position:    0px; }
+  to { background-position: -500px; }
+}
+
+@keyframes play {
+  from { background-position:    0px; }
+  to { background-position: -500px; }
+}
+/*
+<TextureAtlas imagePath="trunk2.png" width="4096" height="2048">
+    <sprite n="Trunk frames0000.png" x="2658" y="1226" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0001.png" x="2326" y="1226" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0002.png" x="1994" y="1226" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0003.png" x="1662" y="1226" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0004.png" x="1330" y="1226" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0005.png" x="998" y="1226" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0006.png" x="666" y="1226" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0007.png" x="334" y="1226" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0008.png" x="2" y="1226" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0009.png" x="3654" y="1022" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0010.png" x="3322" y="1022" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0011.png" x="2990" y="1022" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0012.png" x="2658" y="1022" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0013.png" x="2326" y="1022" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0014.png" x="1994" y="1022" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0015.png" x="1662" y="1022" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0016.png" x="1330" y="1022" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0017.png" x="998" y="1022" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0018.png" x="666" y="1022" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0019.png" x="334" y="1022" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0020.png" x="2" y="1022" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0021.png" x="3654" y="818" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0022.png" x="3322" y="818" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0023.png" x="2990" y="818" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0024.png" x="2658" y="818" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0025.png" x="2326" y="818" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0026.png" x="1994" y="818" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0027.png" x="1662" y="818" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0028.png" x="1330" y="818" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0029.png" x="998" y="818" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0030.png" x="666" y="818" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0031.png" x="334" y="818" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0032.png" x="2" y="818" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0033.png" x="3654" y="614" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0034.png" x="3322" y="614" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0035.png" x="2990" y="614" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0036.png" x="2658" y="614" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0037.png" x="2326" y="614" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0038.png" x="1994" y="614" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0039.png" x="1662" y="614" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0040.png" x="1330" y="614" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0041.png" x="998" y="614" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0042.png" x="666" y="614" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0043.png" x="334" y="614" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0044.png" x="2" y="614" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0045.png" x="3654" y="410" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0046.png" x="3322" y="410" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0047.png" x="2990" y="410" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0048.png" x="2658" y="410" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0049.png" x="2326" y="410" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0050.png" x="1994" y="410" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0051.png" x="1662" y="410" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0052.png" x="1330" y="410" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0053.png" x="998" y="410" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0054.png" x="666" y="410" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0055.png" x="334" y="410" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0056.png" x="2" y="410" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0057.png" x="3654" y="206" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0058.png" x="3322" y="206" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0059.png" x="2990" y="206" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0060.png" x="2658" y="206" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0061.png" x="2326" y="206" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0062.png" x="1994" y="206" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0063.png" x="1662" y="206" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0064.png" x="1330" y="206" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0065.png" x="998" y="206" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0066.png" x="666" y="206" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0067.png" x="334" y="206" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0068.png" x="2" y="206" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0069.png" x="3654" y="2" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0070.png" x="3322" y="2" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0071.png" x="2990" y="2" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0072.png" x="2658" y="2" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0073.png" x="2326" y="2" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0074.png" x="1994" y="2" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0075.png" x="1662" y="2" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0076.png" x="1330" y="2" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0077.png" x="998" y="2" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0078.png" x="666" y="2" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0079.png" x="334" y="2" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+    <sprite n="Trunk frames0080.png" x="2" y="2" w="328" h="200" oX="0" oY="0" oW="328" oH="188"/>
+</TextureAtlas>
+*/

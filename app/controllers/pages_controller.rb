@@ -1,5 +1,8 @@
 
 class PagesController < ApplicationController
+
+  layout :resolve_layout
+
   def index
 
   end
@@ -41,6 +44,21 @@ class PagesController < ApplicationController
                    :question_list => @questions, :answer_list => @answers,
                    :connection_list => @connections, :after_info => @after_info}
 
+  end
+
+  def desktop
+
+  end
+
+  private
+
+  def resolve_layout
+    case action_name
+      when "desktop"
+        "desktop"
+      else
+        "application"
+    end
   end
 
 end

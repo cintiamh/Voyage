@@ -6,9 +6,25 @@
 </div>
 <table class="table table-bordered table-striped">
     <tr>
-        <td>Title</td>
+        <td>Museum</td>
+        <td><%= @piece.museum %></td>
+    </tr>
+    <tr>
+        <td>
+            <% if @piece.museum == "Natural History" %>
+                Name
+            <% else %>
+                Title
+            <% end %>
+        </td>
         <td><%= @piece.title %></td>
     </tr>
+    <% if @piece.museum == "Natural History" %>
+        <tr>
+            <td>Latin Name</td>
+            <td><%= @piece.latin %></td>
+        </tr>
+    <% end %>
     <tr>
         <td>Exhibited</td>
         <td>
@@ -19,6 +35,7 @@
             <% end %>
         </td>
     </tr>
+    <% unless @piece.museum == "Natural History" %>
     <tr>
         <td>Creator</td>
         <td>
@@ -27,7 +44,7 @@
             <% end %>
         </td>
     </tr>
-
+    <% end %>
     <tr>
         <td>Gallery</td>
         <td>
@@ -37,9 +54,23 @@
         </td>
     </tr>
     <tr>
-        <td>Creation Location</td>
+        <td>Location</td>
         <td><%= @piece.location %></td>
     </tr>
+    <% if @piece.museum == "Natural History" %>
+        <tr>
+            <td>Period</td>
+            <td><%= @piece.period %></td>
+        </tr>
+        <tr>
+            <td>Collection number</td>
+            <td><%= @piece.collection_number %></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><%= @piece.description %></td>
+        </tr>
+    <% else %>
     <tr>
         <td>Medium</td>
         <td><%= @piece.medium %></td>
@@ -56,6 +87,7 @@
         <td>Accession number</td>
         <td><%= @piece.accession_number %></td>
     </tr>
+    <% end %>
 </table>
 
 <div class="tabbable">

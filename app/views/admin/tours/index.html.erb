@@ -4,30 +4,30 @@
     <p>There are no tours.</p>
 <% else %>
 
-<table class="table table-striped">
-  <tr>
-    <th>Title</th>
-    <th>Curated</th>
-    <th>Public</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Title</th>
+            <th>Curated</th>
+            <th>Public</th>
+            <th>User</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
 
-<% @tours.each do |tour| %>
-  <tr>
-    <td><%= tour.title %></td>
-    <td><%= tour.curated %></td>
-    <td><%= tour.public %></td>
-    <td><%= tour.user %></td>
-    <td><%= link_to 'Show', [:admin, tour] %></td>
-    <td><%= link_to 'Edit', edit_admin_tour_path(tour) %></td>
-    <td><%= link_to 'Destroy', [:admin, tour], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+        <% @tours.each do |tour| %>
+            <tr>
+                <td><%= tour.title %></td>
+                <td><%= tour.curated %></td>
+                <td><%= tour.public %></td>
+                <td><%= tour.user %></td>
+                <td style="text-align: center;"><%= link_to raw("<i class='icon-file'></i>"), [:admin, tour], "data-toggle" => "tooltip", "data-placement" => "right", :title => "View", :class => "tooltip_right" %></td>
+                <td style="text-align: center;"><%= link_to raw("<i class='icon-pencil'></i>"), edit_admin_tour_path(tour), "data-toggle" => "tooltip", "data-placement" => "right", :title => "Edit", :class => "tooltip_right" %></td>
+                <td style="text-align: center;"><%= link_to raw("<i class='icon-trash'></i>"), [:admin, tour], method: :delete, data: {confirm: 'Are you sure you want to delete this item? This action can NOT be reversed.' }, "data-toggle" => "tooltip", "data-placement" => "right", :title => "Delete", :class => "tooltip_right" %></td>
+            </tr>
+        <% end %>
+    </table>
 <% end %>
-</table>
-<% end %>
-<br />
+<br/>
 
 <%= link_to 'New Tour', new_admin_tour_path %>
