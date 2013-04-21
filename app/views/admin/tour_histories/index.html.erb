@@ -1,0 +1,27 @@
+<h1>Tours History</h1>
+
+<% if @tour_histories.length <= 0 %>
+    <p>There are no recent tours.</p>
+<% else %>
+
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Chosen date</th>
+            <th>Executed date</th>
+            <th>Tour</th>
+            <th>User</th>
+            <th></th>
+        </tr>
+
+        <% @tour_histories.each do |tour_history| %>
+            <tr>
+                <td><%= tour_history.chosen_date.to_time.strftime("%m/%d/%Y") if tour_history.chosen_date %></td>
+                <td><%= tour_history.executed_date.to_time.strftime("%m/%d/%Y") if tour_history.executed_date %></td>
+                <td><%= tour_history.tour.title if tour_history.tour %></td>
+                <td><%= tour_history.user.email if tour_history.user %></td>
+                <td style="text-align: center;"><%= link_to raw("<i class='icon-file'></i>"), [:admin, tour_history], "data-toggle" => "tooltip", "data-placement" => "right", :title => "View", :class => "tooltip_right" %></td>
+            </tr>
+        <% end %>
+    </table>
+
+<% end %>

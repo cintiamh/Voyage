@@ -17,7 +17,7 @@
     </tr>
     <tr>
         <td>Creator</td>
-        <td><%= @tour.user %></td>
+        <td><%= @tour.user.email if @tour.user %></td>
     </tr>
     <tr>
         <td>Public</td>
