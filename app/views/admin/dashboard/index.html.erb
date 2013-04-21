@@ -6,9 +6,9 @@
             <% if @comments.length <= 0 %>
                 <p>There are no comments.</p>
             <% else %>
-            <ul>
+            <ul class="dashboard_list">
                 <% @comments.each do |comment| %>
-                    <li><%= comment.content %></li>
+                    <li><%= link_to comment.content, edit_admin_comment_path(comment) %></li>
                 <% end %>
             </ul>
             <% end %>
@@ -23,9 +23,9 @@
             <% if @tour_histories.length <= 0 %>
                 <p>There are no recent tours.</p>
             <% else %>
-                <ul>
+                <ul class="dashboard_list">
                     <% @tour_histories.each do |tour| %>
-                        <li><%= tour.tour.title %></li>
+                        <li><%= link_to tour.tour.title, [:admin, tour] %></li>
                     <% end %>
                 </ul>
             <% end %>
@@ -40,9 +40,9 @@
             <% if @users.length <= 0 %>
                 <p>There are no users.</p>
             <% else %>
-                <ul>
+                <ul class="dashboard_list">
                     <% @users.each do |user| %>
-                        <li><%= user.email %></li>
+                        <li><%= link_to user.email, [:admin, user] %></li>
                     <% end %>
                 </ul>
             <% end %>

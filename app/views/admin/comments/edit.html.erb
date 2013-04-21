@@ -1,6 +1,43 @@
-<h1>Editing comment</h1>
+<h1>Comment</h1>
 
-<%= render 'form' %>
+<p>
+    <b>User:</b>
+    <%= link_to @comment.user.email, [:admin, @comment.user] if @comment.user %>
+</p>
+<% if @comment.piece %>
+<p>
+    <b>Piece:</b>
+    <%= link_to @comment.piece.title, [:admin, @comment.piece] %>
+</p>
+<% end %>
+<% if @comment.connection %>
+<p>
+    <b>Connection:</b>
+    <%= link_to @comment.connection.title, [:admin, @comment.piece] %>
+</p>
+<% end %>
+<% if @comment.tour %>
+<p>
+    <b>Tour:</b>
+    <%= link_to @comment.tour.title, [:admin, @comment.tour] %>
+</p>
+<% end %>
+<div class="well">
+    <%= @comment.content %>
+</div>
+<%= form_for [:admin, @comment], :html => {:class => "form-horizontal"} do |f| %>
+    <%= f.hidden_field :content %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :piece_id %>
+    <%= f.hidden_field :connection_id %>
+    <%= f.hidden_field :tour_id %>
+    <label class="checkbox">
+        <%= f.check_box :approved %> Approved
+    </label>
+    <div class="control-group">
+        <%= f.submit "Save", :class => "btn" %>
+    </div>
+<% end %>
 
-<%= link_to 'Show', @comment %> |
-<%= link_to 'Back', comments_path %>
+
+<%= link_to 'Back', admin_comments_path %>
