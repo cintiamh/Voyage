@@ -31,7 +31,7 @@ var tour_list;
       tour_list = params['tours_list'];
       for(var i = 0; i<tour_list.length; i++)
       {
-          nodes.push({"id":i,"title":tour_list[i].title});
+          nodes.push({"id":i,"title":tour_list[i].title,"image":tour_list[i].image});
           //links -> {source, target, value}
           var target = i+1;
           if(target >= tour_list.length){target = 0;}
@@ -93,7 +93,19 @@ function createChart(nodes, links)
         .attr("class", "node")
         .call(force.drag);
 
-    node.append("circle")
+    node.append("image")
+        .attr("xlink:href", function(d) {return d.image})
+        .attr("x", -8)
+        .attr("y", -8)
+        .attr("height", 200)
+        .attr("width",200)
+        .attr("onclick",function(d)
+        {
+            return "return aboutTours("+d.id+")";
+        });
+
+
+    /*node.append("circle")
         .attr("x",-8)
         .attr("y",-8)
         .attr("r",30)
@@ -106,7 +118,7 @@ function createChart(nodes, links)
     node.append("text")
         .text(function(d){return d.title;})
         .attr("x", "-0.75em")
-        .attr("dy", ".35em");
+        .attr("dy", ".35em");*/
 
     force.on("tick", function() {
         link.attr("x1", function(d) { return d.source.x; })

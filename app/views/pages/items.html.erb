@@ -1,4 +1,4 @@
-<div data-role="page" data-fullscreen="true">
+<!--<div data-role="page" data-fullscreen="true">
 
   <div data-role="header" data-position="fixed">
     <a href="index.html" data-theme="c"
@@ -42,16 +42,18 @@
 
   </div>
 
-  <div data-role="footer" data-theme="c" data-position="fixed">
-    <a href="index.html" data-theme="c"
-       data-role="button"
-       data-icon="home" data-iconpos="notext"
-       class="ui-btn-left">Home</a>
-    <a id="footerButton" class="centered" href="#permaMenu" data-rel="popup" data-icon="bars" data-iconpos="top" data-theme="c"></a>
+<div data-role="footer" data-theme="c" data-position="fixed">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="index.html" data-theme="c" class="centered"
+             data-role="button"
+             data-icon="home" data-iconpos="notext"
+             class="ui-btn-left"></a></li>
+      <li><a id="footerButton" class="centered" href="#permaMenu" data-rel="popup" data-icon="bars" data-iconpos="top" data-theme="c"></a>  </li>
+    </ul>
   </div>
 
 </div>
-
 <div data-role="popup" id="teaser" class="ui-content">
   <a href="#"
      data-theme="c"

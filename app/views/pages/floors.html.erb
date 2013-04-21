@@ -228,23 +228,24 @@
 </div>     <!-- page Third floor-->
 
 
-<div id="checkin" data-role="dialog">
+<div id="checkin" data-role="dialog" data-theme="c">
  <!-- <div data-role="content">-->
     <a href="#"
        data-theme="c"
        data-rel="back" data-role="button"
        data-icon="delete" data-iconpos="notext"
        class="ui-btn-right">Close</a>
-  <form>
-    <fieldset id="checkinQuestion">
-      <label id="question"></label>
+  <h2 id="question" style="color:'white"></h2>
+  <div data-role="fieldcontain">
+    <fieldset id="checkinQuestion" data-role="controlgroup">
 
-      <input type="radio" name="answers" id="answer0"><label id="answerLbl0"></label>
-      <input type="radio" name="answers" id="answer1"><label id="answerLbl1"></label>
-      <input type="radio" name="answers" id="answer2"><label id="answerLbl2"></label>
-      <input type="radio" name="answers" id="answer3"><label id="answerLbl3"></label>
+      <select name="checkinQuestionAnswers" id="answers">
+
+      </select>
+
     </fieldset>
-  </form>
+  </div>
+
   <button onclick="checkAnswer()">Submit</button>
  <!-- </div>-->
 </div>
