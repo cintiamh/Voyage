@@ -55,7 +55,7 @@ var tour_id;
 function constructNodeLinks()
 {
     //TODO: replace with GO art
-    nodes.push({"id":-1,"title":"GO", "group":"NODE", "charge":-500, "image":"/assets/DOT.png"});
+    nodes.push({"id":-1,"title":"GO", "group":"NODE", "charge":-500, "image":"/assets/PITTSBURGHER.png"});
     for(var i = 0; i<pieces_list.length; i++)
     {
         //circle case
