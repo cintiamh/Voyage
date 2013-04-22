@@ -94,13 +94,13 @@ function createChart(nodes, links)
         .on("tap",function(e,d)
         {
             $(e.target).addClass("tap");
-            alert("tapped");
+            //alert("tapped");
             aboutTours(d.id);
         })
         .on("click",function(e,d)
         {
             $(e.target).addClass("click");
-            alert("tapped");
+            //alert("tapped");
             aboutTours(d.id);
         })
         .call(force.drag);
