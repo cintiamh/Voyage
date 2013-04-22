@@ -14,11 +14,74 @@
 
     <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Aguafina+Script|Crafty+Girls' rel='stylesheet' type='text/css'>
 </head>
 <body>
+<div class="navbar navbar-static-top navbar-inverse">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#">The Voyage</a>
+            <div class="nav-collapse collapse">
+                <p class="navbar-text pull-right">
+                    Logged in as <a href="#" class="navbar-link">cintiamh@gmail.com</a>
+                </p>
+                <ul class="nav">
+                    <li <%= raw("class=\"active\"") if @page == "home" %>>
+                        <%= link_to "Home", desktop_index_path %>
+                    </li>
+                    <li <%= raw("class=\"active\"") if @page == "comments" %>>
+                        <%= link_to "Comments", desktop_comments_path %>
+                    </li>
+                    <li class="dropdown <%= raw("active\"") if @page == "my_inventory" %>">
+                    <%= link_to raw("My Inventory <b class='caret'></b>"), "#", :class => "dropdown-toggle", "data-toggle" => "dropdown" %>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <%= link_to "My Tours", desktop_my_tours_path %>
+                            </li>
+                            <li>
+                                <%= link_to "My Comments", desktop_my_comments_path %>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
 
 <div class="container main_content">
-    <%= yield %>
+    <div class="row-fluid header">
+        <div class="span12">
+            <%= image_tag "desktop/Logo2.png" %>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <%= yield %>
+        </div>
+    </div>
+    <div class="row-fluid pre_footer">
+        <div class="span6">
+            <div class="text_content carnegie_museums">
+                <%= image_tag "desktop/CarnegieMuseums.png" %>
+            </div>
+        </div>
+        <div class="span6" style="text-align: right;">
+            <%= image_tag "desktop/PostCard_long.png" %>
+        </div>
+    </div>
+    <div class="row-fluid dark_back">
+        <div class="span12">
+            <div class="text_content">
+                <p>Carnegie Museums of Art and Natural History</p>
+            </div>
+        </div>
+    </div>
 </div> <!-- /container -->
 
 </body>

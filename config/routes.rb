@@ -1,5 +1,15 @@
 Voyage::Application.routes.draw do
 
+  get "desktop/index"
+
+  get "desktop/comments"
+
+  get "desktop/my_tours"
+
+  get "desktop/my_comments"
+
+  get "desktop/find_tour"
+
   devise_for :users, path_names: { sign_in: "login", sign_out: "logout" },
              controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
