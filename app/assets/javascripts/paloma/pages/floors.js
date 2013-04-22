@@ -119,6 +119,13 @@ function atItemDialog(i)
     var q = $('#question');
     q.text(question_list[i].content);
     var answers = answer_list[i];
+
+    var options = $("option");
+    for(var i=0; i<options.length; i++)
+    {
+        options[i].remove();
+    }
+
     var blank_option = "<option></option>";
     $(blank_option).appendTo(parent);
 
@@ -128,7 +135,7 @@ function atItemDialog(i)
         {
             rightAnswer = j;
         }
-        var options = "<option value='" + j + "'>" + answers[j].content + "</option>";
+        options = "<option value='" + j + "'>" + answers[j].content + "</option>";
         $(options).appendTo(parent);
     }
    // var submit = "<button type='button' onclick='return checkAnswer(" + rightAnswer + ")'>Submit</button>";
@@ -191,5 +198,6 @@ function closeAllDialogs()
     {
         options[i].remove();
     }
+    $( "#checkin" ).dialog( "close" );
     $.mobile.changePage("../pages/floors?identity=" + identity);
 }

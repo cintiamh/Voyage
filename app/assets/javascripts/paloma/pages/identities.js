@@ -109,8 +109,8 @@ function createChart(nodes, links)
         .attr("xlink:href", function(d) {return d.image})
         .attr("x", -8)
         .attr("y", -8)
-        .attr("height", 200)
-        .attr("width",200)
+        .attr("height", 100)
+        .attr("width",100)
         .attr("onclick",function(d)
         {
             return "return aboutTours("+d.id+")";
