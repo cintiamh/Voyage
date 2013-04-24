@@ -1,5 +1,7 @@
 Voyage::Application.routes.draw do
 
+  get "mobile/index"
+
   get "desktop/index"
 
   get "desktop/comments"
