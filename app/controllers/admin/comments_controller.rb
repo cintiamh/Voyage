@@ -2,6 +2,9 @@ class Admin::CommentsController < Admin::ResourceController
   # GET /comments
   # GET /comments.json
   def index
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @comments = Comment.all
 
     respond_to do |format|
@@ -13,6 +16,9 @@ class Admin::CommentsController < Admin::ResourceController
   # GET /comments/1
   # GET /comments/1.json
   def show
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @comment = Comment.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +30,9 @@ class Admin::CommentsController < Admin::ResourceController
   # GET /comments/new
   # GET /comments/new.json
   def new
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @comment = Comment.new
 
     respond_to do |format|
@@ -34,6 +43,9 @@ class Admin::CommentsController < Admin::ResourceController
 
   # GET /comments/1/edit
   def edit
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @comment = Comment.find(params[:id])
   end
 

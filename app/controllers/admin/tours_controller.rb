@@ -3,6 +3,9 @@ class Admin::ToursController < Admin::ResourceController
   # GET /tours
   # GET /tours.json
   def index
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @page = "tours"
     @tours = Tour.all
 
@@ -15,6 +18,9 @@ class Admin::ToursController < Admin::ResourceController
   # GET /tours/1
   # GET /tours/1.json
   def show
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @page = "tours"
     @tour = Tour.find(params[:id])
 
@@ -27,6 +33,9 @@ class Admin::ToursController < Admin::ResourceController
   # GET /tours/new
   # GET /tours/new.json
   def new
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @page = "tours"
     @tour = Tour.new
     @pieces = Piece.find(:all, :order => "title ASC")
@@ -39,6 +48,9 @@ class Admin::ToursController < Admin::ResourceController
 
   # GET /tours/1/edit
   def edit
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @page = "tours"
     @tour = Tour.find(params[:id])
     @pieces = Piece.find(:all, :order => "title ASC")

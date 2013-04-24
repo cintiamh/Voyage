@@ -2,6 +2,9 @@ class Admin::CreatorsController < Admin::ResourceController
   # GET /creators
   # GET /creators.json
   def index
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @page = "pieces"
     @creators = Creator.all
 
@@ -14,6 +17,9 @@ class Admin::CreatorsController < Admin::ResourceController
   # GET /creators/1
   # GET /creators/1.json
   def show
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @page = "pieces"
     @creator = Creator.find(params[:id])
 
@@ -26,6 +32,9 @@ class Admin::CreatorsController < Admin::ResourceController
   # GET /creators/new
   # GET /creators/new.json
   def new
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @page = "pieces"
     @creator = Creator.new
 
@@ -37,6 +46,9 @@ class Admin::CreatorsController < Admin::ResourceController
 
   # GET /creators/1/edit
   def edit
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @page = "pieces"
     @creator = Creator.find(params[:id])
   end

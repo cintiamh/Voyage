@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :likes
 
-  attr_accessible :email, :first_name, :last_name, :modification_date, :username, :provider, :uid
+  attr_accessible :email, :first_name, :last_name, :modification_date, :username, :provider, :uid, :admin
 
   scope :recent, :limit => 10, :order => 'created_at DESC'
 

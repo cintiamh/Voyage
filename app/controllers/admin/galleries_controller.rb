@@ -2,6 +2,9 @@ class Admin::GalleriesController < Admin::ResourceController
   # GET /galleries
   # GET /galleries.json
   def index
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @page = "pieces"
     @galleries = Gallery.all
 
@@ -14,6 +17,9 @@ class Admin::GalleriesController < Admin::ResourceController
   # GET /galleries/1
   # GET /galleries/1.json
   def show
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @page = "pieces"
     @gallery = Gallery.find(params[:id])
 
@@ -26,6 +32,9 @@ class Admin::GalleriesController < Admin::ResourceController
   # GET /galleries/new
   # GET /galleries/new.json
   def new
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @page = "pieces"
     @gallery = Gallery.new
 
@@ -37,6 +46,9 @@ class Admin::GalleriesController < Admin::ResourceController
 
   # GET /galleries/1/edit
   def edit
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @page = "pieces"
     @gallery = Gallery.find(params[:id])
   end

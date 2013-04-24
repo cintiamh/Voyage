@@ -8,4 +8,5 @@ class Admin::Responder < ActionController::Responder
     @flash_now = :on_failure
   end
 
+
 end

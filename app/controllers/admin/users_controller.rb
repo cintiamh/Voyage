@@ -3,7 +3,11 @@ class Admin::UsersController < Admin::ResourceController
   # GET /users
   # GET /users.json
   def index
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @users = User.all
+    @admin_users = User.all(:conditions => { :admin => true})
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +18,9 @@ class Admin::UsersController < Admin::ResourceController
   # GET /users/1
   # GET /users/1.json
   def show
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @user = User.find(params[:id])
 
     respond_to do |format|
@@ -25,6 +32,9 @@ class Admin::UsersController < Admin::ResourceController
   # GET /users/new
   # GET /users/new.json
   def new
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @user = User.new
 
     respond_to do |format|
@@ -35,6 +45,9 @@ class Admin::UsersController < Admin::ResourceController
 
   # GET /users/1/edit
   def edit
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @user = User.find(params[:id])
   end
 
