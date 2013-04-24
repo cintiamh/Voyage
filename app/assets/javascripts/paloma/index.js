@@ -5,3 +5,5 @@
 //= require ./application/_manifest.js
 //= require ./resource/_manifest.js
 //= require ./countries/_manifest.js
+//= require ./desktop/_manifest.js
+//= require ./mobile/_manifest.js

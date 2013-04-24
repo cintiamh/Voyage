@@ -58,12 +58,18 @@
                 <%= link_to_add_fields "Add Piece", f, :tour_items %>
             </div>
             <div class="tab-pane" id="tab2">
+                <p>
+                    (<a href="#" class="info_tip" data-toggle="popover" data-placement="right" data-content="Connections are the interesting links between pieces in the tour that are shown to the visitor." title="Connections">What is this?</a>)
+                </p>
                 <%= f.fields_for :connections do |builder| %>
                     <%= render 'connection_fields', :f => builder %>
                 <% end %>
                 <%= link_to_add_fields "Add Connection", f, :connections %>
             </div>
             <div class="tab-pane" id="tab3">
+                <p>
+                    (<a href="#" class="info_tip" data-toggle="popover" data-placement="right" data-content="These are the information which will be shown to the visitor prior and during the visit at the museum." title="Informations">What is this?</a>)
+                </p>
                 <%= f.fields_for :informations do |builder| %>
                     <%= render 'information_fields', :f => builder %>
                 <% end %>

@@ -1,2 +1,30 @@
 <h1>Users</h1>
 
+<% if @users.length <= 0 %>
+    <p>There are no users.</p>
+<% else %>
+
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Modification date</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.first_name %></td>
+    <td><%= user.last_name %></td>
+    <td><%= user.username %></td>
+    <td><%= user.email %></td>
+    <td><%= user.modification_date %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+  </tr>
+<% end %>
+</table>
+<% end %>

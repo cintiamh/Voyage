@@ -1,0 +1,25 @@
+<h1>Tour History</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Chosen date:</b>
+  <%= @tour_history.chosen_date.to_time.strftime("%m/%d/%Y") if @tour_history.chosen_date %>
+</p>
+
+<p>
+  <b>Executed date:</b>
+  <%= @tour_history.executed_date.to_time.strftime("%m/%d/%Y") if @tour_history.executed_date %>
+</p>
+
+<p>
+  <b>Tour:</b>
+  <%= link_to @tour_history.tour.title, [:admin, @tour_history.tour] if @tour_history.tour %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= link_to @tour_history.user.email, [:admin, @tour_history.user] if @tour_history.user %>
+</p>
+
+<%= link_to 'Back', admin_tour_histories_path %>

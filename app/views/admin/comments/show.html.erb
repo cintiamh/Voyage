@@ -1,0 +1,36 @@
+<h1>Comment</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @comment.user %>
+</p>
+
+<p>
+  <b>Piece:</b>
+  <%= @comment.piece %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @comment.category %>
+</p>
+
+<p>
+  <b>Connection:</b>
+  <%= @comment.connection %>
+</p>
+
+<p>
+  <b>Tour:</b>
+  <%= @comment.tour %>
+</p>
+
+<div class="well">
+    <%= @comment.content %>
+</div>
+
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>
