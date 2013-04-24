@@ -28,7 +28,14 @@
 
       $(document).ready(function() {
          // $(window).bind("orientationchange resize pageshow", fixgeometry);
+
+          window.addEventListener('load', function() {
+              new FastClick(document.body);
+          }, false);
+
       });
+
+
   </script>
 
 </head>

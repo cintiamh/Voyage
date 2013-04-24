@@ -64,13 +64,21 @@ function plot_items()
         var item_num = parseInt(i+1);
         var item_div = "<div id='item" + i + "' onclick='return atItemDialog(" + i + ")'></div>";
         var div = $(item_div).appendTo(map);
-        div.addClass("circle");
+        div.addClass("circle not_done");
         div.append("<br><b>"+item_num+"</b>");
         div.css("left",left_pos);
         div.css("top",top_pos);
         div.css("position","absolute");
+
+        /*var img_id = i+"_img";
+        var img_node ="<img src='" +pieces_list[i].image  + "' id='" + img_id + "></img>";
+        img_node.addClass("circle");
+        img_node.addClass("hidden");  */
+
     }
 
+    $("#item0").removeClass("not_done");
+    $("#item0").addClass("next");
 
     /*var divtest = $("#d3test");
      left_pos = parseInt(map_position.left + (parseInt(gal_pos[0].min_x) + parseInt(gal_pos[0].max_x))/2);
@@ -98,7 +106,7 @@ function galInfo(i)
     var aboutGal = d3.select('#aboutGal');
     var textData = galleries_list[i].about;
     aboutGal.text(textData);
-    $("#aboutGalPopup").popup();
+    image$("#aboutGalPopup").popup();
     $("#aboutGalPopup").popup("open");
 
 }
@@ -107,38 +115,48 @@ var currentItemNumber;
 function atItemDialog(i)
 {
     currentItemNumber = i;
-    var parent = $('#checkinQuestion');
+    var parent = $('#answers');
     var q = $('#question');
     q.text(question_list[i].content);
     var answers = answer_list[i];
-    var inputMarkupInit = "<input type='radio' name='checkinAnswer'";
-    for (var j=0; j<4; j++)
+
+    var options = $("option");
+    for(var i=0; i<options.length; i++)
+    {
+        options[i].remove();
+    }
+
+    var blank_option = "<option></option>";
+    $(blank_option).appendTo(parent);
+
+    for (var j=0; j<answers.length; j++)
     {
         if(answers[j].correct == true)
         {
             rightAnswer = j;
         }
-        var inputMarkup = "#answerLbl" + j;
-        $(inputMarkup).text(answers[j].content);
+        options = "<option value='" + j + "'>" + answers[j].content + "</option>";
+        $(options).appendTo(parent);
     }
    // var submit = "<button type='button' onclick='return checkAnswer(" + rightAnswer + ")'>Submit</button>";
     var item = parseInt(i) + 1;
     $.mobile.changePage("#checkin", {role: "dialog"});
+    parent[0].selectedIndex = 0;
+    parent.selectmenu("refresh");
 }
 
 function checkAnswer()
 {
-    var check = "#answer"+rightAnswer;
-    if($(check).attr("checked") == "checked")
+    var ans = $('#answers').val();
+    if(ans == rightAnswer)
     {
-        alert("right answer");
+        alert("Right answer");
+        displayItemInfo();
     }
     else
     {
-        alert("wrong answer");
+        alert("Wrong answer. Try again!");
     }
-
-    displayItemInfo();
 }
 
 function displayItemInfo()
@@ -150,7 +168,7 @@ function displayItemInfo()
    var con_2 = $("#con_2");
 
    image.attr("src",pieces_list[currentItemNumber].image);
-   after_info_p.text(after_info[currentItemNumber]);
+   after_info_p.text(after_info[currentItemNumber][0].after);
 
    var prev = currentItemNumber - 1;
     if(prev < 0) {prev = connection_list.length - 1;}
@@ -164,5 +182,22 @@ function displayItemInfo()
 
 function closeAllDialogs()
 {
+    var cur = $("#item"+currentItemNumber);
+    var next_item = parseInt(currentItemNumber+1);
+    var next = $("#item"+next_item);
+    cur.removeClass("not_done");
+    cur.removeClass("next");
+    cur.addClass("done");
+    if(next_item < pieces_list.length)
+    {
+        next.removeClass("not_done");
+        next.addClass("next");
+    }
+    var options = $("option");
+    for(var i=0; i<options.length; i++)
+    {
+        options[i].remove();
+    }
+    $( "#checkin" ).dialog( "close" );
     $.mobile.changePage("../pages/floors?identity=" + identity);
 }

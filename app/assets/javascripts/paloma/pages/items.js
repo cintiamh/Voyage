@@ -46,6 +46,7 @@ var force, link,node;
           .attr("width", w)
           .attr("height", h);*/
 
+      //w=h=300;
       constructNodeLinks();
 
       //svg.attr("width",w)
@@ -63,15 +64,16 @@ var force, link,node;
 //links -> {source, target, distance}
 function constructNodeLinks()
 {
-    nodes.push({"id":-1,"title":"GO", "group":"NODE", "charge":-250});
+    //TODO: replace with GO art
+    nodes.push({"id":-1,"title":"GO", "group":"NODE", "charge":-500, "image":"/assets/PITTSBURGHER.png"});
     for(var i = 0; i<pieces_list.length; i++)
     {
         //circle case
         if(i==pieces_list.length - 1)
         {
-            nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-500});
+            nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-1000, "image":pieces_list[i].image});
             //nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to 1", "group":"CONNECTOR", "charge":-500});
-            nodes.push({"id":-(i+2),"title":connections[i].description, "group":"CONNECTOR", "charge":-500});
+            nodes.push({"id":-(i+2),"title":connections[i].description, "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});
 
             links.push({"source":2*i+1,"target":2*i+2,"distance":100});
             links.push({"source":2*i+2,"target":1,"distance":100});
@@ -80,10 +82,10 @@ function constructNodeLinks()
         else
         {
             //Items
-            nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-500});
+            nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-1000, "image":pieces_list[i].image});
             //Connections
             //nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to" + (i+2), "group":"CONNECTOR", "charge":-500});
-            nodes.push({"id":-(i+2),"title":connections[i].description, "group":"CONNECTOR", "charge":-500});
+            nodes.push({"id":-(i+2),"title":connections[i].description, "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});
 
             links.push({"source":2*i+1,"target":2*i+2,"distance":100});
             links.push({"source":2*i+2,"target":2*i+3,"distance":100});
@@ -111,16 +113,19 @@ function aboutPieces(i)
     }
     else if(i >=0 )
     {
-        p.text(before_info[i]);
+        p.text(before_info[i][0].before);
         h.text(pieces_list[i].title);
+        $("#teaser").popup();
+        $("#teaser").popup("open");
     }
     else if(i < -1)
     {
        var node_list_pos = -(i*2) - 2;
        h.text(nodes[node_list_pos].title);
+        $("#teaser").popup();
+        $("#teaser").popup("open");
     }
-    $("#teaser").popup();
-    $("#teaser").popup("open");
+
 
 }
 
@@ -174,7 +179,18 @@ function restart()
         .attr("class", "node")
         .call(force.drag);
 
-    node.append("circle")
+    node.append("image")
+        .attr("xlink:href", function(d) {return d.image})
+        .attr("x", -50)
+        .attr("y", -50)
+        .attr("height", 100)
+        .attr("width",100)
+        .attr("onclick",function(d)
+        {
+            return "return aboutPieces("+d.id+")";
+        });
+
+   /* node.append("circle")
         .attr("x",-8)
         .attr("y",-8)
         .attr("r",function(d){
@@ -196,9 +212,9 @@ function restart()
         .attr("onclick",function(d)
         {
             return "return aboutPieces("+d.id+")";
-        });
+        });*/
 
-    node.append("text")
+    /*node.append("text")
         .text(function(d){
             if(d.group == "NODE")
             {return d.title;}
@@ -206,7 +222,7 @@ function restart()
             {return "";}
         })
         .attr("x", "-0.75em")
-        .attr("dy", ".35em");
+        .attr("dy", ".35em");   */
 
     force.start();
     //alert("in restart");
