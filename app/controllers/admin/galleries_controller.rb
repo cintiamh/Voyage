@@ -1,4 +1,7 @@
 class Admin::GalleriesController < Admin::ResourceController
+
+  helper_method :sort_column, :sort_direction
+
   # GET /galleries
   # GET /galleries.json
   def index
@@ -6,7 +9,7 @@ class Admin::GalleriesController < Admin::ResourceController
       redirect_to "/"
     end
     @page = "pieces"
-    @galleries = Gallery.all
+    @galleries = Gallery.order(sort_column + " " + sort_direction)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -95,5 +98,15 @@ class Admin::GalleriesController < Admin::ResourceController
       format.html { redirect_to admin_galleries_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def sort_column
+    Gallery.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

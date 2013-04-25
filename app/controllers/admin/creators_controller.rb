@@ -1,4 +1,7 @@
 class Admin::CreatorsController < Admin::ResourceController
+
+  helper_method :sort_column, :sort_direction
+
   # GET /creators
   # GET /creators.json
   def index
@@ -6,7 +9,7 @@ class Admin::CreatorsController < Admin::ResourceController
       redirect_to "/"
     end
     @page = "pieces"
-    @creators = Creator.all
+    @creators = Creator.order(sort_column + " " + sort_direction)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -95,5 +98,15 @@ class Admin::CreatorsController < Admin::ResourceController
       format.html { redirect_to admin_creators_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def sort_column
+    Creator.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
