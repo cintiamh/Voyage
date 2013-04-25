@@ -69,6 +69,15 @@ Voyage::Application.routes.draw do
   get "pages/floors"
   get "pages/desktop"
 
+  #mobile pages
+  get "mobile/index"
+
+  get "mobile/identities"
+
+  get "mobile/items"
+
+  get "mobile/floors"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
