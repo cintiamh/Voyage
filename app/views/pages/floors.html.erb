@@ -1,46 +1,109 @@
-<div data-role="page">
+<div data-role="page" id="first_floor" data-fullscreen="true">
 
     <div data-role="header" data-position="fixed">
-        <a href="index.html" data-theme="c"
-           data-role="button"
-           data-icon="home" data-iconpos="notext"
-           class="ui-btn-left">Home</a>
-        <h2>The Voyage</h2>
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#first_floor" class="ui-btn-active ui-state-persist">Floor 1</a></li>
+          <li><a href="#second_floor">Floor 2</a></li>
+          <li><a href="#third_floor">Floor 3</a></li>
+        </ul>
+      </div><!-- /navbar -->
+
     </div><!-- /header -->
+
+
 
     <div data-role="content" id="mainContent">
 
-        <div id="map" style="width:734px; margin-left:auto; margin-right:auto;">
-            <img id="Image-Maps_floor_1" src="/assets/sample_map.png" usemap="#Image-Maps_floor_1" border="0" width="734" height="486" alt="" />
-            <map id="_Image-Maps_floor_1" name="Image-Maps_floor_1">
-                <area shape="rect" id="gal1" coords="21,21,250,188" onclick="return galInfo(0)" alt="Gallery 1" title="Gallery 1"    />
-                <area shape="rect" id="gal2" coords="253,20,543,147" onclick="return galInfo(1)" alt="Gallery 2" title="Gallery 2"    />
-                <area shape="rect" id="gal3" coords="207,357,605,448" onclick="return galInfo(2)" alt="Gallery 5" title="Gallery 5"    />
-                <area shape="rect" id="gal4" coords="543,19,697,149" onclick="return galInfo(3)" alt="Gallery 3" title="Gallery 3"    />
-                <area shape="rect" id="gal5" coords="20,186,205,450" onclick="return galInfo(4)" alt="Gallery 4" title="Gallery 4"    />
-                <area shape="rect" coords="732,484,734,486" href="/assets/sample_map.png" alt="Image Map" title="Image Map" />
-            </map>
+      <div id="1_map" style="text-align:center; width:100%; margin-left:auto; margin-right:auto;">
+        <img id="Image-Maps_floor_1" src="/assets/MAPv1_Floor1_-TRANS.png" usemap="#Image-Maps_floor_1" border="0" width="640" height="480" alt="" />
+        <map id="_Image-Maps_floor_1" name="Image-Maps_floor_1">
+          <area shape="rect" id="gal0" coords="438,96,484,146" onclick="return galInfo(0)" alt="ice age" title="ice age"    />
+          <area shape="rect" id="gal1" coords="495,98,553,146" onclick="return galInfo(1)" alt="amphibians" title="amphibians"    />
+          <area shape="rect" id="gal2" coords="388,150,552,242" onclick="return galInfo(2)" alt="dinosaurs" title="dinosaurs"    />
+          <area shape="rect" id="gal3" coords="546,245,610,295" onclick="return galInfo(3)" alt="gems and jewelry" title="gems and jewelry"    />
+          <area shape="rect" id="gal4" coords="412,246,542,296" onclick="return galInfo(4)" alt="minerals" title="minerals"    />
+          <area shape="rect" id="gal5" coords="389,303,465,350" onclick="return galInfo(5)" alt="geology" title="geology"    />
+          <area shape="rect" id="gal6" coords="541,300,635,400" onclick="return galInfo(6)" alt="hall of architecture" title="hall of architecture"    />
+          <area shape="rect" coords="638,478,640,480" href="/assets/MAPv1_Floor1_-TRANS.png" alt="Image Map" title="Image Map" />
+        </map>
+      </div>
 
-            <style type="text/css">
-                .circle {
-                    border-radius: 50%;
-                    width: 80px;
-                    height: 80px;
-                    background: rgb(255, 39, 9);
-                    background: rgba(255, 39, 9, 0.69);
-                    text-align:center;
-                    /* width and height can be anything, as long as they're equal */
-                }
+    <div data-role="popup" id="aboutGalPopup">
+      <a href="#"
+         data-theme="c"
+         data-rel="back" data-role="button"
+         data-icon="delete" data-iconpos="notext"
+         class="ui-btn-right">Close</a>
 
-                #cir1
-                {
-                    position: absolute;
-                    top: 110px;
-                    left: 300px;
-                    padding: 10px;
-                }
-            </style>
+      <p id="aboutGal"></p>
+
     </div>
+
+    <div data-role="popup" id="permaMenu" class="ui-content" >
+        <a href="#"
+           data-theme="c"
+           data-rel="back" data-role="button"
+           data-icon="delete" data-iconpos="notext"
+           class="ui-btn-right">Close</a>
+
+        <% if user_signed_in? %>
+        Logged in as <strong><%= current_user.email %></strong>.
+        <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to 'Sign up', new_user_registration_path %></li>
+        <li><%= link_to 'Login', new_user_session_path %></li>
+        <% end %>
+
+    </div>
+
+      <div data-role="footer" data-theme="c" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="index.html" data-theme="c" class="centered"
+                   data-role="button"
+                   data-icon="home" data-iconpos="notext"
+                   class="ui-btn-left"></a></li>
+            <li><a id="footerButton" class="centered" href="#permaMenu" data-rel="popup" data-icon="bars" data-iconpos="top" data-theme="c"></a>  </li>
+          </ul>
+        </div>
+
+    </div>
+
+  </div>
+</div>   <!--page First floor -->
+
+<div data-role="page" id="second_floor" data-fullscreen="true">
+
+  <div data-role="header" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#first_floor">Floor 1</a></li>
+        <li><a href="#second_floor" class="ui-btn-active ui-state-persist">Floor 2</a></li>
+        <li><a href="#third_floor">Floor 3</a></li>
+      </ul>
+    </div><!-- /navbar -->
+
+  </div><!-- /header -->
+
+
+  <div data-role="content" id="mainContent">
+
+    <div id="2_map" style="text-align:center; width:1024px; margin-left:auto; margin-right:auto;">
+      <img id="Image-Maps_floor_2" src="/assets/MAPv1_Floor2_-TRANS.png" usemap="#Image-Maps_floor_2" border="0" width="640" height="480" alt="" />
+      <map id="_Image-Maps_floor_2" name="Image-Maps_floor_2">
+        <area shape="rect" id="gal7" href="" coords="340,80,438,128" onclick="return galInfo(7)" alt="wildlife" title="wildlife"    />
+        <area shape="rect" id="gal8" href="" coords="18,223,205,467" onclick="return galInfo(8)" alt="scaife galleries" title="scaife galleries"    />
+        <area shape="rect" id="gal9" href="" coords="209,411,372,468" onclick="return galInfo(9)" alt="contemporary art" title="contemporary art"    />
+        <area shape="rect" id="gal10" href="" coords="490,412,622,470" onclick="return galInfo(10)" alt="decorative arts" title="decorative arts"    />
+        <area shape="rect" id="gal11" href="" coords="508,1,560,58" onclick="return galInfo(11)" alt="botany" title="botany"    />
+        <area shape="rect" coords="410,416,486,471" href="http://www.image-maps.com/" alt="Grand staircase" title="Grand staircase"    />
+        <area shape="rect" coords="638,478,640,480" href="/assets/MAPv1_Floor2_-TRANS.png" alt="Image Map" title="Image Map" />
+      </map>
+    </div>
+
+
 
     <div data-role="popup" id="aboutGalPopup">
       <a href="#"
@@ -72,14 +135,162 @@
     </div>
 
     <div data-role="footer" data-theme="c" data-position="fixed">
-        <a id="footerButton" class="centered" href="#permaMenu" data-rel="popup" data-icon="bars" data-iconpos="top" data-theme="c"></a>
+      <div data-role="navbar">
+        <ul>
+          <li><a href="index.html" data-theme="c" class="centered"
+                 data-role="button"
+                 data-icon="home" data-iconpos="notext"
+                 class="ui-btn-left"></a></li>
+          <li><a id="footerButton" class="centered" href="#permaMenu" data-rel="popup" data-icon="bars" data-iconpos="top" data-theme="c"></a>  </li>
+        </ul>
+      </div>
+
+    </div>
+   </div>
+
+</div>    <!-- page Second floor-->
+
+
+<div data-role="page" id="third_floor" data-fullscreen="true">
+
+  <div data-role="header" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#first_floor">Floor 1</a></li>
+        <li><a href="#second_floor">Floor 2</a></li>
+        <li><a href="#third_floor" class="ui-btn-active ui-state-persist">Floor 3</a></li>
+      </ul>
+    </div><!-- /navbar -->
+
+  </div><!-- /header -->
+
+
+  <div data-role="content" id="mainContent">
+
+    <div id="3_map" style="text-align:center; width:1024px; margin-left:auto; margin-right:auto;">
+      <img id="Image-Maps_floor_3" src="/assets/MAPv1_Floor3_-TRANS.png" usemap="#Image-Maps_floor_3" border="0" width="640" height="480" alt="" />
+      <map id="_Image-Maps_floor_3" name="Image-Maps_floor_3">
+        <area shape="rect" id="gal12" coords="280,141,402,190" href="" onclick="return galInfo(12)" alt="Jurassic Overlook" title="Jurassic Overlook"    />
+        <area shape="rect" id="gal13" coords="234,204,253,363" href="" onclick="return galInfo(13)" alt="Hall of Birds" title="Hall of Birds"    />
+        <area shape="rect" id="gal14" coords="168,368,243,475" href="" onclick="return galInfo(14)" alt="Ancient Egypt" title="Ancient Egypt"    />
+        <area shape="rect" id="gal15" coords="330,365,467,434" href="" onclick="return galInfo(15)" alt="Polar Bear" title="Polar Bear"    />
+        <area shape="rect" id="gal16" coords="474,370,573,431" href="" onclick="return galInfo(16)" alt="American Indians" title="American Indians"    />
+        <area shape="rect" coords="638,478,640,480" href="/assets/MAPv1_Floor3_-TRANS.png" alt="Image Map" title="Image Map" />
+      </map>
     </div>
 
-    <div id="aboutGallery" data-role="dialog">
+
+
+    <div data-role="popup" id="aboutGalPopup">
+      <a href="#"
+         data-theme="c"
+         data-rel="back" data-role="button"
+         data-icon="delete" data-iconpos="notext"
+         class="ui-btn-right">Close</a>
+
+      <p id="aboutGal"></p>
 
     </div>
 
+    <div data-role="popup" id="permaMenu" class="ui-content" >
+      <a href="#"
+         data-theme="c"
+         data-rel="back" data-role="button"
+         data-icon="delete" data-iconpos="notext"
+         class="ui-btn-right">Close</a>
+
+      <% if user_signed_in? %>
+          Logged in as <strong><%= current_user.email %></strong>.
+          <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li><%= link_to 'Login', new_user_session_path %></li>
+      <% end %>
+
+    </div>
+
+    <div data-role="footer" data-theme="c" data-position="fixed">
+      <div data-role="navbar">
+        <ul>
+      <li><a href="index.html" data-theme="c" class="centered"
+         data-role="button"
+         data-icon="home" data-iconpos="notext"
+         class="ui-btn-left"></a></li>
+      <li><a id="footerButton" class="centered" href="#permaMenu" data-rel="popup" data-icon="bars" data-iconpos="top" data-theme="c"></a>  </li>
+        </ul>
+    </div>
+
+  </div>
+
+    </div>
+
+</div>     <!-- page Third floor-->
+
+
+<div id="checkin" data-role="dialog" data-theme="c">
+ <!-- <div data-role="content">-->
+    <a href="#"
+       data-theme="c"
+       data-rel="back" data-role="button"
+       data-icon="delete" data-iconpos="notext"
+       class="ui-btn-right">Close</a>
+  <h2 id="question" style="color:'white"></h2>
+  <div data-role="fieldcontain">
+    <fieldset id="checkinQuestion" data-role="controlgroup">
+
+      <select name="checkinQuestionAnswers" id="answers">
+
+      </select>
+
+    </fieldset>
+  </div>
+
+  <button onclick="checkAnswer()">Submit</button>
+ <!-- </div>-->
+</div>
+
+<div id="itemInformation" data-role="popup">
+
+  <a href="#"
+     data-theme="c"
+     data-rel="back" data-role="button"
+     data-icon="delete" data-iconpos="notext"
+     class="ui-btn-right">Close</a><br>
+
+  <image id="item_image"></image><br>
+  <p id="after_info"></p><br>
+  <p id="con_1"></p><br>
+  <p id="con_2"></p><br>
+
+  <a href="#comments" data-rel="dialog" data-role="button">OK!</a>
 
 </div>
 
+<div id="comments" data-role="dialog">
+    <input type="text">
+  <a href="#" data-role="button">Submit</a>
+  <div id="prev_comments">
+
+
+
+  </div>
+  <p>Sample Comment 1</p>
+  <p>Sample Comment 2</p>
+  <p>Sample Comment 3</p>
+
+  <a href="#" onclick = "return closeAllDialogs()" data-role="button">Done</a>
+
 </div>
+
+
+<script type="text/javascript" src="/assets/paloma/jquery.rwdImageMaps.js"></script>
+<script>
+    $(document).ready(function(e) {
+        $('#Image-Maps_floor_1').rwdImageMaps();
+        $('#Image-Maps_floor_2').rwdImageMaps();
+        $('#Image-Maps_floor_3').rwdImageMaps();
+
+    });
+</script>
+

@@ -31,7 +31,7 @@ var tour_list;
       tour_list = params['tours_list'];
       for(var i = 0; i<tour_list.length; i++)
       {
-          nodes.push({"id":i,"title":tour_list[i].title});
+          nodes.push({"id":i,"title":tour_list[i].title,"image":tour_list[i].image});
           //links -> {source, target, value}
           var target = i+1;
           if(target >= tour_list.length){target = 0;}
@@ -40,8 +40,11 @@ var tour_list;
       svg = d3.select("svg");
 
       var parent = $("div[data-role='content']");
-      w = parent.innerWidth() - 20;
-      h = parent.height() - 20;
+      //w = parent.innerWidth() - 20;
+      //h = parent.height() - 20;
+
+      w = 300;
+      h = 300;
 
 
       //svg.attr("width",w)
@@ -63,6 +66,9 @@ function aboutTours(i)
 {
     var p = d3.select("#info").text(tour_list[i].about);
     var h = d3.select('#title').text(tour_list[i].title);
+    var picked_identity = parseInt(i) + 1;
+    var link_url =  "../pages/items?identity=" + picked_identity;
+    var link = d3.select('#ident_to_item_link').attr("href",link_url);
     $("#teaser").popup();
     $("#teaser").popup("open");
 }
@@ -88,9 +94,33 @@ function createChart(nodes, links)
         .data(nodes)
         .enter().append("g")
         .attr("class", "node")
+        .on("tap",function(e,d)
+        {
+            $(e.target).addClass("tap");
+            //alert("tapped");
+            aboutTours(d.id);
+        })
+        .on("click",function(e,d)
+        {
+            $(e.target).addClass("click");
+            //alert("tapped");
+            aboutTours(d.id);
+        })
         .call(force.drag);
 
-    node.append("circle")
+    node.append("image")
+        .attr("xlink:href", function(d) {return d.image})
+        .attr("x", -8)
+        .attr("y", -8)
+        .attr("height", 100)
+        .attr("width",100)
+        .attr("onclick",function(d)
+        {
+            return "return aboutTours("+d.id+")";
+        });
+
+
+    /*node.append("circle")
         .attr("x",-8)
         .attr("y",-8)
         .attr("r",30)
@@ -103,7 +133,7 @@ function createChart(nodes, links)
     node.append("text")
         .text(function(d){return d.title;})
         .attr("x", "-0.75em")
-        .attr("dy", ".35em");
+        .attr("dy", ".35em");*/
 
     force.on("tick", function() {
         link.attr("x1", function(d) { return d.source.x; })
@@ -118,6 +148,11 @@ function createChart(nodes, links)
             return "translate(" + d.x + "," + d.y + ")";
         });
     });//force.on()
-
-
+   force.start();
 }
+
+$(window).resize(function()
+{
+  //alert("window resize");
+  createChart(nodes,links);
+});

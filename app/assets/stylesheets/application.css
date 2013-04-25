@@ -39,13 +39,20 @@ text {
     pointer-events: none;
 }
 
-@media only screen and (min-width:0px) {
-    .test{width:100px; height:100px;}
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px)
+{
+    /* Styles */
 }
 
-@media only screen and (min-width:400px) {
-.test{width:400px; height:400px;}
-
+/* iPads (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+{
+    /* Styles */
 }
 
 #go_link{
@@ -53,5 +60,42 @@ text {
     margin-top: 20px;
   font-size: 60px;
 }
+
+.circle {
+    border-radius: 50%;
+    text-align:center;
+    /* width and height can be anything, as long as they're equal */
+}
+
+.not_done
+{
+    width: 50px;
+    height: 50px;
+    background: rgb(255, 253, 48);
+    background: rgba(255, 240, 49, 0.67);
+}
+
+.done
+{
+    width: 50px;
+    height: 50px;
+    background: rgb(255, 0, 0);
+    background: rgba(255, 0, 0, 0.67);
+}
+
+.next
+{
+    width: 50px;
+    height: 50px;
+    background: rgb(11, 151, 59);
+    background: rgba(5, 255, 0, 0.66);
+}
+
+.hidden
+{
+    visibility:hidden ;
+}
+
+
 
 

@@ -18,7 +18,9 @@ group :assets do
   gem 'coffee-script-source', '~> 1.4.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
+
+  gem 'execjs'
 
   gem 'uglifier', '>= 1.0.3'
 end
@@ -51,6 +53,12 @@ gem 'oauth2'
 
 # Paper clip
 gem 'paperclip', '~> 3.0'
+
+# for IRB formatting
+gem 'hirb'
+
+# for generating seed data from db
+gem 'seed_dumper'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

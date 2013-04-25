@@ -1,20 +1,11 @@
 
-<div data-role="page">
+<div data-role="page" data-fullscreen="true">
 
-  <div data-role="header" data-position="fixed">
-    <a href="index.html" data-theme="c"
-       data-role="button"
-       data-icon="home" data-iconpos="notext"
-       class="ui-btn-left">Home</a>
-    <h2>The Voyage</h2>
-  </div><!-- /header -->
-
-  <div data-role="content" id="mainContent">
-    <svg id="chart" class="center" style="background-color: darkcyan;"preserveAspectRatio="xMaxYMin meet">
+  <div data-role="content" id="mainContent" style="background-color: darkcyan;">
+    <a href="../pages/items?identity=1" rel="external">Demo Pittsburgher Tour</a>
+    <svg id="chart" class="center" style="background-color: darkcyan;" preserveAspectRatio="xMinYMin">
 
     </svg>
-
-
 
   </div>
 
@@ -44,9 +35,18 @@
 
 </div>
 
-<div data-role="footer" data-theme="c" data-position="fixed">
-  <a id="footerButton" class="centered" href="#permaMenu" data-rel="popup" data-icon="bars" data-iconpos="top" data-theme="c"></a>
-</div>
+  <div data-role="footer" data-theme="c" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="index.html" data-theme="c" class="centered"
+               data-role="button"
+               data-icon="home" data-iconpos="notext"
+               class="ui-btn-left"></a></li>
+        <li><a id="footerButton" class="centered" href="#permaMenu" data-rel="popup" data-icon="bars" data-iconpos="top" data-theme="c"></a>  </li>
+      </ul>
+    </div>
+
+  </div>
 
 </div>
 
@@ -58,6 +58,6 @@
      class="ui-btn-right"><b>X</b></a>
   <h4 id="title"></h4>
   <p id="info"></p>
-  <a id="ident_to_item_link" href="../pages/items" rel="external">Check it out</a>
+  <a id="ident_to_item_link" rel="external">Check it out</a>
 </div>
 

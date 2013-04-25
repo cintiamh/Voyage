@@ -11,3 +11,17 @@
  *= require_self
  *= require bootstrap
  */
+
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+.hidden
+{
+  visibility:hidden ;
+}
+
+line {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}

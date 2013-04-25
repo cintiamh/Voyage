@@ -1,7 +1,12 @@
 var w,h;
 var svg;
 var pieces_list;
-var nodes =[], links= [];
+var nodes =[], links= [], connections= [], before_info = [];
+var tour_id;
+var force, link,node;
+
+
+
 
 (function(){
   // You access variables from before/around filters from _x object.
@@ -21,26 +26,36 @@ var nodes =[], links= [];
   // _l.localMethod(); 
   var _l = _L['pages'];
 
-
   Paloma.callbacks['pages']['items'] = function(params)
   {
     _L.pieces_list = params['pieces_list'];
+      connections = params['connection_list'];
+      tour_id = params['tour_id'];
+      before_info = params['before_info'];
       pieces_list = _L.pieces_list;
-      svg = d3.select("svg");
 
       var parent = $("div[data-role='content']");
-      w = parent.innerWidth() - 20;
-      h = parent.height() - 20;
+      //w = parent.innerWidth() - 20;
+      //h = parent.height() - 20;
 
+      svg = d3.select("svg");
+      w = 300, h= 300;
+      svg.attr("viewbox",function(){return "0 0 " + w + " " + h + " ";})
+          .attr("preserveAspectRation","xMinYMin");
+      /*svg.append("rect")
+          .attr("width", w)
+          .attr("height", h);*/
+
+      //w=h=300;
       constructNodeLinks();
 
       //svg.attr("width",w)
       //    .attr("height",h)
       //    .attr("viewBox", "0 0 750 500");
 
-      svg.attr("viewbox",function(){return "0 0 " + w + " " + h + " ";}) ;
 
-      createItemsChart(nodes, links);
+
+      //createItemsChart(nodes, links);
   };
 
 
@@ -49,14 +64,16 @@ var nodes =[], links= [];
 //links -> {source, target, distance}
 function constructNodeLinks()
 {
-    nodes.push({"id":-1,"title":"GO", "group":"NODE", "charge":-250});
+    //TODO: replace with GO art
+    nodes.push({"id":-1,"title":"GO", "group":"NODE", "charge":-500, "image":"/assets/PITTSBURGHER.png"});
     for(var i = 0; i<pieces_list.length; i++)
     {
         //circle case
         if(i==pieces_list.length - 1)
         {
-            nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-500});
-            nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to 1", "group":"CONNECTOR", "charge":-500});
+            nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-1000, "image":pieces_list[i].image});
+            //nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to 1", "group":"CONNECTOR", "charge":-500});
+            nodes.push({"id":-(i+2),"title":connections[i].description, "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});
 
             links.push({"source":2*i+1,"target":2*i+2,"distance":100});
             links.push({"source":2*i+2,"target":1,"distance":100});
@@ -65,9 +82,10 @@ function constructNodeLinks()
         else
         {
             //Items
-            nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-500});
+            nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-1000, "image":pieces_list[i].image});
             //Connections
-            nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to" + (i+2), "group":"CONNECTOR", "charge":-500});
+            //nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to" + (i+2), "group":"CONNECTOR", "charge":-500});
+            nodes.push({"id":-(i+2),"title":connections[i].description, "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});
 
             links.push({"source":2*i+1,"target":2*i+2,"distance":100});
             links.push({"source":2*i+2,"target":2*i+3,"distance":100});
@@ -84,32 +102,38 @@ function aboutPieces(i)
     var h = d3.select('#title');
     if(i == -1)
     {
+        var ident = parseInt(tour_id);// + 1;
         /*$.mobile.ajaxEnabled = false;
         $.mobile.changePage("../pages/floors",{rel:"external"})*/
 
         /* The above code did was still using AJAx, and was not calling the required controller
         * so using this hardcoded change page technique*/
-        window.open("../pages/floors", "_self");
+        window.open("../pages/floors?identity=" + ident, "_self");
 
     }
     else if(i >=0 )
     {
-        p.text(pieces_list[i].about);
+        p.text(before_info[i][0].before);
         h.text(pieces_list[i].title);
+        $("#teaser").popup();
+        $("#teaser").popup("open");
     }
     else if(i < -1)
     {
        var node_list_pos = -(i*2) - 2;
        h.text(nodes[node_list_pos].title);
+        $("#teaser").popup();
+        $("#teaser").popup("open");
     }
-    $("#teaser").popup();
-    $("#teaser").popup("open");
+
 
 }
 
 function createItemsChart(nodes, links)
 {
-    var force = d3.layout.force()
+
+
+     force = d3.layout.force()
         .charge(function(d)
         {
             return d.charge;
@@ -124,19 +148,49 @@ function createItemsChart(nodes, links)
         .links(links)
         .start();
 
-    var link = svg.selectAll(".link")
+    force.on("tick", function() {
+        link.attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+
+        node.attr("transform", function(d)
+        {
+            //if(d.group == 1) {return "translate(0,0)";}
+            //else
+            return "translate(" + d.x + "," + d.y + ")";
+        });
+    });//force.on()
+
+    restart();
+}
+
+function restart()
+{
+     link = svg.selectAll(".link")
         .data(links)
         .enter().append("line")
         .attr("class", "link");
 
 
-    var node = svg.selectAll(".node")
+     node = svg.selectAll(".node")
         .data(nodes)
         .enter().append("g")
         .attr("class", "node")
         .call(force.drag);
 
-    node.append("circle")
+    node.append("image")
+        .attr("xlink:href", function(d) {return d.image})
+        .attr("x", -50)
+        .attr("y", -50)
+        .attr("height", 100)
+        .attr("width",100)
+        .attr("onclick",function(d)
+        {
+            return "return aboutPieces("+d.id+")";
+        });
+
+   /* node.append("circle")
         .attr("x",-8)
         .attr("y",-8)
         .attr("r",function(d){
@@ -158,9 +212,9 @@ function createItemsChart(nodes, links)
         .attr("onclick",function(d)
         {
             return "return aboutPieces("+d.id+")";
-        });
+        });*/
 
-    node.append("text")
+    /*node.append("text")
         .text(function(d){
             if(d.group == "NODE")
             {return d.title;}
@@ -168,19 +222,15 @@ function createItemsChart(nodes, links)
             {return "";}
         })
         .attr("x", "-0.75em")
-        .attr("dy", ".35em");
+        .attr("dy", ".35em");   */
 
-    force.on("tick", function() {
-        link.attr("x1", function(d) { return d.source.x; })
-            .attr("y1", function(d) { return d.source.y; })
-            .attr("x2", function(d) { return d.target.x; })
-            .attr("y2", function(d) { return d.target.y; });
-
-        node.attr("transform", function(d)
-        {
-            //if(d.group == 1) {return "translate(0,0)";}
-            //else
-            return "translate(" + d.x + "," + d.y + ")";
-        });
-    });//force.on()
+    force.start();
+    //alert("in restart");
 }
+
+$(window).resize(function()
+{
+    //alert("window resize");
+    //createItemsChart(nodes,links);
+    //restart();
+});
