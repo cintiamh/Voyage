@@ -39,14 +39,14 @@ body {
   background-repeat: repeat;
     */
   color: #FFFFFF;
-  font-family: "Sintony";
+  font-family: "Sintony", Arial;
 
   padding-top: 50px;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: #F4BB3F;
-  font-family: "Poiret One";
+  font-family: "Poiret One", Arial;
 }
 
 .homepage {
@@ -54,7 +54,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: right;
 }
 
-.homepage a {
+a {
   color: #FFFFFF;
   font-weight: bold;
 }
