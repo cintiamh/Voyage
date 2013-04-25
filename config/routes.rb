@@ -13,7 +13,7 @@ Voyage::Application.routes.draw do
   get "desktop/find_tour"
 
   devise_for :users, path_names: { sign_in: "login", sign_out: "logout" },
-             controllers: {omniauth_callbacks: "omniauth_callbacks"}
+             controllers: {omniauth_callbacks: "omniauth_callbacks", :sessions => "sessions"}
 
   resources :likes
 

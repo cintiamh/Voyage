@@ -7,4 +7,6 @@ class Admin::ResourceController < Admin::ApplicationController
   layout "admin"
 
   before_filter :authenticate_user!
+
+
 end

@@ -8,7 +8,7 @@
             <% else %>
             <ul class="dashboard_list">
                 <% @comments.each do |comment| %>
-                    <li><%= link_to comment.content, edit_admin_comment_path(comment) %></li>
+                    <li><%= link_to sanitize(truncate(comment.content), :length => 150), edit_admin_comment_path(comment) %></li>
                 <% end %>
             </ul>
             <% end %>

@@ -3,6 +3,9 @@ class Admin::PiecesController < Admin::ResourceController
   # GET /pieces
   # GET /pieces.json
   def index
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @page = "pieces"
     @pieces = Piece.all
 
@@ -15,6 +18,9 @@ class Admin::PiecesController < Admin::ResourceController
   # GET /pieces/1
   # GET /pieces/1.json
   def show
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @page = "pieces"
     @piece = Piece.find(params[:id])
 
@@ -27,6 +33,9 @@ class Admin::PiecesController < Admin::ResourceController
   # GET /pieces/new
   # GET /pieces/new.json
   def new
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @page = "pieces"
     @piece = Piece.new
     @creators = Creator.find(:all)
@@ -40,6 +49,9 @@ class Admin::PiecesController < Admin::ResourceController
 
   # GET /pieces/1/edit
   def edit
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @page = "pieces"
     @piece = Piece.find(params[:id])
 

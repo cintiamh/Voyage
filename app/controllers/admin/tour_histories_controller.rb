@@ -2,6 +2,9 @@ class Admin::TourHistoriesController < Admin::ResourceController
   # GET /tour_histories
   # GET /tour_histories.json
   def index
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @tour_histories = TourHistory.all
 
     respond_to do |format|
@@ -13,6 +16,9 @@ class Admin::TourHistoriesController < Admin::ResourceController
   # GET /tour_histories/1
   # GET /tour_histories/1.json
   def show
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @tour_history = TourHistory.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +30,9 @@ class Admin::TourHistoriesController < Admin::ResourceController
   # GET /tour_histories/new
   # GET /tour_histories/new.json
   def new
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @tour_history = TourHistory.new
 
     respond_to do |format|
@@ -34,6 +43,9 @@ class Admin::TourHistoriesController < Admin::ResourceController
 
   # GET /tour_histories/1/edit
   def edit
+    unless current_user.try(:admin?)
+      redirect_to "/"
+    end
     @tour_history = TourHistory.find(params[:id])
   end
 
