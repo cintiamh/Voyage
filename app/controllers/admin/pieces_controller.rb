@@ -1,5 +1,7 @@
 class Admin::PiecesController < Admin::ResourceController
 
+  helper_method :sort_column, :sort_direction
+
   # GET /pieces
   # GET /pieces.json
   def index
@@ -7,7 +9,7 @@ class Admin::PiecesController < Admin::ResourceController
       redirect_to "/"
     end
     @page = "pieces"
-    @pieces = Piece.all
+    @pieces = Piece.order(sort_column + " " + sort_direction)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -101,5 +103,15 @@ class Admin::PiecesController < Admin::ResourceController
       format.html { redirect_to admin_pieces_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def sort_column
+    Piece.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
