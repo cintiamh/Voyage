@@ -49,8 +49,12 @@
             </button>
             <div class="nav-collapse collapse">
                 <ul class="nav">
-                    <li class="active"><a href="#">HOME</a></li>
-                    <li><a href="#about">COMMENTS</a></li>
+                    <li<%= raw(" class=\"active\"") if @page == "mobile" %>>
+                        <%= link_to "HOME", "/" %>
+                    </li>
+                    <li<%= raw(" class=\"active\"") if @page == "comments" %>>
+                        <%= link_to "COMMENTS", comments_path %>
+                    </li>
                     <li><a href="#contact">MY VOYAGES</a></li>
                     <li><a href="#contact">THE MUSEUMS</a></li>
                 </ul>
