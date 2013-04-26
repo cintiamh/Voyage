@@ -3,6 +3,10 @@ class MobileController < ApplicationController
     @page = "mobile"
   end
 
+  def museums
+    @page = "museums"
+  end
+
   def identities
 
     @tours = Tour.all

@@ -78,6 +78,8 @@ Voyage::Application.routes.draw do
 
   get "mobile/floors"
 
+  get "mobile/museums"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
