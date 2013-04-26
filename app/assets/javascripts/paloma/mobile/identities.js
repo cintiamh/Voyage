@@ -38,6 +38,36 @@ var tour_list;
 
       svg.attr("viewbox",function(){return "0 0 " + w + " " + h + " ";}) ;
       createChart(nodes, links);
+
+      //Touch and click events
+      $('.touch_click').on('touchstart', function (e) {
+          // listen for a touchend event
+          e.stopPropagation();
+          e.preventDefault();
+          //$(e.target).off('click');
+          $(e.target).one('touchend', function () {
+              var tar = e.target;
+              var node_id = $(tar).attr("node_id");
+              console.log("touch "+node_id);
+              aboutTours(node_id);
+              //e.handled = true;
+          });
+
+          // cancel it in 150ms
+          setTimeout(function () {
+              $(e.target).off('touchend');
+          }, 150);
+      });
+
+      $('.touch_click').click(function (e) {
+          if (e.handled != true) {
+              var tar = e.target;
+              var node_id = $(tar).attr("node_id");
+              console.log("click "+node_id);
+              aboutTours(node_id);
+          }
+      });
+
   };
 })();
 
@@ -46,8 +76,8 @@ function aboutTours(i)
     var p = d3.select("#info").text(tour_list[i].about);
     var h = d3.select('#title').text(tour_list[i].title);
     var picked_identity = parseInt(i) + 1;
-    var link_url =  "../pages/items?identity=" + picked_identity;
-    var link = d3.select('#ident_to_item_link').attr("href",link_url);
+    var link =  "../mobile/items?identity=" + picked_identity;
+     var btn_Link = $('#ident_to_item_link').click(function(){window.open(link, "_self");})
     $("#teaser").modal();
 }
 
@@ -72,30 +102,16 @@ function createChart(nodes, links)
         .data(nodes)
         .enter().append("g")
         .attr("class", "node")
-        .on("tap",function(e,d)
-        {
-            $(e.target).addClass("tap");
-            //alert("tapped");
-            aboutTours(d.id);
-        })
-        .on("click",function(e,d)
-        {
-            $(e.target).addClass("click");
-            //alert("tapped");
-            aboutTours(d.id);
-        })
         .call(force.drag);
 
     node.append("image")
-        .attr("xlink:href", function(d) {return d.image})
+        .attr("xlink:href", function(d) {return d.image;})
         .attr("x", -8)
         .attr("y", -8)
         .attr("height", 100)
         .attr("width",100)
-        .attr("onclick",function(d)
-        {
-            return "return aboutTours("+d.id+")";
-        });
+        .attr("node_id",function(d){return d.id;})
+        .attr("class","touch_click");
     force.on("tick", function() {
         link.attr("x1", function(d) { return d.source.x; })
             .attr("y1", function(d) { return d.source.y; })
