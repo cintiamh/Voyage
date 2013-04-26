@@ -123,7 +123,7 @@ function atItemDialog(i)
     }
     // var submit = "<button type='button' onclick='return checkAnswer(" + rightAnswer + ")'>Submit</button>";
     var item = parseInt(i) + 1;
-    $.mobile.changePage("#checkin", {role: "dialog"});
+    $("#checkin").modal('show');
     parent[0].selectedIndex = 0;
     parent.selectmenu("refresh");
 }
@@ -134,6 +134,7 @@ function checkAnswer()
     if(ans == rightAnswer)
     {
         alert("Right answer");
+        $("#checkin").modal('hide');
         displayItemInfo();
     }
     else
@@ -159,8 +160,14 @@ function displayItemInfo()
     con_1.text(connection_list[prev].description);
     con_2.text(connection_list[currentItemNumber].description);
 
-    $.mobile.changePage("#itemInformation", {role:"dialog"});
+    $("#itemInformation").modal('show');
 
+}
+
+function moveToComments()
+{
+    $("#itemInformation").modal('hide');
+    $("#comments").modal('show');
 }
 
 function closeAllDialogs()
@@ -181,6 +188,5 @@ function closeAllDialogs()
     {
         options[i].remove();
     }
-    $( "#checkin" ).dialog( "close" );
-    $.mobile.changePage("../pages/floors?identity=" + identity);
+    $("#comments").modal('hide');
 }
