@@ -125,6 +125,8 @@ function draw_graph() {
         .attr("height",100)
         .attr("x","-3em")
         .attr("y","-3em")
+        .attr("class","touch_click")
+        .attr("node_id",function(d){return d.id;})
         .call(force.drag);
 
     node.append("title")
