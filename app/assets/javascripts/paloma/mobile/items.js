@@ -231,7 +231,7 @@ function aboutPieces(i)
     {
         p.text(before_info[i][0].before);
         h.text(pieces_list[i].title.toUpperCase());
-        resizeInfoModalMap("teaser");
+        resizeInfoModalMap("teaser_body");
         $("#teaser").modal();
     }
     else if(i < -1)
@@ -239,7 +239,7 @@ function aboutPieces(i)
         var node_list_pos = -(i*2) - 2;
         h.text("CONNECTION");
         p.text(nodes[node_list_pos].title);
-        resizeInfoModalMap("teaser");
+        resizeInfoModalMap("teaser_body");
         $("#teaser").modal();
     }
 }
