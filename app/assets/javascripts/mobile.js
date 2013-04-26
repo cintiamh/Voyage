@@ -41,7 +41,7 @@ function resizeInfoModalMap(id) {
         console.log($('.modal-body'));
     }
     else {
-        $('.modal-body').css({height: "500px"});
-        $('.modal-body').css({color: "white"});
+        $('#'+id).css({height: "100%"});
+        $('#'+id).css({color: "white"});
     }
 }

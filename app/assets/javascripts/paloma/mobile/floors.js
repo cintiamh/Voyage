@@ -164,6 +164,7 @@ var rightAnswer;
 var currentItemNumber;
 function atItemDialog(i)
 {
+    $('#checkin_fb').text("");
     currentItemNumber = i;
     var parent = $('#answers');
     var q = $('#question');
@@ -221,15 +222,21 @@ function atItemDialog(i)
 function checkAnswer()
 {
     var ans = $('#answers').val();
+    var fb = $('#checkin_fb');
     if(ans!= "" && ans == rightAnswer)
     {
-        alert("Right answer");
-        $("#checkin").modal('hide');
-        displayItemInfo();
+        //alert("Right answer");
+        fb.text("Correct");
+        setTimeout(function()
+        {
+            $("#checkin").modal('hide');
+            displayItemInfo();
+        },1000);
     }
     else
     {
-        alert("Wrong answer. Try again!");
+        //alert("Wrong answer. Try again!");
+        fb.text("Wrong answer. Try again!");
     }
 }
 

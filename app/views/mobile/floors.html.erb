@@ -87,18 +87,18 @@
     <button type="button" class="close" data-dismiss="modal"  aria-hidden="true">×</button>
     <h2 id="itemTitle1"></h2>
   </div>
-  <div class="modal-body" id="checkin_body">
-    <p class="info_details_style"id="question"></p>
+  <div class="modal-body" id="checkin_body" style="height:100%">
+    <p class="info_details_style" id="question"></p>
       <div data-role="fieldcontain">
         <fieldset id="checkinQuestion" data-role="controlgroup">
 
           <select name="checkinQuestionAnswers" id="answers">
 
           </select>
-
         </fieldset>
       </div>
-      <div class="modal-footer">
+    <p class="info_details_style" id="checkin_fb"></p>
+      <div class="modal-footer" style="height:100%">
         <button class="btn"  onclick="checkAnswer()" aria-hidden="true">Submit</button>
       </div>
     </div><!-- modal body -->
@@ -124,7 +124,9 @@
 
         <!-- Item Information -->
         <div id="itemInfoTab" class="tab-pane info_details_style active">
-          <image id="item_image" width="50%" height="50%"></image><br>
+          <p style="text-align:center">
+            <image id="item_image" width="50%" height="50%"></image><br>
+          </p>
           <p class="info_details_style" id="after_info"></p><br>
         </div>
 
