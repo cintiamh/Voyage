@@ -20,12 +20,28 @@ function resizeInfoModal(id) {
     var winHeight = $(window).height();
     if (winHeight < 500) {
         console.log("winHeight is smaller");
-        var height = $(window).height() * 0.4
+        var height = $(window).height() * 0.4;
         console.log(height);
         $('#modal-body'+id).css({height: height + "px"});
         console.log($('.modal-body'));
     }
     else {
         $('.modal-body').css({height: "500px"});
+    }
+}
+
+//for map modals
+function resizeInfoModalMap(id) {
+    var winHeight = $(window).height();
+    if (winHeight < 500) {
+        console.log("winHeight is smaller");
+        var height = $(window).height() * 0.4;
+        console.log(height);
+        $('#'+id).css({height: height + "px"});
+        console.log($('.modal-body'));
+    }
+    else {
+        $('.modal-body').css({height: "500px"});
+        $('.modal-body').css({color: "white"});
     }
 }

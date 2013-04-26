@@ -213,7 +213,7 @@ function atItemDialog(i)
     var item = parseInt(i) + 1;
     var title = $("#itemTitle1");
     title.text(pieces_list[currentItemNumber].title.toUpperCase());
-    resizeInfoModal('checkin');
+    resizeInfoModalMap('checkin');
     $("#checkin").modal('show');
 
 }
@@ -262,7 +262,7 @@ function displayItemInfo()
         con_1.text("How are these connected?");
         con_2.text("Post your thoughts in the comments section.");
     }
-    resizeInfoModal('itemInformation');
+    resizeInfoModalMap('itemInformation');
     $("#itemInformation").modal('show');
 
 }
@@ -270,7 +270,7 @@ function displayItemInfo()
 function moveToComments()
 {
     $("#itemInformation").modal('hide');
-    $("#comments").modal('show');
+   // $("#comments").modal('show');
 }
 
 function closeAllDialogs()

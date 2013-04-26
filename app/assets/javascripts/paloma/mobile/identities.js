@@ -139,10 +139,12 @@ function draw_graph_iden(nodes, links) {
 function aboutTours(i)
 {
     var p = d3.select("#info").text(tour_list[i].about);
-    var h = d3.select('#title').text(tour_list[i].title);
+    var h = d3.select('#title').text(tour_list[i].title.toUpperCase());
+    $('#iden_image').attr("src",tour_list[i].image);
     var picked_identity = tour_list[i].id;
     var link =  "../mobile/items?identity=" + picked_identity;
     var btn_Link = $('#ident_to_item_link').click(function(){window.open(link, "_self");})
+    resizeInfoModalMap("teaser");
     $("#teaser").modal();
 }
 
