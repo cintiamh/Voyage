@@ -36,4 +36,13 @@ Voyage::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => {
+          :bucket => "the-voyage",
+          :access_key_id => "AKIAJZPE56ACJ7RO336Q",
+          :secret_access_key => "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"
+      }
+  }
 end
