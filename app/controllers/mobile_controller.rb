@@ -17,7 +17,7 @@ class MobileController < ApplicationController
     @connections =  tour.connections
     items = tour.tour_items
     @pieces_on_tour = items.map {|i| Piece.includes(:informations,:questions => :answers).find(i.piece_id)}
-    @information = @pieces_on_tour.map {|p| Information.where(piece_id = p.id)}
+    @information = @pieces_on_tour.map {|p| Information.where(:piece_id => p.id)}
 
     #@pieces = Piece.all
     js :params => {:pieces_list => @pieces_on_tour, :before_info => @information, :connection_list => @connections, :tour_id => identity}
@@ -36,7 +36,7 @@ class MobileController < ApplicationController
     @questions = @pieces_on_tour.map {|p| p.questions[0]}
     @answers = @questions.map{ |q| Answer.where(:question_id => q.id)}
     @connections = tour.connections
-    @after_info = @pieces_on_tour.map {|p| Information.where(piece_id = p.id)}
+    @after_info = @pieces_on_tour.map {|p| Information.where(:piece_id => p.id)}
 
     # TODO @comments
     js :params => {:iden => @ident, :galleries_list => @galleries, :pieces_list => @pieces_on_tour,
