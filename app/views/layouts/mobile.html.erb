@@ -56,7 +56,9 @@
                         <%= link_to "COMMENTS", comments_path %>
                     </li>
                     <li><a href="#contact">MY VOYAGES</a></li>
-                    <li><a href="#contact">THE MUSEUMS</a></li>
+                    <li<%= raw(" class=\"active\"") if @page == "museums" %>>
+                        <%= link_to "THE MUSEUMS", mobile_museums_path %>
+                    </li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
