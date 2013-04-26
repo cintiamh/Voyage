@@ -2,7 +2,7 @@
 
 <p id="notice"><%= notice %></p>
 <div class="thumbnail">
-<%= image_tag @piece.image.url if @piece.image.exists? %>
+<%= image_tag @piece.image.url(:large) if @piece.image.exists? %>
 </div>
 <table class="table table-bordered table-striped">
     <tr>

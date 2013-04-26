@@ -1,6 +1,6 @@
 class MobileController < ApplicationController
   def index
-
+    @page = "mobile"
   end
 
   def identities

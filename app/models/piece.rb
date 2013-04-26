@@ -22,7 +22,11 @@ class Piece < ActiveRecord::Base
 
   default_scope order('title ASC')
 
-  has_attached_file :image
+  has_attached_file :image, styles: {
+      thumb:  '50x50>',
+      medium: '100x100>',
+      large:  '120x120>'
+  }
 
   accepts_nested_attributes_for :questions, :allow_destroy => true
   accepts_nested_attributes_for :informations, :allow_destroy => true

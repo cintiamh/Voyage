@@ -48,9 +48,13 @@
                 <span class="icon-bar"></span>
             </button>
             <div class="nav-collapse collapse">
-                <ul class="nav pull-right">
-                    <li class="active"><a href="#">HOME</a></li>
-                    <li><a href="#about">COMMENTS</a></li>
+                <ul class="nav">
+                    <li<%= raw(" class=\"active\"") if @page == "mobile" %>>
+                        <%= link_to "HOME", "/" %>
+                    </li>
+                    <li<%= raw(" class=\"active\"") if @page == "comments" %>>
+                        <%= link_to "COMMENTS", comments_path %>
+                    </li>
                     <li><a href="#contact">MY VOYAGES</a></li>
                     <li><a href="#contact">THE MUSEUMS</a></li>
                 </ul>
@@ -63,13 +67,14 @@
     <div class="row-fluid">
         <div class="span12">
             <div class="row-fluid">
-                <div class="span4">
-                    <%= image_tag "new_layout/carnegie_museums.png" %>
-                </div>
-                <div class="span8" style="text-align: right">
+                <div class="span8">
                     <%= image_tag "new_layout/title.png" %>
                 </div>
+                <div class="span4">
+                    <%= image_tag "new_layout/museums.png" %>
+                </div>
             </div>
+            <br>
             <%= yield %>
         </div>
     </div>

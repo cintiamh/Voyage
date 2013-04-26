@@ -44,9 +44,11 @@ Voyage::Application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
+  #config.action_controller.asset_host = "https://s3.amazonaws.com/#{ENV['AWS_BUCKET']}"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
+  config.assets.precompile += %w[admin.js desktop.js identities_view_logic.js jquery.rwdImageMaps.js login.js mobile.js paloma/* active_admin.js admin.css]
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
@@ -64,5 +66,14 @@ Voyage::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
-  config.action_mailer.default_url_options = { :host => 'agile-plateau-1815.herokuapp.com/' }
+  config.action_mailer.default_url_options = { :host => 'the-voyage.herokuapp.com/' }
+
+  config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => {
+          :bucket => ENV['AWS_BUCKET'],
+          :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+          :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+      }
+  }
 end
