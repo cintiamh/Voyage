@@ -213,7 +213,7 @@ function atItemDialog(i)
     var item = parseInt(i) + 1;
     var title = $("#itemTitle1");
     title.text(pieces_list[currentItemNumber].title.toUpperCase());
-    resizeInfoModalMap('checkin');
+    resizeInfoModalMap('checkin_body');
     $("#checkin").modal('show');
 
 }
@@ -262,7 +262,7 @@ function displayItemInfo()
         con_1.text("How are these connected?");
         con_2.text("Post your thoughts in the comments section.");
     }
-    resizeInfoModalMap('itemInformation');
+    resizeInfoModalMap('itemInformation_body');
     $("#itemInformation").modal('show');
 
 }
