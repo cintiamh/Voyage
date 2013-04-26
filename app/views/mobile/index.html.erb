@@ -1,2 +1,31 @@
-<h1>Mobile#index</h1>
-<p>Find me in app/views/mobile/index.html.erb</p>
+<div class="row-fluid">
+    <div class="span4">
+        <br>
+        <p class="homepage">A personalized, interactive journey through BOTH extraordinary museums</p>
+        <h2 class="home_title">WELCOME</h2>
+        <p class="homepage">
+            Go to <br><a href="http://the-voyage.herokuapp.com/">http://the-voyage.herokuapp.com</a><br> on your smartphone or tablet
+        </p>
+        <p style="text-align: right">
+            <%= image_tag "new_layout/QRCode.png" %>
+        </p>
+        <br>
+        <p class="homepage">
+            Then join us at the Carnegie Museums in Oakland select an Identity to get started!
+        </p>
+        <h2 class="home_title">
+            COMMENT & SHARE YOUR VOYAGE
+        </h2>
+        <p class="homepage">
+            Share your reaction with your friends on Facebook and entice others to visit the museums to take Voyages of their own very own
+        </p>
+        <br>
+        <p style="text-align: right">
+            <%= image_tag "new_layout/facebook_btn.png" %>
+        </p>
+    </div>
+    <div class="span8" style="text-align: center">
+        <br>
+        <%= link_to(image_tag("new_layout/WhoAreYouToday.png"), mobile_identities_path) %>
+    </div>
+</div>
