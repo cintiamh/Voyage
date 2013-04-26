@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   # GET /comments.json
   def index
     @page = "comments"
-    @comments = Comment.all
+    @comments = Comment.all(:conditions => ['approved = ?', true])
 
     respond_to do |format|
       format.html # index.html.erb
