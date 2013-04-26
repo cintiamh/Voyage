@@ -33,11 +33,18 @@ var map;
       connection_list = params["connection_list"];
 
       plot_items();
+
+      /*$(window).resize(function() {
+         // alert("window resized");
+         // plot_items();
+      });    */
   };
 })();
 
 function plot_items()
 {
+    $('div').remove('.item_pos');
+
     for(var i=0; i<galleries_list.length; i++)
     {
         var sel = 'gal' + parseInt(i+1);
@@ -61,6 +68,7 @@ function plot_items()
         var item_num = parseInt(i+1);
         var item_div = "<div id='item" + i + "' onclick='return atItemDialog(" + i + ")'></div>";
         var div = $(item_div).appendTo(map);
+        div.addClass("item_pos");
         div.addClass("circle not_done");
         div.append("<br><b>"+item_num+"</b>");
         div.css("left",left_pos);

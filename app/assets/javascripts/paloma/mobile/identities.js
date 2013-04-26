@@ -32,7 +32,7 @@ var tour_list;
           if(target >= tour_list.length){target = 0;}
           //links.push({"source":i, "target":target, "value":25})
       }
-      svg = d3.select("body").append("svg");
+      svg = d3.select("#chart").append("svg");
       w = 300;
       h = 300;
 

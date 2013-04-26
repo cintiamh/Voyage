@@ -1,9 +1,10 @@
 var w,h;
-var svg;
+var svg,vis;
 var pieces_list;
 var nodes =[], links= [], connections= [], before_info = [];
 var tour_id;
-var force, link,node;
+var force,link,node,width, height;
+
 
 (function(){
   // You access variables from before/around filters from _x object.
@@ -35,14 +36,39 @@ var force, link,node;
       //w = parent.innerWidth() - 20;
       //h = parent.height() - 20;
 
-      svg = d3.select("#chart").append("svg");
-      w = 600, h= 700;
+     /* svg = d3.select("#chart").append("svg");
+      w = 600;
+      h = 600;
       svg.attr("viewbox",function(){return "0 0 " + w + " " + h + " ";})
-          .attr("preserveAspectRation","xMinYMin");
+          .attr("preserveAspectRation","xMinYMin");*/
 
       //w=h=300;
       constructNodeLinks();
-      createItemsChart(nodes,links);
+
+      /********* NEW CODE ***********/
+
+       width = 500,
+          height = 500;
+
+      var svg = d3.select("#chart")
+          .append("svg")
+          .attr("viewBox", "0 0 " + width + " " + height )
+          .attr("preserveAspectRatio", "xMidYMid meet")
+          .attr("pointer-events", "all")
+          .call(d3.behavior.zoom().on("zoom", redraw));
+
+      vis = svg.append('svg:g');
+
+      function redraw() {
+          vis.attr("transform",
+              "translate(" + d3.event.translate + ")"
+                  + " scale(" + d3.event.scale + ")");
+      }
+      draw_graph();
+
+
+      /********** NEW CODE *********/
+     // createItemsChart(nodes,links);
 
       //Touch and click events
       $('.touch_click').on('touchstart', function (e) {
@@ -74,6 +100,48 @@ var force, link,node;
       });
   };
 })();
+
+function draw_graph() {
+    var force = d3.layout.force()
+        .charge(-2000)
+        .linkDistance(200)
+        .nodes(nodes)
+        .links(links)
+        .size([width, height])
+        .start();
+
+    var link = vis.selectAll(".link")
+        .data(links)
+        .enter().append("line")
+        .attr("class", "link")
+        .style("stroke-width", "3" );
+
+    var node = vis.selectAll(".node")
+        .data(nodes)
+        .enter().append("image")
+        .attr("class", "node")
+        .attr("xlink:href",function(d){return d.image;})
+        .attr("width", 100)
+        .attr("height",100)
+        .attr("x","-3em")
+        .attr("y","-3em")
+        .call(force.drag);
+
+    node.append("title")
+        .text(function(d) { return d.name; });
+
+    force.on("tick", function() {
+        link.attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+
+        node.attr("transform", function(d)
+        {
+            return "translate(" + d.x + "," + d.y + ")";
+        });
+    });
+}
 
 //links -> {source, target, distance}
 function constructNodeLinks()
@@ -188,10 +256,30 @@ function restart()
 
     node.append("image")
         .attr("xlink:href", function(d) {return d.image})
-        .attr("x", -50)
-        .attr("y", -50)
-        .attr("height", 100)
-        .attr("width",100)
+        .attr("x", function(d){
+            if (d.group=="CONNECTOR")
+            {return -25;}
+            else
+            {return -50;}
+        })
+        .attr("y", function(d){
+            if (d.group=="CONNECTOR")
+            {return -25;}
+            else
+            {return -50;}
+        })
+        .attr("height", function(d){
+            if (d.group=="CONNECTOR")
+            {return 50;}
+            else
+            {return 100;}
+        })
+        .attr("width",function(d){
+            if (d.group=="CONNECTOR")
+            {return 50;}
+            else
+            {return 100;}
+        })
         .attr("class","touch_click")
         .attr("node_id",function(d){return d.id;});
     force.start();
