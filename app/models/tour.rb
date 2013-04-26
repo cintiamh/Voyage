@@ -16,7 +16,11 @@ class Tour < ActiveRecord::Base
 
   validates :title, :presence => true
 
-  has_attached_file :image
+  has_attached_file :image, styles: {
+      thumb:  '50x50>',
+      medium: '100x100>',
+      large:  '120x120>'
+  }
 
   accepts_nested_attributes_for :pieces
   accepts_nested_attributes_for :tour_items, :allow_destroy => true

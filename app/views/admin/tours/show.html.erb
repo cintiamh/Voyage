@@ -3,7 +3,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="thumbnail">
-    <%= image_tag @tour.image.url if @tour.image.exists? %>
+    <%= image_tag @tour.image.url(:large) if @tour.image.exists? %>
 </div>
 
 <table class="table table-bordered table-striped">

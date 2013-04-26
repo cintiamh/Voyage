@@ -53,6 +53,7 @@ gem 'oauth2'
 
 # Paper clip
 gem 'paperclip', '~> 3.0'
+gem 'aws-sdk'
 
 # for IRB formatting
 gem 'hirb'
