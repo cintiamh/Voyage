@@ -57,7 +57,7 @@ function plot_items()
         var left_pos = parseInt(map_position.left + (parseInt(gal_pos[pos].min_x) + parseInt(gal_pos[pos].max_x))/2);
         left_pos -= 45;
         var top_pos = parseInt(map_position.top + (parseInt(gal_pos[pos].min_y) + parseInt(gal_pos[pos].max_y))/2);
-        top_pos -= 45;
+        top_pos += 43;
         var item_num = parseInt(i+1);
         var item_div = "<div id='item" + i + "' onclick='return atItemDialog(" + i + ")'></div>";
         var div = $(item_div).appendTo(map);

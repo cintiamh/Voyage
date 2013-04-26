@@ -43,6 +43,35 @@ var force, link,node;
       //w=h=300;
       constructNodeLinks();
       createItemsChart(nodes,links);
+
+      //Touch and click events
+      $('.touch_click').on('touchstart', function (e) {
+          // listen for a touchend event
+          e.stopPropagation();
+          e.preventDefault();
+          //$(e.target).off('click');
+          $(e.target).one('touchend', function () {
+              var tar = e.target;
+              var node_id = $(tar).attr("node_id");
+              console.log("touch "+node_id);
+              aboutPieces(node_id);
+              //e.handled = true;
+          });
+
+          // cancel it in 150ms
+          setTimeout(function () {
+              $(e.target).off('touchend');
+          }, 150);
+      });
+
+      $('.touch_click').click(function (e) {
+          if (e.handled != true) {
+              var tar = e.target;
+              var node_id = $(tar).attr("node_id");
+              console.log("click "+node_id);
+              aboutPieces(node_id);
+          }
+      });
   };
 })();
 
@@ -163,10 +192,8 @@ function restart()
         .attr("y", -50)
         .attr("height", 100)
         .attr("width",100)
-        .attr("onclick",function(d)
-        {
-            return "return aboutPieces("+d.id+")";
-        });
+        .attr("class","touch_click")
+        .attr("node_id",function(d){return d.id;});
     force.start();
     //alert("in restart");
 }
