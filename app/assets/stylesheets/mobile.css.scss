@@ -40,8 +40,10 @@ body {
     */
   color: #FFFFFF;
   font-family: "Sintony", Arial;
+}
 
-  padding-top: 50px;
+#main_content {
+  margin-top: 50px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -62,6 +64,16 @@ a {
 h2.home_title {
   text-align: right;
   padding-top: 30px;
+}
+
+.dark_back {
+  background-color: #113333;
+  color: #9DDCBC;
+  margin-top: 20px;
+}
+
+.content_box {
+  padding: 20px;
 }
 
 .hidden
