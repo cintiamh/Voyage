@@ -20,7 +20,7 @@ var map;
   // Example:
   // _l.localMethod(); 
   var _l = _L['mobile'];
-
+  var in_floor = true;
 
   Paloma.callbacks['mobile']['floors'] = function(params)
   {
@@ -34,10 +34,13 @@ var map;
 
       plot_items();
 
-      /*$(window).resize(function() {
-         // alert("window resized");
-         // plot_items();
-      });    */
+      $(window).resize(function() {
+          if(in_floor == true)
+          {
+            alert("map resized");
+            plot_items();
+          }
+      });
   };
 })();
 

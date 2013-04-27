@@ -1,3 +1,4 @@
+<script type="text/javascript" src="/assets/paloma/jquery.rwdImageMaps.js"></script>
 <div>
     <ul class="nav nav-tabs">
         <li><a href="#first_floor" data-toggle="tab">Floor 1</a></li>
@@ -11,47 +12,70 @@
     <!-- Floor 1 -->
     <div id="first_floor" class="tab-pane active">
         <div id="1_map" style="text-align:center; width:100%; margin-left:auto; margin-right:auto;">
-            <img id="Image-Maps_floor_1" src="/assets/MAPv1_Floor1_-TRANS.png" usemap="#Image-Maps_floor_1" border="0" width="640" height="480" alt="" />
+            <img id="Image-Maps_floor_1" src="/assets/MAPv1_Floor1.png" usemap="#Image-Maps_floor_1" border="0" width="1024" height="513" alt=""/>
             <map id="_Image-Maps_floor_1" name="Image-Maps_floor_1">
-                <area shape="rect" id="gal0" href="" coords="438,96,484,146" onclick="return galInfo(0)" alt="ice age" title="ice age"    />
-                <area shape="rect" id="gal1" href="" coords="495,98,553,146" onclick="return galInfo(1)" alt="amphibians" title="amphibians"    />
-                <area shape="rect" id="gal2" href="" coords="388,150,552,242" onclick="return galInfo(2)" alt="dinosaurs" title="dinosaurs"    />
-                <area shape="rect" id="gal3" href="" coords="546,245,610,295" onclick="return galInfo(3)" alt="gems and jewelry" title="gems and jewelry"    />
-                <area shape="rect" id="gal4" href="" coords="412,246,542,296" onclick="return galInfo(4)" alt="minerals" title="minerals"    />
-                <area shape="rect" id="gal5" href="" coords="389,303,465,350" onclick="return galInfo(5)" alt="geology" title="geology"    />
+                <area shape="rect" id="gal0" href="" coords="592,91,628,136" onclick="return galInfo(0)" alt="ice age" title="ice age"    />
+                <area shape="rect" id="gal1" href="" coords="631,91,705,137" onclick="return galInfo(1)" alt="amphibians" title="amphibians"    />
+                <area shape="rect" id="gal2" href="" coords="544,142,701,233" onclick="return galInfo(2)" alt="dinosaurs" title="dinosaurs"    />
+                <area shape="rect" id="gal3" href="" coords="698,237,758,286" onclick="return galInfo(3)" alt="gems and jewelry" title="gems and jewelry"    />
+                <area shape="rect" id="gal4" href="" coords="567,237,692,286" onclick="return galInfo(4)" alt="minerals" title="minerals"    />
+                <area shape="rect" id="gal5" href="" coords="696,287,785,385" onclick="return galInfo(5)" alt="geology" title="geology"    />
                 <area shape="rect" id="gal6" href="" coords="541,300,635,400" onclick="return galInfo(6)" alt="hall of architecture" title="hall of architecture"    />
-                <area shape="rect" coords="638,478,640,480" href="/assets/MAPv1_Floor1_-TRANS.png" alt="Image Map" title="Image Map" />
+                <area shape="rect" coords="1022,511,1024,513" href="/assets/MAPv1_Floor1.png" alt="Image Map" title="Image Map" />
             </map>
         </div>
+      <script>
+          $(document).ready(function(e) {
+              $('#Image-Maps_floor_1').rwdImageMaps();
+              //$('#Image-Maps_floor_2').rwdImageMaps();
+              //$('#Image-Maps_floor_3').rwdImageMaps();
+
+          });
+      </script>
     </div>
     <!-- Floor 2 -->
     <div id="second_floor" class="tab-pane">
         <div id="2_map" style="text-align:center; width:1024px; margin-left:auto; margin-right:auto;">
-            <img id="Image-Maps_floor_2" src="/assets/MAPv1_Floor2_-TRANS.png" usemap="#Image-Maps_floor_2" border="0" width="640" height="480" alt="" />
+            <img id="Image-Maps_floor_2" src="/assets/MAPv1_Floor2.png" usemap="#Image-Maps_floor_2" border="0" width="1024" height="515" alt="" />
             <map id="_Image-Maps_floor_2" name="Image-Maps_floor_2">
-                <area shape="rect" id="gal7" href="" coords="340,80,438,128" onclick="return galInfo(7)" alt="wildlife" title="wildlife"    />
-                <area shape="rect" id="gal8" href="" coords="18,223,205,467" onclick="return galInfo(8)" alt="scaife galleries" title="scaife galleries"    />
-                <area shape="rect" id="gal9" href="" coords="209,411,372,468" onclick="return galInfo(9)" alt="contemporary art" title="contemporary art"    />
-                <area shape="rect" id="gal10" href="" coords="490,412,622,470" onclick="return galInfo(10)" alt="decorative arts" title="decorative arts"    />
-                <area shape="rect" id="gal11" href="" coords="508,1,560,58" onclick="return galInfo(11)" alt="botany" title="botany"    />
-                <area shape="rect" coords="410,416,486,471" href="http://www.image-maps.com/" alt="Grand staircase" title="Grand staircase"    />
-                <area shape="rect" coords="638,478,640,480" href="/assets/MAPv1_Floor2_-TRANS.png" alt="Image Map" title="Image Map" />
+                <area shape="rect" id="gal7" href="" coords="525,95,614,139" onclick="return galInfo(7)" alt="wildlife" title="wildlife"    />
+                <area shape="rect" id="gal8" href="" coords="213,228,362,463" onclick="return galInfo(8)" alt="scaife galleries" title="scaife galleries"    />
+                <area shape="rect" id="gal9" href="" coords="361,415,554,467" onclick="return galInfo(9)" alt="contemporary art" title="contemporary art"    />
+                <area shape="rect" id="gal10" href="" coords="691,414,791,465" onclick="return galInfo(10)" alt="decorative arts" title="decorative arts"    />
+                <area shape="rect" id="gal11" href="" coords="684,18,729,72" onclick="return galInfo(11)" alt="botany" title="botany"    />
+                <area shape="rect"  href="" coords="1022,513,1024,515" alt="Grand staircase" title="Grand staircase"    />
+                <area shape="rect" coords="1022,513,1024,515" href="/assets/MAPv1_Floor2.png" alt="Image Map" title="Image Map" />
             </map>
         </div>
+      <script>
+          $(document).ready(function(e) {
+              //$('#Image-Maps_floor_1').rwdImageMaps();
+              $('#Image-Maps_floor_2').rwdImageMaps();
+              //$('#Image-Maps_floor_3').rwdImageMaps();
+          });
+      </script>
     </div>
     <!-- Floor 3 -->
     <div id="third_floor" class="tab-pane">
         <div id="3_map" style="text-align:center; width:1024px; margin-left:auto; margin-right:auto;">
-            <img id="Image-Maps_floor_3" src="/assets/MAPv1_Floor3_-TRANS.png" usemap="#Image-Maps_floor_3" border="0" width="640" height="480" alt="" />
+            <img id="Image-Maps_floor_3" src="/assets/MAPv1_Floor3.png" usemap="#Image-Maps_floor_3" border="0" width="1024" height="509" alt="" />
             <map id="_Image-Maps_floor_3" name="Image-Maps_floor_3">
-                <area shape="rect" id="gal12" coords="280,141,402,190" href="" onclick="return galInfo(12)" alt="Jurassic Overlook" title="Jurassic Overlook"    />
-                <area shape="rect" id="gal13" coords="234,204,253,363" href="" onclick="return galInfo(13)" alt="Hall of Birds" title="Hall of Birds"    />
-                <area shape="rect" id="gal14" coords="168,368,243,475" href="" onclick="return galInfo(14)" alt="Ancient Egypt" title="Ancient Egypt"    />
-                <area shape="rect" id="gal15" coords="330,365,467,434" href="" onclick="return galInfo(15)" alt="Polar Bear" title="Polar Bear"    />
-                <area shape="rect" id="gal16" coords="474,370,573,431" href="" onclick="return galInfo(16)" alt="American Indians" title="American Indians"    />
-                <area shape="rect" coords="638,478,640,480" href="/assets/MAPv1_Floor3_-TRANS.png" alt="Image Map" title="Image Map" />
+                <area shape="rect" id="gal12" coords="468,155,580,203" href="" onclick="return galInfo(12)" alt="Jurassic Overlook" title="Jurassic Overlook"    />
+                <area shape="rect" id="gal13" coords="409,204,433,378" href="" onclick="return galInfo(13)" alt="Hall of Birds" title="Hall of Birds"    />
+                <area shape="rect" id="gal14" coords="348,383,420,485" href="" onclick="return galInfo(14)" alt="Ancient Egypt" title="Ancient Egypt"    />
+                <area shape="rect" id="gal15" coords="502,382,649,444" href="" onclick="return galInfo(15)" alt="Polar Bear" title="Polar Bear"    />
+                <area shape="rect" id="gal16" coords="650,383,748,445" href="" onclick="return galInfo(16)" alt="American Indians" title="American Indians"    />
+                <area shape="rect" coords="1022,507,1024,509" href="/assets/MAPv1_Floor3.png" alt="Image Map" title="Image Map" />
             </map>
         </div>
+      <script>
+          $(document).ready(function(e) {
+              //$('#Image-Maps_floor_1').rwdImageMaps();
+              //$('#Image-Maps_floor_2').rwdImageMaps();
+              $('#Image-Maps_floor_3').rwdImageMaps();
+
+          });
+      </script>
     </div>
 </div>
 
@@ -100,12 +124,12 @@
 
 
 <!-- Plugin for responsive image maps -->
-<script type="text/javascript" src="/assets/paloma/jquery.rwdImageMaps.js"></script>
+
 <script>
     $(document).ready(function(e) {
-        $('#Image-Maps_floor_1').rwdImageMaps();
-        $('#Image-Maps_floor_2').rwdImageMaps();
-        $('#Image-Maps_floor_3').rwdImageMaps();
+       // $('#Image-Maps_floor_1').rwdImageMaps();
+       // $('#Image-Maps_floor_2').rwdImageMaps();
+       // $('#Image-Maps_floor_3').rwdImageMaps();
 
     });
 </script>
