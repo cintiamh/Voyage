@@ -87,15 +87,20 @@ function plot_items()
         var item_div = "<div id='item" + i + "' onclick='return atItemDialog(" + i + ")'></div>";
         var div = $(item_div).appendTo(map);
         div.addClass("item_pos");
-        div.addClass("circle not_done");
-        div.append("<br><b>"+item_num+"</b>");
+        //div.addClass("circle not_done");
+        div.addClass("circle");
+        var id_for_image = parseInt(i+1);
+        var bg_img = "url(/assets/Number-" + id_for_image +".png) no-repeat";
+        div.css("background",bg_img);
+        div.css("background-size","100%");
+        //div.append("<br><b>"+item_num+"</b>");
         div.css("left",left_pos_pc + "%");
         div.css("top",top_pos_pc + "%");
         div.css("position","absolute");
     }
 
-    $("#item0").removeClass("not_done");
-    $("#item0").addClass("next");
+   // $("#item0").removeClass("not_done");
+    //$("#item0").addClass("next");
 }
 
 function get_position_of_gallery(gal_pos, id)
@@ -201,13 +206,18 @@ function closeAllDialogs()
     var cur = $("#item"+currentItemNumber);
     var next_item = parseInt(currentItemNumber+1);
     var next = $("#item"+next_item);
-    cur.removeClass("not_done");
-    cur.removeClass("next");
-    cur.addClass("done");
+    //var img_done = "url(" + pieces_list[currentItemNumber].image + ") no-repeat";
+    var img_done = "url(/assets/check_mark_green.png) no-repeat"
+    cur.css("background",img_done);
+    cur.css("background-size","100%");
+
+    //cur.removeClass("not_done");
+    //cur.removeClass("next");
+    //cur.addClass("done");
     if(next_item < pieces_list.length)
     {
-        next.removeClass("not_done");
-        next.addClass("next");
+        //next.removeClass("not_done");
+        //next.addClass("next");
     }
     var options = $("option");
     for(var i=0; i<options.length; i++)

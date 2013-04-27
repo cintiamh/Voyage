@@ -149,7 +149,7 @@ function draw_graph() {
 function constructNodeLinks()
 {
     //TODO: replace with GO art
-    nodes.push({"id":-1,"title":"GO", "group":"NODE", "charge":-500, "image":"/assets/PITTSBURGHER.png"});
+    nodes.push({"id":-1,"title":"GO", "group":"NODE", "charge":-500, "image":"/assets/NUMBER-SHEET.png"});
     for(var i = 0; i<pieces_list.length; i++)
     {
         //circle case
@@ -260,25 +260,25 @@ function restart()
         .attr("xlink:href", function(d) {return d.image})
         .attr("x", function(d){
             if (d.group=="CONNECTOR")
-            {return -25;}
+            {return -15;}
             else
             {return -50;}
         })
         .attr("y", function(d){
             if (d.group=="CONNECTOR")
-            {return -25;}
+            {return -15;}
             else
             {return -50;}
         })
         .attr("height", function(d){
             if (d.group=="CONNECTOR")
-            {return 50;}
+            {return 25;}
             else
             {return 100;}
         })
         .attr("width",function(d){
             if (d.group=="CONNECTOR")
-            {return 50;}
+            {return 25;}
             else
             {return 100;}
         })
