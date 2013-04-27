@@ -36,6 +36,10 @@
         </td>
     </tr>
     <% unless @piece.museum == "Natural History" %>
+        <tr>
+            <td>Artist</td>
+            <td><%= @piece.artist %></td>
+        </tr>
     <tr>
         <td>Creator</td>
         <td>
