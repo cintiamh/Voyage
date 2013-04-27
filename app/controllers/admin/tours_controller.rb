@@ -9,7 +9,7 @@ class Admin::ToursController < Admin::ResourceController
       redirect_to "/"
     end
     @page = "tours"
-    @tours = Tour.order(sort_column + " " + sort_direction)
+    @tours = Tour.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

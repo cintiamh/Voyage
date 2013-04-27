@@ -8,7 +8,7 @@ class Admin::UsersController < Admin::ResourceController
     unless current_user.try(:admin?)
       redirect_to "/"
     end
-    @users = User.order(sort_column + " " + sort_direction)
+    @users = User.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
     @admin_users = User.all(:conditions => { :admin => true})
 
     respond_to do |format|

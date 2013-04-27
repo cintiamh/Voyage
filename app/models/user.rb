@@ -47,4 +47,13 @@ class User < ActiveRecord::Base
       super
     end
   end
+
+  def self.search(search)
+    if search
+      where('email LIKE ? OR first_name LIKE ? OR last_name LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
+      #where('email LIKE ?', "%#{search}%")
+    else
+      scoped
+    end
+  end
 end

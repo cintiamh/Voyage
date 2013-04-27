@@ -72,3 +72,5 @@ gem 'aws-sdk'
 
 # Admin Area
 gem 'inherited_resources'
+
+gem 'will_paginate', '~> 3.0.0'

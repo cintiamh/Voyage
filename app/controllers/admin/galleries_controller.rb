@@ -9,7 +9,7 @@ class Admin::GalleriesController < Admin::ResourceController
       redirect_to "/"
     end
     @page = "pieces"
-    @galleries = Gallery.order(sort_column + " " + sort_direction)
+    @galleries = Gallery.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
