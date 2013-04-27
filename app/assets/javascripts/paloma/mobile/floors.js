@@ -34,13 +34,13 @@ var map;
 
       plot_items();
 
-      $(window).resize(function() {
+      /*$(window).resize(function() {
           if(in_floor == true)
           {
-            alert("map resized");
+            //alert("map resized");
             plot_items();
           }
-      });
+      });*/
   };
 })();
 
@@ -63,19 +63,22 @@ function plot_items()
     {
         var gal = pieces_list[i].gallery_id;
         var pos = get_position_of_gallery(gal_pos, gal);
+        var floor = galleries_list[pos];
 
         var left_pos = parseInt(map_position.left + (parseInt(gal_pos[pos].min_x) + parseInt(gal_pos[pos].max_x))/2);
-        left_pos -= 45;
+        left_pos;// -= 45;
+        var left_pos_pc = (left_pos/1170) * 100;
         var top_pos = parseInt(map_position.top + (parseInt(gal_pos[pos].min_y) + parseInt(gal_pos[pos].max_y))/2);
-        top_pos += 43;
+        top_pos -= 43;
+        var top_pos_pc = (top_pos/513) * 100;
         var item_num = parseInt(i+1);
         var item_div = "<div id='item" + i + "' onclick='return atItemDialog(" + i + ")'></div>";
         var div = $(item_div).appendTo(map);
         div.addClass("item_pos");
         div.addClass("circle not_done");
         div.append("<br><b>"+item_num+"</b>");
-        div.css("left",left_pos);
-        div.css("top",top_pos);
+        div.css("left",left_pos_pc + "%");
+        div.css("top",top_pos_pc + "%");
         div.css("position","absolute");
     }
 
