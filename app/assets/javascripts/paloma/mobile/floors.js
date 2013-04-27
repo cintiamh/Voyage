@@ -214,5 +214,5 @@ function closeAllDialogs()
     {
         options[i].remove();
     }
-    $("#comments").modal('hide');
+    $("#itemInformation").modal('hide');
 }

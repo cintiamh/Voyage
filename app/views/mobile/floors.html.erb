@@ -97,32 +97,41 @@
 </div>
 
 <div id="itemInformation" class="modal hide fade">
-  <h2 id="itemTitle2"></h2>
-  <image id="item_image"></image><br>
-  <p id="after_info"></p><br>
-  <p id="con_1"></p><br>
-  <p id="con_2"></p><br>
+  <div>
+    <ul class="nav nav-tabs">
+      <li><a href="#itemInfoTab" data-toggle="tab">Information</a></li>
+      <li><a href="#connectionTab" data-toggle="tab">Connections</a></li>
+      <li><a href="#commentsTab" data-toggle="tab">Comments</a></li>
+    </ul>
+  </div><!-- /navbar -->
 
-  <button onclick="moveToComments()">OK!</button>
 
-</div>
+  <div class="tab-content">
+    <h2 id="itemTitle2"></h2>
+    <!-- Item Information -->
+    <div id="itemInfoTab" class="tab-pane active">
+      <image id="item_image"></image><br>
+      <p id="after_info"></p><br>
+    </div>
 
-<div id="comments" class="modal hide fade">
-  <h2 id="itemTitle3"></h2>
-  <input type="text">
-  <a href="">Submit</a>
-  <div id="prev_comments">
+    <div id="connectionTab" class="tab-pane">
+      <image id="item_image"></image><br>
+      <p id="con_1"></p><br>
+      <p id="con_2"></p><br>
+    </div>
 
+    <div id="commentsTab" class="tab-pane">
+      <input type="text">
+      <a href="">Submit</a>
+      <div id="prev_comments">
+        <p>Sample Comment 1</p>
+        <p>Sample Comment 2</p>
+        <p>Sample Comment 3</p>
+      </div>
+    </div>
   </div>
-  <p>Sample Comment 1</p>
-  <p>Sample Comment 2</p>
-  <p>Sample Comment 3</p>
-
-  <button onclick = "closeAllDialogs()">Done</button>
-
-</div>
-
-
+  <button onclick="closeAllDialogs()">Done</button>
+ </div>
 <!-- Plugin for responsive image maps -->
 
 <script>
