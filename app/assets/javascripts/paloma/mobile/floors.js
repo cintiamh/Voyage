@@ -99,22 +99,22 @@ function plot_items()
         {
             map_position = $('#Image-Maps_floor_1').position();
             map = $('#1_map');
-            left_adjust = -20;
-            top_adjust = -43;
+            left_adjust = 48;//-20;
+            top_adjust = -33; //-43
         }
         else if(floor == 2)
         {
             map_position = $('#Image-Maps_floor_2').position();
             map = $('#2_map');
             left_adjust = +45;
-            top_adjust = -43;
+            top_adjust = -23//-43;
         }
         else
         {
             map_position = $('#Image-Maps_floor_3').position();
             map = $('#3_map');
-            left_adjust = +45;
-            top_adjust = -0;
+            left_adjust = +48;
+            top_adjust = -23;
         }
         var left_pos = parseInt(map_position.left + (parseInt(gal_pos.min_x) + parseInt(gal_pos.max_x))/2);
         left_pos += parseInt(left_adjust);
