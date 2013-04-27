@@ -6,14 +6,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:facebook]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  #attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :tours
   has_many :tour_histories
   has_many :comments
   has_many :likes
 
-  attr_accessible :email, :first_name, :last_name, :modification_date, :username, :provider, :uid, :admin
+  attr_accessible :email, :first_name, :last_name, :modification_date, :username, :provider, :uid, :admin, :password, :password_confirmation, :remember_me
 
   scope :recent, :limit => 10, :order => 'created_at DESC'
 

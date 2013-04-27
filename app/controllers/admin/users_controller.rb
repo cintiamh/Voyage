@@ -1,12 +1,14 @@
 class Admin::UsersController < Admin::ResourceController
 
+  helper_method :sort_column, :sort_direction
+
   # GET /users
   # GET /users.json
   def index
     unless current_user.try(:admin?)
       redirect_to "/"
     end
-    @users = User.all
+    @users = User.order(sort_column + " " + sort_direction)
     @admin_users = User.all(:conditions => { :admin => true})
 
     respond_to do |format|
@@ -93,5 +95,15 @@ class Admin::UsersController < Admin::ResourceController
       format.html { redirect_to admin_users_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def sort_column
+    Piece.column_names.include?(params[:sort]) ? params[:sort] : "email"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

@@ -20,7 +20,7 @@ class Piece < ActiveRecord::Base
 
   validates :title, :presence => true
 
-  default_scope order('title ASC')
+  #default_scope order('title ASC')
 
   has_attached_file :image, styles: {
       thumb:  '50x50>',
