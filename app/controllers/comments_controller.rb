@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   # GET /comments.json
   def index
     @page = "comments"
-    @comments = Comment.all(:conditions => ['approved = ?', true])
+    @comments = Comment.where('approved = ?', true).paginate(:per_page => 12, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
