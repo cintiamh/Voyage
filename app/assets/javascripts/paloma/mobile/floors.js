@@ -33,6 +33,9 @@ var map, initial_floor;
       connection_list = params["connection_list"];
       comment_list = params["comment_list"];
 
+      var pieces = _L.pieces_list;
+      _l.pieces = pieces;
+
       plot_items();
 
       if(initial_floor == 1)

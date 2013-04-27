@@ -9,10 +9,6 @@
   // locals.localMethod = function(){};
   var locals = Paloma.locals['pages'] = {};
 
-  
-  // ~> Start local definitions here and remove this line.
-
-
   // Remove this line if you don't want to inherit locals defined
   // on parent's _locals.js
   Paloma.inheritLocals({from : '/', to : 'pages'});

@@ -31,6 +31,7 @@ var force,link,node,width, height;
       tour_id = params['tour_id'];
       before_info = params['before_info'];
       pieces_list = _L.pieces_list;
+      _l.pieces =  _L.pieces_list;
 
       constructNodeLinks();
 
