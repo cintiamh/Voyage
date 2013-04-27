@@ -56,15 +56,27 @@ function plot_items()
         gal_pos.push({"id":parseInt(i+1), min_x:area[0], max_x:area[2], min_y:area[1], max_y:area[3] });
     }
 
-    map_position = $('#Image-Maps_floor_1').position();
-    map = $('#1_map');
 
     for(i=0; i<pieces_list.length; i++)
     {
         var gal = pieces_list[i].gallery_id;
         var pos = get_position_of_gallery(gal_pos, gal);
-        var floor = galleries_list[pos];
-
+        var floor = galleries_list[pos].floor;
+        if(floor == 1)
+        {
+            map_position = $('#Image-Maps_floor_1').position();
+            map = $('#1_map');
+        }
+        else if(floor == 2)
+        {
+            map_position = $('#Image-Maps_floor_2').position();
+            map = $('#2_map');
+        }
+        else
+        {
+            map_position = $('#Image-Maps_floor_3').position();
+            map = $('#3_map');
+        }
         var left_pos = parseInt(map_position.left + (parseInt(gal_pos[pos].min_x) + parseInt(gal_pos[pos].max_x))/2);
         left_pos;// -= 45;
         var left_pos_pc = (left_pos/1170) * 100;
@@ -145,7 +157,7 @@ function atItemDialog(i)
 function checkAnswer()
 {
     var ans = $('#answers').val();
-    if(ans == rightAnswer)
+    if(ans!= "" && ans == rightAnswer)
     {
         alert("Right answer");
         $("#checkin").modal('hide');
