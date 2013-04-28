@@ -55,6 +55,9 @@
                     <li<%= raw(" class=\"active\"") if @page == "comments" %>>
                         <%= link_to "COMMENTS", comments_path %>
                     </li>
+                    <li<%= raw(" class=\"active\"") if @page == "tours" %>>
+                        <%= link_to "TOURS", tours_path %>
+                    </li>
                     <li><a href="#contact">MY VOYAGES</a></li>
                     <li<%= raw(" class=\"active\"") if @page == "museums" %>>
                         <%= link_to "THE MUSEUMS", mobile_museums_path %>

@@ -1,8 +1,11 @@
 class ToursController < ApplicationController
+
+  layout "mobile"
+
   # GET /tours
   # GET /tours.json
   def index
-    @tours = Tour.all
+    @tours = Tour.where('public = ?', true)
 
     respond_to do |format|
       format.html # index.html.erb
