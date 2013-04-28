@@ -1,4 +1,7 @@
 class MobileController < ApplicationController
+
+    include MobileHelper
+
   def index
     @page = "mobile"
   end
@@ -17,8 +20,8 @@ class MobileController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to "/", notice: 'Comment was successfully created.' }
-        format.json { render json: @comment, status: :created, location: @comment }
+       # format.html { redirect_to "/", notice: 'Comment was successfully created.' }
+       # format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { render action: "new" }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -53,6 +56,7 @@ class MobileController < ApplicationController
     @galleries = Gallery.all
     @ident = params[:identity]
     tour = Tour.includes(:connections,:tour_items).find(@ident)
+    @tour = Tour.find(params[:identity])
     @connections =  tour.connections
     items = tour.tour_items
     @pieces_on_tour = items.map {|i| Piece.includes(:informations,:questions => :answers).find(i.piece_id)}
@@ -62,7 +66,7 @@ class MobileController < ApplicationController
     @after_info = @pieces_on_tour.map {|p| Information.where(:piece_id => p.id)}
 
     @comments = @pieces_on_tour.map {|p| Comment.where(:piece_id => p.id)}
-
+    @comment = Comment.new
 
     js :params => {:iden => @ident, :galleries_list => @galleries, :pieces_list => @pieces_on_tour,
                    :question_list => @questions, :answer_list => @answers,
