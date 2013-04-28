@@ -42,8 +42,8 @@ gem 'jquery-rails'
 gem 'devise'
 
 # JavaScript libraries
-gem 'knockoutjs-rails'
-gem 'jquery_mobile_rails'
+#gem 'knockoutjs-rails'
+#gem 'jquery_mobile_rails'
 gem 'd3-rails'
 gem 'paloma'
 

@@ -12,9 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.mobile
-//= require knockout
-//= require knockout.mapping
 //= require bootstrap
 //= require d3
 //= require paloma
