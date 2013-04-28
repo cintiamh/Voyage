@@ -55,7 +55,8 @@ var force,link,node,width, height;
           .attr("viewBox", "0 0 " + width + " " + height )
           .attr("preserveAspectRatio", "xMidYMid meet")
           .attr("pointer-events", "all")
-          .call(d3.behavior.zoom().on("zoom", redraw));
+          .call(d3.behavior.zoom().scale(.75).on("zoom", redraw));
+
 
       vis = svg.append('svg:g');
 
@@ -152,9 +153,11 @@ function constructNodeLinks()
     nodes.push({"id":-1,"title":"GO", "group":"NODE", "charge":-500, "image":"/assets/NUMBER-SHEET.png"});
     for(var i = 0; i<pieces_list.length; i++)
     {
+        alert("<%= @pieces_list[i].image.url %>");
         //circle case
         if(i==pieces_list.length - 1)
         {
+
             nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-1000, "image":pieces_list[i].image});
             //nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to 1", "group":"CONNECTOR", "charge":-500});
             nodes.push({"id":-(i+2),"title":connections[i].description, "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});
