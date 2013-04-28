@@ -14,8 +14,14 @@
         <% end %>
         <div class="span4">
             <div class="identity_name">
-                <%= link_to image_tag(tour.image.url(:large)), tour %>
-                <%= link_to tour.title.upcase, tour, :class => "tour_btn" %>
+                <%= form_for @history do |f| %>
+                    <%= f.hidden_field :tour_id, :value => tour.id %>
+                    <% user_id = current_user.id if current_user %>
+                    <%= f.hidden_field :user_id, :value => user_id %>
+                    <%= image_submit_tag(tour.image.url(:large), :class => "tour_img_btn") %>
+                    <%= f.submit tour.title.upcase, :class => "tour_btn" %>
+                <% end %>
+
             </div>
         </div>
         <% if @count % 3 == 2 %>

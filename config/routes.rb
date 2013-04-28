@@ -1,5 +1,8 @@
 Voyage::Application.routes.draw do
 
+  resources :histories
+
+
   get "mobile/index"
 
   get "desktop/index"

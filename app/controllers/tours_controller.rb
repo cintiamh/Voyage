@@ -6,6 +6,7 @@ class ToursController < ApplicationController
   # GET /tours.json
   def index
     @tours = Tour.where('public = ?', true)
+    @history = History.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,6 +18,8 @@ class ToursController < ApplicationController
   # GET /tours/1.json
   def show
     @tour = Tour.find(params[:id])
+
+    @history = History.find(session[:history_id])
 
     respond_to do |format|
       format.html # show.html.erb

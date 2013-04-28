@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Chosen date:</b>
+  <%= @history.chosen_date %>
+</p>
+
+<p>
+  <b>Executed date:</b>
+  <%= @history.executed_date %>
+</p>
+
+<p>
+  <b>Tour:</b>
+    <% if @history.tour %>
+        <%= @history.tour.title %>
+    <% end %>
+</p>
+
+<p>
+  <b>User:</b>
+  <% if @history.user %>
+        <%= @history.user.email %>
+    <% end %>
+</p>
+
+<% if @history.tour_items.length > 0 %>
+    <% @history.tour_items.each do |item| %>
+        <p><%= item.piece.title %></p>
+    <% end %>
+<% else %>
+    <p>No items</p>
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_history_path(@history) %> |
+<%= link_to 'Back', histories_path %>

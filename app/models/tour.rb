@@ -1,11 +1,12 @@
 class Tour < ActiveRecord::Base
   belongs_to :user
 
-  has_many :tour_histories, :dependent => :destroy
+  #has_many :tour_histories, :dependent => :destroy
+  has_many :histories
   has_many :informations
   has_many :comments
   has_many :likes
-  has_many :tour_items, :dependent => :destroy
+  has_many :tour_items, :dependent => :destroy, :order => "position ASC"
   has_many :pieces, :through => :tour_items
   has_many :connections
 

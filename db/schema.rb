@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130424174706) do
+ActiveRecord::Schema.define(:version => 20130503202222) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -102,6 +102,26 @@ ActiveRecord::Schema.define(:version => 20130424174706) do
     t.datetime "updated_at", :null => false
     t.integer  "floor"
   end
+
+  create_table "histories", :force => true do |t|
+    t.datetime "chosen_date"
+    t.datetime "executed_date"
+    t.integer  "tour_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "histories", ["tour_id"], :name => "index_histories_on_tour_id"
+  add_index "histories", ["user_id"], :name => "index_histories_on_user_id"
+
+  create_table "histories_tour_items", :id => false, :force => true do |t|
+    t.integer "history_id"
+    t.integer "tour_item_id"
+  end
+
+  add_index "histories_tour_items", ["history_id", "tour_item_id"], :name => "index_histories_tour_items_on_history_id_and_tour_item_id"
+  add_index "histories_tour_items", ["tour_item_id", "history_id"], :name => "index_histories_tour_items_on_tour_item_id_and_history_id"
 
   create_table "information", :force => true do |t|
     t.text     "before"

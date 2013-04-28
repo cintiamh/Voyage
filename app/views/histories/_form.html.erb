@@ -1,0 +1,34 @@
+<%= form_for @history, :html => {:class => "form-horizontal"} do |f| %>
+  <% if @history.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@history.errors.count, "error") %> prohibited this history from being saved:</h2>
+
+      <ul>
+      <% @history.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<fieldset>
+    <legend>Tour History</legend>
+
+    <div class="control-group">
+        <%= f.label :user_id, :class => "control-label" %>
+        <div class="controls">
+            <%= f.select :user_id, User.all.collect {|p| [p.email, p.id]}, {:include_blank => true} %>
+        </div>
+    </div>
+    <div class="control-group">
+        <%= f.label :tour_id, :class => "control-label" %>
+        <div class="controls">
+            <%= f.select :tour_id, Tour.all.collect {|p| [p.title, p.id]}, {:include_blank => true} %>
+        </div>
+    </div>
+</fieldset>
+<div class="control-group">
+    <%= f.submit "Save", :class => "btn" %>
+</div>
+
+<% end %>
