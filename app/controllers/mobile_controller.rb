@@ -7,6 +7,10 @@ class MobileController < ApplicationController
     @page = "museums"
   end
 
+  def finish
+
+  end
+
   def identities
 
     @tours = Tour.all
