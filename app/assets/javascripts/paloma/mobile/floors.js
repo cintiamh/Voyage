@@ -131,7 +131,16 @@ function atItemDialog(i)
     currentItemNumber = i;
     var parent = $('#answers');
     var q = $('#question');
-    q.text(question_list[i].content);
+
+    if(question_list[i].length == 0)
+    {
+        q.text("Are you really at the piece?");
+    }
+    else
+    {
+        q.text(question_list[i].content);
+    }
+
     var answers = answer_list[i];
 
     var options = $("option");
@@ -143,20 +152,28 @@ function atItemDialog(i)
     var blank_option = "<option></option>";
     $(blank_option).appendTo(parent);
 
-    for (var j=0; j<answers.length; j++)
+    if(answers.length != 0)
     {
-        if(answers[j].correct == true)
+        for (var j=0; j<answers.length; j++)
         {
-            rightAnswer = j;
+            if(answers[j].correct == true)
+            {
+                rightAnswer = j;
+            }
+            options = "<option value='" + j + "'>" + answers[j].content + "</option>";
+            $(options).appendTo(parent);
         }
-        options = "<option value='" + j + "'>" + answers[j].content + "</option>";
+    }
+    else
+    {
+        rightAnswer = 1;
+        options = "<option value=1>Yes</option>";
         $(options).appendTo(parent);
     }
     // var submit = "<button type='button' onclick='return checkAnswer(" + rightAnswer + ")'>Submit</button>";
     var item = parseInt(i) + 1;
     $("#checkin").modal('show');
-    parent[0].selectedIndex = 0;
-    parent.selectmenu("refresh");
+
 }
 
 function checkAnswer()
