@@ -188,9 +188,16 @@ function displayItemInfo()
     var prev = currentItemNumber - 1;
     if(prev < 0) {prev = connection_list.length - 1;}
 
-    con_1.text(connection_list[prev].description);
-    con_2.text(connection_list[currentItemNumber].description);
-
+    if(connection_list.length != 0)
+    {
+        con_1.text(connection_list[prev].description);
+        con_2.text(connection_list[currentItemNumber].description);
+    }
+    else
+    {
+        con_1.text("How are these connected?");
+        con_2.text("Post your thoughts in the comments section.");
+    }
     $("#itemInformation").modal('show');
 
 }
@@ -206,8 +213,8 @@ function closeAllDialogs()
     var cur = $("#item"+currentItemNumber);
     var next_item = parseInt(currentItemNumber+1);
     var next = $("#item"+next_item);
-    //var img_done = "url(" + pieces_list[currentItemNumber].image + ") no-repeat";
-    var img_done = "url(/assets/check_mark_green.png) no-repeat"
+    var img_done = "url(" + pieces_list[currentItemNumber].image + ") no-repeat";
+    //var img_done = "url(/assets/check_mark_green.png) no-repeat"
     cur.css("background",img_done);
     cur.css("background-size","100%");
 

@@ -171,31 +171,64 @@ function constructNodeLinks()
     {
         //alert("<%= @pieces_list[i].image.url %>");
         //circle case
-        if(i==pieces_list.length - 1)
+
+        if(connections.length == 0)
         {
+            if(i==pieces_list.length - 1)
+            {
 
-            nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-1000, "image":pieces_list[i].image});
-            //nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to 1", "group":"CONNECTOR", "charge":-500});
-            nodes.push({"id":-(i+2),"title":connections[i].description, "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});
+                nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-1000, "image":pieces_list[i].image});
+                //nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to 1", "group":"CONNECTOR", "charge":-500});
+                nodes.push({"id":-(i+2),"title":"How are these connected?", "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});
 
-            links.push({"source":2*i+1,"target":2*i+2,"distance":100});
-            links.push({"source":2*i+2,"target":1,"distance":100});
+                links.push({"source":2*i+1,"target":2*i+2,"distance":100});
+                links.push({"source":2*i+2,"target":1,"distance":100});
 
+            }
+            else
+            {
+                //Items
+                nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-1000, "image":pieces_list[i].image});
+                //Connections
+                //nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to" + (i+2), "group":"CONNECTOR", "charge":-500});
+                nodes.push({"id":-(i+2),"title":"How are these connected?", "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});
+
+                links.push({"source":2*i+1,"target":2*i+2,"distance":100});
+                links.push({"source":2*i+2,"target":2*i+3,"distance":100});
+            }
+
+            //Each node linked to GO
+            links.push({"source":0,"target":2*i+1,"distance":200});
         }
+
         else
         {
-            //Items
-            nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-1000, "image":pieces_list[i].image});
-            //Connections
-            //nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to" + (i+2), "group":"CONNECTOR", "charge":-500});
-            nodes.push({"id":-(i+2),"title":connections[i].description, "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});
+            if(i==pieces_list.length - 1)
+            {
 
-            links.push({"source":2*i+1,"target":2*i+2,"distance":100});
-            links.push({"source":2*i+2,"target":2*i+3,"distance":100});
+                nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-1000, "image":pieces_list[i].image});
+                //nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to 1", "group":"CONNECTOR", "charge":-500});
+                nodes.push({"id":-(i+2),"title":connections[i].description, "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});
+
+                links.push({"source":2*i+1,"target":2*i+2,"distance":100});
+                links.push({"source":2*i+2,"target":1,"distance":100});
+
+            }
+            else
+            {
+                //Items
+                nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-1000, "image":pieces_list[i].image});
+                //Connections
+                //nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to" + (i+2), "group":"CONNECTOR", "charge":-500});
+                nodes.push({"id":-(i+2),"title":connections[i].description, "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});
+
+                links.push({"source":2*i+1,"target":2*i+2,"distance":100});
+                links.push({"source":2*i+2,"target":2*i+3,"distance":100});
+            }
+
+            //Each node linked to GO
+            links.push({"source":0,"target":2*i+1,"distance":200});
         }
-
-        //Each node linked to GO
-        links.push({"source":0,"target":2*i+1,"distance":200});
     }
 }
 
