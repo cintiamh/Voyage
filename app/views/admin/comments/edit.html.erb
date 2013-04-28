@@ -13,7 +13,7 @@
 <% if @comment.connection %>
 <p>
     <b>Connection:</b>
-    <%= link_to @comment.connection.title, [:admin, @comment.piece] %>
+    <%= link_to @comment.connection, [:admin, @comment.connection] %>
 </p>
 <% end %>
 <% if @comment.tour %>

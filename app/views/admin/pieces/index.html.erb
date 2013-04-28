@@ -1,5 +1,17 @@
 <h1>Pieces</h1>
 
+<br>
+
+<%= form_tag admin_pieces_path, :method => 'get' do %>
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+    <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil, :class => "btn" %>
+    </p>
+<% end %>
+
+
 <% if @pieces.length == 0 %>
     <p>There are no pieces in the inventory.</p>
 <% else %>
@@ -37,6 +49,8 @@
 </table>
 
 <% end %>
+
+<%= will_paginate @pieces %>
 
 <br/>
 

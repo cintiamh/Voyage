@@ -1,15 +1,26 @@
 <h1>Users</h1>
 
+<br>
+<%= form_tag admin_users_path, :method => 'get' do %>
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+    <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil, :class => "btn" %>
+    </p>
+<% end %>
+
+
 <% if @users.length <= 0 %>
     <p>There are no users.</p>
 <% else %>
 
     <table class="table table-bordered table-striped">
         <tr>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Username</th>
-            <th>Email</th>
+            <th><%= sortable "first_name" %></th>
+            <th><%= sortable "last_name" %></th>
+            <th><%= sortable "username" %></th>
+            <th><%= sortable "email" %></th>
             <th></th>
             <th></th>
             <th></th>
@@ -32,3 +43,5 @@
         <% end %>
     </table>
 <% end %>
+
+<%= will_paginate @users %>

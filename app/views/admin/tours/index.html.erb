@@ -1,14 +1,25 @@
 <h1>Tours</h1>
 
+<br>
+
+<%= form_tag admin_tours_path, :method => 'get' do %>
+    <%= hidden_field_tag :direction, params[:direction] %>
+    <%= hidden_field_tag :sort, params[:sort] %>
+    <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil, :class => "btn" %>
+    </p>
+<% end %>
+
 <% if @tours.length == 0 %>
     <p>There are no tours.</p>
 <% else %>
 
     <table class="table table-bordered table-striped">
         <tr>
-            <th>Title</th>
-            <th>Curated</th>
-            <th>Public</th>
+            <th><%= sortable "title" %></th>
+            <th><%= sortable "curated" %></th>
+            <th><%= sortable "public" %></th>
             <th>User</th>
             <th></th>
             <th></th>
@@ -28,6 +39,9 @@
         <% end %>
     </table>
 <% end %>
+
+<%= will_paginate @tours %>
+
 <br/>
 
 <%= link_to 'New Tour', new_admin_tour_path %>

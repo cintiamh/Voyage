@@ -20,7 +20,7 @@ class Piece < ActiveRecord::Base
 
   validates :title, :presence => true
 
-  default_scope order('title ASC')
+  #default_scope order('title ASC')
 
   has_attached_file :image, styles: {
       thumb:  '50x50>',
@@ -30,4 +30,12 @@ class Piece < ActiveRecord::Base
 
   accepts_nested_attributes_for :questions, :allow_destroy => true
   accepts_nested_attributes_for :informations, :allow_destroy => true
+
+  def self.search(search)
+    if search
+      where('title LIKE ?', "%#{search}%")
+    else
+      scoped
+    end
+  end
 end
