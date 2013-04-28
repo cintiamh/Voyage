@@ -74,3 +74,5 @@ gem 'aws-sdk'
 gem 'inherited_resources'
 
 gem 'will_paginate', '~> 3.0.0'
+
+gem 'hirb'
