@@ -229,26 +229,14 @@ function moveToComments()
 
 function closeAllDialogs()
 {
+    console.log("current item number: " + currentItemNumber);
     var cur = $("#item"+currentItemNumber);
-    var next_item = parseInt(currentItemNumber+1);
-    var next = $("#item"+next_item);
+    console.log("current div: " + cur);
     var img_done = "url(" + pieces_list[currentItemNumber].image + ") no-repeat";
+    console.log("image done: " + img_done);
     //var img_done = "url(/assets/check_mark_green.png) no-repeat"
     cur.css("background",img_done);
     cur.css("background-size","100%");
-
-    //cur.removeClass("not_done");
-    //cur.removeClass("next");
-    //cur.addClass("done");
-    if(next_item < pieces_list.length)
-    {
-        //next.removeClass("not_done");
-        //next.addClass("next");
-    }
-    var options = $("option");
-    for(var i=0; i<options.length; i++)
-    {
-        options[i].remove();
-    }
+    console.log("css" + cur.css("background"));
     $("#itemInformation").modal('hide');
 }

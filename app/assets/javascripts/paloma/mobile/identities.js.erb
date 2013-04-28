@@ -155,7 +155,7 @@ function aboutTours(i)
 {
     var p = d3.select("#info").text(tour_list[i].about);
     var h = d3.select('#title').text(tour_list[i].title);
-    var picked_identity = parseInt(i) + 1;
+    var picked_identity = tour_list[i].id;
     var link =  "../mobile/items?identity=" + picked_identity;
      var btn_Link = $('#ident_to_item_link').click(function(){window.open(link, "_self");})
     $("#teaser").modal();
