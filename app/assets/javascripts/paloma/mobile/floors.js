@@ -190,8 +190,10 @@ function displayItemInfo()
 
     if(connection_list.length != 0)
     {
-        con_1.text(connection_list[prev].description);
-        con_2.text(connection_list[currentItemNumber].description);
+        if(!connection_list[prev]){con_1.text("How are these connected? Post your thoughts in the comments section.");}
+        else{con_1.text(connection_list[prev].description);}
+        if(!connection_list[currentItemNumber]){con_1.text("How are these connected? Post your thoughts in the comments section.");}
+        else{con_2.text(connection_list[currentItemNumber].description);}
     }
     else
     {
