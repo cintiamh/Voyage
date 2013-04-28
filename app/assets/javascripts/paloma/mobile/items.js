@@ -48,7 +48,7 @@ var force,link,node,width, height;
       /********* NEW CODE ***********/
 
        width = 500,
-          height = 500;
+       height = 500;
 
       var svg = d3.select("#chart")
           .append("svg")
@@ -61,14 +61,18 @@ var force,link,node,width, height;
       vis = svg.append('svg:g');
 
       function redraw() {
-          vis.attr("transform",
+          /*vis.attr("transform",
               "translate(" + d3.event.translate + ")"
-                  + " scale(" + d3.event.scale + ")");
+                  + " scale(" + d3.event.scale + ")");   */
+
+          vis.attr("transform","scale(0.75)");
       }
       draw_graph();
+      redraw();
 
 
-      /********** NEW CODE *********/
+      /********** NEW CODE END *********/
+
      // createItemsChart(nodes,links);
 
       //Touch and click events
@@ -122,16 +126,28 @@ function draw_graph() {
         .enter().append("image")
         .attr("class", "node")
         .attr("xlink:href",function(d){return d.image;})
-        .attr("width", 100)
-        .attr("height",100)
-        .attr("x","-3em")
-        .attr("y","-3em")
+        .attr("width", function(d){
+            if(d.group == "CONNECTOR"){ return 25;}
+            else {return 100;}
+        })
+        .attr("height",function(d){
+            if(d.group == "CONNECTOR"){ return 25;}
+            else {return 100;}
+        })
+        .attr("x",function(d){
+            if(d.group == "CONNECTOR"){ return "-0.75em";}
+            else {return "-3em";}
+        })
+        .attr("y",function(d){
+            if(d.group == "CONNECTOR"){ return "-0.75em";}
+            else {return "-3em";}
+        })
         .attr("class","touch_click")
         .attr("node_id",function(d){return d.id;})
         .call(force.drag);
 
-    node.append("title")
-        .text(function(d) { return d.name; });
+   /* node.append("title")
+        .text(function(d) { return d.name; });*/
 
     force.on("tick", function() {
         link.attr("x1", function(d) { return d.source.x; })
@@ -291,9 +307,3 @@ function restart()
     //alert("in restart");
 }
 
-$(window).resize(function()
-{
-    //alert("window resize");
-    //createItemsChart(nodes,links);
-    //restart();
-});
