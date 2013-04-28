@@ -169,7 +169,7 @@ function constructNodeLinks()
     nodes.push({"id":-1,"title":"GO", "group":"NODE", "charge":-500, "image":"/assets/NUMBER-SHEET.png"});
     for(var i = 0; i<pieces_list.length; i++)
     {
-        alert("<%= @pieces_list[i].image.url %>");
+        //alert("<%= @pieces_list[i].image.url %>");
         //circle case
         if(i==pieces_list.length - 1)
         {
