@@ -32,6 +32,7 @@
                     <p style="text-align: center;">
                         <%= image_tag(piece.image.url(:large)) %>
                     </p>
+                    <h3>Information</h3>
                     <p>
                         <% if piece.informations.length > 0 %>
                             <%= piece.informations.first.before %>
@@ -39,7 +40,16 @@
                             There are no informations at this moment.
                         <% end %>
                     </p>
-
+                    <% if piece.connections.length > 0 %>
+                        <h3>Connections</h3>
+                        <% piece.connections.each do |connection| %>
+                            <h4><%= connection.title %></h4>
+                            <p><%= connection.description %></p>
+                            <% connection.pieces.each do |p| %>
+                                <%= image_tag(p.image.url(:thumb)) if p.image %>
+                            <% end %>
+                        <% end %>
+                    <% end %>
                 </div>
                 <div class="modal-footer">
                     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -53,7 +63,11 @@
     <% end %>
 <% end %>
 <div class="row-fluid">
-    <div class="span4 offset4">
-        <%= link_to "GO", "/mobile/floors?identity=#{@tour.id}", :class => "btn btn-danger tour-btn", :style => "text-align: center;" %>
+    <div class="span12">
+        <div class="row-fluid">
+            <div class="span4">
+                <%= link_to "GO", "/mobile/floors?identity=#{@tour.id}", :class => "btn btn-danger tour-btn", :style => "text-align: center;" %>
+            </div>
+        </div>
     </div>
 </div>
