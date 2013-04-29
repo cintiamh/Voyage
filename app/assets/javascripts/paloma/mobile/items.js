@@ -49,13 +49,13 @@ var force,link,node,width, height;
 
        width = 500,
        height = 500;
-
+       var curScale = 0.75 - (0.05 * (pieces_list.length - 3));
       var svg = d3.select("#chart")
           .append("svg")
           .attr("viewBox", "0 0 " + width + " " + height )
           .attr("preserveAspectRatio", "xMidYMid meet")
           .attr("pointer-events", "all")
-          .call(d3.behavior.zoom().scale(.75).on("zoom", redraw));
+          .call(d3.behavior.zoom().on("zoom", redraw));
 
 
       vis = svg.append('svg:g');
@@ -65,7 +65,7 @@ var force,link,node,width, height;
               "translate(" + d3.event.translate + ")"
                   + " scale(" + d3.event.scale + ")");   */
 
-          vis.attr("transform","scale(0.75)");
+          vis.attr("transform","scale(" + curScale + ")");
       }
       draw_graph();
       redraw();
@@ -109,7 +109,7 @@ var force,link,node,width, height;
 function draw_graph() {
     var force = d3.layout.force()
         .charge(-2000)
-        .linkDistance(200)
+        .linkDistance(100)
         .nodes(nodes)
         .links(links)
         .size([width, height])

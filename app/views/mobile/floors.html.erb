@@ -14,13 +14,13 @@
         <div id="1_map" style="text-align:center; width:100%; position: relative; margin-left:auto; margin-right:auto;">
             <img id="Image-Maps_floor_1" src="/assets/MAPv1_Floor1.png" usemap="#Image-Maps_floor_1" border="0" width="1024" height="513" alt="" class="map_pos"/>
             <map id="_Image-Maps_floor_1" name="Image-Maps_floor_1">
-                <area shape="rect" id="gal0" href="" coords="592,91,628,136" onclick="return galInfo(0)" alt="ice age" title="ice age"    />
-                <area shape="rect" id="gal1" href="" coords="631,91,705,137" onclick="return galInfo(1)" alt="amphibians" title="amphibians"    />
-                <area shape="rect" id="gal2" href="" coords="544,142,701,233" onclick="return galInfo(2)" alt="dinosaurs" title="dinosaurs"    />
-                <area shape="rect" id="gal3" href="" coords="698,237,758,286" onclick="return galInfo(3)" alt="gems and jewelry" title="gems and jewelry"    />
-                <area shape="rect" id="gal4" href="" coords="567,237,692,286" onclick="return galInfo(4)" alt="minerals" title="minerals"    />
-                <area shape="rect" id="gal5" href="" coords="696,287,785,385" onclick="return galInfo(5)" alt="geology" title="geology"    />
-                <area shape="rect" id="gal6" href="" coords="541,300,635,400" onclick="return galInfo(6)" alt="hall of architecture" title="hall of architecture"    />
+                <area shape="rect" id="gal0" href="" coords="592,91,628,136" onclick="return galInfo(0)" alt="Ice Age" title="Ice Age"    />
+                <area shape="rect" id="gal1" href="" coords="631,91,705,137" onclick="return galInfo(1)" alt="Amphibians" title="Amphibians"    />
+                <area shape="rect" id="gal2" href="" coords="544,142,701,233" onclick="return galInfo(2)" alt="Dinosaurs" title="Dinosaurs"    />
+                <area shape="rect" id="gal3" href="" coords="698,237,758,286" onclick="return galInfo(3)" alt="Gems and Jewelry" title="Gems and Jewelry"    />
+                <area shape="rect" id="gal4" href="" coords="567,237,692,286" onclick="return galInfo(4)" alt="Minerals" title="Minerals"    />
+                <area shape="rect" id="gal5" href="" coords="696,287,785,385" onclick="return galInfo(5)" alt="Geology" title="Geology"    />
+                <area shape="rect" id="gal6" href="" coords="541,300,635,400" onclick="return galInfo(6)" alt="Hall of Architecture" title="Hall of Architecture"    />
                 <area shape="rect" coords="1022,511,1024,513" href="/assets/MAPv1_Floor1.png" alt="Image Map" title="Image Map" />
             </map>
         </div>
@@ -105,12 +105,13 @@
     </ul>
   </div><!-- /navbar -->
 
-
+  <h2 class="info_details_style" id="itemTitle2"></h2>
+  <image id="item_image" width="50%" height="50%"></image><br>
   <div class="tab-content">
-    <h2 class="info_details_style" id="itemTitle2"></h2>
+
     <!-- Item Information -->
     <div class="info_details_style" id="itemInfoTab" class="tab-pane active">
-      <image id="item_image"></image><br>
+
       <p class="info_details_style" id="after_info"></p><br>
     </div>
 
@@ -121,8 +122,6 @@
     </div>
 
     <div id="commentsTab" class="tab-pane">
-      <input type="text" class="info_details_style">
-      <a class="info_details_style" href="">Submit</a>
       <div class="info_details_style" id="prev_comments">
         <p class="info_details_style">Sample Comment 1</p>
         <p class="info_details_style">Sample Comment 2</p>
@@ -134,11 +133,3 @@
  </div>
 <!-- Plugin for responsive image maps -->
 
-<script>
-    $(document).ready(function(e) {
-       // $('#Image-Maps_floor_1').rwdImageMaps();
-       // $('#Image-Maps_floor_2').rwdImageMaps();
-       // $('#Image-Maps_floor_3').rwdImageMaps();
-
-    });
-</script>

@@ -62,10 +62,12 @@ class MobileController < ApplicationController
     @connections = tour.connections
     @after_info = @pieces_on_tour.map {|p| Information.where(:piece_id => p.id)}
 
-    # TODO @comments
+    @comments = @pieces_on_tour.map {|p| Comment.where(:piece_id => p.id)}
+
+
     js :params => {:iden => @ident, :galleries_list => @galleries, :pieces_list => @pieces_on_tour,
                    :question_list => @questions, :answer_list => @answers,
-                   :connection_list => @connections, :after_info => @after_info}
+                   :connection_list => @connections, :after_info => @after_info, :comment_list => @comments}
 
   end
 

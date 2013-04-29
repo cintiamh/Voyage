@@ -1,4 +1,4 @@
-var identity, pieces_list, galleries_list, question_list, answer_list, after_info, connection_list;
+var identity, pieces_list, galleries_list, question_list, answer_list, after_info, connection_list,comment_list;
 var gal_pos = [];
 var map_position;
 var map;
@@ -31,16 +31,11 @@ var map;
       answer_list = params["answer_list"];
       after_info = params["after_info"];
       connection_list = params["connection_list"];
+      comment_list = params["comment_list"];
 
       plot_items();
 
-      /*$(window).resize(function() {
-          if(in_floor == true)
-          {
-            //alert("map resized");
-            plot_items();
-          }
-      });*/
+
   };
 })();
 
@@ -48,40 +43,61 @@ function plot_items()
 {
     $('div').remove('.item_pos');
 
+    //var all_gals = $('area[id]');
+
     for(var i=0; i<galleries_list.length; i++)
     {
-        var sel = 'gal' + parseInt(i+1);
-        var area_str = $('#'+sel).attr("coords");
+        var sel = 'gal' + i;
+        var gal_div = $('#'+sel);
+        var area_str = gal_div.attr("coords");
         var area = area_str.split(",");
-        gal_pos.push({"id":parseInt(i+1), min_x:area[0], max_x:area[2], min_y:area[1], max_y:area[3] });
+        var alt = gal_div.attr('alt');
+        gal_pos.push({"id":parseInt(i+1), "alt":alt, min_x:area[0], max_x:area[2], min_y:area[1], max_y:area[3] });
     }
 
 
     for(i=0; i<pieces_list.length; i++)
     {
-        var gal = pieces_list[i].gallery_id;
-        var pos = get_position_of_gallery(gal_pos, gal);
-        var floor = galleries_list[pos].floor;
+        var gal_id = pieces_list[i].gallery_id;
+        var gallery = get_position_of_gallery(gal_id);
+        var order = gallery.order;
+        var sel = 'gal' + order;
+        var gal_div = $('#'+sel);
+        var area_str = gal_div.attr("coords");
+        var area = area_str.split(",");
+        gal_pos = {"id":parseInt(i+1), "alt":alt, min_x:area[0], max_x:area[2], min_y:area[1], max_y:area[3] };
+
+        //var pos = get_position_of_gallery(gal_pos, gal);
+        var floor = gallery.floor;
+
+        var left_adjust, top_adjust;
+
         if(floor == 1)
         {
             map_position = $('#Image-Maps_floor_1').position();
             map = $('#1_map');
+            left_adjust = -20;
+            top_adjust = -43;
         }
         else if(floor == 2)
         {
             map_position = $('#Image-Maps_floor_2').position();
             map = $('#2_map');
+            left_adjust = +45;
+            top_adjust = -43;
         }
         else
         {
             map_position = $('#Image-Maps_floor_3').position();
             map = $('#3_map');
+            left_adjust = +45;
+            top_adjust = -0;
         }
-        var left_pos = parseInt(map_position.left + (parseInt(gal_pos[pos].min_x) + parseInt(gal_pos[pos].max_x))/2);
-        left_pos;// -= 45;
+        var left_pos = parseInt(map_position.left + (parseInt(gal_pos.min_x) + parseInt(gal_pos.max_x))/2);
+        left_pos += parseInt(left_adjust);
         var left_pos_pc = (left_pos/1170) * 100;
-        var top_pos = parseInt(map_position.top + (parseInt(gal_pos[pos].min_y) + parseInt(gal_pos[pos].max_y))/2);
-        top_pos -= 43;
+        var top_pos = parseInt(map_position.top + (parseInt(gal_pos.min_y) + parseInt(gal_pos.max_y))/2);
+        top_pos += parseInt(top_adjust);
         var top_pos_pc = (top_pos/513) * 100;
         var item_num = parseInt(i+1);
         var item_div = "<div id='item" + i + "' onclick='return atItemDialog(" + i + ")'></div>";
@@ -103,13 +119,13 @@ function plot_items()
     //$("#item0").addClass("next");
 }
 
-function get_position_of_gallery(gal_pos, id)
+function get_position_of_gallery(id)
 {
-    for(var i=0; i<gal_pos.length;i++)
+    for(var i=0; i<galleries_list.length;i++)
     {
-        if(gal_pos[i].id == id)
+        if(galleries_list[i].id == id)
         {
-            return i;
+            return galleries_list[i];
         }
     }
     return -1;
@@ -194,10 +210,13 @@ function checkAnswer()
 function displayItemInfo()
 {
     //$( "#checkin" ).dialog( "close" );
+    var title = $("#itemTitle2");
     var image = $("#item_image");
     var after_info_p = $("#after_info");
     var con_1 = $("#con_1");
     var con_2 = $("#con_2");
+
+    title.text(pieces_list[currentItemNumber].title);
 
     image.attr("src",pieces_list[currentItemNumber].image);
     after_info_p.text(after_info[currentItemNumber][0].after);
@@ -229,14 +248,12 @@ function moveToComments()
 
 function closeAllDialogs()
 {
-    console.log("current item number: " + currentItemNumber);
     var cur = $("#item"+currentItemNumber);
-    console.log("current div: " + cur);
-    var img_done = "url(" + pieces_list[currentItemNumber].image + ") no-repeat";
-    console.log("image done: " + img_done);
+    var img_done = "url('" + pieces_list[currentItemNumber].image + "')";
     //var img_done = "url(/assets/check_mark_green.png) no-repeat"
     cur.css("background",img_done);
+    cur.css("background-image",img_done);
     cur.css("background-size","100%");
-    console.log("css" + cur.css("background"));
     $("#itemInformation").modal('hide');
+
 }
