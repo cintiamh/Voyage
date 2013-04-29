@@ -1,4 +1,18 @@
-<h1>Thank you for visiting</h1>
+<h1>Any last thoughts?</h1>
 
 <p>Do you want to share your experience with your friends?</p>
 
+<%= form_tag({:controller => "comments", :action => "create"}, :class => "form-horizontal") do %>
+    <%= hidden_field_tag :tour_id, params[:identity] %>
+    <fieldset>
+        <div class="control-group">
+            <%= label_tag :content, "Comment", :class => "control-label" %>
+            <div class="controls">
+                <%= text_area_tag :content, "", :rows => 3, :class => "input-xxlarge" %>
+            </div>
+        </div>
+    </fieldset>
+    <div class="control-group">
+        <%= submit_tag "Save", :class => "btn" %>
+    </div>
+<% end %>
