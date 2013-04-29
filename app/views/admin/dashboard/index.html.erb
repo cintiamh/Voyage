@@ -25,7 +25,7 @@
             <% else %>
                 <ul class="dashboard_list">
                     <% @tour_histories.each do |tour| %>
-                        <li><%= link_to tour.tour.title, [:admin, tour] %></li>
+                        <li><%= link_to tour.tour.title, [:admin, tour] if tour.tour %></li>
                     <% end %>
                 </ul>
             <% end %>
