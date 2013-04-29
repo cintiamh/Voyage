@@ -2,17 +2,31 @@
 
 <p>Do you want to share your experience with your friends?</p>
 
-<%= form_tag({:controller => "comments", :action => "create"}, :class => "form-horizontal") do %>
-    <%= hidden_field_tag :tour_id, params[:identity] %>
+<%= form_for @comment, :html => {:class => "form-horizontal"} do |f| %>
+    <% if @comment.errors.any? %>
+        <div class="alert">
+            <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+            <ul>
+                <% @comment.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
     <fieldset>
         <div class="control-group">
-            <%= label_tag :content, "Comment", :class => "control-label" %>
+            <%= f.label :content, :class => "control-label" %>
             <div class="controls">
-                <%= text_area_tag :content, "", :rows => 3, :class => "input-xxlarge" %>
+                <%= f.text_area :content, :rows => 3, :class => "input-xxlarge" %>
             </div>
         </div>
+        <%= f.hidden_field :tour_id, :value => @tour.id %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
     </fieldset>
+
     <div class="control-group">
-        <%= submit_tag "Save", :class => "btn" %>
+        <%= f.submit "Save", :class => "btn" %>
     </div>
 <% end %>

@@ -9,6 +9,7 @@ class MobileController < ApplicationController
 
   def finish
     @comment = Comment.new
+    @tour = Tour.find(params[:identity])
   end
 
   def create_comment
