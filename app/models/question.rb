@@ -1,6 +1,6 @@
 class Question < ActiveRecord::Base
   belongs_to :piece
-  has_many :answers
+  has_many :answers, :dependent => :destroy
 
   attr_accessible :content, :piece_id, :answers_attributes
 
