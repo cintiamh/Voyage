@@ -5,7 +5,7 @@ class Admin::CommentsController < Admin::ResourceController
     unless current_user.try(:admin?)
       redirect_to "/"
     end
-    @comments = Comment.paginate(:per_page => 10, :page => params[:page])
+    @comments = Comment.paginate(:per_page => 10, :page => params[:page]).order("created_at desc")
 
     respond_to do |format|
       format.html # index.html.erb

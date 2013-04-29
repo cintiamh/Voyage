@@ -1,0 +1,32 @@
+<h1>Any last thoughts?</h1>
+
+<p>Do you want to share your experience with your friends?</p>
+
+<%= form_for @comment, :html => {:class => "form-horizontal"} do |f| %>
+    <% if @comment.errors.any? %>
+        <div class="alert">
+            <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+            <ul>
+                <% @comment.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <fieldset>
+        <div class="control-group">
+            <%= f.label :content, :class => "control-label" %>
+            <div class="controls">
+                <%= f.text_area :content, :rows => 3, :class => "input-xxlarge" %>
+            </div>
+        </div>
+        <%= f.hidden_field :tour_id, :value => @tour.id %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+    </fieldset>
+
+    <div class="control-group">
+        <%= f.submit "Save", :class => "btn" %>
+    </div>
+<% end %>
