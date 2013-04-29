@@ -23,7 +23,8 @@
             </div>
         </div>
         <%= f.hidden_field :tour_id, :value => @tour.id %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <% user_id = current_user.id if current_user %>
+        <%= f.hidden_field :user_id, :value => user_id %>
     </fieldset>
 
     <div class="control-group">
