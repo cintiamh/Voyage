@@ -153,14 +153,18 @@ function draw_graph() {
                    .attr("width",150)
                    .attr("height",150);
             }
+            if(d.group == "NODE" )
+            {
+                var img = d3.select(this);
+                img.attr("xlink:href","/assets/Number-" + parseInt(d.id + 1).toString() + ".png")
+                    .attr("width",100)
+                    .attr("height",100);
+            }
         })
         .on("mouseout", function(d)
         {
-            if(d.group == "GO_NODE" )
-            {
-                var img = d3.select(this);
-                img.attr("xlink:href", d.image);
-            }
+            var img = d3.select(this);
+            img.attr("xlink:href", d.image);
         });
 
     node.append("text")

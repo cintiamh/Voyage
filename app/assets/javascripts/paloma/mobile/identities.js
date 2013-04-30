@@ -138,8 +138,8 @@ function draw_graph_iden(nodes, links) {
 
     node.append("text")
         .attr("text-anchor", "middle")
-        .attr("x","1.8em")
-        .attr("y", "6.5em")
+        .attr("x","-0.5em")
+        .attr("y", "4.5em")
         .attr("fill","white")
         .attr("class","node_title")
         .text(function(d) { return d.title.toUpperCase() });
