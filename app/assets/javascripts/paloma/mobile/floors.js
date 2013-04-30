@@ -78,7 +78,7 @@ function create_tour_connection_list()
         }
         else
         {
-            var next = 1000;
+            var next = -1;
         }
         for(var j=0; j<pieces_by_connections.length; j++)
         {
@@ -86,9 +86,9 @@ function create_tour_connection_list()
             {
                 if(pieces_by_connections[j][k].id == cur)
                 {
-                    if(next == 1000)
+                    if(next == -1)
                     {
-                        tour_connection_list.push({"cur":cur, "next":pieces_list[0].id, "connection":connection_list[j]})
+                        tour_connection_list.push({"cur":cur, "next":-1, "connection":connection_list[j]})
                         break;
                     }
                     else
