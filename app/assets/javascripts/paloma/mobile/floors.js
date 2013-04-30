@@ -88,7 +88,7 @@ function create_tour_connection_list()
                 {
                     if(next == 1000)
                     {
-                        tour_connection_list.push({"cur":cur, "next":0, "connection":connection_list[j]})
+                        tour_connection_list.push({"cur":cur, "next":pieces_list[0].id, "connection":connection_list[j]})
                         break;
                     }
                     else
@@ -354,7 +354,7 @@ function displayItemInfo()
           {
               var first = getPieceById(tour_connection_list[t].cur);
               var second = getPieceById(tour_connection_list[t].next);
-              if(!(typeof first === 'undefined') && !(typeof second === 'undefined'))
+              if((first != -1) && (second != -1))
               {
                   $("#btw_con_1").text("Connection between " + first.title + " and " + second.title);
               }
@@ -378,7 +378,7 @@ function displayItemInfo()
           {
               var first = getPieceById(tour_connection_list[t].cur);
               var second = getPieceById(tour_connection_list[t].next);
-              if(!(typeof first === 'undefined') && !(typeof second === 'undefined'))
+              if((first != -1) && (second != -1))
               {
                   $("#btw_con_2").text("Connection between " + first.title + " and " + second.title);
               }
