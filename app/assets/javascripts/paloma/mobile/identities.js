@@ -25,7 +25,7 @@ var tour_list,user_id;
       var links = [];
       tour_list = params['tours_list'];
       user_id = params['user_id'];
-      nodes.push({"id":-1,"title":"","image":"/assets/WHO-ARE-YOU-Life-Preserver.png"})
+      nodes.push({"id":-1,"title":"","image":"/assets/WHO ARE YOU Life Preserver.png"})
       for(var i = 0; i<tour_list.length; i++)
       {
           nodes.push({"id":i,"title":tour_list[i].title,"image":tour_list[i].image});
@@ -129,16 +129,16 @@ function draw_graph_iden(nodes, links) {
         .attr("xlink:href",function(d){return d.image;})
         .attr("width", 100)
         .attr("height",100)
-        .attr("x","-5em")
-        .attr("y","-5em")
+        .attr("x","-2em")
+        .attr("y","-2em")
         .attr("class","touch_click")
         .attr("node_id",function(d){return d.id;});
 
 
     node.append("text")
         .attr("text-anchor", "middle")
-        .attr("x","-1.5em")
-        .attr("y", "3.5em")
+        .attr("x","1.8em")
+        .attr("y", "6.5em")
         .attr("fill","white")
         .attr("class","node_title")
         .text(function(d) { return d.title.toUpperCase() });
