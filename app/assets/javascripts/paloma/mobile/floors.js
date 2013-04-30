@@ -298,6 +298,19 @@ function checkAnswer()
     }
 }
 
+function getPieceById(id)
+{
+    for(var i=0; i<pieces_list.length; i++)
+    {
+        if(pieces_list[i].id == id)
+        {
+            return pieces_list[i];
+        }
+    }
+    return -1;
+}
+
+
 function displayItemInfo()
 {
     //$( "#checkin" ).dialog( "close" );
@@ -339,6 +352,9 @@ function displayItemInfo()
           }
           if(tour_connection_list[t].next == pieces_list[currentItemNumber].id)
           {
+              var first = getPieceById(tour_connection_list[t].cur);
+              var second = getPieceById(tour_connection_list[t].next);
+              $("#btw_con_1").text("Connection between " + first.title + " and " + second.title);
 
               if(typeof tour_connection_list[t].connection === 'undefined')
               {
@@ -356,6 +372,10 @@ function displayItemInfo()
           }
           if(tour_connection_list[t].cur == pieces_list[currentItemNumber].id)
           {
+              var first = getPieceById(tour_connection_list[t].cur);
+              var second = getPieceById(tour_connection_list[t].next);
+              $("#btw_con_2").text("Connection between " + first.title + " and " + second.title);
+
               if(typeof tour_connection_list[t].connection === 'undefined')
               {
                   con_1.text("How are these connected?");
