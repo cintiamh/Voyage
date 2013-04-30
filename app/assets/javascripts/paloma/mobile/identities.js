@@ -1,6 +1,6 @@
 var w,h;
 var svg;
-var tour_list;
+var tour_list,user_id;
 (function(){
   // You access variables from before/around filters from _x object.
   // You can also share variables to after/around filters through _x object.
@@ -16,7 +16,7 @@ var tour_list;
   // Access locals for the current scope through the _l object.
   //
   // Example:
-  // _l.localMethod(); 
+  // _l.localMethod();      user_id
   var _l = _L['mobile'];
 
 
@@ -24,6 +24,7 @@ var tour_list;
       var nodes = [];
       var links = [];
       tour_list = params['tours_list'];
+      user_id = params['user_id'];
 
       for(var i = 0; i<tour_list.length; i++)
       {
@@ -146,14 +147,27 @@ function draw_graph_iden(nodes, links) {
 
 function aboutTours(i)
 {
-    var p = d3.select("#info").text(tour_list[i].about);
+    var picked_identity = tour_list[i].id;
+    var link =  "../mobile/items?identity=" + picked_identity;
+    jQuery.ajax({
+        type: "POST",
+        url: "../comments",
+        data: {"history":{"tour_id":tour_list[i].id,"user_id":user_id}},
+        dataType:"json",
+        cache: false,
+        success: function (result) {
+            console.log("History: "+result.id)
+            window.open(link, "_self");
+        } });
+
+    /*var p = d3.select("#info").text(tour_list[i].about);
     var h = d3.select('#title').text(tour_list[i].title.toUpperCase());
     $('#iden_image').attr("src",tour_list[i].image);
     var picked_identity = tour_list[i].id;
     var link =  "../mobile/items?identity=" + picked_identity;
     var btn_Link = $('#ident_to_item_link').click(function(){window.open(link, "_self");})
     resizeInfoModalMap("teaser_body");
-    $("#teaser").modal();
+    $("#teaser").modal();   */
 }
 
 function createChart(nodes, links)
