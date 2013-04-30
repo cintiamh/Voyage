@@ -41,7 +41,7 @@ var tour_list,user_id;
       w = 300;
       h = 300;
 
-      var curScale = (0.75 - (0.05 * (tour_list.length - 3)));
+      var curScale = (0.60 - (0.05 * (tour_list.length - 3)));
 
       var zoom = d3.behavior.zoom()
               .scale(curScale)
@@ -59,7 +59,7 @@ var tour_list,user_id;
 
 
       function redraw() {
-          svg.attr("transform","scale(curScale)");
+          svg.attr("transform","scale("+curScale+")");
       }
 
       draw_graph_iden(nodes, links);
@@ -129,16 +129,16 @@ function draw_graph_iden(nodes, links) {
         .attr("xlink:href",function(d){return d.image;})
         .attr("width", 100)
         .attr("height",100)
-        .attr("x","-3em")
-        .attr("y","-3em")
+        .attr("x","-5em")
+        .attr("y","-5em")
         .attr("class","touch_click")
         .attr("node_id",function(d){return d.id;});
 
 
     node.append("text")
         .attr("text-anchor", "middle")
-        .attr("dx","0.5em")
-        .attr("y", "5em")
+        .attr("x","-1.5em")
+        .attr("y", "3.5em")
         .attr("fill","white")
         .attr("class","node_title")
         .text(function(d) { return d.title.toUpperCase() });
