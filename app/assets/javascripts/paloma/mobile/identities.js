@@ -129,8 +129,9 @@ function draw_graph_iden(nodes, links) {
         .attr("xlink:href",function(d){return d.image;})
         .attr("width", 100)
         .attr("height",100)
-        .attr("x","-2em")
-        .attr("y","-2em")
+        .attr("text-anchor", "middle")
+        .attr("x","-4em")
+        .attr("y","-4em")
         .attr("class","touch_click")
         .attr("node_id",function(d){return d.id;});
 

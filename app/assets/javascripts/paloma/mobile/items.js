@@ -35,6 +35,13 @@ var force,link,node,width, height, pieces_by_connections=[];
       create_tour_connection_list_graph();
       constructNodeLinks();
 
+      /******* Setting view text********/
+      $("#tour_title").text("Your " + tour.title + " Tour");
+      $("#tour_descr").text(tour.about);
+
+
+
+
       /********* NEW CODE ***********/
 
        width = 500,
