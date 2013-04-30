@@ -151,12 +151,11 @@ function aboutTours(i)
     var link =  "../mobile/items?identity=" + picked_identity;
     jQuery.ajax({
         type: "POST",
-        url: "../comments",
+        url: "../histories",
         data: {"history":{"tour_id":tour_list[i].id,"user_id":user_id}},
         dataType:"json",
         cache: false,
         success: function (result) {
-            console.log("History: "+result.id)
             window.open(link, "_self");
         } });
 

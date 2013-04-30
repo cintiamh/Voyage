@@ -32,7 +32,10 @@ class MobileController < ApplicationController
   def identities
 
     @tours = Tour.all
-    @user_id = current_user.id
+    if user_signed_in?
+      @user_id = current_user.id
+    end
+
     js :params => {:tours_list => @tours, :user_id => @user_id}
 
   end
