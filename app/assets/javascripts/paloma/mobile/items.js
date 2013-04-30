@@ -39,7 +39,7 @@ var force,link,node,width, height, pieces_by_connections=[];
 
        width = 500,
        height = 500;
-       var curScale = (0.75 - (0.05 * (pieces_list.length - 3))); //* 1.5;
+       var curScale = (0.75 - (0.05 * (pieces_list.length - 3))) * 1.5;
       var svg = d3.select("#chart")
           .append("svg")
           .attr("viewBox", "0 0 " + width + " " + height )
@@ -143,6 +143,8 @@ function draw_graph() {
             {
               var img = d3.select(this);
                 img.attr("xlink:href","/assets/go.png")
+                   .attr("width",150)
+                   .attr("height",150);
             }
         })
         .on("mouseout", function(d)
