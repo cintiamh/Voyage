@@ -10,8 +10,4 @@
   // _x.visibleOnCallback = "I'm a shared variable"
   var _x = Paloma.variableContainer;
 
-<<<<<<< HEAD
-=======
-  //locals.pieces;
->>>>>>> 66852c372c5f2906c7582ded0245eaee3dda65ef
 })();
