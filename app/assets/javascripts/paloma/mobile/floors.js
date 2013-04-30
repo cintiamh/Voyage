@@ -328,11 +328,11 @@ function displayItemInfo()
         else{con_2.text(tour_connection_list[currentItemNumber].description);}
     }  */
 
-    if(tour_connection_list.length != 0 && tour_connection_list.length == pieces_list.length)
+    if(tour_connection_list.length != 0)// && tour_connection_list.length == pieces_list.length)
     {
       for(var t=0; t<tour_connection_list.length; t++)
       {
-          if(!tour_connection_list[t])
+          if(typeof tour_connection_list[t] === 'undefined')
           {
               con_1.text("How are these connected?");
               con_2.text("Post your thoughts in the comments section.");
@@ -340,14 +340,15 @@ function displayItemInfo()
           if(tour_connection_list[t].next == pieces_list[currentItemNumber].id)
           {
 
-              if(!tour_connection_list[t].connection)
+              if(typeof tour_connection_list[t].connection === 'undefined')
               {
                   con_1.text("How are these connected?");
                   con_2.text("Post your thoughts in the comments section.");
               }
 
             var con_1_text = tour_connection_list[t].connection.description;
-              if(!con_1_text)
+
+              if(typeof con_1_text === 'undefined')
               {
                   con_1_text = "Post your thoughts in the comments sections";
               }
@@ -355,21 +356,20 @@ function displayItemInfo()
           }
           if(tour_connection_list[t].cur == pieces_list[currentItemNumber].id)
           {
-              if(!tour_connection_list[t].connection)
+              if(typeof tour_connection_list[t].connection === 'undefined')
               {
                   con_1.text("How are these connected?");
                   con_2.text("Post your thoughts in the comments section.");
               }
               var con_2_text = tour_connection_list[t].connection.description;
-              if(!con_2_text)
+
+              if(typeof con_2_text === 'undefined')
               {
                   con_2_text = "Post your thoughts in the comments sections";
               }
               con_2.text(con_2_text);
           }
       }
-       //TODO: make it stop after finding the values
-
 
     }
 
