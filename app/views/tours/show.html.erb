@@ -1,12 +1,6 @@
-<div class="row-fluid">
-    <div class="span4">
-        <%= link_to raw("&nbsp;&nbsp;&nbsp;<< Check another tour"), tours_path, :class => "btn btn-info tour-btn" %>
-    </div>
-</div>
-
 <h1>
     <%= image_tag(@tour.image.url(:medium)) %>
-    <%= @tour.title %>
+    <%= @tour.title.upcase %>
 </h1>
 <p>
     Press GO when you are ready.
@@ -20,19 +14,19 @@
             <div class="row-fluid">
         <% end %>
         <div class="span4">
-            <%= link_to image_tag(piece.image.url(:thumb)) + piece.title, "##{piece.id}", :class => "btn btn-warning tour-btn", :role => "button", "data-toggle" => "modal" %>
+            <%= link_to image_tag(piece.image.url(:thumb)) + piece.title, "##{piece.id}", :class => "btn btn-warning tour-btn infoModalBtn", :role => "button", "data-toggle" => "modal", :onclick => "resizeInfoModal(#{piece.id});" %>
 
             <!-- Modal -->
             <div id="<%= piece.id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="myModalLabel"><%= piece.title %></h3>
+                    <h3 id="myModalLabel"><%= piece.title.upcase %></h3>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="modal-body<%= piece.id %>">
                     <p style="text-align: center;">
                         <%= image_tag(piece.image.url(:large)) %>
                     </p>
-                    <h3>Information</h3>
+                    <h3>INFORMATION</h3>
                     <p>
                         <% if piece.informations.length > 0 %>
                             <%= piece.informations.first.before %>
@@ -41,7 +35,7 @@
                         <% end %>
                     </p>
                     <% if piece.connections.length > 0 %>
-                        <h3>Connections</h3>
+                        <h3>CONNECTIONS</h3>
                         <% piece.connections.each do |connection| %>
                             <h4><%= connection.title %></h4>
                             <p><%= connection.description %></p>
@@ -69,5 +63,11 @@
                 <%= link_to "GO", "/mobile/floors?identity=#{@tour.id}", :class => "btn btn-danger tour-btn", :style => "text-align: center;" %>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span12">
+        <%= link_to raw("Back"), tours_path, :class => "btn" %>
     </div>
 </div>
