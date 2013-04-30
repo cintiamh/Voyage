@@ -321,19 +321,25 @@ function displayItemInfo()
     var con_2 = $("#con_2");
     var new_comm = $("#new_comment");
     var input = $("#usercomment");
+    var artist_info = $('#artist_info');
+
+    artist_info.text("");
 
     new_comm.text("");
     input.val("");
 
     title.text(pieces_list[currentItemNumber].title.toUpperCase());
-
     image.attr("src",pieces_list[currentItemNumber].image);
     after_info_p.text(after_info[currentItemNumber][0].after);
+    if(typeof pieces_list[currentItemNumber].artist != 'undefined' && pieces_list[currentItemNumber].artist != null && pieces_list[currentItemNumber].artist != "")
+    {
+        artist_info.text("Artist: " + pieces_list[currentItemNumber].artist);
+    }
 
     var next = currentItemNumber + 1;
     if(next>pieces_list.length) {next=0;}
 
-    /*if(tour_connection_list.length != 0 && tour_connection_list.length == pieces_list.length)
+    /* if(tour_connection_list.length != 0 && tour_connection_list.length == pieces_list.length)
     {
         if(!tour_connection_list[prev]){con_1.text("How are these connected? Post your thoughts in the comments section.");}
         else{con_1.text(tour_connection_list[prev].description);}
@@ -427,10 +433,6 @@ function displayItemInfo()
         }
         if(i==2) break;
     }
-
-
-
-
     resizeInfoModalMap('itemInformation_body');
     $("#itemInformation").modal('show');
 
