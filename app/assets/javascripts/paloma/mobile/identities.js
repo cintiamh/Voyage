@@ -41,7 +41,7 @@ var tour_list,user_id;
       w = 300;
       h = 300;
 
-      var curScale = (0.75 - (0.05 * (tour_list.length - 3))) * 1.5;
+      var curScale = (0.75 - (0.05 * (tour_list.length - 3)));
 
       var zoom = d3.behavior.zoom()
               .scale(curScale)
