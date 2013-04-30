@@ -40,8 +40,8 @@ var tour_list,user_id;
 
       /********* NEW CODE ***********/
 
-      w = 500;
-      h = 500;
+      w = 300;
+      h = 300;
 
       var zoom = d3.behavior.zoom()
               .scale(0.75)
