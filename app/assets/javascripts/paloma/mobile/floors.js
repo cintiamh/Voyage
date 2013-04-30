@@ -354,7 +354,11 @@ function displayItemInfo()
           {
               var first = getPieceById(tour_connection_list[t].cur);
               var second = getPieceById(tour_connection_list[t].next);
-              $("#btw_con_1").text("Connection between " + first.title + " and " + second.title);
+              if(!(typeof first === 'undefined') && !(typeof second === 'undefined'))
+              {
+                  $("#btw_con_1").text("Connection between " + first.title + " and " + second.title);
+              }
+
 
               if(typeof tour_connection_list[t].connection === 'undefined')
               {
@@ -374,7 +378,10 @@ function displayItemInfo()
           {
               var first = getPieceById(tour_connection_list[t].cur);
               var second = getPieceById(tour_connection_list[t].next);
-              $("#btw_con_2").text("Connection between " + first.title + " and " + second.title);
+              if(!(typeof first === 'undefined') && !(typeof second === 'undefined'))
+              {
+                  $("#btw_con_2").text("Connection between " + first.title + " and " + second.title);
+              }
 
               if(typeof tour_connection_list[t].connection === 'undefined')
               {
