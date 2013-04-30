@@ -25,7 +25,7 @@ var tour_list,user_id;
       var links = [];
       tour_list = params['tours_list'];
       user_id = params['user_id'];
-      nodes.push({"id":-1,"title":"","image":"/assets/WHO ARE YOU Life Preserver.png"})
+      nodes.push({"id":-1,"title":"","image":"/assets/WHO-ARE-YOU-Life-Preserver.png"})
       for(var i = 0; i<tour_list.length; i++)
       {
           nodes.push({"id":i,"title":tour_list[i].title,"image":tour_list[i].image});
