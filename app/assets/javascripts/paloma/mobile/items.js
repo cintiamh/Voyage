@@ -39,7 +39,7 @@ var force,link,node,width, height, pieces_by_connections=[];
 
        width = 500,
        height = 500;
-       var curScale = (0.75 - (0.05 * (pieces_list.length - 3))) * 1.5;
+       var curScale = (0.75 - (0.05 * (pieces_list.length - 3))); //* 1.5;
       var svg = d3.select("#chart")
           .append("svg")
           .attr("viewBox", "0 0 " + width + " " + height )
