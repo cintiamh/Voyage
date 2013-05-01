@@ -97,6 +97,9 @@
 </div>
 
 <div id="itemInformation" class="modal hide fade">
+
+  <h2 class="info_details_style" id="itemTitle2"></h2>
+
   <div>
     <ul class="nav nav-tabs">
       <li><a href="#itemInfoTab" data-toggle="tab" class="info_details_style">Information</a></li>
@@ -105,29 +108,28 @@
     </ul>
   </div><!-- /navbar -->
 
-  <h2 class="info_details_style" id="itemTitle2"></h2>
-  <image id="item_image" width="50%" height="50%"></image><br>
   <div class="tab-content">
 
     <!-- Item Information -->
     <div class="info_details_style" id="itemInfoTab" class="tab-pane active">
-
+      <image id="item_image" width="50%" height="50%"></image><br>
       <p class="info_details_style" id="after_info"></p><br>
     </div>
 
     <div id="connectionTab" class="tab-pane">
-      <image id="item_image"></image><br>
       <p class="info_details_style" id="con_1"></p><br>
       <p class="info_details_style" id="con_2"></p><br>
     </div>
 
     <div id="commentsTab" class="tab-pane">
+      <input type="text">
       <div class="info_details_style" id="prev_comments">
         <p class="info_details_style">Sample Comment 1</p>
         <p class="info_details_style">Sample Comment 2</p>
         <p class="info_details_style">Sample Comment 3</p>
       </div>
     </div>
+
   </div>
   <button class="info_details_style" onclick="closeAllDialogs()">Done</button>
  </div>

@@ -32,17 +32,6 @@ var force,link,node,width, height;
       before_info = params['before_info'];
       pieces_list = _L.pieces_list;
 
-      var parent = $("div[data-role='content']");
-      //w = parent.innerWidth() - 20;
-      //h = parent.height() - 20;
-
-     /* svg = d3.select("#chart").append("svg");
-      w = 600;
-      h = 600;
-      svg.attr("viewbox",function(){return "0 0 " + w + " " + h + " ";})
-          .attr("preserveAspectRation","xMinYMin");*/
-
-      //w=h=300;
       constructNodeLinks();
 
       /********* NEW CODE ***********/
@@ -57,14 +46,9 @@ var force,link,node,width, height;
           .attr("pointer-events", "all")
           .call(d3.behavior.zoom().on("zoom", redraw));
 
-
       vis = svg.append('svg:g');
 
       function redraw() {
-          /*vis.attr("transform",
-              "translate(" + d3.event.translate + ")"
-                  + " scale(" + d3.event.scale + ")");   */
-
           vis.attr("transform","scale(" + curScale + ")");
       }
       draw_graph();
@@ -73,9 +57,7 @@ var force,link,node,width, height;
 
       /********** NEW CODE END *********/
 
-     // createItemsChart(nodes,links);
-
-      //Touch and click events
+      /********** TOUCH AND CLICK EVENTS *********/
       $('.touch_click').on('touchstart', function (e) {
           // listen for a touchend event
           e.stopPropagation();
@@ -145,9 +127,6 @@ function draw_graph() {
         .attr("class","touch_click")
         .attr("node_id",function(d){return d.id;})
         .call(force.drag);
-
-   /* node.append("title")
-        .text(function(d) { return d.name; });*/
 
     force.on("tick", function() {
         link.attr("x1", function(d) { return d.source.x; })
@@ -261,88 +240,7 @@ function aboutPieces(i)
         p.text("");
         $("#teaser").modal();
     }
-
-
 }
 
-function createItemsChart(nodes, links)
-{
 
-    force = d3.layout.force()
-        .charge(function(d)
-        {
-            return d.charge;
-        })
-        .linkDistance(function (d)
-        {
-            return d.distance;
-        })
-        .size([w, h]);
-
-    force.nodes(nodes)
-        .links(links)
-        .start();
-
-    force.on("tick", function() {
-        link.attr("x1", function(d) { return d.source.x; })
-            .attr("y1", function(d) { return d.source.y; })
-            .attr("x2", function(d) { return d.target.x; })
-            .attr("y2", function(d) { return d.target.y; });
-
-        node.attr("transform", function(d)
-        {
-            //if(d.group == 1) {return "translate(0,0)";}
-            //else
-            return "translate(" + d.x + "," + d.y + ")";
-        });
-    });//force.on()
-
-    restart();
-}
-
-function restart()
-{
-    link = svg.selectAll(".link")
-        .data(links)
-        .enter().append("line")
-        .attr("class", "link");
-
-
-    node = svg.selectAll(".node")
-        .data(nodes)
-        .enter().append("g")
-        .attr("class", "node")
-        .call(force.drag);
-
-    node.append("image")
-        .attr("xlink:href", function(d) {return d.image})
-        .attr("x", function(d){
-            if (d.group=="CONNECTOR")
-            {return -15;}
-            else
-            {return -50;}
-        })
-        .attr("y", function(d){
-            if (d.group=="CONNECTOR")
-            {return -15;}
-            else
-            {return -50;}
-        })
-        .attr("height", function(d){
-            if (d.group=="CONNECTOR")
-            {return 25;}
-            else
-            {return 100;}
-        })
-        .attr("width",function(d){
-            if (d.group=="CONNECTOR")
-            {return 25;}
-            else
-            {return 100;}
-        })
-        .attr("class","touch_click")
-        .attr("node_id",function(d){return d.id;});
-    force.start();
-    //alert("in restart");
-}
 
