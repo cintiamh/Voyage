@@ -161,13 +161,13 @@ function draw_graph_iden(nodes, links) {
              }
              else
              {
-                 return "-6em";
+                 return "-4em";
              }
          })
         .attr("y",function(d){
              if(d.id == -1)
              {
-                 return "-4em";
+                 return "-6em";
              }
              else
              {
