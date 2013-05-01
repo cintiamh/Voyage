@@ -275,5 +275,9 @@ function closeAllDialogs()
     cur.css("background-image",img_done);
     cur.css("background-size","100%");
     $("#itemInformation").modal('hide');
+    if(currentItemNumber == pieces_list.length - 1)
+    {
+        window.open("../mobile/finish?identity=" + identity, "_self");
+    }
 
 }
