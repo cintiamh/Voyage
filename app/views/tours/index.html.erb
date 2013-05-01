@@ -10,7 +10,10 @@
             <div class="row-fluid">
         <% end %>
         <div class="span4">
-            <%= link_to image_tag(tour.image.url(:thumb)) + tour.title, tour, :class => "btn btn-warning tour-btn" %>
+            <div class="identity_name">
+                <%= link_to image_tag(tour.image.url(:large)), tour %>
+                <%= link_to tour.title.upcase, tour, :class => "tour_btn" %>
+            </div>
         </div>
         <% if @count % 3 == 2 %>
             </div>
