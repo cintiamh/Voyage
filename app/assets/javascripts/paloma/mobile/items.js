@@ -57,7 +57,10 @@ var force,link,node,width, height, pieces_by_connections=[];
       vis = svg.append('svg:g');
 
       function redraw() {
-          vis.attr("transform","scale(" + curScale + ")");
+          //vis.attr("transform", "translate("+
+             // d3.event.translate.join(",")+")scale("+d3.event.scale+")");
+         // vis.attr("transform","translate(95,37.85)"+"scale(" + curScale + ")");
+          vis.attr("transform","translate(95,37.85)"+"scale(" + 0.7 + ")");
       }
       draw_graph();
       redraw();

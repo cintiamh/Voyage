@@ -59,7 +59,12 @@ var tour_list,user_id;
 
 
       function redraw() {
-          svg.attr("transform","scale("+curScale+")");
+
+          //svg.attr("transform", "translate("+
+            //  d3.event.translate.join(",")+")scale("+d3.event.scale+")");
+
+          svg.attr("transform","translate(95,21.62)"+"scale("+curScale+")");
+          svg.attr("transform","translate(95,21.62)"+"scale("+0.5+")");
       }
 
       draw_graph_iden(nodes, links);
@@ -127,11 +132,48 @@ function draw_graph_iden(nodes, links) {
      node.append("image")
         .attr("class", "node")
         .attr("xlink:href",function(d){return d.image;})
-        .attr("width", 100)
-        .attr("height",100)
+        .attr("width",
+             function(d){
+                 if(d.id == -1)
+                 {
+                     return 150;
+                 }
+                 else
+                 {
+                     return 100;
+                 }
+             })
+        .attr("height",function(d){
+             if(d.id == -1)
+             {
+                 return 150;
+             }
+             else
+             {
+                 return 100;
+             }
+         })
         .attr("text-anchor", "middle")
-        .attr("x","-4em")
-        .attr("y","-4em")
+        .attr("x",function(d){
+             if(d.id == -1)
+             {
+                 return "-4em";
+             }
+             else
+             {
+                 return "-4em";
+             }
+         })
+        .attr("y",function(d){
+             if(d.id == -1)
+             {
+                 return "-4em";
+             }
+             else
+             {
+                 return "-4em";
+             }
+         })
         .attr("class","touch_click")
         .attr("node_id",function(d){return d.id;});
 
