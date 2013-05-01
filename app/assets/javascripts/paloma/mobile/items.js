@@ -60,7 +60,7 @@ var force,link,node,width, height, pieces_by_connections=[];
           //vis.attr("transform", "translate("+
              // d3.event.translate.join(",")+")scale("+d3.event.scale+")");
          // vis.attr("transform","translate(95,37.85)"+"scale(" + curScale + ")");
-          vis.attr("transform","translate(95,37.85)"+"scale(" + 0.7 + ")");
+          vis.attr("transform","translate(93,35)"+"scale(" + 0.7 + ")");
       }
       draw_graph();
       redraw();

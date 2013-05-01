@@ -63,7 +63,7 @@ var tour_list,user_id;
           //svg.attr("transform", "translate("+
             //  d3.event.translate.join(",")+")scale("+d3.event.scale+")");
 
-          svg.attr("transform","translate(95,21.62)"+"scale("+curScale+")");
+          //svg.attr("transform","translate(95,21.62)"+"scale("+curScale+")");
           svg.attr("transform","translate(95,21.62)"+"scale("+0.5+")");
       }
 
@@ -157,11 +157,11 @@ function draw_graph_iden(nodes, links) {
         .attr("x",function(d){
              if(d.id == -1)
              {
-                 return "-4em";
+                 return "-6em";
              }
              else
              {
-                 return "-4em";
+                 return "-6em";
              }
          })
         .attr("y",function(d){
