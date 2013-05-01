@@ -96,6 +96,14 @@ h2.home_title {
   position: absolute;
   right: 0;
   top: 30px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.identity_name a:hover {
+  text-decoration: none;
 }
 
 .identity_name img {
