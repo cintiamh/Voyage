@@ -179,13 +179,16 @@ function atItemDialog(i)
 
     var answers = answer_list[i];
 
-    var options = $("option");
-    for(var i=0; i<options.length; i++)
+
+    /*for(var i=0; i<options.length; i++)
     {
         options[i].remove();
-    }
+    } */
+
+    $('option').remove();
 
     var blank_option = "<option></option>";
+    var options;
     $(blank_option).appendTo(parent);
 
     if(answers.length != 0)
