@@ -1,7 +1,11 @@
 <div class="row-fluid">
     <div class="span8" style="text-align: center">
         <br>
-        <%= link_to(image_tag("new_layout/identities_circle_on.png"), mobile_identities_path) %>
+        <% if mobile_device? %>
+            <%= link_to(image_tag("new_layout/identities_circle_on.png"), tours_path) %>
+        <% else %>
+            <%= link_to(image_tag("new_layout/identities_circle_on.png"), mobile_identities_path) %>
+        <% end %>
     </div>
     <div class="span4">
         <div class="well side_area">
@@ -22,7 +26,7 @@
             COMMENT & SHARE YOUR VOYAGE
         </h2>
         <p class="homepage">
-            Share your reaction with your friends on Facebook and invite others to visit the museums to take Voyages of their own very own
+            Share your reaction with your friends on Facebook and invite others to visit the museums to take Voyages of their very own
         </p>
         <br>
         <p>
