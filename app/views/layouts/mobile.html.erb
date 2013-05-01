@@ -79,6 +79,7 @@
 <div class="container" id="main_content">
     <div class="row-fluid">
         <div class="span12">
+            <% unless mobile_device? && @page == "map" %>
             <div class="row-fluid">
                 <div class="span8">
                     <%= image_tag "new_layout/title2.png" %>
@@ -87,6 +88,7 @@
                     <%= image_tag "new_layout/museums.png" %>
                 </div>
             </div>
+            <% end %>
             <br>
             <%= yield %>
         </div>

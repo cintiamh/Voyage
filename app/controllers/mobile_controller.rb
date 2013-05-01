@@ -50,6 +50,7 @@ class MobileController < ApplicationController
   end
 
   def floors
+    @page = "map"
 
     @galleries = Gallery.all
     @ident = params[:identity]
