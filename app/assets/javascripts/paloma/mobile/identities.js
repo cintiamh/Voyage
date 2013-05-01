@@ -39,7 +39,8 @@ var tour_list;
 
       /********* NEW CODE ***********/
 
-      w = 500,h = 500;
+      w = 500;
+      h = 500;
 
       var zoom = d3.behavior.zoom()
               .scale(0.75)
@@ -55,11 +56,7 @@ var tour_list;
 
       svg = svg.append('svg:g');
 
-      /*function redraw() {
-          svg.attr("transform",
-                  "translate(" + d3.event.translate + ")"
-                          + " scale(" + d3.event.scale + ")");
-      } */
+
       function redraw() {
           svg.attr("transform",
                            "scale(0.75)");
@@ -67,8 +64,6 @@ var tour_list;
 
       draw_graph_iden(nodes, links);
       redraw();
-
-      console.log("current zoom scale: " + d3.behavior.zoom().scale);
 
       /********** NEW CODE END *********/
 
@@ -116,12 +111,6 @@ function draw_graph_iden(nodes, links) {
             .size([w, h])
             .start();
 
-    /*var link = vis.selectAll(".link")
-            .data(links)
-            .enter().append("line")
-            .attr("class", "link")
-            .style("stroke-width", "3" ); */
-
     var node = svg.selectAll(".node")
             .data(nodes)
             .enter().append("image")
@@ -139,10 +128,6 @@ function draw_graph_iden(nodes, links) {
             .text(function(d) { return d.name; });
 
     force.on("tick", function() {
-        /*link.attr("x1", function(d) { return d.source.x; })
-                .attr("y1", function(d) { return d.source.y; })
-                .attr("x2", function(d) { return d.target.x; })
-                .attr("y2", function(d) { return d.target.y; }); */
 
         node.attr("transform", function(d)
         {
@@ -157,7 +142,7 @@ function aboutTours(i)
     var h = d3.select('#title').text(tour_list[i].title);
     var picked_identity = tour_list[i].id;
     var link =  "../mobile/items?identity=" + picked_identity;
-     var btn_Link = $('#ident_to_item_link').click(function(){window.open(link, "_self");})
+    var btn_Link = $('#ident_to_item_link').click(function(){window.open(link, "_self");})
     $("#teaser").modal();
 }
 
