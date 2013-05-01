@@ -69,6 +69,11 @@ h2.home_title {
   width: 100%;
   text-align: left;
 }
+
+.landing_image_tx {
+  font-size: 1.3em;
+}
+
 /*
 .tour-btn img {
   margin: 0 20px;
@@ -261,6 +266,30 @@ text.node_title
 .side_area {
   background-color: rgba(102, 153, 153, 0.5);
   border: 0;
+  text-align: right;
+  font-size: 1.2em;
+  padding: 20px 5px;
+}
+
+.side_area a {
+  font-size: 0.8em;
+}
+
+.map {
+  text-align: left;
+}
+
+.highlight {
+  font-family: "Poiret One", Arial;
+  color: #F4BB3F;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.highlight a {
+  color: #F4BB3F;
+  font-weight: bold;
+  font-size: 1em;
 }
 
 .hidden

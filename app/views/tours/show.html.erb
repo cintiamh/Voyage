@@ -17,14 +17,14 @@
         <div class="span4">
             <div class="piece_name">
                 <%= link_to image_tag(piece.image.url(:large)), "##{piece.id}", :class => "infoModalBtn", :role => "button", "data-toggle" => "modal", :onclick => "resizeInfoModal(#{piece.id});" %>
-                <%= link_to piece.title, "##{piece.id}", :class => "tour-btn", :role => "button", "data-toggle" => "modal", :onclick => "resizeInfoModal(#{piece.id});" %>
+                <%= link_to "#{@count + 1}. #{piece.title}", "##{piece.id}", :class => "tour-btn", :role => "button", "data-toggle" => "modal", :onclick => "resizeInfoModal(#{piece.id});" %>
             </div>
 
             <!-- Modal -->
             <div id="<%= piece.id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="myModalLabel"><%= piece.title.upcase %></h3>
+                    <h3 id="myModalLabel"><%= @count + 1 %>. <%= piece.title.upcase %></h3>
                 </div>
                 <div class="modal-body" id="modal-body<%= piece.id %>">
                     <p style="text-align: center;">
