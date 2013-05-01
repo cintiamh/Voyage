@@ -211,6 +211,9 @@ function atItemDialog(i)
     }
     // var submit = "<button type='button' onclick='return checkAnswer(" + rightAnswer + ")'>Submit</button>";
     var item = parseInt(i) + 1;
+    var title = $("#itemTitle1");
+    title.text(pieces_list[currentItemNumber].title.toUpperCase());
+    resizeInfoModal('checkin');
     $("#checkin").modal('show');
 
 }
@@ -239,7 +242,7 @@ function displayItemInfo()
     var con_1 = $("#con_1");
     var con_2 = $("#con_2");
 
-    title.text(pieces_list[currentItemNumber].title);
+    title.text(pieces_list[currentItemNumber].title.toUpperCase());
 
     image.attr("src",pieces_list[currentItemNumber].image);
     after_info_p.text(after_info[currentItemNumber][0].after);
@@ -259,6 +262,7 @@ function displayItemInfo()
         con_1.text("How are these connected?");
         con_2.text("Post your thoughts in the comments section.");
     }
+    resizeInfoModal('itemInformation');
     $("#itemInformation").modal('show');
 
 }

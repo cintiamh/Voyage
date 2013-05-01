@@ -79,59 +79,74 @@
     </div>
 </div>
 
-<div id="checkin" class="modal hide fade">
-  <h2 id="itemTitle1"></h2>
-  <h4 id="question"></h4>
-  <div data-role="fieldcontain">
-    <fieldset id="checkinQuestion" data-role="controlgroup">
 
-      <select name="checkinQuestionAnswers" id="answers">
+<!-- Checkin question -->
 
-      </select>
-
-    </fieldset>
+<div id="checkin" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"  aria-hidden="true">×</button>
+    <h2 id="itemTitle1"></h2>
   </div>
+  <div class="modal-body">
+    <p class="info_details_style"id="question"></p>
+      <div data-role="fieldcontain">
+        <fieldset id="checkinQuestion" data-role="controlgroup">
 
-  <button onclick="checkAnswer()">Submit</button>
-  <!-- </div>-->
+          <select name="checkinQuestionAnswers" id="answers">
+
+          </select>
+
+        </fieldset>
+      </div>
+      <div class="modal-footer">
+        <button class="btn"  onclick="checkAnswer()" aria-hidden="true">Submit</button>
+      </div>
+    </div><!-- modal body -->
 </div>
 
-<div id="itemInformation" class="modal hide fade">
-
-  <h2 class="info_details_style" id="itemTitle2"></h2>
-
-  <div>
-    <ul class="nav nav-tabs">
-      <li class="active"><a href="#itemInfoTab" data-toggle="tab" class="info_details_style">Information</a></li>
-      <li><a href="#connectionTab" data-toggle="tab" class="info_details_style">Connections</a></li>
-      <li><a href="#commentsTab" data-toggle="tab" class="info_details_style">Comments</a></li>
-    </ul>
-  </div><!-- /navbar -->
-
-  <div class="tab-content">
-
-    <!-- Item Information -->
-    <div id="itemInfoTab" class="tab-pane info_details_style active">
-      <image id="item_image" width="50%" height="50%"></image><br>
-      <p class="info_details_style" id="after_info"></p><br>
-    </div>
-
-    <div id="connectionTab" class="tab-pane">
-      <p class="info_details_style" id="con_1"></p><br>
-      <p class="info_details_style" id="con_2"></p><br>
-    </div>
-
-    <div id="commentsTab" class="tab-pane">
-      <input type="text">
-      <div class="info_details_style" id="prev_comments">
-        <p class="info_details_style">Sample Comment 1</p>
-        <p class="info_details_style">Sample Comment 2</p>
-        <p class="info_details_style">Sample Comment 3</p>
-      </div>
-    </div>
-
+<!-- item information -->
+<div id="itemInformation" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" onclick="closeAllDialogs()"  aria-hidden="true">×</button>
+    <h2 class="myModalLabel" id="itemTitle2"></h2>
   </div>
-  <button class="info_details_style" onclick="closeAllDialogs()">Done</button>
+
+  <div class="modal-body">
+      <div>
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#itemInfoTab" data-toggle="tab" class="info_details_style">Information</a></li>
+          <li><a href="#connectionTab" data-toggle="tab" class="info_details_style">Connections</a></li>
+          <li><a href="#commentsTab" data-toggle="tab" class="info_details_style">Comments</a></li>
+        </ul>
+      </div><!-- /navbar -->
+
+      <div class="tab-content" style="width: 100%; overflow-y: auto;">
+
+        <!-- Item Information -->
+        <div id="itemInfoTab" class="tab-pane info_details_style active" style="width: 100%; overflow-y: auto;">
+          <image id="item_image" width="50%" height="50%"></image><br>
+          <p class="info_details_style" id="after_info"></p><br>
+        </div>
+
+        <div id="connectionTab" class="tab-pane" style="width: 100%; overflow-y: auto;">
+          <p class="info_details_style" id="con_1"></p><br>
+          <p class="info_details_style" id="con_2"></p><br>
+        </div>
+
+        <div id="commentsTab" class="tab-pane" style="width: 100%; overflow-y: auto;">
+          <input type="text">
+          <div class="info_details_style" id="prev_comments">
+            <p class="info_details_style">Sample Comment 1</p>
+            <p class="info_details_style">Sample Comment 2</p>
+            <p class="info_details_style">Sample Comment 3</p>
+          </div>
+        </div>
+
+      </div>
+  </div> <!--modal body-->
+  <div class="modal-footer">
+    <button class="btn"  onclick="closeAllDialogs()" aria-hidden="true">Close</button>
+  </div>
+
  </div>
-<!-- Plugin for responsive image maps -->
 
