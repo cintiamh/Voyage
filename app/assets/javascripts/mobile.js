@@ -15,3 +15,17 @@
 //= require bootstrap
 //= require d3
 //= require paloma
+
+function resizeInfoModal(id) {
+    var winHeight = $(window).height();
+    if (winHeight < 500) {
+        console.log("winHeight is smaller");
+        var height = $(window).height() * 0.4
+        console.log(height);
+        $('#modal-body'+id).css({height: height + "px"});
+        console.log($('.modal-body'));
+    }
+    else {
+        $('.modal-body').css({height: "500px"});
+    }
+}

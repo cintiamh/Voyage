@@ -1,6 +1,6 @@
-<h1>Any last thoughts?</h1>
+<h1>LAST THOUGHTS</h1>
 
-<p>Do you want to share your experience with your friends?</p>
+<p>Share your experience with your friends</p>
 
 <%= form_for @comment, :html => {:class => "form-horizontal"} do |f| %>
     <% if @comment.errors.any? %>
@@ -16,16 +16,12 @@
     <% end %>
 
     <fieldset>
-        <div class="control-group">
-            <%= f.label :content, :class => "control-label" %>
-            <div class="controls">
-                <%= f.text_area :content, :rows => 3, :class => "input-xxlarge" %>
-            </div>
-        </div>
+        <%= f.text_area :content, :rows => 3, :class => "input-xxlarge" %>
         <%= f.hidden_field :tour_id, :value => @tour.id %>
         <% user_id = current_user.id if current_user %>
         <%= f.hidden_field :user_id, :value => user_id %>
     </fieldset>
+    <br>
 
     <div class="control-group">
         <%= f.submit "Save", :class => "btn" %>

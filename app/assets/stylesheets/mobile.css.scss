@@ -66,20 +66,46 @@ h2.home_title {
 }
 
 .tour-btn {
-  color: #333333;
   width: 100%;
-  margin: 10px 0;
-  padding: 10px 0;
   text-align: left;
-  font-size: 1.1em;
 }
-
+/*
 .tour-btn img {
   margin: 0 20px;
+} */
+
+.identity_name {
+  display: block;
+  vertical-align: middle;
+  padding: 10px;
+}
+
+.identity_name a.tour_btn {
+  color: #006666;
+  font-family: "Poiret One", Arial;
+  font-size: 1.5em;
+  text-align: right;
+  float: right;
+  padding: 20px;
+  background-color: #FFFF99;
+  width: 70%;
+  border-top: 3px solid #EEEEEE;
+  border-bottom: 3px solid #666666;
+  border-right: 3px solid #666666;
+  position: relative;
+  margin-top: -90px;
+}
+
+.identity_name img {
+  float: left;
+  z-index: 100;
+  display: block;
+  position: relative;
 }
 
 .modal-body {
   color: #333333;
+  height: 70%;
 }
 
 .tour_tab_info {
@@ -132,9 +158,9 @@ h2.home_title {
   font-style: normal;
 }
 
-.map_area {
-  background-color: rgba(255, 255, 255, 0.6);
-  color: #333333;
+.side_area {
+  background-color: rgba(102, 153, 153, 0.5);
+  border: 0;
 }
 
 .hidden
