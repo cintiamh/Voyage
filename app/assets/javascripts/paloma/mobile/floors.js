@@ -1,7 +1,7 @@
 var identity, pieces_list, galleries_list, question_list, answer_list, after_info, connection_list,comment_list;
 var gal_pos = [];
 var map_position;
-var map;
+var map, initial_floor;
 
 (function(){
   // You access variables from before/around filters from _x object.
@@ -34,6 +34,25 @@ var map;
       comment_list = params["comment_list"];
 
       plot_items();
+
+      if(initial_floor == 1)
+      {
+          $('#first_tab').addClass('active');
+          $('#first_floor').addClass('active');
+          $('#first_floor').tab('show');
+      }
+      else if(initial_floor == 2)
+      {
+          $('#second_tab').addClass('active');
+          $('#second_floor').addClass('active');
+          $('#second_floor').tab('show');
+      }
+      else
+      {
+          $('#third_tab').addClass('active');
+          $('#third_floor').addClass('active');
+          $('#third_floor').tab('show');
+      }
 
 
   };
@@ -69,6 +88,7 @@ function plot_items()
 
         //var pos = get_position_of_gallery(gal_pos, gal);
         var floor = gallery.floor;
+        if(i==0){initial_floor = floor;}
 
         var left_adjust, top_adjust;
 

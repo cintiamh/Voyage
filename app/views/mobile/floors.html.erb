@@ -1,16 +1,16 @@
 <script type="text/javascript" src="/assets/paloma/jquery.rwdImageMaps.js"></script>
 <div>
     <ul class="nav nav-tabs">
-        <li><a href="#first_floor" data-toggle="tab">Floor 1</a></li>
-        <li><a href="#second_floor" data-toggle="tab">Floor 2</a></li>
-        <li><a href="#third_floor" data-toggle="tab">Floor 3</a></li>
+        <li id="first_tab"><a href="#first_floor" data-toggle="tab">Floor 1</a></li>
+        <li id="second_tab"><a href="#second_floor" data-toggle="tab">Floor 2</a></li>
+        <li id="third_tab"><a href="#third_floor" data-toggle="tab">Floor 3</a></li>
     </ul>
 </div><!-- /navbar -->
 
 
 <div class="tab-content">
     <!-- Floor 1 -->
-    <div id="first_floor" class="tab-pane active">
+    <div id="first_floor" class="tab-pane">
         <div id="1_map" style="text-align:center; width:100%; position: relative; margin-left:auto; margin-right:auto;">
             <img id="Image-Maps_floor_1" src="/assets/MAPv1_Floor1.png" usemap="#Image-Maps_floor_1" border="0" width="1024" height="513" alt="" class="map_pos"/>
             <map id="_Image-Maps_floor_1" name="Image-Maps_floor_1">
@@ -102,7 +102,7 @@
 
   <div>
     <ul class="nav nav-tabs">
-      <li><a href="#itemInfoTab" data-toggle="tab" class="info_details_style">Information</a></li>
+      <li class="active"><a href="#itemInfoTab" data-toggle="tab" class="info_details_style">Information</a></li>
       <li><a href="#connectionTab" data-toggle="tab" class="info_details_style">Connections</a></li>
       <li><a href="#commentsTab" data-toggle="tab" class="info_details_style">Comments</a></li>
     </ul>
@@ -111,7 +111,7 @@
   <div class="tab-content">
 
     <!-- Item Information -->
-    <div class="info_details_style" id="itemInfoTab" class="tab-pane active">
+    <div id="itemInfoTab" class="tab-pane info_details_style active">
       <image id="item_image" width="50%" height="50%"></image><br>
       <p class="info_details_style" id="after_info"></p><br>
     </div>
