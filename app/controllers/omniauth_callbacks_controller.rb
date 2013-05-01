@@ -1,6 +1,6 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
-  layout "mobile"
+  layout "admin"
 
   def all
     user = User.from_omniauth(request.env["omniauth.auth"])
