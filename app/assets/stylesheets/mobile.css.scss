@@ -77,31 +77,89 @@ h2.home_title {
 .identity_name {
   display: block;
   vertical-align: middle;
-  padding: 10px;
+  position: relative;
+  height: 130px;
+  width: 100%;
 }
+
+/* Identities buttons */
 
 .identity_name a.tour_btn {
   color: #006666;
   font-family: "Poiret One", Arial;
-  font-size: 1.5em;
+  font-size: 1.3em;
   text-align: right;
-  float: right;
   padding: 20px;
   background-color: #FFFF99;
-  width: 70%;
+  width: 80%;
   border-top: 3px solid #EEEEEE;
   border-bottom: 3px solid #666666;
   border-right: 3px solid #666666;
-  position: relative;
-  margin-top: -90px;
+  position: absolute;
+  right: 0;
+  top: 30px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.identity_name a:hover {
+  text-decoration: none;
 }
 
 .identity_name img {
-  float: left;
   z-index: 100;
-  display: block;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
+
+/* Tours' pieces buttons */
+
+.piece_name {
+  position: relative;
+  height: 130px;
+  width: 100%;
+}
+
+.piece_name img {
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.piece_name a.tour-btn {
+  width: 80%;
+  position: absolute;
+  right: 0;
+  top: 30px;
+  background-color: #FAAA3A;
+  /*color: #006666;
+  font-family: "Poiret One", Arial;
+  font-size: 1.3em;*/
+  text-align: right;
+  padding: 20px 10px;
+  border-top: 3px solid #EEEEEE;
+  border-bottom: 3px solid #666666;
+  border-right: 3px solid #666666;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.piece_name a:hover {
+  text-decoration: none;
+}
+
+.go-btn {
+  width: 100%;
+  text-align: center;
+}
+
+/* Modal window for information */
 
 .modal-body {
   color: #333333;

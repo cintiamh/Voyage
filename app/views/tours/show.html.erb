@@ -3,7 +3,7 @@
     <%= @tour.title.upcase %>
 </h1>
 <p>
-    Press GO when you are ready.
+    Press GO to start your Voyage.
 </p>
 <% if @tour.pieces.length <= 0 %>
     <p>There are no pieces</p>
@@ -14,7 +14,10 @@
             <div class="row-fluid">
         <% end %>
         <div class="span4">
-            <%= link_to image_tag(piece.image.url(:thumb)) + piece.title, "##{piece.id}", :class => "btn btn-warning tour-btn infoModalBtn", :role => "button", "data-toggle" => "modal", :onclick => "resizeInfoModal(#{piece.id});" %>
+            <div class="piece_name">
+                <%= link_to image_tag(piece.image.url(:large)), "##{piece.id}", :class => "infoModalBtn", :role => "button", "data-toggle" => "modal", :onclick => "resizeInfoModal(#{piece.id});" %>
+                <%= link_to piece.title, "##{piece.id}", :class => "tour-btn", :role => "button", "data-toggle" => "modal", :onclick => "resizeInfoModal(#{piece.id});" %>
+            </div>
 
             <!-- Modal -->
             <div id="<%= piece.id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -59,15 +62,15 @@
 <div class="row-fluid">
     <div class="span12">
         <div class="row-fluid">
-            <div class="span4">
-                <%= link_to "GO", "/mobile/floors?identity=#{@tour.id}", :class => "btn btn-danger tour-btn", :style => "text-align: center;" %>
+            <div class="span4 offset4 go-btn">
+                <%= link_to image_tag("new_layout/go_on.png"), "/mobile/floors?identity=#{@tour.id}" %>
             </div>
         </div>
     </div>
 </div>
-
+<br>
 <div class="row-fluid">
     <div class="span12">
-        <%= link_to raw("Back"), tours_path, :class => "btn" %>
+        <%= link_to image_tag("new_layout/back_button.png"), tours_path %>
     </div>
 </div>
