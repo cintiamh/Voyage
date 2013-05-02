@@ -230,14 +230,16 @@ function aboutPieces(i)
     else if(i >=0 )
     {
         p.text(before_info[i][0].before);
-        h.text(pieces_list[i].title);
+        h.text(pieces_list[i].title.toUpperCase());
+        resizeInfoModalMap("teaser");
         $("#teaser").modal();
     }
     else if(i < -1)
     {
         var node_list_pos = -(i*2) - 2;
-        h.text(nodes[node_list_pos].title);
-        p.text("");
+        h.text("CONNECTION");
+        p.text(nodes[node_list_pos].title);
+        resizeInfoModalMap("teaser");
         $("#teaser").modal();
     }
 }

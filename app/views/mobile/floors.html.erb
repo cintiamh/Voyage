@@ -87,7 +87,7 @@
     <button type="button" class="close" data-dismiss="modal"  aria-hidden="true">×</button>
     <h2 id="itemTitle1"></h2>
   </div>
-  <div class="modal-body">
+  <div class="modal-body" style="color: 'white'">
     <p class="info_details_style"id="question"></p>
       <div data-role="fieldcontain">
         <fieldset id="checkinQuestion" data-role="controlgroup">
@@ -111,7 +111,7 @@
     <h2 class="myModalLabel" id="itemTitle2"></h2>
   </div>
 
-  <div class="modal-body">
+  <div class="modal-body" style="color: 'white'">
       <div>
         <ul class="nav nav-tabs">
           <li class="active"><a href="#itemInfoTab" data-toggle="tab" class="info_details_style">Information</a></li>
@@ -120,20 +120,22 @@
         </ul>
       </div><!-- /navbar -->
 
-      <div class="tab-content" style="width: 100%; overflow-y: auto;">
+      <div class="tab-content" style="width: 100%; overflow-y: auto;background: 'white'">
 
         <!-- Item Information -->
-        <div id="itemInfoTab" class="tab-pane info_details_style active" style="width: 100%; overflow-y: auto;">
-          <image id="item_image" width="50%" height="50%"></image><br>
+        <div id="itemInfoTab" class="tab-pane info_details_style active">
+          <p style="text-align: center">
+            <image id="item_image" width="50%" height="50%"></image><br>
+          </p>
           <p class="info_details_style" id="after_info"></p><br>
         </div>
 
-        <div id="connectionTab" class="tab-pane" style="width: 100%; overflow-y: auto;">
+        <div id="connectionTab" class="tab-pane">
           <p class="info_details_style" id="con_1"></p><br>
           <p class="info_details_style" id="con_2"></p><br>
         </div>
 
-        <div id="commentsTab" class="tab-pane" style="width: 100%; overflow-y: auto;">
+        <div id="commentsTab" class="tab-pane">
           <input type="text">
           <div class="info_details_style" id="prev_comments">
             <p class="info_details_style">Sample Comment 1</p>
