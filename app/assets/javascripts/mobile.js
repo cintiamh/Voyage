@@ -13,8 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require d3
 //= require paloma
+//= require d3
+
 
 function resizeInfoModal(id) {
     var winHeight = $(window).height();
