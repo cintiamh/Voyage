@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130503173302) do
+ActiveRecord::Schema.define(:version => 20130503200434) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -69,6 +69,18 @@ ActiveRecord::Schema.define(:version => 20130503173302) do
     t.datetime "updated_at", :null => false
     t.integer  "floor"
   end
+
+  create_table "histories", :force => true do |t|
+    t.datetime "chosen_date"
+    t.datetime "executed_date"
+    t.integer  "tour_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "histories", ["tour_id"], :name => "index_histories_on_tour_id"
+  add_index "histories", ["user_id"], :name => "index_histories_on_user_id"
 
   create_table "information", :force => true do |t|
     t.text     "before"

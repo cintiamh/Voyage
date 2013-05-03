@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
   #attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :tours
-  has_many :tour_histories
+  #has_many :tour_histories
+  has_many :histories
   has_many :comments
   has_many :likes
 
