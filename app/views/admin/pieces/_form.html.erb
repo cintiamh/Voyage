@@ -46,6 +46,12 @@
             </div>
         </div>
         <div class="control-group art">
+            <%= f.label :artist, :class => "control-label" %>
+            <div class="controls">
+                <%= f.text_field :artist, :class => "input-xxlarge" %>
+            </div>
+        </div>
+        <div class="control-group art">
             <%= f.label :creator, :class => "control-label" %>
             <div class="controls">
                 <%= f.select :creator_id, Creator.all.collect {|p| [p.name, p.id]}, {:include_blank => true} %>
