@@ -1,4 +1,4 @@
-<%= form_for(@history) do |f| %>
+<%= form_for @history, :html => {:class => "form-horizontal"} do |f| %>
   <% if @history.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@history.errors.count, "error") %> prohibited this history from being saved:</h2>
@@ -11,23 +11,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :chosen_date %><br />
-    <%= f.datetime_select :chosen_date %>
-  </div>
-  <div class="field">
-    <%= f.label :executed_date %><br />
-    <%= f.datetime_select :executed_date %>
-  </div>
-  <div class="field">
-    <%= f.label :tour %><br />
-    <%= f.text_field :tour %>
-  </div>
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<fieldset>
+    <legend>Tour History</legend>
+
+    <div class="control-group">
+        <%= f.label :chosen_date, :class => "control-label" %>
+        <div class="controls">
+            <%= f.datetime_select :chosen_date %>
+        </div>
+    </div>
+    <div class="control-group">
+        <%= f.label :executed_date, :class => "control-label" %>
+        <div class="controls">
+            <%= f.datetime_select :executed_date %>
+        </div>
+    </div>
+    <div class="control-group">
+        <%= f.label :user_id, :class => "control-label" %>
+        <div class="controls">
+            <%= f.select :user_id, User.all.collect {|p| [p.email, p.id]}, {:include_blank => true} %>
+        </div>
+    </div>
+    <div class="control-group">
+        <%= f.label :tour_id, :class => "control-label" %>
+        <div class="controls">
+            <%= f.select :tour_id, Tour.all.collect {|p| [p.title, p.id]}, {:include_blank => true} %>
+        </div>
+    </div>
+</fieldset>
+<div class="control-group">
+    <%= f.submit "Save", :class => "btn" %>
+</div>
+
 <% end %>
