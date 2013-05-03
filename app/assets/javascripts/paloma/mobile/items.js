@@ -31,6 +31,7 @@ var force,link,node,width, height;
       tour_id = params['tour_id'];
       before_info = params['before_info'];
       pieces_list = _L.pieces_list;
+      _l.pieces =  _L.pieces_list;
 
       constructNodeLinks();
 
@@ -231,7 +232,7 @@ function aboutPieces(i)
     {
         p.text(before_info[i][0].before);
         h.text(pieces_list[i].title.toUpperCase());
-        resizeInfoModalMap("teaser");
+        resizeInfoModalMap("teaser_body");
         $("#teaser").modal();
     }
     else if(i < -1)
@@ -239,7 +240,7 @@ function aboutPieces(i)
         var node_list_pos = -(i*2) - 2;
         h.text("CONNECTION");
         p.text(nodes[node_list_pos].title);
-        resizeInfoModalMap("teaser");
+        resizeInfoModalMap("teaser_body");
         $("#teaser").modal();
     }
 }

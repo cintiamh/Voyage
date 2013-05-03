@@ -10,5 +10,5 @@
   // _x.visibleOnCallback = "I'm a shared variable"
   var _x = Paloma.variableContainer;
 
-  // ~> Start definitions here and remove this line.
+  //locals.pieces;
 })();

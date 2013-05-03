@@ -144,7 +144,7 @@ function aboutTours(i)
     var picked_identity = tour_list[i].id;
     var link =  "../mobile/items?identity=" + picked_identity;
     var btn_Link = $('#ident_to_item_link').click(function(){window.open(link, "_self");})
-    resizeInfoModalMap("teaser");
+    resizeInfoModalMap("teaser_body");
     $("#teaser").modal();
 }
 

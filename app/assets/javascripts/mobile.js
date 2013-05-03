@@ -12,9 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require paloma
 //= require bootstrap
 //= require d3
-//= require paloma
+
 
 function resizeInfoModal(id) {
     var winHeight = $(window).height();
@@ -41,7 +42,7 @@ function resizeInfoModalMap(id) {
         console.log($('.modal-body'));
     }
     else {
-        $('.modal-body').css({height: "500px"});
-        $('.modal-body').css({color: "white"});
+        $('#'+id).css({height: "100%"});
+        $('#'+id).css({color: "white"});
     }
 }

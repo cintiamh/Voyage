@@ -33,6 +33,9 @@ var map, initial_floor;
       connection_list = params["connection_list"];
       comment_list = params["comment_list"];
 
+      var pieces = _L.pieces_list;
+      _l.pieces = pieces;
+
       plot_items();
 
       if(initial_floor == 1)
@@ -96,22 +99,22 @@ function plot_items()
         {
             map_position = $('#Image-Maps_floor_1').position();
             map = $('#1_map');
-            left_adjust = -20;
-            top_adjust = -43;
+            left_adjust = 48;//-20;
+            top_adjust = -33; //-43
         }
         else if(floor == 2)
         {
             map_position = $('#Image-Maps_floor_2').position();
             map = $('#2_map');
             left_adjust = +45;
-            top_adjust = -43;
+            top_adjust = -23//-43;
         }
         else
         {
             map_position = $('#Image-Maps_floor_3').position();
             map = $('#3_map');
-            left_adjust = +45;
-            top_adjust = -0;
+            left_adjust = +48;
+            top_adjust = -23;
         }
         var left_pos = parseInt(map_position.left + (parseInt(gal_pos.min_x) + parseInt(gal_pos.max_x))/2);
         left_pos += parseInt(left_adjust);
@@ -164,6 +167,7 @@ var rightAnswer;
 var currentItemNumber;
 function atItemDialog(i)
 {
+    $('#checkin_fb').text("");
     currentItemNumber = i;
     var parent = $('#answers');
     var q = $('#question');
@@ -213,7 +217,7 @@ function atItemDialog(i)
     var item = parseInt(i) + 1;
     var title = $("#itemTitle1");
     title.text(pieces_list[currentItemNumber].title.toUpperCase());
-    resizeInfoModalMap('checkin');
+    resizeInfoModalMap('checkin_body');
     $("#checkin").modal('show');
 
 }
@@ -221,15 +225,21 @@ function atItemDialog(i)
 function checkAnswer()
 {
     var ans = $('#answers').val();
+    var fb = $('#checkin_fb');
     if(ans!= "" && ans == rightAnswer)
     {
-        alert("Right answer");
-        $("#checkin").modal('hide');
-        displayItemInfo();
+        //alert("Right answer");
+        fb.text("Correct");
+        setTimeout(function()
+        {
+            $("#checkin").modal('hide');
+            displayItemInfo();
+        },1000);
     }
     else
     {
-        alert("Wrong answer. Try again!");
+        //alert("Wrong answer. Try again!");
+        fb.text("Wrong answer. Try again!");
     }
 }
 
@@ -262,7 +272,7 @@ function displayItemInfo()
         con_1.text("How are these connected?");
         con_2.text("Post your thoughts in the comments section.");
     }
-    resizeInfoModalMap('itemInformation');
+    resizeInfoModalMap('itemInformation_body');
     $("#itemInformation").modal('show');
 
 }
