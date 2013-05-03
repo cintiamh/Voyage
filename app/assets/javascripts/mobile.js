@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
 //= require paloma
+//= require bootstrap
 //= require d3
 
 
