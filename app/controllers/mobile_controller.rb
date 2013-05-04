@@ -81,7 +81,7 @@ class MobileController < ApplicationController
     js :params => {:iden => @ident, :galleries_list => @galleries, :pieces_list => @pieces_on_tour,
                    :question_list => @questions, :answer_list => @answers,
                    :connection_list => @connections, :after_info => @after_info, :comment_list => @comments,
-                   :history => @history, :pieces_by_connections => pieces_by_connections}
+                   :history => @history, :pieces_by_connections => pieces_by_connections, :tour_items => items}
 
   end
 
