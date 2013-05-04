@@ -63,7 +63,11 @@ class HistoriesController < InheritedResources::Base
         end
       end
       temp_arr.each do |temp|
-        @history.tour_items << TourItem.find(temp[rand(0..temp.length - 1)]["id"])
+        if temp.length > 1
+          @history.tour_items << TourItem.find(temp[rand(0..temp.length - 1)]["id"])
+        else
+          @history.tour_items << TourItem.find(temp[0]["id"])
+        end
       end
     end
 
