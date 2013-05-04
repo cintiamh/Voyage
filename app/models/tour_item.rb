@@ -5,4 +5,6 @@ class TourItem < ActiveRecord::Base
   has_and_belongs_to_many :histories
 
   attr_accessible :fixed, :piece_id, :position, :tour_id
+
+  default_scope order('position ASC')
 end

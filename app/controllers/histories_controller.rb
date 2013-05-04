@@ -87,10 +87,12 @@ class HistoriesController < InheritedResources::Base
   # PUT /histories/1.json
   def update
     @history = History.find(params[:id])
+    @history.executed_date = Time.now
 
     respond_to do |format|
       if @history.update_attributes(params[:history])
-        format.html { redirect_to @history, notice: 'History was successfully updated.' }
+        session[:history_id] = @history.id
+        format.html { redirect_to "/mobile/floors?identity=#{@history.tour_id}", notice: 'History was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
