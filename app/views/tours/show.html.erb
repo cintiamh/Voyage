@@ -9,7 +9,7 @@
     <p>There are no pieces</p>
 <% else %>
     <% @count = 0 %>
-    <% @history.tour_items.each do |tour_item| %>
+    <% @tour_items.each do |tour_item| %>
         <% piece = tour_item.piece %>
         <% if @count % 3 == 0 %>
             <div class="row-fluid">
