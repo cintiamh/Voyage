@@ -6,7 +6,7 @@ class HistoriesController < InheritedResources::Base
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @tour_histories }
+      format.json { render json: @histories }
     end
   end
 
@@ -69,10 +69,11 @@ class HistoriesController < InheritedResources::Base
 
     respond_to do |format|
       if @history.save
-        format.html { redirect_to @history, notice: 'History was successfully created.' }
+        session[:history_id] = @history.id
+        format.html { redirect_to @history.tour, notice: 'History was successfully created.' }
         format.json { render json: @history, status: :created, location: @history }
       else
-        format.html { render action: "new" }
+        format.html { render action: tours_path }
         format.json { render json: @history.errors, status: :unprocessable_entity }
       end
     end
