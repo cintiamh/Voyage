@@ -6,7 +6,7 @@ class Tour < ActiveRecord::Base
   has_many :informations
   has_many :comments
   has_many :likes
-  has_many :tour_items, :dependent => :destroy
+  has_many :tour_items, :dependent => :destroy, :order => "position ASC"
   has_many :pieces, :through => :tour_items
   has_many :connections
 

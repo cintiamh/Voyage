@@ -41,35 +41,30 @@ class HistoriesController < InheritedResources::Base
   # POST /histories.json
   def create
     @history = History.new(params[:history])
-
-    #params[:history][:tour_item_ids][0]
+    @history.chosen_date = Time.now
     @tour = Tour.find(@history.tour.id)
-    index = 0
+
     if @tour.tour_items.length > 0
       temp_arr = []
       @tour.tour_items.each do |item|
         if item.fixed
           @history.tour_items << TourItem.find(item.id)
         else
-
+          inserted = false
+          temp_arr.each do |temp|
+            if temp.first["position"] == item.position
+              temp.push({"position" => item.position, "id" => item.id})
+              inserted = true
+            end
+          end
+          unless inserted
+            temp_arr.push([{"position" => item.position, "id" => item.id}])
+          end
         end
       end
-      #  if item.fixed
-      #    @history.tour_items << TourItem.find(item.id)
-      #    index += 1
-      #  else
-      #    if item.position == current_pos
-      #      temp_arr.push(item.id)
-      #    else
-      #      @history.tour_items << TourItem.find(temp_arr.sample(1))
-      #      #params[:history][:tour_item_ids][index] = temp_arr.sample(1)
-      #      index += 1
-      #      temp_arr = []
-      #      temp_arr.push(item.id)
-      #      current_pos = item.position
-      #    end
-      #  end
-      #end
+      temp_arr.each do |temp|
+        @history.tour_items << TourItem.find(temp[rand(0..temp.length - 1)]["id"])
+      end
     end
 
     respond_to do |format|

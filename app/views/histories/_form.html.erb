@@ -15,18 +15,6 @@
     <legend>Tour History</legend>
 
     <div class="control-group">
-        <%= f.label :chosen_date, :class => "control-label" %>
-        <div class="controls">
-            <%= f.datetime_select :chosen_date %>
-        </div>
-    </div>
-    <div class="control-group">
-        <%= f.label :executed_date, :class => "control-label" %>
-        <div class="controls">
-            <%= f.datetime_select :executed_date %>
-        </div>
-    </div>
-    <div class="control-group">
         <%= f.label :user_id, :class => "control-label" %>
         <div class="controls">
             <%= f.select :user_id, User.all.collect {|p| [p.email, p.id]}, {:include_blank => true} %>
