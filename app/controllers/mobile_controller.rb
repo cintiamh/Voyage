@@ -56,21 +56,32 @@ class MobileController < ApplicationController
     @galleries = Gallery.all
     @ident = params[:identity]
     tour = Tour.includes(:connections,:tour_items).find(@ident)
+
+
+
+
     @tour = Tour.find(params[:identity])
-    @connections =  tour.connections
-    items = tour.tour_items
+
+    @history = History.find(session[:history_id])
+    items = @history.tour_items
     @pieces_on_tour = items.map {|i| Piece.includes(:informations,:questions => :answers).find(i.piece_id)}
     @questions = @pieces_on_tour.map {|p| p.questions[0]}
     @answers = @questions.map{ |q| Answer.where(:question_id => q.id) if !q.nil?}
-    @connections = tour.connections
+
     @after_info = @pieces_on_tour.map {|p| Information.where(:piece_id => p.id)}
+
+    @connections = tour.connections.includes(:pieces)
+    pieces_by_connections = @connections.map {|c| c.pieces.select(:id)}
+
+    #@connections_on_tour = @pieces_on_tour.map {|p| @connections}
 
     @comments = @pieces_on_tour.map {|p| Comment.where(:piece_id => p.id)}
     @comment = Comment.new
 
     js :params => {:iden => @ident, :galleries_list => @galleries, :pieces_list => @pieces_on_tour,
                    :question_list => @questions, :answer_list => @answers,
-                   :connection_list => @connections, :after_info => @after_info, :comment_list => @comments}
+                   :connection_list => @connections, :after_info => @after_info, :comment_list => @comments,
+                   :history => @history, :pieces_by_connections => pieces_by_connections}
 
   end
 
