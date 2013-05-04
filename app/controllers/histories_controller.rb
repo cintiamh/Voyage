@@ -1,8 +1,10 @@
 class HistoriesController < InheritedResources::Base
+  layout "mobile"
+
   # GET /histories
   # GET /histories.json
   def index
-    @histories = History.all
+    @histories = History.order("executed_date DESC")
 
     respond_to do |format|
       format.html # index.html.erb
