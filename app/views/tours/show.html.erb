@@ -41,10 +41,26 @@
                     <% if piece.connections.length > 0 %>
                         <h3>CONNECTIONS</h3>
                         <% piece.connections.each do |connection| %>
-                            <h4><%= connection.title %></h4>
-                            <p><%= connection.description %></p>
+                            <% count = 0 %>
                             <% connection.pieces.each do |p| %>
-                                <%= image_tag(p.image.url(:thumb)) if p.image %>
+                                <% unless piece == p %>
+                                    <% @history.tour_items.each do |tour_item| %>
+                                        <% if tour_item.piece == p %>
+                                            <% count += 1 %>
+                                        <% end %>
+                                    <% end %>
+                                <% end %>
+                            <% end %>
+                            <% if count > 0 %>
+                                <h4><%= connection.title %></h4>
+                                <p><%= connection.description %></p>
+                                <% connection.pieces.each do |p| %>
+                                    <% @history.tour_items.each do |tour_item| %>
+                                        <% if tour_item.piece == p %>
+                                            <%= image_tag(p.image.url(:thumb)) if p.image %>
+                                        <% end %>
+                                    <% end %>
+                                <% end %>
                             <% end %>
                         <% end %>
                     <% end %>
