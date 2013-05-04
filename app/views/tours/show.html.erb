@@ -80,7 +80,11 @@
     <div class="span12">
         <div class="row-fluid">
             <div class="span4 offset4 go-btn">
-                <%= link_to image_tag("new_layout/go_on.png"), "/mobile/floors?identity=#{@tour.id}" %>
+                <%= form_for @history do |f| %>
+                    <%= f.hidden_field :id, :value => @history.id %>
+                    <%= image_submit_tag("new_layout/go_on.png") %>
+                <% end %>
+                <% #link_to image_tag("new_layout/go_on.png"), "/mobile/floors?identity=#{@tour.id}" %>
             </div>
         </div>
     </div>
