@@ -1,7 +1,7 @@
-var identity, pieces_list, galleries_list, question_list, answer_list, after_info, connection_list,comment_list;
+var identity, pieces_list, galleries_list, question_list, answer_list, after_info, connection_list, tour_connection_list=[],comment_list;
 var gal_pos = [];
 var map_position;
-var map, initial_floor;
+var map, initial_floor, history, pieces_by_connections;
 
 (function(){
   // You access variables from before/around filters from _x object.
@@ -32,6 +32,13 @@ var map, initial_floor;
       after_info = params["after_info"];
       connection_list = params["connection_list"];
       comment_list = params["comment_list"];
+      var tour_items = params["tour_items"];
+
+      //var tour_items_history = params["tour_items_history"];
+      history = params["history"];
+      pieces_by_connections = params["pieces_by_connections"];
+
+      create_tour_connection_list();
 
       var pieces = _L.pieces_list;
       _l.pieces = pieces;
@@ -60,6 +67,35 @@ var map, initial_floor;
 
   };
 })();
+
+function create_tour_connection_list()
+{
+    //tour_connection_list, connection_list, pieces_by_connections, pieces_list
+     var count = 0;
+    for(var i =0 ; i<pieces_list.length; i++)
+    {
+        for(var j=0; j<pieces_by_connections.length; j++)
+        {
+            if(i == pieces_list.length - 1)
+            {
+                if((pieces_by_connections[j][0].id == pieces_list[i].id && pieces_by_connections[j][1].id == pieces_list[0].id) ||
+                    (pieces_by_connections[j][1].id == pieces_list[i].id && pieces_by_connections[j][0].id == pieces_list[0].id))
+                {
+                    tour_connection_list[count++] = connection_list[i];
+                }
+            }
+            else
+            {
+                if((pieces_by_connections[j][0].id == pieces_list[i].id && pieces_by_connections[j][1].id == pieces_list[i+1].id)||
+                    (pieces_by_connections[j][1].id == pieces_list[i].id && pieces_by_connections[j][0].id == pieces_list[i+1].id))
+                {
+                    tour_connection_list[count++] = connection_list[i];
+                }
+            }
+        }
+    }
+
+}
 
 function plot_items()
 {
@@ -258,20 +294,20 @@ function displayItemInfo()
     after_info_p.text(after_info[currentItemNumber][0].after);
 
     var prev = currentItemNumber - 1;
-    if(prev < 0) {prev = connection_list.length - 1;}
+    if(prev < 0) {prev = tour_connection_list.length - 1;}
 
-    if(connection_list.length != 0)
+    /*if(tour_connection_list.length != 0 && tour_connection_list.length == pieces_list.length)
     {
-        if(!connection_list[prev]){con_1.text("How are these connected? Post your thoughts in the comments section.");}
-        else{con_1.text(connection_list[prev].description);}
-        if(!connection_list[currentItemNumber]){con_1.text("How are these connected? Post your thoughts in the comments section.");}
-        else{con_2.text(connection_list[currentItemNumber].description);}
+        if(!tour_connection_list[prev]){con_1.text("How are these connected? Post your thoughts in the comments section.");}
+        else{con_1.text(tour_connection_list[prev].description);}
+        if(!tour_connection_list[currentItemNumber]){con_1.text("How are these connected? Post your thoughts in the comments section.");}
+        else{con_2.text(tour_connection_list[currentItemNumber].description);}
     }
     else
-    {
+    { */
         con_1.text("How are these connected?");
         con_2.text("Post your thoughts in the comments section.");
-    }
+    //}
     resizeInfoModalMap('itemInformation_body');
     $("#itemInformation").modal('show');
 

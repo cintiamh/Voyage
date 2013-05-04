@@ -87,6 +87,8 @@ Voyage::Application.routes.draw do
 
   get "mobile/create_comment"
 
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
