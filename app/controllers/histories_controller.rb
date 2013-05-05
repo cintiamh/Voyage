@@ -7,7 +7,7 @@ class HistoriesController < InheritedResources::Base
     @page = "histories"
 
     if user_signed_in?
-      @histories = History.where("user_id == ? and executed_date<>''", current_user.id).order("executed_date DESC")
+      @histories = History.where("user_id = ? and executed_date<>''", current_user.id).order("executed_date DESC")
     end
 
     respond_to do |format|
