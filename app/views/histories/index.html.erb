@@ -11,7 +11,6 @@
                 <h3><%= history.tour.title.upcase %></h3>
                 <p>
                     <%= history.executed_date.to_formatted_s(:long_ordinal) if history.executed_date %>
-                    <%= history.user.id %>
                 </p>
                 <p>
                     <%= link_to 'Review', history %>
