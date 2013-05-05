@@ -1,7 +1,7 @@
 var identity, pieces_list, galleries_list, question_list, answer_list, after_info, connection_list, tour_connection_list=[],comment_list;
 var gal_pos = [];
 var map_position;
-var map, initial_floor, history, pieces_by_connections;
+var map, initial_floor, history, pieces_by_connections, user_input_comments=[];
 
 (function(){
   // You access variables from before/around filters from _x object.
@@ -106,29 +106,11 @@ function create_tour_connection_list()
 
                 }
             }
-            if(tour_connection_list.length == pieces_list.length)
+           /* if(next == 1000)
             {
                 break;
-            }
-        }
-
-            /*if(i == pieces_list.length - 1)
-            {
-                if((pieces_by_connections[j][0].id == pieces_list[i].id && pieces_by_connections[j][1].id == pieces_list[0].id) ||
-                    (pieces_by_connections[j][1].id == pieces_list[i].id && pieces_by_connections[j][0].id == pieces_list[0].id))
-                {
-                    tour_connection_list[count++] = connection_list[i];
-                }
-            }
-            else
-            {
-                if((pieces_by_connections[j][0].id == pieces_list[i].id && pieces_by_connections[j][1].id == pieces_list[i+1].id)||
-                    (pieces_by_connections[j][1].id == pieces_list[i].id && pieces_by_connections[j][0].id == pieces_list[i+1].id))
-                {
-                    tour_connection_list[count++] = connection_list[i];
-                }
             }*/
-
+        }
     }
 
 }
@@ -323,6 +305,11 @@ function displayItemInfo()
     var after_info_p = $("#after_info");
     var con_1 = $("#con_1");
     var con_2 = $("#con_2");
+    var new_comm = $("#new_comment");
+    var input = $("#usercomment");
+
+    new_comm.text("");
+    input.val("");
 
     title.text(pieces_list[currentItemNumber].title.toUpperCase());
 
@@ -381,6 +368,8 @@ function displayItemInfo()
           }
       }
        //TODO: make it stop after finding the values
+
+
     }
 
     else
@@ -388,6 +377,22 @@ function displayItemInfo()
         con_1.text("How are these connected?");
         con_2.text("Post your thoughts in the comments section.");
     }
+
+
+    //COMMENTS
+    var comm1 = $("comm1");
+    var comm2 = $("comm2");
+    var comm3 = $("comm3");
+
+    for(var c=0; c<comment_list.length; c++)
+    {
+        var comm = $("#comm" + parseInt(c+1));
+        comm.text(comment_list[c].content);
+        if(c==3) break;
+    }
+
+
+
     resizeInfoModalMap('itemInformation_body');
     $("#itemInformation").modal('show');
 
@@ -410,7 +415,16 @@ function closeAllDialogs()
     $("#itemInformation").modal('hide');
     if(currentItemNumber == pieces_list.length - 1)
     {
+        //TODO: input all the comments
         window.open("../mobile/finish?identity=" + identity, "_self");
     }
 
+}
+
+function submit_comment()
+{
+    var new_comm = $("#new_comment");
+    var input = $("#usercomment");
+    new_comm.text(input.val());
+    user_input_comments.push({"piece_id":currentItemNumber,"comment":input.val()});
 }
