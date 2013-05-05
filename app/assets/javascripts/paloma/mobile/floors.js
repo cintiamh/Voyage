@@ -381,16 +381,26 @@ function displayItemInfo()
 
 
     //COMMENTS
-    var comm1 = $("comm1");
-    var comm2 = $("comm2");
-    var comm3 = $("comm3");
+    var comm1 = $("#comm1").text("");
+    var comm2 = $("#comm2").text("");
+    var comm3 = $("#comm3").text("");
 
-    for(var c=0; c<comment_list.length; c++)
+    if(comment_list[currentItemNumber].length == 0)
     {
-        var comm = $("#comm" + parseInt(c+1));
-        comm.text(comment_list[c].content);
-        if(c==3) break;
+        $("#comm1").text("Be the first one to comment!");
     }
+
+    for(var i=0; i<comment_list[currentItemNumber].length;i++)
+    {
+        var comm = $("#comm" + parseInt(i+1));
+        var content = comment_list[currentItemNumber][i].content;
+        if(!(typeof content === 'undefined'))
+        {
+            comm.text(content);
+        }
+        if(i==2) break;
+    }
+
 
 
 
@@ -431,11 +441,14 @@ function submit_comment()
     jQuery.ajax({
         type: "POST",
         url: "http://localhost:3000/comments",
-        data: {"comment":{"content":input,"piece_id":currentItemNumber,"tour_id":identity, "user_id":history.user_id}},
+        data: {"comment":{"content":input,"piece_id":pieces_list[currentItemNumber].id,"tour_id":identity, "user_id":history.user_id}},
         dataType:"json",
         cache: false,
         success: function (result) {
-            //alert("comment will be added after moderation");
+            if(comment_list[currentItemNumber].length == 0)
+            {
+                $("#comm1").text("");
+            }
         } });
 
 }
