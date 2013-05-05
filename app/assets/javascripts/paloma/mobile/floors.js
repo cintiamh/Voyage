@@ -39,10 +39,6 @@ var map, initial_floor, history, pieces_by_connections;
       pieces_by_connections = params["pieces_by_connections"];
 
       create_tour_connection_list();
-
-      var pieces = _L.pieces_list;
-      _l.pieces = pieces;
-
       plot_items();
 
       if(initial_floor == 1)
@@ -74,9 +70,49 @@ function create_tour_connection_list()
      var count = 0;
     for(var i =0 ; i<pieces_list.length; i++)
     {
+        var cur = pieces_list[i].id;
+        if(i+1 != pieces_list.length)
+        {
+            var next = pieces_list[i+1].id;
+        }
+        else
+        {
+            var next = 1000;
+        }
         for(var j=0; j<pieces_by_connections.length; j++)
         {
-            if(i == pieces_list.length - 1)
+            for(var k=0; k<pieces_by_connections[j].length; k++)
+            {
+                if(pieces_by_connections[j][k].id == cur)
+                {
+                    if(next == 1000)
+                    {
+                        tour_connection_list.push({"cur":cur, "next":0, "connection":connection_list[j]})
+                        break;
+                    }
+                    else
+                    {
+                        for(var l=0; l<pieces_by_connections[j].length; l++)
+                        {
+                           if(l != k)
+                           {
+                               if(pieces_by_connections[j][l].id == next)
+                               {
+                                   tour_connection_list.push({"cur":cur, "next":next, "connection":connection_list[j]})
+                               }
+                           }
+                        }
+                    }
+
+                }
+            }
+            if(tour_connection_list.length == pieces_list.length)
+            {
+                break;
+            }
+        }
+
+            /*if(i == pieces_list.length - 1)
             {
                 if((pieces_by_connections[j][0].id == pieces_list[i].id && pieces_by_connections[j][1].id == pieces_list[0].id) ||
                     (pieces_by_connections[j][1].id == pieces_list[i].id && pieces_by_connections[j][0].id == pieces_list[0].id))
@@ -91,8 +127,8 @@ function create_tour_connection_list()
                 {
                     tour_connection_list[count++] = connection_list[i];
                 }
-            }
-        }
+            }*/
+
     }
 
 }
@@ -293,8 +329,8 @@ function displayItemInfo()
     image.attr("src",pieces_list[currentItemNumber].image);
     after_info_p.text(after_info[currentItemNumber][0].after);
 
-    var prev = currentItemNumber - 1;
-    if(prev < 0) {prev = tour_connection_list.length - 1;}
+    var next = currentItemNumber + 1;
+    if(next>pieces_list.length) {next=0;}
 
     /*if(tour_connection_list.length != 0 && tour_connection_list.length == pieces_list.length)
     {
@@ -302,12 +338,56 @@ function displayItemInfo()
         else{con_1.text(tour_connection_list[prev].description);}
         if(!tour_connection_list[currentItemNumber]){con_1.text("How are these connected? Post your thoughts in the comments section.");}
         else{con_2.text(tour_connection_list[currentItemNumber].description);}
+    }  */
+
+    if(tour_connection_list.length != 0 && tour_connection_list.length == pieces_list.length)
+    {
+      for(var t=0; t<tour_connection_list.length; t++)
+      {
+          if(!tour_connection_list[t])
+          {
+              con_1.text("How are these connected?");
+              con_2.text("Post your thoughts in the comments section.");
+          }
+          if(tour_connection_list[t].next == pieces_list[currentItemNumber].id)
+          {
+
+              if(!tour_connection_list[t].connection)
+              {
+                  con_1.text("How are these connected?");
+                  con_2.text("Post your thoughts in the comments section.");
+              }
+
+            var con_1_text = tour_connection_list[t].connection.description;
+              if(!con_1_text)
+              {
+                  con_1_text = "Post your thoughts in the comments sections";
+              }
+            con_1.text(con_1_text);
+          }
+          if(tour_connection_list[t].cur == pieces_list[currentItemNumber].id)
+          {
+              if(!tour_connection_list[t].connection)
+              {
+                  con_1.text("How are these connected?");
+                  con_2.text("Post your thoughts in the comments section.");
+              }
+              var con_2_text = tour_connection_list[t].connection.description;
+              if(!con_2_text)
+              {
+                  con_2_text = "Post your thoughts in the comments sections";
+              }
+              con_2.text(con_2_text);
+          }
+      }
+       //TODO: make it stop after finding the values
     }
+
     else
-    { */
+    {
         con_1.text("How are these connected?");
         con_2.text("Post your thoughts in the comments section.");
-    //}
+    }
     resizeInfoModalMap('itemInformation_body');
     $("#itemInformation").modal('show');
 
