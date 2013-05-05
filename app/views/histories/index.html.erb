@@ -1,22 +1,30 @@
 <h1>MY VOYAGES</h1>
-<% count = 0 %>
-<% @histories.each do |history| %>
-    <% if count % 4 == 0 %>
-        <div class="row-fluid">
+<% if user_signed_in? %>
+    <% if @histories.length > 0 %>
+        <% count = 0 %>
+        <% @histories.each do |history| %>
+            <% if count % 4 == 0 %>
+                <div class="row-fluid">
+            <% end %>
+            <div class="span3" style="text-align: center">
+                <%= image_tag(history.tour.image(:medium)) %>
+                <h3><%= history.tour.title.upcase %></h3>
+                <p>
+                    <%= history.executed_date.to_formatted_s(:long_ordinal) if history.executed_date %>
+                    <%= history.user.id %>
+                </p>
+                <p>
+                    <%= link_to 'Review', history %>
+                </p>
+            </div>
+            <% if count % 4 == 3 %>
+                </div>
+            <% end %>
+            <% count += 1 %>
+        <% end %>
+    <% else %>
+        <p>You have no Voyages yet. Start your Voyage!</p>
     <% end %>
-        <div class="span3" style="text-align: center">
-            <%= image_tag(history.tour.image(:medium)) %>
-            <h3><%= history.tour.title.upcase %></h3>
-            <p>
-                <%= history.executed_date.to_formatted_s(:long_ordinal) if history.executed_date %>
-                <%= history.user.id %>
-            </p>
-            <p>
-                <%= link_to 'Review', history %>
-            </p>
-        </div>
-    <% if count % 4 == 3 %>
-        </div>
-    <% end %>
-    <% count += 1 %>
+<% else %>
+    <p>You must be logged in to review your Voyages.</p>
 <% end %>
