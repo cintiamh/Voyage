@@ -1,29 +1,29 @@
-<h1>Listing histories</h1>
-
-<table>
-  <tr>
-    <th>Chosen date</th>
-    <th>Executed date</th>
-    <th>Tour</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @histories.each do |history| %>
-  <tr>
-    <td><%= history.chosen_date %></td>
-    <td><%= history.executed_date %></td>
-    <td><%= history.tour %></td>
-    <td><%= history.user %></td>
-    <td><%= link_to 'Show', history %></td>
-    <td><%= link_to 'Edit', edit_history_path(history) %></td>
-    <td><%= link_to 'Destroy', history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<h1>MY VOYAGES</h1>
+<% if user_signed_in? %>
+    <% if @histories.length > 0 %>
+        <% count = 0 %>
+        <% @histories.each do |history| %>
+            <% if count % 4 == 0 %>
+                <div class="row-fluid">
+            <% end %>
+            <div class="span3" style="text-align: center">
+                <%= image_tag(history.tour.image(:medium)) %>
+                <h3><%= history.tour.title.upcase %></h3>
+                <p>
+                    <%= history.executed_date.to_formatted_s(:long_ordinal) if history.executed_date %>
+                </p>
+                <p>
+                    <%= link_to 'Review', history %>
+                </p>
+            </div>
+            <% if count % 4 == 3 %>
+                </div>
+            <% end %>
+            <% count += 1 %>
+        <% end %>
+    <% else %>
+        <p>You have no Voyages yet. Start your Voyage!</p>
+    <% end %>
+<% else %>
+    <p>You must be logged in to review your Voyages.</p>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New History', new_history_path %>

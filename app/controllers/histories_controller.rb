@@ -1,8 +1,14 @@
 class HistoriesController < InheritedResources::Base
+  layout "mobile"
+
   # GET /histories
   # GET /histories.json
   def index
-    @histories = History.all
+    @page = "histories"
+
+    if user_signed_in?
+      @histories = History.where("user_id = ? and executed_date > chosen_date", current_user.id).order("executed_date DESC")
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +19,9 @@ class HistoriesController < InheritedResources::Base
   # GET /histories/1
   # GET /histories/1.json
   def show
+    @page = "histories"
     @history = History.find(params[:id])
+    @tour_items = @history.tour_items.sort_by{ |a| a.position.to_i }
 
     respond_to do |format|
       format.html # show.html.erb

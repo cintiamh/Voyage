@@ -1,38 +1,88 @@
-<p id="notice"><%= notice %></p>
+<h1>
+    <%= image_tag(@history.tour.image.url(:large)) %>
+    <%= @history.tour.title.upcase %>
+</h1>
 
 <p>
-  <b>Chosen date:</b>
-  <%= @history.chosen_date %>
+  <b>Date:</b>
+    <%= @history.executed_date.to_formatted_s(:long_ordinal) if @history.executed_date %>
 </p>
 
-<p>
-  <b>Executed date:</b>
-  <%= @history.executed_date %>
-</p>
-
-<p>
-  <b>Tour:</b>
-    <% if @history.tour %>
-        <%= @history.tour.title %>
-    <% end %>
-</p>
-
-<p>
-  <b>User:</b>
-  <% if @history.user %>
-        <%= @history.user.email %>
-    <% end %>
-</p>
-
-<% if @history.tour_items.length > 0 %>
-    <% @history.tour_items.each do |item| %>
-        <p><%= item.piece.title %></p>
-    <% end %>
+<% if @tour_items.length <= 0 %>
+    <p>There are no pieces</p>
 <% else %>
-    <p>No items</p>
+    <% @count = 0 %>
+    <% @tour_items.each do |tour_item| %>
+        <% piece = tour_item.piece %>
+        <% if @count % 3 == 0 %>
+            <div class="row-fluid">
+        <% end %>
+        <div class="span4">
+            <div class="piece_name">
+                <%= link_to image_tag(piece.image.url(:large)), "##{piece.id}", :class => "infoModalBtn", :role => "button", "data-toggle" => "modal", :onclick => "resizeInfoModal(#{piece.id});" %>
+                <%= link_to piece.title, "##{piece.id}", :class => "tour-btn", :role => "button", "data-toggle" => "modal", :onclick => "resizeInfoModal(#{piece.id});" %>
+            </div>
+
+            <!-- Modal -->
+            <div id="<%= piece.id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel"><%= piece.title.upcase %></h3>
+                </div>
+                <div class="modal-body" id="modal-body<%= piece.id %>">
+                    <p style="text-align: center;">
+                        <%= image_tag(piece.image.url(:large)) %>
+                    </p>
+                    <h3>INFORMATION</h3>
+                    <p>
+                        <% if piece.informations.length > 0 %>
+                            <%= piece.informations.first.after %>
+                        <% else %>
+                            There are no informations at this moment.
+                        <% end %>
+                    </p>
+                    <% if piece.connections.length > 0 %>
+                        <h3>CONNECTIONS</h3>
+                        <% piece.connections.each do |connection| %>
+                            <% if connection.tour_id == @history.tour_id %>
+                                <% count = 0 %>
+                                <% connection.pieces.each do |p| %>
+                                    <% unless piece == p %>
+                                        <% @history.tour_items.each do |tour_item| %>
+                                            <% if tour_item.piece == p %>
+                                                <% count += 1 %>
+                                            <% end %>
+                                        <% end %>
+                                    <% end %>
+                                <% end %>
+                                <% if count > 0 %>
+                                    <h4><%= connection.title %></h4>
+                                    <p><%= connection.description %></p>
+                                    <% connection.pieces.each do |p| %>
+                                        <% @history.tour_items.each do |tour_item| %>
+                                            <% if tour_item.piece == p %>
+                                                <%= image_tag(p.image.url(:thumb)) if p.image %>
+                                            <% end %>
+                                        <% end %>
+                                    <% end %>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+            </div>
+        </div>
+        <% if @count % 3 == 2 %>
+            </div>
+        <% end %>
+        <% @count += 1 %>
+    <% end %>
 <% end %>
-
-
-
-<%= link_to 'Edit', edit_history_path(@history) %> |
-<%= link_to 'Back', histories_path %>
+<div class="row-fluid">
+    <div class="span12">
+        <%= link_to image_tag("new_layout/back_button.png"), histories_path %>
+    </div>
+</div>
