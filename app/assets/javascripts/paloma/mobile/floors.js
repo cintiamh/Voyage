@@ -440,7 +440,7 @@ function submit_comment()
     //$("#moderation_notice").text("Awaiting comment moderation");
     jQuery.ajax({
         type: "POST",
-        url: "http://localhost:3000/comments",
+        url: "http://http://the-voyage.herokuapp.com/comments",
         data: {"comment":{"content":input,"piece_id":pieces_list[currentItemNumber].id,"tour_id":identity, "user_id":history.user_id}},
         dataType:"json",
         cache: false,
