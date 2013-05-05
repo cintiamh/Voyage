@@ -1,7 +1,7 @@
 var identity, pieces_list, galleries_list, question_list, answer_list, after_info, connection_list, tour_connection_list=[],comment_list;
 var gal_pos = [];
 var map_position;
-var map, initial_floor, history, pieces_by_connections, user_input_comments=[];
+var map, initial_floor, history, pieces_by_connections, user_input_comments=[], user_id;
 
 (function(){
   // You access variables from before/around filters from _x object.
@@ -25,6 +25,7 @@ var map, initial_floor, history, pieces_by_connections, user_input_comments=[];
   Paloma.callbacks['mobile']['floors'] = function(params)
   {
       identity = params['iden'];
+      user_id = params['user_id'];
       pieces_list = params['pieces_list'];
       galleries_list = params["galleries_list"];
       question_list = params["question_list"];
@@ -424,7 +425,17 @@ function closeAllDialogs()
 function submit_comment()
 {
     var new_comm = $("#new_comment");
-    var input = $("#usercomment");
-    new_comm.text(input.val());
-    user_input_comments.push({"piece_id":currentItemNumber,"comment":input.val()});
+    var input = $("#usercomment").val();
+    new_comm.text(input);
+    //$("#moderation_notice").text("Awaiting comment moderation");
+    jQuery.ajax({
+        type: "POST",
+        url: "http://localhost:3000/comments",
+        data: {"comment":{"content":input,"piece_id":currentItemNumber,"tour_id":identity, "user_id":history.user_id}},
+        dataType:"json",
+        cache: false,
+        success: function (result) {
+            //alert("comment will be added after moderation");
+        } });
+
 }

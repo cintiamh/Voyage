@@ -59,7 +59,9 @@ class MobileController < ApplicationController
 
     @tour = Tour.find(params[:identity])
 
-    @history = History.find(session[:history_id])
+    @history = History.includes(:user).find(session[:history_id])
+    @user_id = @history.user_id
+    user_session = session[:user_id]
     items = @history.tour_items.sort_by{ |a| a.position.to_i }
     @pieces_on_tour = items.map {|i| Piece.includes(:informations,:questions => :answers).find(i.piece_id)}
     @questions = @pieces_on_tour.map {|p| p.questions[0]}
@@ -78,7 +80,7 @@ class MobileController < ApplicationController
     js :params => {:iden => @ident, :galleries_list => @galleries, :pieces_list => @pieces_on_tour,
                    :question_list => @questions, :answer_list => @answers,
                    :connection_list => @connections, :after_info => @after_info, :comment_list => @comments,
-                   :history => @history, :pieces_by_connections => pieces_by_connections, :tour_items => items}
+                   :history => @history, :pieces_by_connections => pieces_by_connections, :tour_items => items, :user_id=>user_session}
 
   end
 
