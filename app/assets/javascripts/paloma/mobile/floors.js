@@ -1,7 +1,7 @@
 var identity, pieces_list, galleries_list, question_list, answer_list, after_info, connection_list, tour_connection_list=[],comment_list;
 var gal_pos = [];
 var map_position;
-var map, initial_floor, history, pieces_by_connections;
+var map, initial_floor, history, pieces_by_connections, user_input_comments=[];
 
 (function(){
   // You access variables from before/around filters from _x object.
@@ -39,10 +39,6 @@ var map, initial_floor, history, pieces_by_connections;
       pieces_by_connections = params["pieces_by_connections"];
 
       create_tour_connection_list();
-
-      var pieces = _L.pieces_list;
-      _l.pieces = pieces;
-
       plot_items();
 
       if(initial_floor == 1)
@@ -74,24 +70,46 @@ function create_tour_connection_list()
      var count = 0;
     for(var i =0 ; i<pieces_list.length; i++)
     {
+        var cur = pieces_list[i].id;
+        if(i+1 != pieces_list.length)
+        {
+            var next = pieces_list[i+1].id;
+        }
+        else
+        {
+            var next = 1000;
+        }
         for(var j=0; j<pieces_by_connections.length; j++)
         {
-            if(i == pieces_list.length - 1)
+            for(var k=0; k<pieces_by_connections[j].length; k++)
             {
-                if((pieces_by_connections[j][0].id == pieces_list[i].id && pieces_by_connections[j][1].id == pieces_list[0].id) ||
-                    (pieces_by_connections[j][1].id == pieces_list[i].id && pieces_by_connections[j][0].id == pieces_list[0].id))
+                if(pieces_by_connections[j][k].id == cur)
                 {
-                    tour_connection_list[count++] = connection_list[i];
+                    if(next == 1000)
+                    {
+                        tour_connection_list.push({"cur":cur, "next":0, "connection":connection_list[j]})
+                        break;
+                    }
+                    else
+                    {
+                        for(var l=0; l<pieces_by_connections[j].length; l++)
+                        {
+                           if(l != k)
+                           {
+                               if(pieces_by_connections[j][l].id == next)
+                               {
+                                   tour_connection_list.push({"cur":cur, "next":next, "connection":connection_list[j]})
+                               }
+                           }
+                        }
+                    }
+
                 }
             }
-            else
+           /* if(next == 1000)
             {
-                if((pieces_by_connections[j][0].id == pieces_list[i].id && pieces_by_connections[j][1].id == pieces_list[i+1].id)||
-                    (pieces_by_connections[j][1].id == pieces_list[i].id && pieces_by_connections[j][0].id == pieces_list[i+1].id))
-                {
-                    tour_connection_list[count++] = connection_list[i];
-                }
-            }
+                break;
+            }*/
         }
     }
 
@@ -287,14 +305,19 @@ function displayItemInfo()
     var after_info_p = $("#after_info");
     var con_1 = $("#con_1");
     var con_2 = $("#con_2");
+    var new_comm = $("#new_comment");
+    var input = $("#usercomment");
+
+    new_comm.text("");
+    input.val("");
 
     title.text(pieces_list[currentItemNumber].title.toUpperCase());
 
     image.attr("src",pieces_list[currentItemNumber].image);
     after_info_p.text(after_info[currentItemNumber][0].after);
 
-    var prev = currentItemNumber - 1;
-    if(prev < 0) {prev = tour_connection_list.length - 1;}
+    var next = currentItemNumber + 1;
+    if(next>pieces_list.length) {next=0;}
 
     /*if(tour_connection_list.length != 0 && tour_connection_list.length == pieces_list.length)
     {
@@ -302,12 +325,74 @@ function displayItemInfo()
         else{con_1.text(tour_connection_list[prev].description);}
         if(!tour_connection_list[currentItemNumber]){con_1.text("How are these connected? Post your thoughts in the comments section.");}
         else{con_2.text(tour_connection_list[currentItemNumber].description);}
+    }  */
+
+    if(tour_connection_list.length != 0 && tour_connection_list.length == pieces_list.length)
+    {
+      for(var t=0; t<tour_connection_list.length; t++)
+      {
+          if(!tour_connection_list[t])
+          {
+              con_1.text("How are these connected?");
+              con_2.text("Post your thoughts in the comments section.");
+          }
+          if(tour_connection_list[t].next == pieces_list[currentItemNumber].id)
+          {
+
+              if(!tour_connection_list[t].connection)
+              {
+                  con_1.text("How are these connected?");
+                  con_2.text("Post your thoughts in the comments section.");
+              }
+
+            var con_1_text = tour_connection_list[t].connection.description;
+              if(!con_1_text)
+              {
+                  con_1_text = "Post your thoughts in the comments sections";
+              }
+            con_1.text(con_1_text);
+          }
+          if(tour_connection_list[t].cur == pieces_list[currentItemNumber].id)
+          {
+              if(!tour_connection_list[t].connection)
+              {
+                  con_1.text("How are these connected?");
+                  con_2.text("Post your thoughts in the comments section.");
+              }
+              var con_2_text = tour_connection_list[t].connection.description;
+              if(!con_2_text)
+              {
+                  con_2_text = "Post your thoughts in the comments sections";
+              }
+              con_2.text(con_2_text);
+          }
+      }
+       //TODO: make it stop after finding the values
+
+
     }
+
     else
-    { */
+    {
         con_1.text("How are these connected?");
         con_2.text("Post your thoughts in the comments section.");
-    //}
+    }
+
+
+    //COMMENTS
+    var comm1 = $("comm1");
+    var comm2 = $("comm2");
+    var comm3 = $("comm3");
+
+    for(var c=0; c<comment_list.length; c++)
+    {
+        var comm = $("#comm" + parseInt(c+1));
+        comm.text(comment_list[c].content);
+        if(c==3) break;
+    }
+
+
+
     resizeInfoModalMap('itemInformation_body');
     $("#itemInformation").modal('show');
 
@@ -330,7 +415,16 @@ function closeAllDialogs()
     $("#itemInformation").modal('hide');
     if(currentItemNumber == pieces_list.length - 1)
     {
+        //TODO: input all the comments
         window.open("../mobile/finish?identity=" + identity, "_self");
     }
 
+}
+
+function submit_comment()
+{
+    var new_comm = $("#new_comment");
+    var input = $("#usercomment");
+    new_comm.text(input.val());
+    user_input_comments.push({"piece_id":currentItemNumber,"comment":input.val()});
 }
