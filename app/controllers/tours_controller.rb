@@ -5,7 +5,7 @@ class ToursController < ApplicationController
   # GET /tours
   # GET /tours.json
   def index
-    @tours = Tour.where('public = ?', true)
+    @tours = Tour.where('public = ?', true).order('title')
     @history = History.new
 
     respond_to do |format|
@@ -20,7 +20,7 @@ class ToursController < ApplicationController
     @tour = Tour.find(params[:id])
 
     @history = History.find(session[:history_id])
-    @tour_items = @history.tour_items.sort_by{ |a| a.position.to_i }
+
 
     respond_to do |format|
       format.html # show.html.erb
