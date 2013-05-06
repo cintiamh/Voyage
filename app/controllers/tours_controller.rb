@@ -19,7 +19,7 @@ class ToursController < ApplicationController
   def show
     @tour = Tour.find(params[:id])
     @history = History.find(session[:history_id])
-
+    @tour_items = @history.tour_items.sort_by{ |a| a.position.to_i }
 
     respond_to do |format|
       format.html # show.html.erb
