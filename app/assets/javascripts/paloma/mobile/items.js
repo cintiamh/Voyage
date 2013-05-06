@@ -1,9 +1,9 @@
 var w,h;
 var svg,vis;
 var pieces_list;
-var nodes =[], links= [], connections= [], before_info = [];
-var tour_id;
-var force,link,node,width, height;
+var nodes =[], links= [], connection_list= [], before_info = [];
+var tour_id, tour;
+var force,link,node,width, height, pieces_by_connections=[];
 
 
 (function(){
@@ -26,20 +26,20 @@ var force,link,node,width, height;
 
 
   Paloma.callbacks['mobile']['items'] = function(params){
-      _L.pieces_list = params['pieces_list'];
-      connections = params['connection_list'];
+      pieces_list = params['pieces_list'];
+      connection_list = params['connection_list'];
       tour_id = params['tour_id'];
+      tour = params['tour'];
       before_info = params['before_info'];
-      pieces_list = _L.pieces_list;
-      _l.pieces =  _L.pieces_list;
-
+      pieces_by_connections = params['pieces_by_connections'];
+      create_tour_connection_list_graph();
       constructNodeLinks();
 
       /********* NEW CODE ***********/
 
        width = 500,
        height = 500;
-       var curScale = 0.75 - (0.05 * (pieces_list.length - 3));
+       var curScale = (0.75 - (0.05 * (pieces_list.length - 3))) * 1.5;
       var svg = d3.select("#chart")
           .append("svg")
           .attr("viewBox", "0 0 " + width + " " + height )
@@ -53,6 +53,8 @@ var force,link,node,width, height;
           vis.attr("transform","scale(" + curScale + ")");
       }
       draw_graph();
+      redraw();
+      redraw();
       redraw();
 
 
@@ -91,8 +93,8 @@ var force,link,node,width, height;
 
 function draw_graph() {
     var force = d3.layout.force()
-        .charge(-2000)
-        .linkDistance(100)
+        .charge(-1500)
+        .linkDistance(function(d){return d.distance;})
         .nodes(nodes)
         .links(links)
         .size([width, height])
@@ -102,32 +104,69 @@ function draw_graph() {
         .data(links)
         .enter().append("line")
         .attr("class", "link")
-        .style("stroke-width", "3" );
+        .style("stroke-width", "5" )
+        .style("stroke-dasharray","5, 9");
 
     var node = vis.selectAll(".node")
         .data(nodes)
-        .enter().append("image")
+        .enter().append("g")
+        .call(force.drag);
+
+    node.append("image")
         .attr("class", "node")
         .attr("xlink:href",function(d){return d.image;})
         .attr("width", function(d){
-            if(d.group == "CONNECTOR"){ return 25;}
+            if(d.group == "CONNECTOR"){ return 30;}
+            else if(d.group == "GO_NODE") {return 150;}
             else {return 100;}
         })
         .attr("height",function(d){
-            if(d.group == "CONNECTOR"){ return 25;}
+            if(d.group == "CONNECTOR"){ return 30;}
+            else if(d.group == "GO_NODE") {return 150;}
             else {return 100;}
         })
         .attr("x",function(d){
             if(d.group == "CONNECTOR"){ return "-0.75em";}
+            else if(d.group == "GO_NODE") {return "-5em";}
             else {return "-3em";}
         })
         .attr("y",function(d){
-            if(d.group == "CONNECTOR"){ return "-0.75em";}
+            if(d.group == "CONNECTOR"){ return "-0.750em";}
+            else if(d.group == "GO_NODE") {return "-5em";}
             else {return "-3em";}
         })
         .attr("class","touch_click")
         .attr("node_id",function(d){return d.id;})
-        .call(force.drag);
+        .on("mouseover", function(d)
+        {
+            if(d.group == "GO_NODE" )
+            {
+              var img = d3.select(this);
+                img.attr("xlink:href","/assets/go.png")
+            }
+        })
+        .on("mouseout", function(d)
+        {
+            if(d.group == "GO_NODE" )
+            {
+                var img = d3.select(this);
+                img.attr("xlink:href", d.image);
+            }
+        });
+
+    node.append("text")
+        .attr("text-anchor", "middle")
+        .attr("dx","0.5em")
+        .attr("y", "5em")
+        .attr("fill","white")
+        .attr("font-size","1.5em")
+        .attr("class","node_title")
+        .text(function(d) {
+            if(d.group == "CONNECTOR"){ return "";}
+            else if(d.group == "GO_NODE") {return d.title.toUpperCase();}
+            else {return "";}
+        });
+
 
     force.on("tick", function() {
         link.attr("x1", function(d) { return d.source.x; })
@@ -146,20 +185,20 @@ function draw_graph() {
 function constructNodeLinks()
 {
     //TODO: replace with GO art
-    nodes.push({"id":-1,"title":"GO", "group":"NODE", "charge":-500, "image":"/assets/NUMBER-SHEET.png"});
+    nodes.push({"id":-1,"title":tour.title, "group":"GO_NODE", "charge":-500, "image":tour.image});
     for(var i = 0; i<pieces_list.length; i++)
     {
         //alert("<%= @pieces_list[i].image.url %>");
         //circle case
 
-        if(connections.length == 0)
+        if(tour_connection_list.length == 0)
         {
             if(i==pieces_list.length - 1)
             {
 
                 nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-1000, "image":pieces_list[i].image});
                 //nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to 1", "group":"CONNECTOR", "charge":-500});
-                nodes.push({"id":-(i+2),"title":"How are these connected?", "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});
+                nodes.push({"id":-(i+2),"title":"How are these connected?", "group":"CONNECTOR", "charge":-1000, "image":"/assets/connection.jpg"});
 
                 links.push({"source":2*i+1,"target":2*i+2,"distance":100});
                 links.push({"source":2*i+2,"target":1,"distance":100});
@@ -171,14 +210,14 @@ function constructNodeLinks()
                 nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-1000, "image":pieces_list[i].image});
                 //Connections
                 //nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to" + (i+2), "group":"CONNECTOR", "charge":-500});
-                nodes.push({"id":-(i+2),"title":"How are these connected?", "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});
+                nodes.push({"id":-(i+2),"title":"How are these connected?", "group":"CONNECTOR", "charge":-1000, "image":"/assets/connection.png"});
 
-                links.push({"source":2*i+1,"target":2*i+2,"distance":100});
-                links.push({"source":2*i+2,"target":2*i+3,"distance":100});
+                links.push({"source":2*i+1,"target":2*i+2,"distance":10});
+                links.push({"source":2*i+2,"target":2*i+3,"distance":10});
             }
 
             //Each node linked to GO
-            links.push({"source":0,"target":2*i+1,"distance":200});
+            links.push({"source":0,"target":2*i+1,"distance":80});
         }
 
         else
@@ -188,10 +227,10 @@ function constructNodeLinks()
 
                 nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-1000, "image":pieces_list[i].image});
                 //nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to 1", "group":"CONNECTOR", "charge":-500});
-                if(!connections[i])
-                {nodes.push({"id":-(i+2),"title":"How are these connected?", "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});}
+                if(typeof tour_connection_list[i].connection == 'undefined')
+                {nodes.push({"id":-(i+2),"title":"How are these connected?", "group":"CONNECTOR", "charge":-1000, "image":"/assets/connection.png"});}
                 else
-                {nodes.push({"id":-(i+2),"title":connections[i].description, "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});}
+                {nodes.push({"id":-(i+2),"title":tour_connection_list[i].connection.description, "group":"CONNECTOR", "charge":-1000, "image":"/assets/connection.png"});}
 
                 links.push({"source":2*i+1,"target":2*i+2,"distance":100});
                 links.push({"source":2*i+2,"target":1,"distance":100});
@@ -203,10 +242,10 @@ function constructNodeLinks()
                 nodes.push({"id":i,"title":pieces_list[i].title, "group":"NODE", "charge":-1000, "image":pieces_list[i].image});
                 //Connections
                 //nodes.push({"id":-(i+2),"title":"C" + (i+1) + "to" + (i+2), "group":"CONNECTOR", "charge":-500});
-                if(!connections[i])
-                {nodes.push({"id":-(i+2),"title":"How are these connected?", "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});}
+                if(typeof tour_connection_list[i].connection == 'undefined')
+                {nodes.push({"id":-(i+2),"title":"How are these connected?", "group":"CONNECTOR", "charge":-1000, "image":"/assets/connection.png"});}
                 else
-                {nodes.push({"id":-(i+2),"title":connections[i].description, "group":"CONNECTOR", "charge":-1000, "image":"/assets/DOT.png"});}
+                {nodes.push({"id":-(i+2),"title":tour_connection_list[i].connection.description, "group":"CONNECTOR", "charge":-1000, "image":"/assets/connection.png"});}
 
                 links.push({"source":2*i+1,"target":2*i+2,"distance":100});
                 links.push({"source":2*i+2,"target":2*i+3,"distance":100});
@@ -245,5 +284,51 @@ function aboutPieces(i)
     }
 }
 
+function create_tour_connection_list_graph()
+{
+    //tour_connection_list, connection_list, pieces_by_connections, pieces_list
+    var count = 0;
+    for(var i =0 ; i<pieces_list.length; i++)
+    {
+        var cur = pieces_list[i].id;
+        if(i+1 != pieces_list.length)
+        {
+            var next = pieces_list[i+1].id;
+        }
+        else
+        {
+            var next = 1000;
+        }
+        for(var j=0; j<pieces_by_connections.length; j++)
+        {
+            for(var k=0; k<pieces_by_connections[j].length; k++)
+            {
+                if(pieces_by_connections[j][k].id == cur)
+                {
+                    if(next == 1000)
+                    {
+                        tour_connection_list.push({"cur":cur, "next":0, "connection":connection_list[j]})
+                        break;
+                    }
+                    else
+                    {
+                        for(var l=0; l<pieces_by_connections[j].length; l++)
+                        {
+                            if(l != k)
+                            {
+                                if(pieces_by_connections[j][l].id == next)
+                                {
+                                    tour_connection_list.push({"cur":cur, "next":next, "connection":connection_list[j]})
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+}
 
 

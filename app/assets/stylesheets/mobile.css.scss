@@ -245,6 +245,19 @@ input.tour_img_btn {
   font-style: normal;
 }
 
+text.node_title
+{
+  font-family: "Sintony", Arial;
+}
+
+.web_text
+{
+  color: #F4BB3F;
+  font-family: "Sintony", Arial;
+  letter-spacing:2px;
+  line-height:200%
+}
+
 .side_area {
   background-color: rgba(102, 153, 153, 0.5);
   border: 0;
@@ -257,7 +270,8 @@ input.tour_img_btn {
 
 line {
   fill: none;
-  stroke: #ececec;
+  stroke-opacity: 80%;
+  stroke: DarkGreen;
   stroke-width: 1.5px;
 }
 

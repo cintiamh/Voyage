@@ -104,8 +104,8 @@ var tour_list;
 
 function draw_graph_iden(nodes, links) {
     var force = d3.layout.force()
-            .charge(-1000)
-            .linkDistance(80)
+            .charge(-1050)
+            .linkDistance(125)
             .nodes(nodes)
             .links(links)
             .size([w, h])
@@ -114,19 +114,27 @@ function draw_graph_iden(nodes, links) {
 
     var node = svg.selectAll(".node")
             .data(nodes)
-            .enter().append("image")
-            .attr("class", "node")
-            .attr("xlink:href",function(d){return d.image;})
-            .attr("width", 100)
-            .attr("height",100)
-            .attr("x","-3em")
-            .attr("y","-3em")
-            .attr("class","touch_click")
-            .attr("node_id",function(d){return d.id;})
+            .enter().append("g")
             .call(force.drag);
 
-    node.append("title")
-            .text(function(d) { return d.name; });
+     node.append("image")
+        .attr("class", "node")
+        .attr("xlink:href",function(d){return d.image;})
+        .attr("width", 100)
+        .attr("height",100)
+        .attr("x","-3em")
+        .attr("y","-3em")
+        .attr("class","touch_click")
+        .attr("node_id",function(d){return d.id;});
+
+
+    node.append("text")
+        .attr("text-anchor", "middle")
+        .attr("dx","0.5em")
+        .attr("y", "5em")
+        .attr("fill","white")
+        .attr("class","node_title")
+        .text(function(d) { return d.title.toUpperCase() });
 
     force.on("tick", function() {
         node.attr("transform", function(d)

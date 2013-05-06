@@ -40,12 +40,15 @@ class MobileController < ApplicationController
   def items
 
     identity = params[:identity]
+    @history = History.includes(:user).find(session[:history_id])
     tour = Tour.includes(:connections,:tour_items).find(identity)
-    @connections =  tour.connections
-    items = tour.tour_items
+    @connections = tour.connections.includes(:pieces)
+    pieces_by_connections = @connections.map {|c| c.pieces.select(:id)}
+    items = @history.tour_items.sort_by{ |a| a.position.to_i }
    @pieces_on_tour = items.map {|i| Piece.includes(:informations,:questions => :answers).find(i.piece_id)}
     @information = @pieces_on_tour.map {|p| Information.where(:piece_id => p.id)}
-    js :params => {:pieces_list => @pieces_on_tour, :before_info => @information, :connection_list => @connections, :tour_id => identity}
+    js :params => {:pieces_list => @pieces_on_tour, :before_info => @information, :connection_list => @connections,
+                   :tour_id => identity, :pieces_by_connections => pieces_by_connections, :tour => tour}
 
 
   end
