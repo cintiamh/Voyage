@@ -31,7 +31,7 @@ var tour_list;
           //links -> {source, target, value}
           var target = i+1;
           if(target >= tour_list.length){target = 0;}
-          //links.push({"source":i, "target":target, "value":25})
+          links.push({"source":i, "target":target, "value":25})
       }
      // svg = d3.select("#chart").append("svg");
       //w = 300;
@@ -104,11 +104,12 @@ var tour_list;
 
 function draw_graph_iden(nodes, links) {
     var force = d3.layout.force()
-            .charge(-2000)
-            .linkDistance(200)
+            .charge(-1000)
+            .linkDistance(80)
             .nodes(nodes)
             .links(links)
             .size([w, h])
+            .gravity(0.1)
             .start();
 
     var node = svg.selectAll(".node")
@@ -128,7 +129,6 @@ function draw_graph_iden(nodes, links) {
             .text(function(d) { return d.name; });
 
     force.on("tick", function() {
-
         node.attr("transform", function(d)
         {
             return "translate(" + d.x + "," + d.y + ")";
@@ -151,8 +151,8 @@ function aboutTours(i)
 function createChart(nodes, links)
 {
     var force = d3.layout.force()
-        .charge(-1000)
-        .linkDistance(100)
+        .charge(-800)
+        .linkDistance(90)
         .size([w, h]);
 
     force.nodes(nodes)
