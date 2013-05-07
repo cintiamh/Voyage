@@ -109,8 +109,8 @@ var tour_list,user_id;
 
 function draw_graph_iden(nodes, links) {
     var force = d3.layout.force()
-            .charge(-1050)
-            .linkDistance(125)
+            .charge(-1500)
+            .linkDistance(200)
             .nodes(nodes)
             .links(links)
             .size([w, h])
@@ -136,7 +136,7 @@ function draw_graph_iden(nodes, links) {
              function(d){
                  if(d.id == -1)
                  {
-                     return 150;
+                     return 200;
                  }
                  else
                  {
@@ -146,7 +146,7 @@ function draw_graph_iden(nodes, links) {
         .attr("height",function(d){
              if(d.id == -1)
              {
-                 return 150;
+                 return 200;
              }
              else
              {
