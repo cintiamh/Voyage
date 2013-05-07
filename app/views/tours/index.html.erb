@@ -1,8 +1,5 @@
 <h1>WHO ARE YOU TODAY?</h1>
 <p>Choose your identity</p>
-<p>
-    <%= link_to "Try graph interface", mobile_identities_path %>
-</p>
 
 <% if @tours.length <= 0 %>
     <p>There are no tours</p>
@@ -30,3 +27,13 @@
         <% @count += 1 %>
     <% end %>
 <% end %>
+
+<div class="row-fluid">
+    <div class="span12">
+        <br>
+        <br>
+        <p>
+            <%= link_to "Not working for you? Try graph interface", mobile_identities_path %>
+        </p>
+    </div>
+</div>
