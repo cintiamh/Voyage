@@ -64,7 +64,7 @@ var tour_list,user_id;
             //  d3.event.translate.join(",")+")scale("+d3.event.scale+")");
 
           //svg.attr("transform","translate(95,21.62)"+"scale("+curScale+")");
-          svg.attr("transform","translate(95,21.62)"+"scale("+0.5+")");
+          svg.attr("transform","translate(95,45)"+"scale("+0.4+")");
       }
 
       draw_graph_iden(nodes, links);
@@ -76,7 +76,7 @@ var tour_list,user_id;
       //createChart(nodes, links);
 
       //Touch and click events
-      $('.touch_click').on('touchstart', function (e) {
+      /*$('.touch_click').on('touchstart', function (e) {
           // listen for a touchend event
           e.stopPropagation();
           e.preventDefault();
@@ -93,7 +93,7 @@ var tour_list,user_id;
           setTimeout(function () {
               $(e.target).off('touchend');
           }, 150);
-      });
+      }); */
 
       $('.touch_click').click(function (e) {
           if (e.handled != true) {
@@ -136,7 +136,7 @@ function draw_graph_iden(nodes, links) {
              function(d){
                  if(d.id == -1)
                  {
-                     return 200;
+                     return 250;
                  }
                  else
                  {
@@ -146,7 +146,7 @@ function draw_graph_iden(nodes, links) {
         .attr("height",function(d){
              if(d.id == -1)
              {
-                 return 200;
+                 return 250;
              }
              else
              {
@@ -157,7 +157,7 @@ function draw_graph_iden(nodes, links) {
         .attr("x",function(d){
              if(d.id == -1)
              {
-                 return "-6em";
+                 return "-8.5em";
              }
              else
              {
@@ -167,15 +167,17 @@ function draw_graph_iden(nodes, links) {
         .attr("y",function(d){
              if(d.id == -1)
              {
-                 return "-6em";
+                 return "-8.5em";
              }
              else
              {
                  return "-4em";
              }
          })
-        .attr("class","touch_click")
-        .attr("node_id",function(d){return d.id;});
+        //.attr("class","touch_click")
+        .attr("node_id",function(d){return d.id;})
+         .on("click", function(d){return aboutTours(d.id)})
+         .on("touchend", function(d){return aboutTours(d.id)});
 
 
     node.append("text")

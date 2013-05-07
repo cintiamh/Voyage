@@ -145,7 +145,7 @@ function draw_graph() {
             else if(d.group == "GO_NODE") {return "-5em";}
             else {return "-3em";}
         })
-        .attr("class","touch_click")
+        //.attr("class","touch_click")
         .attr("node_id",function(d){return d.id;})
         .on("mouseover", function(d)
         {
@@ -168,6 +168,12 @@ function draw_graph() {
         {
             var img = d3.select(this);
             img.attr("xlink:href", d.image);
+        })
+        .on("click", function(d){
+            return aboutPieces(d.id);
+        })
+        .on("touchend", function(d){
+            return aboutPieces(d.id);
         });
 
     node.append("text")
