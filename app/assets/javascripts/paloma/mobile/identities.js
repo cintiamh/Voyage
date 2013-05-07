@@ -25,14 +25,12 @@ var tour_list,user_id;
       var links = [];
       tour_list = params['tours_list'];
       user_id = params['user_id'];
-
+      nodes.push({"id":-1,"title":"","image":"/assets/WHO-ARE-YOU-Life-Preserver.png"})
       for(var i = 0; i<tour_list.length; i++)
       {
           nodes.push({"id":i,"title":tour_list[i].title,"image":tour_list[i].image});
           //links -> {source, target, value}
-          var target = i+1;
-          if(target >= tour_list.length){target = 0;}
-          links.push({"source":i, "target":target, "value":25})
+          links.push({"source":0, "target":i+1, "value":25})
       }
      // svg = d3.select("#chart").append("svg");
       //w = 300;
@@ -40,11 +38,13 @@ var tour_list,user_id;
 
       /********* NEW CODE ***********/
 
-      w = 500;
-      h = 500;
+      w = 300;
+      h = 300;
+
+      var curScale = (0.75 - (0.05 * (tour_list.length - 3)));
 
       var zoom = d3.behavior.zoom()
-              .scale(0.75)
+              .scale(curScale)
               .on("zoom", redraw);
 
       svg = d3.select("#chart")
@@ -59,8 +59,7 @@ var tour_list,user_id;
 
 
       function redraw() {
-          svg.attr("transform",
-                           "scale(0.75)");
+          svg.attr("transform","scale(curScale)");
       }
 
       draw_graph_iden(nodes, links);
@@ -113,6 +112,13 @@ function draw_graph_iden(nodes, links) {
             .gravity(0.1)
             .start();
 
+    var link = svg.selectAll(".link")
+        .data(links)
+        .enter().append("line")
+        .attr("class", "link")
+        .style("stroke-width", "5" )
+        .style("stroke-dasharray","5, 9");
+
     var node = svg.selectAll(".node")
             .data(nodes)
             .enter().append("g")
@@ -138,6 +144,11 @@ function draw_graph_iden(nodes, links) {
         .text(function(d) { return d.title.toUpperCase() });
 
     force.on("tick", function() {
+        link.attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+
         node.attr("transform", function(d)
         {
             return "translate(" + d.x + "," + d.y + ")";
@@ -151,12 +162,11 @@ function aboutTours(i)
     var link =  "../mobile/items?identity=" + picked_identity;
     jQuery.ajax({
         type: "POST",
-        url: "../comments",
+        url: "../histories",
         data: {"history":{"tour_id":tour_list[i].id,"user_id":user_id}},
         dataType:"json",
         cache: false,
         success: function (result) {
-            console.log("History: "+result.id)
             window.open(link, "_self");
         } });
 

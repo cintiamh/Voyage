@@ -143,6 +143,8 @@ function draw_graph() {
             {
               var img = d3.select(this);
                 img.attr("xlink:href","/assets/go.png")
+                   .attr("width",150)
+                   .attr("height",150);
             }
         })
         .on("mouseout", function(d)
@@ -264,7 +266,7 @@ function aboutPieces(i)
     if(i == -1)
     {
         var ident = parseInt(tour_id);// + 1;
-          window.open("../mobile/floors?identity=" + ident, "_self");
+        window.open("../mobile/floors?identity=" + ident, "_self");
 
     }
     else if(i >=0 )
