@@ -36,7 +36,7 @@ var force,link,node,width, height, pieces_by_connections=[];
       constructNodeLinks();
 
       /******* Setting view text********/
-      $("#tour_title").text("Your " + tour.title + " Tour");
+      $("#tour_title").text("YOUR " + tour.title.toUpperCase() + " TOUR");
       $("#tour_descr").text(tour.about);
 
 
