@@ -313,6 +313,17 @@ function getPieceById(id)
 
 function displayItemInfo()
 {
+
+
+    $("#commentsTab").removeClass("active");
+    $("#commentsTab_li").removeClass("active");
+
+    $("#connectionTab").removeClass("active");
+    $("#connectionTab_li").removeClass("active");
+
+    $("#itemInfoTab").addClass("active");
+    $("#itemInfoTab_li").addClass("active");
+
     //$( "#checkin" ).dialog( "close" );
     var title = $("#itemTitle2");
     var image = $("#item_image");
@@ -460,6 +471,12 @@ function closeAllDialogs()
     cur.css("background-image",img_done);
     cur.css("background-size","100%");
     $("#itemInformation").modal('hide');
+
+    //reset tab to info
+    //itemInfoTab and itemInfoTab_li
+    //commentsTab
+    //connectionTab_li
+
     if(currentItemNumber == pieces_list.length - 1)
     {
         //TODO: input all the comments
