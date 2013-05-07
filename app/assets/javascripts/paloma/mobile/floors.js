@@ -322,6 +322,7 @@ function displayItemInfo()
     var new_comm = $("#new_comment");
     var input = $("#usercomment");
     var artist_info = $('#artist_info');
+    var period_info = $('#period_info');
 
     artist_info.text("");
 
@@ -331,10 +332,16 @@ function displayItemInfo()
     title.text(pieces_list[currentItemNumber].title.toUpperCase());
     image.attr("src",pieces_list[currentItemNumber].image);
     after_info_p.text(after_info[currentItemNumber][0].after);
+
     if(typeof pieces_list[currentItemNumber].artist != 'undefined' && pieces_list[currentItemNumber].artist != null && pieces_list[currentItemNumber].artist != "")
     {
         artist_info.text("Artist: " + pieces_list[currentItemNumber].artist);
     }
+    if(typeof pieces_list[currentItemNumber].period != 'undefined' && pieces_list[currentItemNumber].period != null && pieces_list[currentItemNumber].period != "")
+    {
+        period_info.text("Year: " + pieces_list[currentItemNumber].period);
+    }
+
 
     var next = currentItemNumber + 1;
     if(next>pieces_list.length) {next=0;}
