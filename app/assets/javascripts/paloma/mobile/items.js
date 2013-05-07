@@ -152,9 +152,18 @@ function draw_graph() {
             if(d.group == "GO_NODE" )
             {
               var img = d3.select(this);
-                img.attr("xlink:href","/assets/go.png")
-                   .attr("width",150)
-                   .attr("height",150);
+                if(pieces_list.length != 0)
+                {
+                    img.attr("xlink:href","/assets/go.png")
+                    .attr("width",150)
+                    .attr("height",150);
+                }
+                else
+                {
+                    img.attr("xlink:href","/assets/COMING SOON.png")
+                        .attr("width",150)
+                        .attr("height",150);
+                }
             }
             if(d.group == "NODE" )
             {
