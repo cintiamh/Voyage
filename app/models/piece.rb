@@ -3,12 +3,12 @@ class Piece < ActiveRecord::Base
   belongs_to :gallery
 
   #has_many :connections
-  has_many :informations, :dependent => :destroy
+  has_many :informations
   has_many :comments
   has_many :likes
   has_many :questions, :dependent => :destroy
   has_many :answers, :through => :questions
-  has_many :tour_items, :dependent => :destroy
+  has_many :tour_items
   has_many :tours, :through => :tour_items
 
   has_and_belongs_to_many :connections
