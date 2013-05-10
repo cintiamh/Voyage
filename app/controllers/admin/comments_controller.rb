@@ -85,7 +85,9 @@ class Admin::CommentsController < Admin::ResourceController
   # DELETE /comments/1.json
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
+    unless @comment.present?
+      @comment.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to admin_comments_url }

@@ -29,8 +29,8 @@
         <% @tours.each do |tour| %>
             <tr>
                 <td><%= tour.title %></td>
-                <td><%= tour.curated %></td>
-                <td><%= tour.public %></td>
+                <td><%= tour.curated ? "Yes" : "No" %></td>
+                <td><%= tour.public ? "Yes" : "No" %></td>
                 <td><%= tour.user.email if tour.user %></td>
                 <td style="text-align: center;"><%= link_to raw("<i class='icon-file'></i>"), [:admin, tour], "data-toggle" => "tooltip", "data-placement" => "right", :title => "View", :class => "tooltip_right" %></td>
                 <td style="text-align: center;"><%= link_to raw("<i class='icon-pencil'></i>"), edit_admin_tour_path(tour), "data-toggle" => "tooltip", "data-placement" => "right", :title => "Edit", :class => "tooltip_right" %></td>

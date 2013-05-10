@@ -12,6 +12,7 @@
             <th>Piece</th>
             <th>Connection</th>
             <th>Tour</th>
+            <th>Date</th>
             <th></th>
         </tr>
 
@@ -20,9 +21,22 @@
                 <td><%= comment.approved ? "Yes" : "No" %></td>
                 <td><%= comment.content %></td>
                 <td><%= comment.user.email if comment.user %></td>
-                <td><%= comment.piece.title if comment.piece %></td>
-                <td><%= comment.connection.title if comment.connection %></td>
-                <td><%= comment.tour.title if comment.tour %></td>
+                <td>
+                    <% if comment.piece %>
+                        <%= link_to comment.piece.title, [:admin, comment.piece] %>
+                    <% end %>
+                </td>
+                <td>
+                    <% if comment.connection %>
+                        <%= link_to comment.piece.title, [:admin, comment.connection] %>
+                    <% end %>
+                </td>
+                <td>
+                    <% if comment.tour %>
+                        <%= link_to comment.tour.title, [:admin, comment.tour] %>
+                    <% end %>
+                </td>
+                <td><%= comment.created_at.to_time.strftime("%m/%d/%Y") %></td>
                 <td style="text-align: center;"><%= link_to raw("<i class='icon-file'></i>"), edit_admin_comment_path(comment), "data-toggle" => "tooltip", "data-placement" => "right", :title => "View", :class => "tooltip_right" %></td>
             </tr>
         <% end %>
