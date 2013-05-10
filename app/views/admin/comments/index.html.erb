@@ -4,37 +4,114 @@
     <p>There are no comments.</p>
 <% else %>
 
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th>Approved</th>
-            <th>Content</th>
-            <th>User</th>
-            <th>Piece</th>
-            <th>Tour</th>
-            <th>Date</th>
-            <th></th>
-        </tr>
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">All</a></li>
+            <li><a href="#tab2" data-toggle="tab">Pieces</a></li>
+            <li><a href="#tab3" data-toggle="tab">Tours</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Approved</th>
+                        <th>Content</th>
+                        <th>User</th>
+                        <th>Piece</th>
+                        <th>Tour</th>
+                        <th>Date</th>
+                        <th></th>
+                    </tr>
 
-        <% @comments.each do |comment| %>
-            <tr>
-                <td><%= comment.approved ? "Yes" : "No" %></td>
-                <td><%= comment.content %></td>
-                <td><%= comment.user.email if comment.user %></td>
-                <td>
-                    <% if comment.piece %>
-                        <%= link_to comment.piece.title, [:admin, comment.piece] %>
+                    <% @comments.each do |comment| %>
+                        <tr>
+                            <td><%= comment.approved ? "Yes" : "No" %></td>
+                            <td><%= comment.content %></td>
+                            <td><%= comment.user.email if comment.user %></td>
+                            <td>
+                                <% if comment.piece %>
+                                    <%= link_to comment.piece.title, [:admin, comment.piece] %>
+                                <% end %>
+                            </td>
+                            <td>
+                                <% if comment.tour %>
+                                    <%= link_to comment.tour.title, [:admin, comment.tour] %>
+                                <% end %>
+                            </td>
+                            <td><%= comment.created_at.to_time.strftime("%m/%d/%Y") %></td>
+                            <td style="text-align: center;"><%= link_to raw("<i class='icon-file'></i>"), edit_admin_comment_path(comment), "data-toggle" => "tooltip", "data-placement" => "right", :title => "View", :class => "tooltip_right" %></td>
+                        </tr>
                     <% end %>
-                </td>
-                <td>
-                    <% if comment.tour %>
-                        <%= link_to comment.tour.title, [:admin, comment.tour] %>
-                    <% end %>
-                </td>
-                <td><%= comment.created_at.to_time.strftime("%m/%d/%Y") %></td>
-                <td style="text-align: center;"><%= link_to raw("<i class='icon-file'></i>"), edit_admin_comment_path(comment), "data-toggle" => "tooltip", "data-placement" => "right", :title => "View", :class => "tooltip_right" %></td>
-            </tr>
-        <% end %>
-    </table>
+                </table>
+                <%= will_paginate @comments, :param_name => "all_page" %>
+            </div>
+            <div class="tab-pane" id="tab2">
+                <% if @comments_pieces.length <= 0 %>
+                    There are no comments for pieces
+                <% else %>
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th>Approved</th>
+                            <th>Content</th>
+                            <th>User</th>
+                            <th>Piece</th>
+                            <th>Date</th>
+                            <th></th>
+                        </tr>
+
+                        <% @comments_pieces.each do |comment| %>
+                            <tr>
+                                <td><%= comment.approved ? "Yes" : "No" %></td>
+                                <td><%= comment.content %></td>
+                                <td><%= comment.user.email if comment.user %></td>
+                                <td>
+                                    <% if comment.piece %>
+                                        <%= link_to comment.piece.title, [:admin, comment.piece] %>
+                                    <% end %>
+                                </td>
+                                <td><%= comment.created_at.to_time.strftime("%m/%d/%Y") %></td>
+                                <td style="text-align: center;"><%= link_to raw("<i class='icon-file'></i>"), edit_admin_comment_path(comment), "data-toggle" => "tooltip", "data-placement" => "right", :title => "View", :class => "tooltip_right" %></td>
+                            </tr>
+                        <% end %>
+                    </table>
+                    <%= will_paginate @comments_pieces, :param_name => "pieces_page" %>
+                <% end %>
+            </div>
+            <div class="tab-pane" id="tab3">
+                <% if @comments_tours.length <= 0 %>
+                    There are no comments for pieces
+                <% else %>
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th>Approved</th>
+                            <th>Content</th>
+                            <th>User</th>
+                            <th>Tour</th>
+                            <th>Date</th>
+                            <th></th>
+                        </tr>
+
+                        <% @comments_tours.each do |comment| %>
+                            <tr>
+                                <td><%= comment.approved ? "Yes" : "No" %></td>
+                                <td><%= comment.content %></td>
+                                <td><%= comment.user.email if comment.user %></td>
+                                <td>
+                                    <% if comment.tour %>
+                                        <%= link_to comment.tour.title, [:admin, comment.tour] %>
+                                    <% end %>
+                                </td>
+                                <td><%= comment.created_at.to_time.strftime("%m/%d/%Y") %></td>
+                                <td style="text-align: center;"><%= link_to raw("<i class='icon-file'></i>"), edit_admin_comment_path(comment), "data-toggle" => "tooltip", "data-placement" => "right", :title => "View", :class => "tooltip_right" %></td>
+                            </tr>
+                        <% end %>
+                    </table>
+                    <%= will_paginate @comments_tours, :param_name => "tours_page" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+
 <% end %>
 
-<%= will_paginate @comments %>
