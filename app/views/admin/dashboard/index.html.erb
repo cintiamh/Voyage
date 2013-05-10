@@ -20,17 +20,17 @@
     <div class="span4">
         <div class="bs-docs-example">
             <h3>Recent Tours</h3>
-            <% if @tour_histories.length <= 0 %>
+            <% if @histories.length <= 0 %>
                 <p>There are no recent tours.</p>
             <% else %>
                 <ul class="dashboard_list">
-                    <% @tour_histories.each do |tour| %>
-                        <li><%= link_to tour.tour.title, [:admin, tour] if tour.tour %></li>
+                    <% @histories.each do |history| %>
+                        <li><%= link_to history.tour.title, [:admin, history] if history.tour %></li>
                     <% end %>
                 </ul>
             <% end %>
             <p style="text-align: right">
-                <%= link_to "More...", admin_tour_histories_path %>
+                <%= link_to "More...", admin_histories_path %>
             </p>
         </div>
     </div>

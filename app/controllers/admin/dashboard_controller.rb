@@ -6,6 +6,7 @@ class Admin::DashboardController < Admin::ResourceController
     @page = "dashboard#index"
     @comments = Comment.recent
     @tour_histories = TourHistory.recent
+    @histories = History.recent
     @users = User.recent
   end
 end

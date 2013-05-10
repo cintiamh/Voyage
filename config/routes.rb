@@ -162,6 +162,8 @@ Voyage::Application.routes.draw do
 
     resources :tour_histories
 
+    resources :histories
+
   end
 
   # You can have the root of your site routed with "root"

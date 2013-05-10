@@ -7,4 +7,6 @@ class History < ActiveRecord::Base
   attr_accessible :chosen_date, :executed_date, :tour_id, :user_id
 
   validates :tour_id, :presence => true
+
+  scope :recent, :limit => 10, :order => 'created_at DESC'
 end
