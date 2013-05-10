@@ -10,7 +10,6 @@
             <th>Content</th>
             <th>User</th>
             <th>Piece</th>
-            <th>Connection</th>
             <th>Tour</th>
             <th>Date</th>
             <th></th>
@@ -24,11 +23,6 @@
                 <td>
                     <% if comment.piece %>
                         <%= link_to comment.piece.title, [:admin, comment.piece] %>
-                    <% end %>
-                </td>
-                <td>
-                    <% if comment.connection %>
-                        <%= link_to comment.piece.title, [:admin, comment.connection] %>
                     <% end %>
                 </td>
                 <td>
