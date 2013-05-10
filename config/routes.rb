@@ -5,72 +5,72 @@ Voyage::Application.routes.draw do
 
   get "mobile/index"
 
-  get "desktop/index"
+  #get "desktop/index"
 
-  get "desktop/comments"
+  #get "desktop/comments"
 
-  get "desktop/my_tours"
+  #get "desktop/my_tours"
 
-  get "desktop/my_comments"
+  #get "desktop/my_comments"
 
-  get "desktop/find_tour"
+  #get "desktop/find_tour"
 
   devise_for :users, path_names: { sign_in: "login", sign_out: "logout" },
              controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
-  resources :likes
+  #resources :likes
 
 
   resources :comments
 
 
-  resources :information
+  #resources :information
 
 
-  resources :tour_histories
+  #resources :tour_histories
 
 
   resources :tours
 
 
-  resources :users
+  #resources :users
 
 
-  resources :connections
+  #resources :connections
 
 
-  resources :categories
+  #resources :categories
 
 
-  resources :teasers
+  #resources :teasers
 
 
-  resources :pieces
+  #resources :pieces
 
 
-  resources :cities
+  #resources :cities
 
 
-  resources :states
+  #resources :states
 
 
-  resources :countries
+  #resources :countries
 
 
-  resources :galleries
+  #resources :galleries
 
 
-  resources :creators
+  #resources :creators
 
 
-  get "pages/index"
+  #get "pages/index"
 
-  get "pages/identities"
+  #get "pages/identities"
 
-  get "pages/items"
+  #get "pages/items"
 
-  get "pages/floors"
-  get "pages/desktop"
+  #get "pages/floors"
+  #get "pages/desktop"
 
   #mobile pages
   get "mobile/index"
