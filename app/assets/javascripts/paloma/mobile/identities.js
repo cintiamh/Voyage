@@ -248,6 +248,7 @@ function createChart(nodes, links)
         .attr("class", "node")
         .call(force.drag);
 
+
     node.append("image")
         .attr("xlink:href", function(d) {return d.image;})
         .attr("x", -8)
@@ -256,6 +257,7 @@ function createChart(nodes, links)
         .attr("width",100)
         .attr("node_id",function(d){return d.id;})
         .attr("class","touch_click");
+
     force.on("tick", function() {
         link.attr("x1", function(d) { return d.source.x; })
             .attr("y1", function(d) { return d.source.y; })
