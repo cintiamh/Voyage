@@ -31,7 +31,7 @@ class MobileController < ApplicationController
 
   def identities
 
-    @tours = Tour.all
+    @tours = Tour.where('public = ?', true).order('title')
     if user_signed_in?
       @user_id = current_user.id
     end

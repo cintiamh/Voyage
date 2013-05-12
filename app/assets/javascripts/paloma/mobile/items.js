@@ -26,24 +26,24 @@ var force,link,node,width, height, pieces_by_connections=[];
 
 
   Paloma.callbacks['mobile']['items'] = function(params){
-      pieces_list = params['pieces_list'];
-      connection_list = params['connection_list'];
-      tour_id = params['tour_id'];
-      tour = params['tour'];
-      before_info = params['before_info'];
-      pieces_by_connections = params['pieces_by_connections'];
+      pieces_list = params['pieces_list'];  //pieces based on the tour and the history id
+      connection_list = params['connection_list']; //connections between a items or pieces
+      tour_id = params['tour_id'];  //tour or identity chosen
+      tour = params['tour'];  //tour object
+      before_info = params['before_info'];  //teaser before the tour starts
+      pieces_by_connections = params['pieces_by_connections']; //pieces gathered from the connection list
+
+      //Build the tour and the connections
       create_tour_connection_list_graph();
+
+      //Build the data structure to get the graph
       constructNodeLinks();
 
       /******* Setting view text********/
       $("#tour_title").text("YOUR " + tour.title.toUpperCase() + " TOUR");
       $("#tour_descr").text(tour.about);
 
-
-
-
-      /********* NEW CODE ***********/
-
+      /******* Creating the graph ********/
        width = 500,
        height = 500;
        var curScale = (0.75 - (0.05 * (pieces_list.length - 3))) * 1.5;
@@ -63,12 +63,11 @@ var force,link,node,width, height, pieces_by_connections=[];
           vis.attr("transform","translate(93,27)"+"scale(" + 0.7 + ")");
       }
       draw_graph();
-      redraw();
-      redraw();
-      redraw();
 
-
-      /********** NEW CODE END *********/
+      //redrawing the graph to position it correctly
+      redraw();
+      redraw();
+      redraw();
 
       /********** TOUCH AND CLICK EVENTS *********/
       $('.touch_click').on('touchstart', function (e) {

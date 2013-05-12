@@ -24,24 +24,25 @@ var map, initial_floor, history, pieces_by_connections, user_input_comments=[], 
 
   Paloma.callbacks['mobile']['floors'] = function(params)
   {
-      identity = params['iden'];
-      user_id = params['user_id'];
-      pieces_list = params['pieces_list'];
-      galleries_list = params["galleries_list"];
-      question_list = params["question_list"];
-      answer_list = params["answer_list"];
-      after_info = params["after_info"];
-      connection_list = params["connection_list"];
-      comment_list = params["comment_list"];
-      var tour_items = params["tour_items"];
+      identity = params['iden']; //tour or identity chosen
+      pieces_list = params['pieces_list']; //pieces based on the tour and the history id
+      galleries_list = params["galleries_list"]; //galleries listed
+      question_list = params["question_list"]; //check-in questions for the items
+      answer_list = params["answer_list"]; //answer list for the questions
+      after_info = params["after_info"]; //information given after the check-in question was answered
+      connection_list = params["connection_list"]; //connections between a items or pieces
+      comment_list = params["comment_list"]; //previous comments based on the items
+      var tour_items = params["tour_items"]; //tour items
+      history = params["history"]; //history object
+      pieces_by_connections = params["pieces_by_connections"]; //pieces gathered from the connection list
 
-      //var tour_items_history = params["tour_items_history"];
-      history = params["history"];
-      pieces_by_connections = params["pieces_by_connections"];
-
+      //Build the tour and the connections
       create_tour_connection_list();
+
+      //Plot items on the map
       plot_items();
 
+      //Set the tab to the floor with the first item
       if(initial_floor == 1)
       {
           $('#first_tab').addClass('active');
@@ -503,5 +504,4 @@ function submit_comment()
                 $("#comm1").text("");
             }
         } });
-
 }
